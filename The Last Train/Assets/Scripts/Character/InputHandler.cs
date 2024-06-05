@@ -38,6 +38,11 @@ namespace TLT.Input
       return Mouse.current.position.ReadValue();
     }
 
+    public int GetInputVertical()
+    {
+      return CanInput() ? Mathf.RoundToInt(AI_Player.Player.Move.ReadValue<Vector2>().y) : 0;
+    }
+
     public int GetInputHorizontal()
     {
       return CanInput() ? Mathf.RoundToInt(AI_Player.Player.Move.ReadValue<Vector2>().x) : 0;

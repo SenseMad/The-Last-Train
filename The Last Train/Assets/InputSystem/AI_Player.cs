@@ -222,6 +222,15 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Space"",
+                    ""type"": ""Button"",
+                    ""id"": ""fff2dd59-7941-448c-91b9-d28d0157a453"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -279,6 +288,17 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""72c824db-1d3a-457d-bbfd-4309879c2fff"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Space"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -317,6 +337,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
         // Vehicle
         m_Vehicle = asset.FindActionMap("Vehicle", throwIfNotFound: true);
         m_Vehicle_Move = m_Vehicle.FindAction("Move", throwIfNotFound: true);
+        m_Vehicle_Space = m_Vehicle.FindAction("Space", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -449,11 +470,13 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Vehicle;
     private List<IVehicleActions> m_VehicleActionsCallbackInterfaces = new List<IVehicleActions>();
     private readonly InputAction m_Vehicle_Move;
+    private readonly InputAction m_Vehicle_Space;
     public struct VehicleActions
     {
         private @AI_Player m_Wrapper;
         public VehicleActions(@AI_Player wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Vehicle_Move;
+        public InputAction @Space => m_Wrapper.m_Vehicle_Space;
         public InputActionMap Get() { return m_Wrapper.m_Vehicle; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -466,6 +489,9 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Space.started += instance.OnSpace;
+            @Space.performed += instance.OnSpace;
+            @Space.canceled += instance.OnSpace;
         }
 
         private void UnregisterCallbacks(IVehicleActions instance)
@@ -473,6 +499,9 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Space.started -= instance.OnSpace;
+            @Space.performed -= instance.OnSpace;
+            @Space.canceled -= instance.OnSpace;
         }
 
         public void RemoveCallbacks(IVehicleActions instance)
@@ -518,5 +547,6 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
     public interface IVehicleActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnSpace(InputAction.CallbackContext context);
     }
 }

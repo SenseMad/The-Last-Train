@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 394788047539938202}
   - component: {fileID: 7940337034404028827}
   - component: {fileID: 6710801193951251180}
+  - component: {fileID: 8922096185745039524}
   - component: {fileID: 583932911911319618}
   m_Layer: 8
   m_Name: Moto
@@ -225,6 +226,18 @@ MonoBehaviour:
     _reverseSpeed: 4
     _accelerationTimeMaxSpeed: 3
     _deccelerationTime: 6
+--- !u!114 &8922096185745039524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998723175408614092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827dd9d1db4dc194c9ed458d0ab361e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &583932911911319618
 Animator:
   serializedVersion: 7

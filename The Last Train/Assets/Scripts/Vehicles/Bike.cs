@@ -6,13 +6,22 @@ namespace TLT.Vehicles
 {
   public sealed class Bike : VehicleController
   {
+    private float targetRotation;
 
+    //===================================
+
+    protected override void Update()
+    {
+      base.Update();
+
+      AxisTorsion();
+    }
 
     //===================================
 
     public override void Move()
     {
-      int input = isInCar ? InputHandler.GetInputVehicle() : 0;
+      int input = isInCar && isGrounded ? InputHandler.GetInputVertical() : 0;
 
       // Определяем направление взгляда
       bool facingRight = transform.localRotation.eulerAngles.y == 0;
@@ -43,7 +52,24 @@ namespace TLT.Vehicles
 
     //===================================
 
+    private void AxisTorsion()
+    {
+      int input = isInCar && !isGrounded ? InputHandler.GetInputHorizontal() : 0;
 
+      if (input == 0)
+        return;
+
+      if (input < 0)
+        targetRotation += 200f * Time.deltaTime;
+
+      if (input > 0)
+        targetRotation -= 200f * Time.deltaTime;
+
+      float currentRotation = transform.rotation.eulerAngles.z;
+      float newRotation = Mathf.LerpAngle(currentRotation, targetRotation, Time.deltaTime * 200f);
+
+      transform.rotation = Quaternion.Euler(0, 0, newRotation);
+    }
 
     //===================================
   }

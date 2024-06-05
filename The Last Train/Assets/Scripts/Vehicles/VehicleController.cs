@@ -28,9 +28,15 @@ namespace TLT.Vehicles
     private LevelManager levelManager;
 
     private Animator animator;
-    private Animation animation;
 
-    protected bool isInCar;
+    protected bool isInCar = false;
+    protected bool isGrounded = false;
+
+    private bool isCurrentRightFlip = true;
+
+    protected BoxCollider2D boxCollider2D;
+
+    private GetGrounded getGrounded;
 
     //===================================
 
@@ -58,7 +64,7 @@ namespace TLT.Vehicles
 
     //===================================
 
-    private void Awake()
+    protected virtual void Awake()
     {
       Rigidbody2D = GetComponent<Rigidbody2D>();
 
@@ -66,14 +72,18 @@ namespace TLT.Vehicles
 
       animator = GetComponent<Animator>();
 
-      animation = GetComponent<Animation>();
+      boxCollider2D = GetComponent<BoxCollider2D>();
+
+      getGrounded = GetComponent<GetGrounded>();
     }
 
     private void OnEnable()
     {
       objectInteraction.OnInteractCharacter += GetInCar;
 
-      InputHandler.AI_Player.Vehicle.Move.performed += Move_performed;
+      InputHandler.AI_Player.Player.Move.performed += Move_performed;
+
+      InputHandler.AI_Player.Vehicle.Space.performed += Space_performed;
 
       OnGetInCar += VehicleController_OnGetInCar;
       OnGetOutCar += VehicleController_OnGetOutCar;
@@ -85,17 +95,27 @@ namespace TLT.Vehicles
 
       InputHandler.AI_Player.Player.Select.performed -= Select_performed;
 
-      InputHandler.AI_Player.Vehicle.Move.performed -= Move_performed;
+      InputHandler.AI_Player.Player.Move.performed -= Move_performed;
+
+      InputHandler.AI_Player.Vehicle.Space.performed -= Space_performed;
 
       OnGetInCar -= VehicleController_OnGetInCar;
       OnGetOutCar -= VehicleController_OnGetOutCar;
+    }
+
+    protected virtual void Update()
+    {
+      if (getGrounded)
+      {
+        getGrounded.GetGround(boxCollider2D, out isGrounded);
+      }
     }
 
     protected virtual void FixedUpdate()
     {
       Move();
 
-      Flip();
+      //Flip();
     }
 
     //===================================
@@ -203,12 +223,42 @@ namespace TLT.Vehicles
       if (!isInCar)
         return;
 
+      if (!isGrounded)
+        return;
+
       int input = InputHandler.GetInputVehicleFlip();
 
       if (input < 0)
         transform.localRotation = Quaternion.Euler(0, 180, 0);
       else if (input > 0)
         transform.localRotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    private void Space_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+      if (!isInCar)
+        return;
+
+      if (!isGrounded)
+        return;
+
+      if (isCurrentRightFlip)
+      {
+        transform.localRotation = Quaternion.Euler(0, 180, 0);
+        isCurrentRightFlip = false;
+      }
+      else
+      {
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
+        isCurrentRightFlip = true;
+      }
+
+      //int input = InputHandler.GetInputVehicleFlip();
+
+      /*if (input < 0)
+        transform.localRotation = Quaternion.Euler(0, 180, 0);
+      else if (input > 0)
+        transform.localRotation = Quaternion.Euler(0, 0, 0);*/
     }
 
     //===================================
@@ -234,7 +284,7 @@ namespace TLT.Vehicles
 
     private void Move_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-      if (!isInCar)
+      if (!isInCar || !isGrounded)
         return;
 
       if (Mathf.RoundToInt(obj.ReadValue<Vector2>().x) > 0 || Mathf.RoundToInt(obj.ReadValue<Vector2>().x) < 0)

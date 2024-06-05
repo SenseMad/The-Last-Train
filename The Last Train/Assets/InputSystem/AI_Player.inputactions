@@ -200,6 +200,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Space",
+                    "type": "Button",
+                    "id": "fff2dd59-7941-448c-91b9-d28d0157a453",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -257,6 +266,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "72c824db-1d3a-457d-bbfd-4309879c2fff",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Space",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
