@@ -12,7 +12,14 @@ namespace TLT.Vehicles
 
     protected override void Update()
     {
-      base.Update();
+      /*base.Update();
+
+      AxisTorsion();*/
+    }
+
+    protected override void FixedUpdate()
+    {
+      base.FixedUpdate();
 
       AxisTorsion();
     }
@@ -59,16 +66,27 @@ namespace TLT.Vehicles
       if (input == 0)
         return;
 
+      Vector3 currentEulerAngles = transform.rotation.eulerAngles;
+
       if (input < 0)
-        targetRotation += 200f * Time.deltaTime;
+      {
+        if (currentEulerAngles.y > 0)
+          targetRotation -= 200f * Time.deltaTime;
+        else
+          targetRotation += 200f * Time.deltaTime;
+      }
 
       if (input > 0)
-        targetRotation -= 200f * Time.deltaTime;
+      {
+        if (currentEulerAngles.y > 0)
+          targetRotation += 200f * Time.deltaTime;
+        else
+          targetRotation -= 200f * Time.deltaTime;
+      }
 
       float currentRotation = transform.rotation.eulerAngles.z;
       float newRotation = Mathf.LerpAngle(currentRotation, targetRotation, Time.deltaTime * 200f);
-
-      transform.rotation = Quaternion.Euler(0, 0, newRotation);
+      transform.rotation = Quaternion.Euler(currentEulerAngles.x, currentEulerAngles.y, newRotation);
     }
 
     //===================================

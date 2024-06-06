@@ -226,6 +226,10 @@ MonoBehaviour:
     _reverseSpeed: 4
     _accelerationTimeMaxSpeed: 3
     _deccelerationTime: 6
+    _maxAngle: 30
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &8922096185745039524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827dd9d1db4dc194c9ed458d0ab361e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rayDistance: 0.15
 --- !u!95 &583932911911319618
 Animator:
   serializedVersion: 7

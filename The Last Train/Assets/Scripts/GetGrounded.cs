@@ -6,13 +6,22 @@ public class GetGrounded : MonoBehaviour
 
   //===================================
 
-  private BoxCollider2D[] ignoreColliders;
+  public BoxCollider2D[] IgnoreColliders { get; private set; }
+
+  //===================================
+
+
 
   //===================================
 
   private void Awake()
   {
-    ignoreColliders = GetComponentsInChildren<BoxCollider2D>();
+    IgnoreColliders = GetComponentsInChildren<BoxCollider2D>();
+  }
+
+  private void FixedUpdate()
+  {
+    
   }
 
   //===================================
@@ -43,20 +52,28 @@ public class GetGrounded : MonoBehaviour
       if (hit.collider == null)
         continue;
 
-      foreach (var ignoreCollider in ignoreColliders)
+      foreach (var ignoreCollider in IgnoreColliders)
       {
         if (hit.collider == ignoreCollider)
           return;
       }
 
+      //GetSurfaceAngle(hit);
+
       isGrounded = true;
       break;
     }
-
-    //===================================
-
-
-
-    //===================================
   }
+
+  //===================================
+
+  public void GetSurfaceAngle(RaycastHit2D parHit)
+  {
+    float groundAngle = Vector2.Angle(parHit.normal, Vector2.up);
+
+    Quaternion targetRotation = Quaternion.Euler(0, 0, Mathf.Clamp(-groundAngle, -45, 45));
+    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 200 * Time.deltaTime);
+  }
+
+  //===================================
 }

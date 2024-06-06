@@ -12,6 +12,9 @@ namespace TLT.Vehicles
     [SerializeField, Min(0)] private float _accelerationTimeMaxSpeed;
     [SerializeField, Min(0)] private float _deccelerationTime;
 
+    /*[Space(10)]
+    [SerializeField, Min(0)] private float _maxAngle = 30f;*/
+
     //===================================
 
     public float Speed => _speed;
@@ -19,6 +22,8 @@ namespace TLT.Vehicles
 
     public float AccelerationTimeMaxSpeed => _accelerationTimeMaxSpeed;
     public float DeccelerationTime => _deccelerationTime;
+
+    //public float MaxAngle => _maxAngle;
 
     //===================================
   }

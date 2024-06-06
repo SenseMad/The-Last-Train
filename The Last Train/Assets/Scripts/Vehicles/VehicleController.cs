@@ -36,7 +36,7 @@ namespace TLT.Vehicles
 
     protected BoxCollider2D boxCollider2D;
 
-    private GetGrounded getGrounded;
+    protected GetGrounded getGrounded;
 
     //===================================
 
@@ -105,17 +105,17 @@ namespace TLT.Vehicles
 
     protected virtual void Update()
     {
-      if (getGrounded)
-      {
-        getGrounded.GetGround(boxCollider2D, out isGrounded);
-      }
+
     }
 
     protected virtual void FixedUpdate()
     {
       Move();
 
-      //Flip();
+      if (getGrounded)
+      {
+        getGrounded.GetGround(boxCollider2D, out isGrounded);
+      }
     }
 
     //===================================
