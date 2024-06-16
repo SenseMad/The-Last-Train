@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Zenject;
+using UnityEngine.InputSystem;
 
 using TLT.Interfaces;
 using TLT.CharacterManager;
@@ -29,20 +30,19 @@ namespace TLT.Vehicles
 
     private Animator animator;
 
-    protected bool isInCar = false;
-    protected bool isGrounded = false;
+    protected bool isCurrentRightFlip = true;
 
-    private bool isCurrentRightFlip = true;
-
-    protected BoxCollider2D boxCollider2D;
-
-    protected GetGrounded getGrounded;
+    /*protected GetGrounded getGrounded;
+    protected VehicleGrounded vehicleGrounded;*/
 
     //===================================
 
-    protected InputHandler InputHandler { get; private set; }
+    public InputHandler InputHandler { get; private set; }
 
     protected Rigidbody2D Rigidbody2D { get; private set; }
+
+    public bool IsInCar { get; private set; }
+    public bool IsGrounded { get; set; }
 
     //-----------------------------------
 
@@ -72,24 +72,23 @@ namespace TLT.Vehicles
 
       animator = GetComponent<Animator>();
 
-      boxCollider2D = GetComponent<BoxCollider2D>();
-
-      getGrounded = GetComponent<GetGrounded>();
+      /*getGrounded = GetComponent<GetGrounded>();
+      vehicleGrounded = GetComponent<VehicleGrounded>();*/
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
       objectInteraction.OnInteractCharacter += GetInCar;
 
       InputHandler.AI_Player.Player.Move.performed += Move_performed;
 
-      InputHandler.AI_Player.Vehicle.Space.performed += Space_performed;
+      InputHandler.AI_Player.Vehicle.Space.performed += Flip;
 
       OnGetInCar += VehicleController_OnGetInCar;
       OnGetOutCar += VehicleController_OnGetOutCar;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
       objectInteraction.OnInteractCharacter -= GetInCar;
 
@@ -97,7 +96,7 @@ namespace TLT.Vehicles
 
       InputHandler.AI_Player.Player.Move.performed -= Move_performed;
 
-      InputHandler.AI_Player.Vehicle.Space.performed -= Space_performed;
+      InputHandler.AI_Player.Vehicle.Space.performed -= Flip;
 
       OnGetInCar -= VehicleController_OnGetInCar;
       OnGetOutCar -= VehicleController_OnGetOutCar;
@@ -105,17 +104,16 @@ namespace TLT.Vehicles
 
     protected virtual void Update()
     {
-
+      /*if (getGrounded)
+      {
+        //IsGrounded = getGrounded.GetGround(boxCollider2D);
+        //IsGrounded = vehicleGrounded.GetVehicleGround();
+      }*/
     }
 
     protected virtual void FixedUpdate()
     {
       Move();
-
-      if (getGrounded)
-      {
-        getGrounded.GetGround(boxCollider2D, out isGrounded);
-      }
     }
 
     //===================================
@@ -129,7 +127,7 @@ namespace TLT.Vehicles
     /// </summary>
     public void GetInCar(Character parOldCharacter)
     {
-      if (isInCar)
+      if (IsInCar)
         return;
 
       oldCharacter = parOldCharacter;
@@ -176,7 +174,7 @@ namespace TLT.Vehicles
     /// </summary>
     public void GetOutCar()
     {
-      if (!isInCar)
+      if (!IsInCar)
         return;
 
       oldCharacter.transform.position = transform.position;
@@ -218,28 +216,12 @@ namespace TLT.Vehicles
       OnGetOutCar?.Invoke();
     }
 
-    private void Flip()
+    private void Flip(InputAction.CallbackContext parContext)
     {
-      if (!isInCar)
+      /*if (!IsInCar)
         return;
 
-      if (!isGrounded)
-        return;
-
-      int input = InputHandler.GetInputVehicleFlip();
-
-      if (input < 0)
-        transform.localRotation = Quaternion.Euler(0, 180, 0);
-      else if (input > 0)
-        transform.localRotation = Quaternion.Euler(0, 0, 0);
-    }
-
-    private void Space_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
-    {
-      if (!isInCar)
-        return;
-
-      if (!isGrounded)
+      if (!IsGrounded)
         return;
 
       if (isCurrentRightFlip)
@@ -251,46 +233,39 @@ namespace TLT.Vehicles
       {
         transform.localRotation = Quaternion.Euler(0, 0, 0);
         isCurrentRightFlip = true;
-      }
-
-      //int input = InputHandler.GetInputVehicleFlip();
-
-      /*if (input < 0)
-        transform.localRotation = Quaternion.Euler(0, 180, 0);
-      else if (input > 0)
-        transform.localRotation = Quaternion.Euler(0, 0, 0);*/
+      }*/
     }
 
     //===================================
 
     private void VehicleController_OnGetInCar()
     {
-      isInCar = true;
+      IsInCar = true;
 
       InputHandler.AI_Player.Player.Select.performed += Select_performed;
     }
 
     private void VehicleController_OnGetOutCar()
     {
-      isInCar = false;
+      IsInCar = false;
     }
 
-    private void Select_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    private void Select_performed(InputAction.CallbackContext parContext)
     {
       GetOutCar();
 
       InputHandler.AI_Player.Player.Select.performed -= Select_performed;
     }
 
-    private void Move_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    private void Move_performed(InputAction.CallbackContext parContext)
     {
-      if (!isInCar || !isGrounded)
+      if (!IsInCar || !IsGrounded)
         return;
 
-      if (Mathf.RoundToInt(obj.ReadValue<Vector2>().x) > 0 || Mathf.RoundToInt(obj.ReadValue<Vector2>().x) < 0)
+      if (Mathf.RoundToInt(parContext.ReadValue<Vector2>().x) > 0 || Mathf.RoundToInt(parContext.ReadValue<Vector2>().x) < 0)
         return;
 
-      if (Mathf.RoundToInt(obj.ReadValue<Vector2>().y) < 0)
+      if (Mathf.RoundToInt(parContext.ReadValue<Vector2>().y) < 0)
         return;
 
       animator.SetTrigger("IsMove");

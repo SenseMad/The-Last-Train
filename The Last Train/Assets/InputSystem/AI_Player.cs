@@ -231,11 +231,38 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Throttle"",
+                    ""type"": ""Value"",
+                    ""id"": ""1cc01e8f-6aeb-4a80-9945-1b53f53b9611"",
+                    ""expectedControlType"": ""Double"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Brake"",
+                    ""type"": ""Value"",
+                    ""id"": ""e773e578-4538-4392-bfcc-0c66d27a8602"",
+                    ""expectedControlType"": ""Double"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Balance"",
+                    ""type"": ""Value"",
+                    ""id"": ""ba25906d-962b-4ff3-939b-d3e4be7f6758"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": ""SHIFT ASD"",
+                    ""name"": ""WASD"",
                     ""id"": ""ff891b12-a371-4dde-913c-d7b44a981ec6"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
@@ -248,7 +275,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""713519d9-db80-4156-8b0c-06eccedeeed8"",
-                    ""path"": ""<Keyboard>/shift"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -299,6 +326,61 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
                     ""action"": ""Space"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7b4af69c-73ef-43d8-a6a6-c8043aae43e2"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b184c12f-2aef-4f64-978e-54089a62cc12"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Brake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""85fe719f-d0ba-457a-abfc-1963e86f1906"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Balance"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""3a7b4721-bc4c-4b5c-a7ff-81a52e05d305"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Balance"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""a966a26c-a2be-4790-9341-10015d75690c"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Balance"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -338,6 +420,9 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
         m_Vehicle = asset.FindActionMap("Vehicle", throwIfNotFound: true);
         m_Vehicle_Move = m_Vehicle.FindAction("Move", throwIfNotFound: true);
         m_Vehicle_Space = m_Vehicle.FindAction("Space", throwIfNotFound: true);
+        m_Vehicle_Throttle = m_Vehicle.FindAction("Throttle", throwIfNotFound: true);
+        m_Vehicle_Brake = m_Vehicle.FindAction("Brake", throwIfNotFound: true);
+        m_Vehicle_Balance = m_Vehicle.FindAction("Balance", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -471,12 +556,18 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
     private List<IVehicleActions> m_VehicleActionsCallbackInterfaces = new List<IVehicleActions>();
     private readonly InputAction m_Vehicle_Move;
     private readonly InputAction m_Vehicle_Space;
+    private readonly InputAction m_Vehicle_Throttle;
+    private readonly InputAction m_Vehicle_Brake;
+    private readonly InputAction m_Vehicle_Balance;
     public struct VehicleActions
     {
         private @AI_Player m_Wrapper;
         public VehicleActions(@AI_Player wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Vehicle_Move;
         public InputAction @Space => m_Wrapper.m_Vehicle_Space;
+        public InputAction @Throttle => m_Wrapper.m_Vehicle_Throttle;
+        public InputAction @Brake => m_Wrapper.m_Vehicle_Brake;
+        public InputAction @Balance => m_Wrapper.m_Vehicle_Balance;
         public InputActionMap Get() { return m_Wrapper.m_Vehicle; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -492,6 +583,15 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
             @Space.started += instance.OnSpace;
             @Space.performed += instance.OnSpace;
             @Space.canceled += instance.OnSpace;
+            @Throttle.started += instance.OnThrottle;
+            @Throttle.performed += instance.OnThrottle;
+            @Throttle.canceled += instance.OnThrottle;
+            @Brake.started += instance.OnBrake;
+            @Brake.performed += instance.OnBrake;
+            @Brake.canceled += instance.OnBrake;
+            @Balance.started += instance.OnBalance;
+            @Balance.performed += instance.OnBalance;
+            @Balance.canceled += instance.OnBalance;
         }
 
         private void UnregisterCallbacks(IVehicleActions instance)
@@ -502,6 +602,15 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
             @Space.started -= instance.OnSpace;
             @Space.performed -= instance.OnSpace;
             @Space.canceled -= instance.OnSpace;
+            @Throttle.started -= instance.OnThrottle;
+            @Throttle.performed -= instance.OnThrottle;
+            @Throttle.canceled -= instance.OnThrottle;
+            @Brake.started -= instance.OnBrake;
+            @Brake.performed -= instance.OnBrake;
+            @Brake.canceled -= instance.OnBrake;
+            @Balance.started -= instance.OnBalance;
+            @Balance.performed -= instance.OnBalance;
+            @Balance.canceled -= instance.OnBalance;
         }
 
         public void RemoveCallbacks(IVehicleActions instance)
@@ -548,5 +657,8 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnSpace(InputAction.CallbackContext context);
+        void OnThrottle(InputAction.CallbackContext context);
+        void OnBrake(InputAction.CallbackContext context);
+        void OnBalance(InputAction.CallbackContext context);
     }
 }

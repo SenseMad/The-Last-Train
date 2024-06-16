@@ -209,11 +209,38 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Throttle",
+                    "type": "Value",
+                    "id": "1cc01e8f-6aeb-4a80-9945-1b53f53b9611",
+                    "expectedControlType": "Double",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Brake",
+                    "type": "Value",
+                    "id": "e773e578-4538-4392-bfcc-0c66d27a8602",
+                    "expectedControlType": "Double",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Balance",
+                    "type": "Value",
+                    "id": "ba25906d-962b-4ff3-939b-d3e4be7f6758",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
-                    "name": "SHIFT ASD",
+                    "name": "WASD",
                     "id": "ff891b12-a371-4dde-913c-d7b44a981ec6",
                     "path": "2DVector",
                     "interactions": "",
@@ -226,7 +253,7 @@
                 {
                     "name": "up",
                     "id": "713519d9-db80-4156-8b0c-06eccedeeed8",
-                    "path": "<Keyboard>/shift",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -277,6 +304,61 @@
                     "action": "Space",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7b4af69c-73ef-43d8-a6a6-c8043aae43e2",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Throttle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b184c12f-2aef-4f64-978e-54089a62cc12",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Brake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "85fe719f-d0ba-457a-abfc-1963e86f1906",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Balance",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "3a7b4721-bc4c-4b5c-a7ff-81a52e05d305",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Balance",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "a966a26c-a2be-4790-9341-10015d75690c",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Balance",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

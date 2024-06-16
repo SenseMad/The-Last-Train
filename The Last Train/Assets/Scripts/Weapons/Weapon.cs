@@ -9,6 +9,7 @@ namespace TLT.Weapons
 {
   public abstract class Weapon : MonoBehaviour
   {
+    [Space]
     [SerializeField] private WeaponData _weaponData;
 
     [Space(10)]
@@ -125,7 +126,7 @@ namespace TLT.Weapons
       PlaySound(_weaponData.SoundGunshot);
       OnShoot?.Invoke();
 
-      Ray ray = new(_pointShot.position, _pointShot.right);
+      Ray ray = new(_pointShot.position, _pointShot.right * Character.Instance.Direction);
 
       RaycastHit2D[] hits = Physics2D.RaycastAll(ray.origin, ray.direction, _weaponData.Distance, ~_layerMask);
 
@@ -154,7 +155,7 @@ namespace TLT.Weapons
 
       if (!foundValidHit)
       {
-        Debug.DrawLine(ray.origin, ray.origin + ray.direction * _weaponData.Distance, Color.green);
+        //Debug.DrawLine(ray.origin, ray.origin + ray.direction * _weaponData.Distance, Color.green);
         CreateLineRenderer(ray.origin + ray.direction * _weaponData.Distance);
         return;
       }

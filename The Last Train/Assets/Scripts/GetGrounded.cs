@@ -19,14 +19,9 @@ public class GetGrounded : MonoBehaviour
     IgnoreColliders = GetComponentsInChildren<BoxCollider2D>();
   }
 
-  private void FixedUpdate()
-  {
-    
-  }
-
   //===================================
 
-  public void GetGround(BoxCollider2D parBoxCollider2D, out bool isGrounded)
+  public bool GetGround(BoxCollider2D parBoxCollider2D)
   {
     Vector3 bottomLeft = new(parBoxCollider2D.bounds.min.x, parBoxCollider2D.bounds.min.y);
     Vector3 bottomCenter = new(parBoxCollider2D.bounds.center.x, parBoxCollider2D.bounds.min.y);
@@ -45,7 +40,7 @@ public class GetGrounded : MonoBehaviour
     for (int i = 0; i < rays.Length; i++)
       hits[i] = Physics2D.Raycast(rays[i].origin, rays[i].direction, _rayDistance);
 
-    isGrounded = false;
+    bool isGrounded = false;
 
     foreach (var hit in hits)
     {
@@ -55,7 +50,7 @@ public class GetGrounded : MonoBehaviour
       foreach (var ignoreCollider in IgnoreColliders)
       {
         if (hit.collider == ignoreCollider)
-          return;
+          return false;
       }
 
       //GetSurfaceAngle(hit);
@@ -63,6 +58,8 @@ public class GetGrounded : MonoBehaviour
       isGrounded = true;
       break;
     }
+
+    return isGrounded;
   }
 
   //===================================

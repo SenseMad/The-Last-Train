@@ -1,3 +1,4 @@
+using TLT.Vehicles.Bike;
 using UnityEngine;
 
 namespace TLT.CharacterManager
@@ -55,6 +56,7 @@ namespace TLT.CharacterManager
 
       // Проверяем направление взгляда персонажа
       bool facingRight = transform.localRotation.eulerAngles.y == 0;
+      //bool facingRight = ;
       // Определяем, движется ли персонаж задом
       bool isMovingBackward = (facingRight && moveVelocity < 0) || (!facingRight && moveVelocity > 0);
       if (isMovingBackward)
@@ -72,10 +74,18 @@ namespace TLT.CharacterManager
       Vector3 cameraPosition = character.MainCamera.WorldToScreenPoint(transform.position);
       Vector2 mousePosition = character.InputHandler.GetMousePosition();
 
+      /*transform.localScale = new Vector3(transform.localScale.x * -1f, transform.localScale.y, transform.localScale.z);
+
+      _bikeManager.Direction *= -1;*/
+
       if (mousePosition.x < cameraPosition.x)
-        transform.localRotation = Quaternion.Euler(0, 180, 0);
+        character.Direction = -1;
+      //transform.localRotation = Quaternion.Euler(0, 180, 0);
       else if (mousePosition.x > cameraPosition.x)
-        transform.localRotation = Quaternion.Euler(0, 0, 0);
+        character.Direction = 1;
+
+      transform.localScale = new Vector3(character.Direction, transform.localScale.y, transform.localScale.z);
+      //transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
     private void LimitRateFall()

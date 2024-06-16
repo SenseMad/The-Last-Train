@@ -13,6 +13,10 @@ namespace TLT.CharacterManager
 {
   public class Character : MonoBehaviour, IDamageable
   {
+    private static Character instance;
+
+    //===================================
+
     [SerializeField] private Health _health;
 
     [SerializeField] private WeaponController _weaponController;
@@ -23,6 +27,13 @@ namespace TLT.CharacterManager
     //-----------------------------------
 
     private Interaction interaction;
+
+    //===================================
+
+    public static Character Instance
+    {
+      get => instance;
+    }
 
     //===================================
 
@@ -37,6 +48,8 @@ namespace TLT.CharacterManager
     public Health Health { get => _health; private set => _health = value; }
 
     public bool IsTakeDamage { get; set; }
+
+    public int Direction { get; set; } = 1;
 
     //===================================
 
@@ -53,6 +66,8 @@ namespace TLT.CharacterManager
       MainCamera = Camera.main;
 
       interaction = GetComponent<Interaction>();
+
+      instance = this;
     }
 
     private void OnEnable()

@@ -7,6 +7,7 @@ namespace TLT.Vehicles
   {
     [SerializeField, Min(0)] private float _speed = 0;
     [SerializeField, Min(0)] private float _reverseSpeed = 0;
+    [SerializeField, Min(0)] private float _maxSpeed = 0;
 
     [Space(10)]
     [SerializeField, Min(0)] private float _accelerationTimeMaxSpeed;
@@ -19,6 +20,7 @@ namespace TLT.Vehicles
 
     public float Speed => _speed;
     public float ReverseSpeed => _reverseSpeed;
+    public float MaxSpeed => _maxSpeed;
 
     public float AccelerationTimeMaxSpeed => _accelerationTimeMaxSpeed;
     public float DeccelerationTime => _deccelerationTime;
