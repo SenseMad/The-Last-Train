@@ -75,10 +75,10 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 26
   m_Positions:
-  - {x: -7.1800003, y: -2.35, z: 0}
-  - {x: -12.660494, y: -2.35, z: 0}
+  - {x: 60.390553, y: -3.434702, z: 0}
+  - {x: 54.32834, y: 0.06523919, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.025

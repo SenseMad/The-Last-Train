@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 8da8a67cbb0462949b9e123bfdd16563
+guid: c0b29e99f36dec441b837d1d1350fd6f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3968499366496220056
-    second: Player_arms_0
+      213: 4784601805420508835
+    second: houses_3_0
+  - first:
+      213: 1442936570665150065
+    second: houses_3_1
+  - first:
+      213: 5872784933528436922
+    second: houses_3_2
+  - first:
+      213: -1623216990069819307
+    second: houses_3_3
+  - first:
+      213: -4868918680365683490
+    second: houses_3_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,22 +112,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_arms_0
+      name: houses_3_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 24
-        height: 10
+        x: 60
+        y: 98
+        width: 61
+        height: 98
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 893be57d521f21730800000000000000
-      internalID: 3968499366496220056
+      spriteID: 3a638cbfdf1566240800000000000000
+      internalID: 4784601805420508835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: houses_3_1
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 98
+        width: 61
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 176aaef7a27560410800000000000000
+      internalID: 1442936570665150065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: houses_3_2
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 98
+        width: 61
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab08a3d18c2508150800000000000000
+      internalID: 5872784933528436922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: houses_3_3
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 98
+        width: 61
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55872896fbc2979e0800000000000000
+      internalID: -1623216990069819307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: houses_3_4
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 98
+        width: 61
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edc2a80c1402e6cb0800000000000000
+      internalID: -4868918680365683490
       vertices: []
       indices: 
       edges: []
@@ -123,15 +219,19 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    spriteID: f40cf4cf196db724ebc5148a0b9b0d1d
+    internalID: 1397582068
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player_arms_0: 3968499366496220056
+      houses_3_0: 4784601805420508835
+      houses_3_1: 1442936570665150065
+      houses_3_2: 5872784933528436922
+      houses_3_3: -1623216990069819307
+      houses_3_4: -4868918680365683490
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

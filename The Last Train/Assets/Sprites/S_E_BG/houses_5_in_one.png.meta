@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 6a2ff0536052f58469e4f4bf7863fd56
+guid: 2d0a29485526472449f767b1269731c0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3445674281854026479
-    second: Player_1_0
+      213: -4527443519769987451
+    second: houses_5_in_one_0
+  - first:
+      213: 1899979573197442403
+    second: houses_5_in_one_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,13 +49,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 23
-  spriteBorder: {x: 0, y: 0, z: 11, w: 0}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_1_0
+      name: houses_5_in_one_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 15
-        height: 30
+        x: 70
+        y: 98
+        width: 157
+        height: 151
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +117,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fe2cb9dd08e71df20800000000000000
-      internalID: 3445674281854026479
+      spriteID: 586377f2b1a4b21c0800000000000000
+      internalID: -4527443519769987451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: houses_5_in_one_1
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 98
+        width: 157
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36d8ee4fa551e5a10800000000000000
+      internalID: 1899979573197442403
       vertices: []
       indices: 
       edges: []
@@ -123,15 +147,16 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    spriteID: baf2ca45667407b46944c25b4dc46ae9
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player_1_0: 3445674281854026479
+      houses_5_in_one_0: -4527443519769987451
+      houses_5_in_one_1: 1899979573197442403
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
