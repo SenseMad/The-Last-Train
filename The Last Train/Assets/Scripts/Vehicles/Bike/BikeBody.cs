@@ -11,20 +11,7 @@ namespace TLT.Vehicles.Bike
     [SerializeField] private BikeManager _bikeManager;
 
     [Space]
-    [Header("Speed")]
-    [SerializeField] private float _bodyForce = 100f;
-    [SerializeField] private float _maxVelocity = 14f;
-    [SerializeField] private float _defaultForceBrakeSpeed = 50f;
-
-    [Space, Header("Balance")]
-    [SerializeField] private float _wheelieTorque = 50f;
-    [SerializeField] private float _spinTorque = 5f;
-
-    [SerializeField] private float _balanceStrength = 1f;
-    [SerializeField] private float _maxAngularVelocity = 5f;
-    [SerializeField] private float _tempBalanceSignTimer;
-    [SerializeField] private float _tempBalanceSignTime = 0.3f;
-    [SerializeField] private float _balanceLianaStrenght = 1f;
+    [SerializeField] private BikeData _bikeData;
 
     //-----------------------------------
 
@@ -34,16 +21,7 @@ namespace TLT.Vehicles.Bike
 
     //===================================
 
-    public Vector2 Velocity => bodyRB.velocity;
-
-    public float MaxVelocity => _maxVelocity;
-
     public float FloorAngle => Mathf.Abs(Vector2.Angle(transform.right, Vector2.right));
-
-    public Rigidbody2D BodyRB { get => bodyRB; set => bodyRB = value; }
-
-    public float WheelieEasinessMultiplier { get; set; }
-    public float tempBalanceSign { get; set; }
 
     //===================================
 
@@ -92,14 +70,14 @@ namespace TLT.Vehicles.Bike
       ImpulseBody();
       if (_bikeManager.AnyWheelGrounded)
       {
-        if (bodyRB.velocity.magnitude > _maxVelocity)
+        if (bodyRB.velocity.magnitude > _bikeData.MaxVelocity)
         {
-          bodyRB.velocity = bodyRB.velocity.normalized * _maxVelocity;
+          bodyRB.velocity = bodyRB.velocity.normalized * _bikeData.MaxVelocity;
         }
       }
-      else if (bodyRB.velocity.magnitude > _maxVelocity * 1.5f)
+      else if (bodyRB.velocity.magnitude > _bikeData.MaxVelocity * 1.5f)
       {
-        bodyRB.velocity = bodyRB.velocity.normalized * _maxVelocity * 1.5f;
+        bodyRB.velocity = bodyRB.velocity.normalized * _bikeData.MaxVelocity * 1.5f;
       }
 
       if (_bikeController.Throttle == 0 && _bikeManager.Grounded && _bikeController.Brake != 0)
@@ -123,13 +101,13 @@ namespace TLT.Vehicles.Bike
         bodyRB.AddTorque(FloorAngle * 100f * (float)_bikeManager.Direction * bodyRB.mass * Time.deltaTime, ForceMode2D.Force);
       }
 
-      bodyRB.velocity = Vector2.Lerp(bodyRB.velocity, new Vector2(0, bodyRB.velocity.y), Time.deltaTime * _defaultForceBrakeSpeed);
+      bodyRB.velocity = Vector2.Lerp(bodyRB.velocity, new Vector2(0, bodyRB.velocity.y), Time.deltaTime * _bikeData.DefaultForceBrakeSpeed);
     }
 
     private void ImpulseBody()
     {
       float d = _bikeController.ForceThrottle ? 1f : _bikeController.Throttle;
-      Vector3 v = transform.right * _bikeManager.Direction * d * _bodyForce * Time.deltaTime;
+      Vector3 v = transform.right * _bikeManager.Direction * d * _bikeData.BodyForce * Time.deltaTime;
 
       if (_bikeManager.Grounded)
         bodyRB.AddForce(v, ForceMode2D.Force);
@@ -142,14 +120,14 @@ namespace TLT.Vehicles.Bike
 
       if (!_bikeManager.Grounded)
       {
-        bodyRB.AddTorque(-_bikeController.Balance * _spinTorque);
+        bodyRB.AddTorque(-_bikeController.Balance * _bikeData.SpinTorque);
         return;
       }
 
       if (_bikeController.Balance == -1)
-        bodyRB.AddTorque(_wheelieTorque);
+        bodyRB.AddTorque(_bikeData.WheelieTorque);
       else if (_bikeController.Balance == 1)
-        bodyRB.AddTorque(-_wheelieTorque);
+        bodyRB.AddTorque(-_bikeData.WheelieTorque);
     }
 
     private void UpdateBalance()
@@ -159,10 +137,10 @@ namespace TLT.Vehicles.Bike
 
     private void UpdateTorque()
     {
-      float num = _bikeController.Balance * _balanceStrength * bodyRB.mass * Time.deltaTime;
+      float num = _bikeController.Balance * _bikeData.BalanceStrength * bodyRB.mass * Time.deltaTime;
       if (_bikeController.Balance == 0)
       {
-        if (_bikeController.IsGrounded)
+        if (_bikeManager.Grounded)
           groundHandicap = 0.25f;
         else
           groundHandicap = 0.6f;
@@ -176,20 +154,7 @@ namespace TLT.Vehicles.Bike
       num *= groundHandicap;
       bodyRB.AddTorque(num, ForceMode2D.Force);
 
-      bodyRB.angularVelocity = Mathf.Clamp(bodyRB.angularVelocity, -_maxAngularVelocity, _maxAngularVelocity);
-      if (Mathf.Abs(num) >= 0.2f)
-      {
-        tempBalanceSign = Mathf.Sign(num);
-        _tempBalanceSignTimer = 0;
-        return;
-      }
-
-      _tempBalanceSignTimer += Time.deltaTime;
-      if (_tempBalanceSignTimer >= _tempBalanceSignTime)
-      {
-        _tempBalanceSignTimer = 0;
-        tempBalanceSign = 0;
-      }
+      bodyRB.angularVelocity = Mathf.Clamp(bodyRB.angularVelocity, -_bikeData.MaxAngularVelocity, _bikeData.MaxAngularVelocity);
     }
 
     //===================================

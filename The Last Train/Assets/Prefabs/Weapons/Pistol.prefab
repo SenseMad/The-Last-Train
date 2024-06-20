@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponData:
     _damage: 1
-    _distance: 7
+    _distance: 25
     _maxAmountAmmo: 5000
     _maxAmountAmmoInMagazine: 5
     _autoRecharge: 1

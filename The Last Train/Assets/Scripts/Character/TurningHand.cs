@@ -56,7 +56,7 @@ namespace TLT.CharacterManager
       }
 
       Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-      _handPivot.rotation = Quaternion.Slerp(_handPivot.rotation, targetRotation, Time.deltaTime * 20f);
+      _handPivot.rotation = Quaternion.Slerp(_handPivot.rotation, targetRotation, Time.unscaledDeltaTime * 20f);
 
       Vector3 localScale = _handPivot.localScale;
       localScale.y = isMouseOnRightSide ? 1 : -1;

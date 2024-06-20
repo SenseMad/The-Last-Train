@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using Zenject;
 
 namespace TLT.Installers
@@ -7,6 +8,10 @@ namespace TLT.Installers
     public override void InstallBindings()
     {
       Container.Bind<LevelManager>().FromComponentInHierarchy().AsSingle().NonLazy();
+
+      Container.Bind<CinemachineCamera>().FromComponentInHierarchy().AsSingle().NonLazy();
+
+      Container.Bind<CinemachinePositionComposer>().FromComponentInHierarchy().AsSingle().NonLazy();
 
       /*Container.Bind<Waypoints>().FromComponentInHierarchy().AsSingle().NonLazy();
 

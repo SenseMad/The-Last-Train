@@ -7,18 +7,22 @@ using TLT.Interfaces;
 using TLT.CharacterManager;
 using TLT.Input;
 using TLT.Weapons;
+using TLT.Vehicles.Bike;
 
 namespace TLT.Vehicles
 {
   public abstract class VehicleController : MonoBehaviour, IVehicleable
   {
+    [SerializeField] private BikeManager _bikeManager;
+
+    [Space]
     [SerializeField] private Character _currentCharacter;
     [SerializeField] private GameObject _objectBody;
 
     [SerializeField] private Transform _effectDust;
 
     [Space(10)]
-    [SerializeField] protected VehicleData _vehicleData;
+    [SerializeField] protected BikeData _vehicleData;
 
     //-----------------------------------
 
@@ -31,9 +35,6 @@ namespace TLT.Vehicles
     private Animator animator;
 
     protected bool isCurrentRightFlip = true;
-
-    /*protected GetGrounded getGrounded;
-    protected VehicleGrounded vehicleGrounded;*/
 
     //===================================
 
@@ -80,7 +81,8 @@ namespace TLT.Vehicles
     {
       objectInteraction.OnInteractCharacter += GetInCar;
 
-      InputHandler.AI_Player.Player.Move.performed += Move_performed;
+      //InputHandler.AI_Player.Player.Move.performed += Move_performed;
+      InputHandler.AI_Player.Vehicle.Throttle.performed += Throttle;
 
       InputHandler.AI_Player.Vehicle.Space.performed += Flip;
 
@@ -94,7 +96,8 @@ namespace TLT.Vehicles
 
       InputHandler.AI_Player.Player.Select.performed -= Select_performed;
 
-      InputHandler.AI_Player.Player.Move.performed -= Move_performed;
+      //InputHandler.AI_Player.Player.Move.performed -= Move_performed;
+      InputHandler.AI_Player.Vehicle.Throttle.performed -= Throttle;
 
       InputHandler.AI_Player.Vehicle.Space.performed -= Flip;
 
@@ -160,7 +163,7 @@ namespace TLT.Vehicles
       #region Camera
 
       _currentCharacter.CinemachineCamera = oldCharacter.CinemachineCamera;
-      _currentCharacter.CinemachineCamera.Target.TrackingTarget = transform;
+      _currentCharacter.CinemachineCamera.Target.TrackingTarget = _currentCharacter.transform;
 
       #endregion
 
@@ -250,6 +253,8 @@ namespace TLT.Vehicles
       IsInCar = false;
     }
 
+    //===================================
+
     private void Select_performed(InputAction.CallbackContext parContext)
     {
       GetOutCar();
@@ -257,9 +262,17 @@ namespace TLT.Vehicles
       InputHandler.AI_Player.Player.Select.performed -= Select_performed;
     }
 
+    private void Throttle(InputAction.CallbackContext parContext)
+    {
+      if (!IsInCar || !_bikeManager.Grounded)
+        return;
+
+      animator.SetTrigger("IsMove");
+    }
+
     private void Move_performed(InputAction.CallbackContext parContext)
     {
-      if (!IsInCar || !IsGrounded)
+      if (!IsInCar || !_bikeManager.Grounded)
         return;
 
       if (Mathf.RoundToInt(parContext.ReadValue<Vector2>().x) > 0 || Mathf.RoundToInt(parContext.ReadValue<Vector2>().x) < 0)

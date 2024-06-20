@@ -18,16 +18,11 @@ namespace TLT.Vehicles.Bike
     [SerializeField] private LayerMask _groundLayerMask;
     [SerializeField] private Transform _groundDetector;
 
-    [Header("WheelJoint2D")]
-    [SerializeField] private WheelJoint2D _wheelJoint;
-
     [Header("Controller")]
     [SerializeField] private BikeController _bikeController;
     [SerializeField] private BikeManager _bikeManager;
 
     //-----------------------------------
-
-    private Vector3 startPosition;
 
     private Rigidbody2D wheelRB;
 
@@ -51,15 +46,13 @@ namespace TLT.Vehicles.Bike
     private void Awake()
     {
       wheelRB = GetComponent<Rigidbody2D>();
-      _wheelJoint = GetComponent<WheelJoint2D>();
+
       Collider2D = GetComponent<CircleCollider2D>();
     }
 
     private void Start()
     {
-      startPosition = transform.localPosition;
-
-      _groundDetectionDistance *= GetComponent<CircleCollider2D>().radius;
+      _groundDetectionDistance *= Collider2D.radius;
     }
 
     private void Update()
@@ -115,28 +108,10 @@ namespace TLT.Vehicles.Bike
       grounded = raycastHit2D.collider || hit;
     }
 
-    /*private void ForceBrake()
-    {
-      wheelRB.angularVelocity = 0;
-    }*/
-
     private void UpdateDetectorPosition()
     {
       _groundDetector.position = transform.position;
     }
-
-    /*public bool IsGrounded()
-    {
-      return Physics2D.OverlapCircle(transform.position, _checkRadius, ~ignoreLayer);
-    }*/
-
-    //===================================
-
-    /*private void OnDrawGizmosSelected()
-    {
-      Gizmos.color = Color.red;
-      Gizmos.DrawWireSphere(transform.position, _checkRadius);
-    }*/
 
     //===================================
   }

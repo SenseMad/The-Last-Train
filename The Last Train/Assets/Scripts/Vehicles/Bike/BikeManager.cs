@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TLT.Vehicles.Bike
@@ -19,18 +17,25 @@ namespace TLT.Vehicles.Bike
 
     public int Direction { get => _direction; set => _direction = value; }
 
+    /// <summary>
+    /// На земле двумя колесами
+    /// </summary>
     public bool Grounded => _backWheel.Grounded && _frontWheel.Grounded;
+
+    /// <summary>
+    /// На земле только передним колесом
+    /// </summary>
     public bool OnlyFrontGrounded => !_backWheel.Grounded && _frontWheel.Grounded;
+
+    /// <summary>
+    /// На земле только задним колесом
+    /// </summary>
     public bool OnlyBackGrounded => _backWheel.Grounded && !_frontWheel.Grounded;
+
+    /// <summary>
+    /// На земле либо переднее либо заднее колесо
+    /// </summary>
     public bool AnyWheelGrounded => _backWheel.Grounded || _frontWheel.Grounded;
-
-    //===================================
-
-
-
-    //===================================
-
-
 
     //===================================
   }

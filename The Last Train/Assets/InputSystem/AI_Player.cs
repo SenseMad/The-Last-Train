@@ -383,6 +383,34 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""Time"",
+            ""id"": ""50cca428-6825-4fd9-a04b-5ed504d97e01"",
+            ""actions"": [
+                {
+                    ""name"": ""TimeDilation"",
+                    ""type"": ""Button"",
+                    ""id"": ""f8d2e8fe-d612-4dc3-934c-f0bc1025c769"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""acc693ba-114c-457f-88dd-49a51d706844"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse"",
+                    ""action"": ""TimeDilation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -423,6 +451,9 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
         m_Vehicle_Throttle = m_Vehicle.FindAction("Throttle", throwIfNotFound: true);
         m_Vehicle_Brake = m_Vehicle.FindAction("Brake", throwIfNotFound: true);
         m_Vehicle_Balance = m_Vehicle.FindAction("Balance", throwIfNotFound: true);
+        // Time
+        m_Time = asset.FindActionMap("Time", throwIfNotFound: true);
+        m_Time_TimeDilation = m_Time.FindAction("TimeDilation", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -628,6 +659,52 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
         }
     }
     public VehicleActions @Vehicle => new VehicleActions(this);
+
+    // Time
+    private readonly InputActionMap m_Time;
+    private List<ITimeActions> m_TimeActionsCallbackInterfaces = new List<ITimeActions>();
+    private readonly InputAction m_Time_TimeDilation;
+    public struct TimeActions
+    {
+        private @AI_Player m_Wrapper;
+        public TimeActions(@AI_Player wrapper) { m_Wrapper = wrapper; }
+        public InputAction @TimeDilation => m_Wrapper.m_Time_TimeDilation;
+        public InputActionMap Get() { return m_Wrapper.m_Time; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TimeActions set) { return set.Get(); }
+        public void AddCallbacks(ITimeActions instance)
+        {
+            if (instance == null || m_Wrapper.m_TimeActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_TimeActionsCallbackInterfaces.Add(instance);
+            @TimeDilation.started += instance.OnTimeDilation;
+            @TimeDilation.performed += instance.OnTimeDilation;
+            @TimeDilation.canceled += instance.OnTimeDilation;
+        }
+
+        private void UnregisterCallbacks(ITimeActions instance)
+        {
+            @TimeDilation.started -= instance.OnTimeDilation;
+            @TimeDilation.performed -= instance.OnTimeDilation;
+            @TimeDilation.canceled -= instance.OnTimeDilation;
+        }
+
+        public void RemoveCallbacks(ITimeActions instance)
+        {
+            if (m_Wrapper.m_TimeActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ITimeActions instance)
+        {
+            foreach (var item in m_Wrapper.m_TimeActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_TimeActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public TimeActions @Time => new TimeActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -660,5 +737,9 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
         void OnThrottle(InputAction.CallbackContext context);
         void OnBrake(InputAction.CallbackContext context);
         void OnBalance(InputAction.CallbackContext context);
+    }
+    public interface ITimeActions
+    {
+        void OnTimeDilation(InputAction.CallbackContext context);
     }
 }

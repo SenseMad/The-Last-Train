@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 2525055030719673087}
   - component: {fileID: 2493204791148380982}
   - component: {fileID: 4444293760946179296}
+  - component: {fileID: 5323032585073376786}
   - component: {fileID: 2160861396471017799}
-  - component: {fileID: 2167891245645083444}
+  - component: {fileID: 5732222723230937666}
   - component: {fileID: 7062507062715043215}
   - component: {fileID: 709675634512074534}
   - component: {fileID: 4514878853799714058}
-  - component: {fileID: 5732222723230937666}
-  - component: {fileID: 5323032585073376786}
+  - component: {fileID: 8559336272320551661}
   m_Layer: 8
   m_Name: Moto
   m_TagString: Untagged
@@ -127,6 +127,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &5323032585073376786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60311359046038410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d09c711f6f0a147bb6e1ff6db354f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frontWheel: {fileID: 6022045053815773467}
+  _backWheel: {fileID: 8531894684697949096}
+  _direction: 1
 --- !u!114 &2160861396471017799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,29 +154,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1bd88adf768c6b4ebd73c9c3efb2085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bikeManager: {fileID: 5323032585073376786}
   _currentCharacter: {fileID: 2462259286853681921}
   _objectBody: {fileID: 5842820622190374436}
   _effectDust: {fileID: 6936371927282915571}
   _vehicleData:
-    _speed: 1000
-    _reverseSpeed: 4
-    _maxSpeed: 70
-    _accelerationTimeMaxSpeed: 3
-    _deccelerationTime: 6
+    _bodyForce: 100
+    _maxVelocity: 14
+    _defaultForceBrakeSpeed: 50
+    _wheelieTorque: 50
+    _spinTorque: 5
+    _balanceStrength: 1
+    _maxAngularVelocity: 5
+    _tempBalanceSignTime: 0.3
   _bikeBody: {fileID: 5732222723230937666}
---- !u!114 &2167891245645083444
+--- !u!114 &5732222723230937666
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 60311359046038410}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94db80d5a391b3842a40d22d6de7c9fa, type: 3}
+  m_Script: {fileID: 11500000, guid: cd878a9532e579642b6cbaab8c76b7d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotationSpeed: 250
+  _bikeController: {fileID: 2160861396471017799}
+  _bikeManager: {fileID: 5323032585073376786}
+  _bikeData:
+    _bodyForce: 100
+    _maxVelocity: 14
+    _defaultForceBrakeSpeed: 50
+    _wheelieTorque: 50
+    _spinTorque: 30
+    _balanceStrength: 1
+    _maxAngularVelocity: 5
+    _tempBalanceSignTime: 0.3
 --- !u!95 &7062507062715043215
 Animator:
   serializedVersion: 7
@@ -234,7 +263,7 @@ WheelJoint2D:
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
---- !u!114 &5732222723230937666
+--- !u!114 &8559336272320551661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,36 +272,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 60311359046038410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd878a9532e579642b6cbaab8c76b7d3, type: 3}
+  m_Script: {fileID: 11500000, guid: b10355f0f7c4613408ec000b74c3bf4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bikeController: {fileID: 2160861396471017799}
-  _bikeManager: {fileID: 5323032585073376786}
-  _bodyForce: 100
-  _maxVelocity: 14
-  _defaultForceBrakeSpeed: 50
-  _wheelieTorque: 25
-  _spinTorque: 30
-  _balanceStrength: 1
-  _maxAngularVelocity: 5
-  _tempBalanceSignTimer: 0
-  _tempBalanceSignTime: 0.3
-  _balanceLianaStrenght: 1
---- !u!114 &5323032585073376786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 60311359046038410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33d09c711f6f0a147bb6e1ff6db354f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _frontWheel: {fileID: 6022045053815773467}
-  _backWheel: {fileID: 8531894684697949096}
-  _direction: 1
+  _strength: 0.5
+  _transitionDuration: 1
 --- !u!1 &1121750555158287147
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +367,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _groundDetector: {fileID: 2466445333487202212}
-  _wheelJoint: {fileID: 0}
   _bikeController: {fileID: 2160861396471017799}
   _bikeManager: {fileID: 5323032585073376786}
 --- !u!50 &6819327489200248128
@@ -418,7 +421,7 @@ Transform:
   m_GameObject: {fileID: 1959499375522858672}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.15, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -475,7 +478,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: {fileID: 7410645949866682830}
   _weaponController: {fileID: 5165028143852377045}
-  _cinemachineCamera: {fileID: 0}
 --- !u!114 &5165028143852377045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,7 +610,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _groundDetector: {fileID: 7108218983226394773}
-  _wheelJoint: {fileID: 0}
   _bikeController: {fileID: 2160861396471017799}
   _bikeManager: {fileID: 5323032585073376786}
 --- !u!50 &1888680454424674761
@@ -942,7 +943,7 @@ Transform:
   m_GameObject: {fileID: 6157634692719706773}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.15, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -974,7 +975,7 @@ Transform:
   m_GameObject: {fileID: 8815013744989043929}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.983, y: -0.2991, z: 0}
+  m_LocalPosition: {x: -1.414, y: -0.2991, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1022,13 +1023,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 24
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.8333333, y: 1.1333333}
+  m_Size: {x: 1.0869565, y: 1.4782609}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

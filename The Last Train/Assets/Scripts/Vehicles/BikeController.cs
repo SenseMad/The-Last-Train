@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.Splines.SplineInstantiate;
 
 namespace TLT.Vehicles.Bike
 {
@@ -11,14 +7,7 @@ namespace TLT.Vehicles.Bike
   {
     [SerializeField] private BikeBody _bikeBody;
 
-    /*[Space]
-    [SerializeField] private BikeWheel _frontWheel;
-    [SerializeField] private BikeWheel _backWheel;*/
-
-    /*[Space(10)]
-    [SerializeField] private Rigidbody2D _frontWheel1;
-    [SerializeField] private Rigidbody2D _backWheel1;
-    [SerializeField] private Rigidbody2D _bike;*/
+    //-----------------------------------
 
     private float balance;
     private float balanceDeadzoneMin = 0.35f;
@@ -27,7 +16,9 @@ namespace TLT.Vehicles.Bike
     //===================================
 
     public float Throttle { get; private set; }
+
     public bool ForceThrottle { get; private set; }
+
     public float Brake { get; private set; }
 
     public float Balance => GetBalance();
@@ -138,73 +129,8 @@ namespace TLT.Vehicles.Bike
 
     public override void Move()
     {
-      /*int input = IsInCar && IsGrounded ? InputHandler.GetInputVertical() : 0;
 
-      // Определяем направление взгляда
-      bool facingRight = transform.localRotation.eulerAngles.y == 0;
-      if (!facingRight)
-        input = -input;
-
-      float targetSpeed = _vehicleData.Speed * input;
-
-      // Определяем, движемся ли задним ходом
-      bool isMovingBackward = (facingRight && targetSpeed < 0) || (!facingRight && targetSpeed > 0);
-      if (isMovingBackward)
-        targetSpeed = _vehicleData.ReverseSpeed * input;
-
-      float acceleration = _vehicleData.Speed / _vehicleData.AccelerationTimeMaxSpeed;
-      float deceleration = _vehicleData.Speed / _vehicleData.DeccelerationTime;
-
-      float currentSpeed = Rigidbody2D.velocity.x;
-      if ((currentSpeed > 0 && input < 0) || (currentSpeed < 0 && input > 0))
-        deceleration *= 2;
-
-      float speedChangeRate = (Mathf.Abs(input) > 0) ? acceleration : deceleration;
-
-      float moveVelocity = Mathf.MoveTowards(currentSpeed, targetSpeed, speedChangeRate * Time.deltaTime);
-
-      Vector2 targetVelocity = new(moveVelocity, Rigidbody2D.velocity.y);
-      Rigidbody2D.velocity = targetVelocity;*/
     }
-
-    /*public void Move1()
-    {
-      int input = IsInCar && IsGrounded ? isCurrentRightFlip ? -InputHandler.GetInputVertical() : InputHandler.GetInputVertical() : 0;
-
-      float adjustedMotorSpeed = input < 0 ? _vehicleData.Speed / 2 : _vehicleData.Speed;
-
-      if (input == 0)
-      {
-        ApplyBraking(_frontWheel1);
-        ApplyBraking(_backWheel1);
-      }
-      else
-      {
-        if (input != 0)
-        {
-          _frontWheel1.AddTorque(input * adjustedMotorSpeed * Time.fixedDeltaTime);
-          _backWheel1.AddTorque(input * adjustedMotorSpeed * Time.fixedDeltaTime);
-          _bike.AddTorque(input * -50 * Time.fixedDeltaTime);
-
-          if (_bike.velocity.magnitude > _vehicleData.MaxSpeed)
-          {
-            _bike.velocity = _bike.velocity.normalized * _vehicleData.MaxSpeed;
-          }
-        }
-      }
-    }
-
-    private void ApplyBraking(Rigidbody2D wheel)
-    {
-      // Демпфирование угловой скорости
-      wheel.angularVelocity = Mathf.Lerp(wheel.angularVelocity, 0, _vehicleData.DeccelerationTime * Time.fixedDeltaTime);
-
-      // Полная остановка, если угловая скорость достаточно низкая
-      if (Mathf.Abs(wheel.angularVelocity) < 0.1f)
-      {
-        wheel.angularVelocity = 0;
-      }
-    }*/
 
     //===================================
   }

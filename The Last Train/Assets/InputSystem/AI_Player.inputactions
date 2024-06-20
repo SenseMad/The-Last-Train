@@ -361,6 +361,34 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "Time",
+            "id": "50cca428-6825-4fd9-a04b-5ed504d97e01",
+            "actions": [
+                {
+                    "name": "TimeDilation",
+                    "type": "Button",
+                    "id": "f8d2e8fe-d612-4dc3-934c-f0bc1025c769",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "acc693ba-114c-457f-88dd-49a51d706844",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse",
+                    "action": "TimeDilation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
