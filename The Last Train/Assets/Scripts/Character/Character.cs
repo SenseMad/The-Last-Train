@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using Zenject;
 using Unity.Cinemachine;
+using Zenject;
 
 using TLT.Input;
 using TLT.HealthManager;
 using TLT.Interfaces;
 using TLT.Weapons;
-using System;
 
 namespace TLT.CharacterManager
 {
@@ -40,6 +38,8 @@ namespace TLT.CharacterManager
     public Camera MainCamera { get; set; }
 
     public InputHandler InputHandler { get; private set; }
+
+    public Animator Animator { get; private set; }
 
     public CinemachineCamera CinemachineCamera { get; set; }
     public CinemachinePositionComposer CinemachinePositionComposer { get; set; }
@@ -80,6 +80,8 @@ namespace TLT.CharacterManager
     {
       MainCamera = Camera.main;
 
+      Animator = GetComponent<Animator>();
+
       interaction = GetComponent<Interaction>();
 
       instance = this;
@@ -98,6 +100,8 @@ namespace TLT.CharacterManager
 
       InputHandler.AI_Player.Player.Recharge.performed += Recharge_performed;
 
+      Health.OnTakeHealth += Health_OnTakeHealth;
+
       OnChangeDirection += ChangeDirection;
     }
 
@@ -113,6 +117,8 @@ namespace TLT.CharacterManager
       InputHandler.AI_Player.Player.Shooting.performed -= Shooting_performed;
 
       InputHandler.AI_Player.Player.Recharge.performed -= Recharge_performed;
+
+      Health.OnTakeHealth -= Health_OnTakeHealth;
 
       OnChangeDirection -= ChangeDirection;
     }
@@ -155,6 +161,9 @@ namespace TLT.CharacterManager
       if (IsTakeDamage)
         return;
 
+      if (Animator != null)
+        Animator.SetTrigger("IsShoot");
+
       WeaponController.CurrentWeapon.Shoot();
     }
 
@@ -164,6 +173,12 @@ namespace TLT.CharacterManager
         return;
 
       WeaponController.CurrentWeapon.PerformRecharge();
+    }
+
+    private void Health_OnTakeHealth(int obj)
+    {
+      if (Animator != null)
+        Animator.SetTrigger("IsTakeDamage");
     }
 
     //===================================

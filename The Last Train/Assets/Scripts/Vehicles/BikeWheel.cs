@@ -77,10 +77,11 @@ namespace TLT.Vehicles.Bike
 
     private void UpdateMotorSpeed()
     {
-      if (!_bikeController.IsInCar)
-        return;
-
       float torque = _bikeController.Throttle * power * (float)(-(float)_bikeManager.Direction) * Time.deltaTime;
+
+      if (!_bikeController.IsInCar)
+        torque = 0;
+
       wheelRB.AddTorque(torque);
 
       if (torque == 0 && _bikeController.Brake == 0)

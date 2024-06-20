@@ -135,6 +135,8 @@ namespace TLT.Vehicles
 
       oldCharacter = parOldCharacter;
 
+
+
       parOldCharacter.gameObject.SetActive(false);
       _currentCharacter.gameObject.SetActive(true);
       _objectBody.SetActive(false);

@@ -24,6 +24,8 @@ namespace TLT.Weapons
 
     [SerializeField] private LayerMask _layerMask;
 
+    [SerializeField] private Character _character;
+
     //-----------------------------------
 
     private int currentAmountAmmo;
@@ -126,7 +128,7 @@ namespace TLT.Weapons
       PlaySound(_weaponData.SoundGunshot);
       OnShoot?.Invoke();
 
-      Ray ray = new(_pointShot.position, _pointShot.right * Character.Instance.Direction);
+      Ray ray = new(_pointShot.position, _pointShot.right * _character.Direction);
 
       RaycastHit2D[] hits = Physics2D.RaycastAll(ray.origin, ray.direction, _weaponData.Distance, ~_layerMask);
 

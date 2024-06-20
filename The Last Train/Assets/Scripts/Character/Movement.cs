@@ -18,10 +18,6 @@ namespace TLT.CharacterManager
 
     private BoxCollider2D boxCollider2D;
 
-    private CharacterState characterState;
-
-    private bool isGrounded;
-
     //===================================
 
     public Rigidbody2D Rigidbody2D { get; private set; }
@@ -66,7 +62,15 @@ namespace TLT.CharacterManager
 
       Rigidbody2D.velocity = targetVelocity;
 
-      characterState = Rigidbody2D.velocity.x == 0 ? CharacterState.Idle : CharacterState.Walking;
+      //character.CharacterState = Rigidbody2D.velocity.x == 0 ? CharacterState.Idle : CharacterState.Walking;
+      if (Rigidbody2D.velocity.x == 0)
+      {
+        character.Animator.SetBool("IsWalk", false);
+      }
+      else
+      {
+        character.Animator.SetBool("IsWalk", true);
+      }
     }
 
     private void Flip()
@@ -96,14 +100,14 @@ namespace TLT.CharacterManager
       }
     }
 
-    private bool IsGrounded()
+    /*private bool IsGrounded()
     {
       Vector2 position = (Vector2)transform.position + boxCollider2D.offset;
 
       Vector2 bottomCenter = new(position.x, position.y - boxCollider2D.bounds.extents.y / 1.7f);
 
       return Physics2D.OverlapCircle(bottomCenter, boxCollider2D.size.x / 2f, _groundLayer);
-    }
+    }*/
 
     //===================================
 
