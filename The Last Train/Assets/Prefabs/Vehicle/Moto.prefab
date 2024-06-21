@@ -562,16 +562,6 @@ MonoBehaviour:
   _bikeManager: {fileID: 8415431086630912098}
   _currentCharacter: {fileID: 2242028362858400686}
   _objectBody: {fileID: 5380956233747225835}
-  _effectDust: {fileID: 1177672933911649274}
-  _vehicleData:
-    _bodyForce: 100
-    _maxVelocity: 14
-    _defaultForceBrakeSpeed: 50
-    _wheelieTorque: 50
-    _spinTorque: 5
-    _balanceStrength: 1
-    _maxAngularVelocity: 5
-    _tempBalanceSignTime: 0.3
   _bikeBody: {fileID: 8407466714455893449}
 --- !u!114 &8407466714455893449
 MonoBehaviour:
@@ -588,7 +578,7 @@ MonoBehaviour:
   _bikeController: {fileID: 7453217839218102377}
   _bikeManager: {fileID: 8415431086630912098}
   _bikeData:
-    _bodyForce: 100
+    _bodyForce: 200
     _maxVelocity: 14
     _defaultForceBrakeSpeed: 50
     _wheelieTorque: 50

@@ -63,21 +63,6 @@ namespace TLT.Vehicles.Bike
       InputHandler.AI_Player.Vehicle.Space.performed -= OnChangeDirection;
     }
 
-    protected override void Update()
-    {
-      base.Update();
-
-      /*if (_frontWheel != null && _backWheel != null)
-        IsGrounded = _frontWheel.IsGrounded() || _backWheel.IsGrounded();*/
-    }
-
-    protected override void FixedUpdate()
-    {
-      //base.FixedUpdate();
-
-      //Move1();
-    }
-
     //===================================
 
     public float GetBalance()
@@ -123,13 +108,6 @@ namespace TLT.Vehicles.Bike
         return;
 
       _bikeBody.ChangeDirection();
-    }
-
-    //===================================
-
-    public override void Move()
-    {
-
     }
 
     //===================================

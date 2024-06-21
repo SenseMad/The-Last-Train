@@ -11,18 +11,14 @@ using TLT.Vehicles.Bike;
 
 namespace TLT.Vehicles
 {
-  public abstract class VehicleController : MonoBehaviour, IVehicleable
+  public abstract class VehicleController : MonoBehaviour
   {
     [SerializeField] private BikeManager _bikeManager;
 
     [Space]
     [SerializeField] private Character _currentCharacter;
+
     [SerializeField] private GameObject _objectBody;
-
-    [SerializeField] private Transform _effectDust;
-
-    [Space(10)]
-    [SerializeField] protected BikeData _vehicleData;
 
     //-----------------------------------
 
@@ -43,7 +39,6 @@ namespace TLT.Vehicles
     protected Rigidbody2D Rigidbody2D { get; private set; }
 
     public bool IsInCar { get; private set; }
-    public bool IsGrounded { get; set; }
 
     //-----------------------------------
 
@@ -72,19 +67,13 @@ namespace TLT.Vehicles
       objectInteraction = GetComponentInChildren<ObjectInteraction>();
 
       animator = GetComponent<Animator>();
-
-      /*getGrounded = GetComponent<GetGrounded>();
-      vehicleGrounded = GetComponent<VehicleGrounded>();*/
     }
 
     protected virtual void OnEnable()
     {
       objectInteraction.OnInteractCharacter += GetInCar;
 
-      //InputHandler.AI_Player.Player.Move.performed += Move_performed;
       InputHandler.AI_Player.Vehicle.Throttle.performed += Throttle;
-
-      InputHandler.AI_Player.Vehicle.Space.performed += Flip;
 
       OnGetInCar += VehicleController_OnGetInCar;
       OnGetOutCar += VehicleController_OnGetOutCar;
@@ -96,32 +85,11 @@ namespace TLT.Vehicles
 
       InputHandler.AI_Player.Player.Select.performed -= Select_performed;
 
-      //InputHandler.AI_Player.Player.Move.performed -= Move_performed;
       InputHandler.AI_Player.Vehicle.Throttle.performed -= Throttle;
-
-      InputHandler.AI_Player.Vehicle.Space.performed -= Flip;
 
       OnGetInCar -= VehicleController_OnGetInCar;
       OnGetOutCar -= VehicleController_OnGetOutCar;
     }
-
-    protected virtual void Update()
-    {
-      /*if (getGrounded)
-      {
-        //IsGrounded = getGrounded.GetGround(boxCollider2D);
-        //IsGrounded = vehicleGrounded.GetVehicleGround();
-      }*/
-    }
-
-    protected virtual void FixedUpdate()
-    {
-      Move();
-    }
-
-    //===================================
-
-    public abstract void Move();
 
     //===================================
 
@@ -134,8 +102,6 @@ namespace TLT.Vehicles
         return;
 
       oldCharacter = parOldCharacter;
-
-
 
       parOldCharacter.gameObject.SetActive(false);
       _currentCharacter.gameObject.SetActive(true);
@@ -221,26 +187,6 @@ namespace TLT.Vehicles
       OnGetOutCar?.Invoke();
     }
 
-    private void Flip(InputAction.CallbackContext parContext)
-    {
-      /*if (!IsInCar)
-        return;
-
-      if (!IsGrounded)
-        return;
-
-      if (isCurrentRightFlip)
-      {
-        transform.localRotation = Quaternion.Euler(0, 180, 0);
-        isCurrentRightFlip = false;
-      }
-      else
-      {
-        transform.localRotation = Quaternion.Euler(0, 0, 0);
-        isCurrentRightFlip = true;
-      }*/
-    }
-
     //===================================
 
     private void VehicleController_OnGetInCar()
@@ -267,20 +213,6 @@ namespace TLT.Vehicles
     private void Throttle(InputAction.CallbackContext parContext)
     {
       if (!IsInCar || !_bikeManager.Grounded)
-        return;
-
-      animator.SetTrigger("IsMove");
-    }
-
-    private void Move_performed(InputAction.CallbackContext parContext)
-    {
-      if (!IsInCar || !_bikeManager.Grounded)
-        return;
-
-      if (Mathf.RoundToInt(parContext.ReadValue<Vector2>().x) > 0 || Mathf.RoundToInt(parContext.ReadValue<Vector2>().x) < 0)
-        return;
-
-      if (Mathf.RoundToInt(parContext.ReadValue<Vector2>().y) < 0)
         return;
 
       animator.SetTrigger("IsMove");
