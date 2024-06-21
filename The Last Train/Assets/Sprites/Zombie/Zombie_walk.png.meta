@@ -1,25 +1,31 @@
 fileFormatVersion: 2
-guid: 3d3ded8246390304abaed78d455788bf
+guid: 123e361a658b36743a4c2cbf1c650fd5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1004859247277366530
-    second: moto_ride_0
+      213: -5515823891820461719
+    second: Zombie_walk_0
   - first:
-      213: -894572227939508381
-    second: moto_ride_1
+      213: 8136120905992562545
+    second: Zombie_walk_1
   - first:
-      213: -1595965620910475775
-    second: moto_ride_2
+      213: 5279756263999913704
+    second: Zombie_walk_2
   - first:
-      213: 5841802974735618779
-    second: moto_ride_3
+      213: -9043847580254001688
+    second: Zombie_walk_3
   - first:
-      213: 1264170033220369797
-    second: moto_ride_4
+      213: -8859935325920005720
+    second: Zombie_walk_4
   - first:
-      213: 2096828007153242518
-    second: moto_ride_5
+      213: 867945468372999508
+    second: Zombie_walk_5
+  - first:
+      213: 4311503190667205458
+    second: Zombie_walk_6
+  - first:
+      213: 5515115882006618099
+    second: Zombie_walk_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,13 +121,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: moto_ride_0
+      name: Zombie_walk_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 54
-        height: 38
+        x: 16
+        y: 2
+        width: 20
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,20 +135,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ef224cca6d50e02f0800000000000000
-      internalID: -1004859247277366530
+      spriteID: 961cd6cf46bd373b0800000000000000
+      internalID: -5515823891820461719
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moto_ride_1
+      name: Zombie_walk_1
       rect:
         serializedVersion: 2
-        x: 54
-        y: 0
-        width: 54
-        height: 38
+        x: 68
+        y: 2
+        width: 19
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 36f5cbf5c47d593f0800000000000000
-      internalID: -894572227939508381
+      spriteID: 177e0536bde49e070800000000000000
+      internalID: 8136120905992562545
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moto_ride_2
+      name: Zombie_walk_2
       rect:
         serializedVersion: 2
-        x: 108
-        y: 0
-        width: 54
-        height: 38
+        x: 118
+        y: 2
+        width: 21
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +177,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 10635eb39bdf9d9e0800000000000000
-      internalID: -1595965620910475775
+      spriteID: 8eebb584956754940800000000000000
+      internalID: 5279756263999913704
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moto_ride_3
+      name: Zombie_walk_3
       rect:
         serializedVersion: 2
-        x: 162
-        y: 0
-        width: 54
-        height: 38
+        x: 169
+        y: 2
+        width: 21
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,20 +198,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bd2dfe4bad0421150800000000000000
-      internalID: 5841802974735618779
+      spriteID: 8e52f28ca8ccd7280800000000000000
+      internalID: -9043847580254001688
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moto_ride_4
+      name: Zombie_walk_4
       rect:
         serializedVersion: 2
-        x: 216
-        y: 0
-        width: 54
-        height: 38
+        x: 219
+        y: 2
+        width: 21
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,20 +219,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 58d3bc582fb3b8110800000000000000
-      internalID: 1264170033220369797
+      spriteID: 8a17a9553cf2b0580800000000000000
+      internalID: -8859935325920005720
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moto_ride_5
+      name: Zombie_walk_5
       rect:
         serializedVersion: 2
         x: 270
-        y: 0
-        width: 54
-        height: 38
+        y: 2
+        width: 21
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,8 +240,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 691957986fd691d10800000000000000
-      internalID: 2096828007153242518
+      spriteID: 45d58ce0ecf8b0c00800000000000000
+      internalID: 867945468372999508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_walk_6
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 2
+        width: 21
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25b9eaffe4985db30800000000000000
+      internalID: 4311503190667205458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_walk_7
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 2
+        width: 21
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ff9e12aca0a98c40800000000000000
+      internalID: 5515115882006618099
       vertices: []
       indices: 
       edges: []
@@ -243,7 +291,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 39602a5046e191d43954fe1ee4d870a6
+    spriteID: d438ecef28a99b34589814216f213c04
     internalID: 0
     vertices: []
     indices: 
@@ -251,12 +299,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      moto_ride_0: -1004859247277366530
-      moto_ride_1: -894572227939508381
-      moto_ride_2: -1595965620910475775
-      moto_ride_3: 5841802974735618779
-      moto_ride_4: 1264170033220369797
-      moto_ride_5: 2096828007153242518
+      Zombie_walk_0: -5515823891820461719
+      Zombie_walk_1: 8136120905992562545
+      Zombie_walk_2: 5279756263999913704
+      Zombie_walk_3: -9043847580254001688
+      Zombie_walk_4: -8859935325920005720
+      Zombie_walk_5: 867945468372999508
+      Zombie_walk_6: 4311503190667205458
+      Zombie_walk_7: 5515115882006618099
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

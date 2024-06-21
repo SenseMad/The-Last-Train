@@ -1,25 +1,37 @@
 fileFormatVersion: 2
-guid: 3d3ded8246390304abaed78d455788bf
+guid: 1ef9e961ef403b9488de8e93000edff8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1004859247277366530
-    second: moto_ride_0
+      213: 7119218841954361612
+    second: Zombie_idle_0
   - first:
-      213: -894572227939508381
-    second: moto_ride_1
+      213: 7190904195155593377
+    second: Zombie_idle_1
   - first:
-      213: -1595965620910475775
-    second: moto_ride_2
+      213: 3048641572937009303
+    second: Zombie_idle_2
   - first:
-      213: 5841802974735618779
-    second: moto_ride_3
+      213: 607064925161260809
+    second: Zombie_idle_3
   - first:
-      213: 1264170033220369797
-    second: moto_ride_4
+      213: 3838937347649860175
+    second: Zombie_idle_4
   - first:
-      213: 2096828007153242518
-    second: moto_ride_5
+      213: 2681054020008191433
+    second: Zombie_idle_5
+  - first:
+      213: -8362362337330228658
+    second: Zombie_idle_6
+  - first:
+      213: -6210933975009322876
+    second: Zombie_idle_7
+  - first:
+      213: -1655852906534304174
+    second: Zombie_idle_8
+  - first:
+      213: -4946719371085658964
+    second: Zombie_idle_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,13 +127,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: moto_ride_0
+      name: Zombie_idle_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 54
-        height: 38
+        x: 16
+        y: 2
+        width: 20
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,20 +141,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ef224cca6d50e02f0800000000000000
-      internalID: -1004859247277366530
+      spriteID: c0125f841db8cc260800000000000000
+      internalID: 7119218841954361612
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moto_ride_1
+      name: Zombie_idle_1
       rect:
         serializedVersion: 2
-        x: 54
-        y: 0
-        width: 54
-        height: 38
+        x: 67
+        y: 2
+        width: 19
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 36f5cbf5c47d593f0800000000000000
-      internalID: -894572227939508381
+      spriteID: 1a88d1634493bc360800000000000000
+      internalID: 7190904195155593377
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moto_ride_2
+      name: Zombie_idle_2
       rect:
         serializedVersion: 2
-        x: 108
-        y: 0
-        width: 54
-        height: 38
+        x: 118
+        y: 2
+        width: 19
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 10635eb39bdf9d9e0800000000000000
-      internalID: -1595965620910475775
+      spriteID: 7980662bb53fe4a20800000000000000
+      internalID: 3048641572937009303
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moto_ride_3
+      name: Zombie_idle_3
       rect:
         serializedVersion: 2
-        x: 162
-        y: 0
-        width: 54
-        height: 38
+        x: 168
+        y: 2
+        width: 20
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,20 +204,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bd2dfe4bad0421150800000000000000
-      internalID: 5841802974735618779
+      spriteID: 90706d3455abc6800800000000000000
+      internalID: 607064925161260809
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moto_ride_4
+      name: Zombie_idle_4
       rect:
         serializedVersion: 2
-        x: 216
-        y: 0
-        width: 54
-        height: 38
+        x: 218
+        y: 2
+        width: 22
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,20 +225,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 58d3bc582fb3b8110800000000000000
-      internalID: 1264170033220369797
+      spriteID: f4276a99d25a64530800000000000000
+      internalID: 3838937347649860175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moto_ride_5
+      name: Zombie_idle_5
       rect:
         serializedVersion: 2
-        x: 270
-        y: 0
-        width: 54
-        height: 38
+        x: 269
+        y: 2
+        width: 22
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,8 +246,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 691957986fd691d10800000000000000
-      internalID: 2096828007153242518
+      spriteID: 9c5a8362d64053520800000000000000
+      internalID: 2681054020008191433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_idle_6
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 2
+        width: 21
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e42935882cbe2fb80800000000000000
+      internalID: -8362362337330228658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_idle_7
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 2
+        width: 21
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4881a28e4745ec9a0800000000000000
+      internalID: -6210933975009322876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_idle_8
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 2
+        width: 21
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25689b9fd8a3509e0800000000000000
+      internalID: -1655852906534304174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_idle_9
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 2
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca445ead0f8b95bb0800000000000000
+      internalID: -4946719371085658964
       vertices: []
       indices: 
       edges: []
@@ -243,7 +339,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 39602a5046e191d43954fe1ee4d870a6
+    spriteID: 6e20c2f7585c78149b35e86f60ed1aa3
     internalID: 0
     vertices: []
     indices: 
@@ -251,12 +347,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      moto_ride_0: -1004859247277366530
-      moto_ride_1: -894572227939508381
-      moto_ride_2: -1595965620910475775
-      moto_ride_3: 5841802974735618779
-      moto_ride_4: 1264170033220369797
-      moto_ride_5: 2096828007153242518
+      Zombie_idle_0: 7119218841954361612
+      Zombie_idle_1: 7190904195155593377
+      Zombie_idle_2: 3048641572937009303
+      Zombie_idle_3: 607064925161260809
+      Zombie_idle_4: 3838937347649860175
+      Zombie_idle_5: 2681054020008191433
+      Zombie_idle_6: -8362362337330228658
+      Zombie_idle_7: -6210933975009322876
+      Zombie_idle_8: -1655852906534304174
+      Zombie_idle_9: -4946719371085658964
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

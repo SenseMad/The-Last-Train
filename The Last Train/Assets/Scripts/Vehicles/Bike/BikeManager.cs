@@ -1,5 +1,7 @@
 using UnityEngine;
 
+using TLT.CameraManager;
+
 namespace TLT.Vehicles.Bike
 {
   public class BikeManager : MonoBehaviour
@@ -8,12 +10,20 @@ namespace TLT.Vehicles.Bike
 
     [SerializeField] private BikeWheel _backWheel;
 
+    [Space]
+    [SerializeField] private CameraController _cameraController;
+
     [SerializeField, Range(-1, 1)] private int _direction = 1;
 
     //===================================
 
     public BikeWheel FrontWheel => _frontWheel;
+
     public BikeWheel BackWheel => _backWheel;
+
+    public CameraController CameraController => _cameraController;
+
+    //-----------------------------------
 
     public int Direction { get => _direction; set => _direction = value; }
 

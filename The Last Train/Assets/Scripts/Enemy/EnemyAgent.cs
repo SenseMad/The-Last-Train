@@ -45,14 +45,6 @@ namespace TLT.Enemy
 
     //===================================
 
-    public EnemyAIState State
-    {
-      get => (EnemyAIState)animator.GetInteger("State");
-      set => animator.SetInteger("State", (int)value);
-    }
-
-    //===================================
-
     private void Awake()
     {
       rigidbody2D = GetComponent<Rigidbody2D>();
@@ -127,6 +119,7 @@ namespace TLT.Enemy
       if (Target == null)
       {
         rigidbody2D.velocity = Vector2.zero;
+        animator.SetBool("IsWalk", false);
         return;
       }
 
@@ -135,13 +128,13 @@ namespace TLT.Enemy
       Vector2 targetVelocity = new(direction.x * _speed, rigidbody2D.velocity.y);
 
       rigidbody2D.velocity = targetVelocity;
+
+      if (!targetAttactRadius)
+        animator.SetBool("IsWalk", true);
     }
 
     protected virtual void Attack()
     {
-      /*if (!DelayBeforeAttack())
-        return;*/
-
       if (!targetAttactRadius)
         return;
 
@@ -164,9 +157,6 @@ namespace TLT.Enemy
 
     private void ChangeAnimationState()
     {
-      /*if (animator.runtimeAnimatorController == null)
-        return;*/
-
       if (!targetAttactRadius || Target == null)
       {
         animator.SetBool("IsAttack", false);
@@ -184,24 +174,6 @@ namespace TLT.Enemy
 
         return;
       }
-
-      /*if (Health.CurrentHealth <= 0)
-      {
-        State = EnemyAIState.Death;
-        return;
-      }
-
-      if (Target == null)
-      {
-        State = EnemyAIState.Idle;
-        return;
-      }*/
-
-      /*if (targetAttactRadius)
-      {
-        State = EnemyAIState.Attack;
-        return;
-      }*/
     }
 
     private bool DelayBeforeAttack()

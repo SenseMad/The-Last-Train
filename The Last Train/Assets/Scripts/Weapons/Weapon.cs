@@ -36,6 +36,8 @@ namespace TLT.Weapons
     private bool isRecharge = false;
     private float currentRechargeTime;
 
+    private Animator animator;
+
     //===================================
 
     public WeaponData WeaponData => _weaponData;
@@ -78,6 +80,8 @@ namespace TLT.Weapons
 
     private void Awake()
     {
+      animator = GetComponent<Animator>();
+
       CurrentAmountAmmo = _weaponData.MaxAmountAmmo;
       CurrentAmountAmmoInMagazine = _weaponData.MaxAmountAmmoInMagazine;
     }
@@ -127,6 +131,7 @@ namespace TLT.Weapons
       CurrentAmountAmmoInMagazine--;
       PlaySound(_weaponData.SoundGunshot);
       OnShoot?.Invoke();
+      animator.SetTrigger("IsShoot");
 
       Ray ray = new(_pointShot.position, _pointShot.right * _character.Direction);
 

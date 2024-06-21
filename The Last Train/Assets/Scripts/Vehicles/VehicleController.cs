@@ -20,6 +20,8 @@ namespace TLT.Vehicles
 
     [SerializeField] private GameObject _objectBody;
 
+    [SerializeField] private Animator _dustAnimator;
+
     //-----------------------------------
 
     protected Character oldCharacter;
@@ -28,8 +30,6 @@ namespace TLT.Vehicles
 
     private LevelManager levelManager;
 
-    private Animator animator;
-
     protected bool isCurrentRightFlip = true;
 
     //===================================
@@ -37,6 +37,8 @@ namespace TLT.Vehicles
     public InputHandler InputHandler { get; private set; }
 
     protected Rigidbody2D Rigidbody2D { get; private set; }
+
+    public Animator Animator { get; private set; }
 
     public bool IsInCar { get; private set; }
 
@@ -66,7 +68,7 @@ namespace TLT.Vehicles
 
       objectInteraction = GetComponentInChildren<ObjectInteraction>();
 
-      animator = GetComponent<Animator>();
+      Animator = GetComponent<Animator>();
     }
 
     protected virtual void OnEnable()
@@ -215,7 +217,8 @@ namespace TLT.Vehicles
       if (!IsInCar || !_bikeManager.Grounded)
         return;
 
-      animator.SetTrigger("IsMove");
+      if (_dustAnimator != null)
+        _dustAnimator.SetTrigger("IsMoveDust");
     }
 
     //===================================

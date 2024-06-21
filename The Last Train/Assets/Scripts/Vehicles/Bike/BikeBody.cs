@@ -38,6 +38,8 @@ namespace TLT.Vehicles.Bike
       UpdateBalance();
       UpdateVelocity();
 
+      UpdateAnimation();
+
       Balance();
     }
 
@@ -155,6 +157,22 @@ namespace TLT.Vehicles.Bike
       bodyRB.AddTorque(num, ForceMode2D.Force);
 
       bodyRB.angularVelocity = Mathf.Clamp(bodyRB.angularVelocity, -_bikeData.MaxAngularVelocity, _bikeData.MaxAngularVelocity);
+    }
+
+    private void UpdateAnimation()
+    {
+      float deviation = 0.2f;
+
+      if ((_bikeManager.FrontWheel.WheelRB.velocity.x > deviation || _bikeManager.FrontWheel.WheelRB.velocity.x < -deviation) && 
+          (_bikeManager.BackWheel.WheelRB.velocity.x > deviation || _bikeManager.BackWheel.WheelRB.velocity.x < -deviation))
+      {
+        _bikeController.Animator.SetBool("IsMove", true);
+        _bikeManager.CameraController.Zoom(false);
+        return;
+      }
+
+      _bikeController.Animator.SetBool("IsMove", false);
+      _bikeManager.CameraController.Zoom(true);
     }
 
     //===================================

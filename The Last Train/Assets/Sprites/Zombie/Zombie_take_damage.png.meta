@@ -1,25 +1,43 @@
 fileFormatVersion: 2
-guid: 3d3ded8246390304abaed78d455788bf
+guid: b4cd397b50434494eab046f67a77203e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1004859247277366530
-    second: moto_ride_0
+      213: 4336811218574407549
+    second: Zombie_take_damage_0
   - first:
-      213: -894572227939508381
-    second: moto_ride_1
+      213: -8526122312271932623
+    second: Zombie_take_damage_1
   - first:
-      213: -1595965620910475775
-    second: moto_ride_2
+      213: 4118025774810895810
+    second: Zombie_take_damage_2
   - first:
-      213: 5841802974735618779
-    second: moto_ride_3
+      213: 8504101161753669687
+    second: Zombie_take_damage_3
   - first:
-      213: 1264170033220369797
-    second: moto_ride_4
+      213: -4107579409738245122
+    second: Zombie_take_damage_4
   - first:
-      213: 2096828007153242518
-    second: moto_ride_5
+      213: -4792766262968538227
+    second: Zombie_take_damage_5
+  - first:
+      213: -6639256791724425674
+    second: Zombie_take_damage_6
+  - first:
+      213: 2472155888058331073
+    second: Zombie_take_damage_7
+  - first:
+      213: 2272672518679951321
+    second: Zombie_take_damage_8
+  - first:
+      213: -455346544678339251
+    second: Zombie_take_damage_9
+  - first:
+      213: -7181369489711132077
+    second: Zombie_take_damage_10
+  - first:
+      213: 8541620461598363150
+    second: Zombie_take_damage_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,13 +133,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: moto_ride_0
+      name: Zombie_take_damage_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 54
-        height: 38
+        x: 16
+        y: 2
+        width: 20
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ef224cca6d50e02f0800000000000000
-      internalID: -1004859247277366530
+      spriteID: d777e0d63d27f2c30800000000000000
+      internalID: 4336811218574407549
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moto_ride_1
+      name: Zombie_take_damage_1
       rect:
         serializedVersion: 2
-        x: 54
-        y: 0
-        width: 54
-        height: 38
+        x: 63
+        y: 2
+        width: 24
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 36f5cbf5c47d593f0800000000000000
-      internalID: -894572227939508381
+      spriteID: 133df792ee02da980800000000000000
+      internalID: -8526122312271932623
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moto_ride_2
+      name: Zombie_take_damage_2
       rect:
         serializedVersion: 2
-        x: 108
-        y: 0
-        width: 54
-        height: 38
+        x: 118
+        y: 2
+        width: 24
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +189,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 10635eb39bdf9d9e0800000000000000
-      internalID: -1595965620910475775
+      spriteID: 2c5918bbf9a262930800000000000000
+      internalID: 4118025774810895810
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moto_ride_3
+      name: Zombie_take_damage_5
       rect:
         serializedVersion: 2
-        x: 162
-        y: 0
-        width: 54
-        height: 38
+        x: 169
+        y: 2
+        width: 32
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,20 +210,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bd2dfe4bad0421150800000000000000
-      internalID: 5841802974735618779
+      spriteID: d8ba84c1a7cac7db0800000000000000
+      internalID: -4792766262968538227
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moto_ride_4
+      name: Zombie_take_damage_6
       rect:
         serializedVersion: 2
         x: 216
-        y: 0
-        width: 54
-        height: 38
+        y: 2
+        width: 38
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,20 +231,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 58d3bc582fb3b8110800000000000000
-      internalID: 1264170033220369797
+      spriteID: 63e7aaccf1f9cd3a0800000000000000
+      internalID: -6639256791724425674
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moto_ride_5
+      name: Zombie_take_damage_8
       rect:
         serializedVersion: 2
-        x: 270
-        y: 0
-        width: 54
-        height: 38
+        x: 265
+        y: 2
+        width: 36
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,8 +252,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 691957986fd691d10800000000000000
-      internalID: 2096828007153242518
+      spriteID: 9d7f5b65d972a8f10800000000000000
+      internalID: 2272672518679951321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_take_damage_9
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 2
+        width: 37
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4dfebaeab84ea9f0800000000000000
+      internalID: -455346544678339251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_take_damage_10
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 2
+        width: 19
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35290f46f76a65c90800000000000000
+      internalID: -7181369489711132077
       vertices: []
       indices: 
       edges: []
@@ -243,7 +303,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 39602a5046e191d43954fe1ee4d870a6
+    spriteID: 0d3b623420de03743945dbd4492a92ac
     internalID: 0
     vertices: []
     indices: 
@@ -251,12 +311,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      moto_ride_0: -1004859247277366530
-      moto_ride_1: -894572227939508381
-      moto_ride_2: -1595965620910475775
-      moto_ride_3: 5841802974735618779
-      moto_ride_4: 1264170033220369797
-      moto_ride_5: 2096828007153242518
+      Zombie_take_damage_0: 4336811218574407549
+      Zombie_take_damage_1: -8526122312271932623
+      Zombie_take_damage_10: -7181369489711132077
+      Zombie_take_damage_11: 8541620461598363150
+      Zombie_take_damage_2: 4118025774810895810
+      Zombie_take_damage_3: 8504101161753669687
+      Zombie_take_damage_4: -4107579409738245122
+      Zombie_take_damage_5: -4792766262968538227
+      Zombie_take_damage_6: -6639256791724425674
+      Zombie_take_damage_7: 2472155888058331073
+      Zombie_take_damage_8: 2272672518679951321
+      Zombie_take_damage_9: -455346544678339251
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

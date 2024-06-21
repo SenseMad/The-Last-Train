@@ -310,6 +310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1177672933911649274}
   - component: {fileID: 12620367153831352}
+  - component: {fileID: 5423747962714876331}
   m_Layer: 8
   m_Name: Dust
   m_TagString: Untagged
@@ -386,6 +387,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5423747962714876331
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3607574391593193956}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cb26d410b33436d4784851b651b26bc6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5111083282211506798
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,6 +427,7 @@ GameObject:
   - component: {fileID: 8400593462042946120}
   - component: {fileID: 7577745660777189696}
   - component: {fileID: 8583720106903474420}
+  - component: {fileID: 7231892803068471029}
   m_Layer: 8
   m_Name: Moto
   m_TagString: Untagged
@@ -546,6 +570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _frontWheel: {fileID: 7257934887586680506}
   _backWheel: {fileID: 2821889911886555326}
+  _cameraController: {fileID: 7231892803068471029}
   _direction: 1
 --- !u!114 &7453217839218102377
 MonoBehaviour:
@@ -562,6 +587,7 @@ MonoBehaviour:
   _bikeManager: {fileID: 8415431086630912098}
   _currentCharacter: {fileID: 2242028362858400686}
   _objectBody: {fileID: 5380956233747225835}
+  _dustAnimator: {fileID: 5423747962714876331}
   _bikeBody: {fileID: 8407466714455893449}
 --- !u!114 &8407466714455893449
 MonoBehaviour:
@@ -596,7 +622,7 @@ Animator:
   m_GameObject: {fileID: 5111083282211506798}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cb26d410b33436d4784851b651b26bc6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 177d7f6326d705046b92e90ebfce9dc5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -672,6 +698,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _strength: 0.3
   _transitionDuration: 0.5
+--- !u!114 &7231892803068471029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5111083282211506798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25afb657b37ab89419cfa4aa3ef4e62d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _zoomInDistance: 0.8
+  _zoomOutDistance: 1
+  _zoomSpeed: 2
 --- !u!1 &5380956233747225835
 GameObject:
   m_ObjectHideFlags: 0
