@@ -102,6 +102,8 @@ namespace TLT.CharacterManager
 
       Health.OnTakeHealth += Health_OnTakeHealth;
 
+      Health.OnInstantlyKill += OnInstantlyKill;
+
       OnChangeDirection += ChangeDirection;
     }
 
@@ -120,6 +122,8 @@ namespace TLT.CharacterManager
 
       Health.OnTakeHealth -= Health_OnTakeHealth;
 
+      Health.OnInstantlyKill -= OnInstantlyKill;
+
       OnChangeDirection -= ChangeDirection;
     }
 
@@ -134,6 +138,14 @@ namespace TLT.CharacterManager
     {
       Health.TakeHealth(parDamage);
     }
+
+    //===================================
+
+    private void OnInstantlyKill()
+    {
+      gameObject.SetActive(false);
+    }
+
 
     //===================================
 

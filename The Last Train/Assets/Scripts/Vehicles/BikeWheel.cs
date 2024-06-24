@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace TLT.Vehicles.Bike
@@ -29,6 +30,8 @@ namespace TLT.Vehicles.Bike
     private RaycastHit2D groundHit;
     private bool grounded;
 
+    private bool wasGrounded;
+
     //===================================
 
     public CircleCollider2D Collider2D { get; private set; }
@@ -40,6 +43,10 @@ namespace TLT.Vehicles.Bike
     public bool Grounded => grounded;
 
     public RaycastHit2D GroundHit => groundHit;
+
+    //===================================
+
+    public event Action OnLanded;
 
     //===================================
 
@@ -105,8 +112,15 @@ namespace TLT.Vehicles.Bike
       RaycastHit2D hit = Physics2D.Raycast(_groundDetector.position, Vector2.down, _groundDetectionDistance, _groundLayerMask);
       Debug.DrawRay(_groundDetector.position, Vector2.down * _groundDetectionDistance, Color.red);
 
-      groundHit = hit;
-      grounded = raycastHit2D.collider || hit;
+      wasGrounded = grounded;
+
+      //groundHit = hit;
+      grounded = raycastHit2D.collider || hit.collider;
+
+      if (!wasGrounded && grounded)
+        OnLanded?.Invoke();
+
+      groundHit = grounded ? (raycastHit2D.collider ? raycastHit2D : hit) : default;
     }
 
     private void UpdateDetectorPosition()

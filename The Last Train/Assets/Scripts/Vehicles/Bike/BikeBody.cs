@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TLT.Vehicles.Bike
@@ -21,7 +19,26 @@ namespace TLT.Vehicles.Bike
 
     //===================================
 
-    public float FloorAngle => Mathf.Abs(Vector2.Angle(transform.right, Vector2.right));
+    public float FloorAngle
+    {
+      get
+      {
+        return Mathf.Abs(Vector2.Angle(transform.right, Vector2.right));
+      }
+    }
+
+    public float VelocityMagnitude
+    {
+      get
+      {
+        return bodyRB.velocity.magnitude;
+      }
+    }
+
+    public BikeController BikeController => _bikeController;
+    public BikeManager BikeManager => _bikeManager;
+
+    public Rigidbody2D BodyRB { get => bodyRB; set => bodyRB = value; }
 
     //===================================
 

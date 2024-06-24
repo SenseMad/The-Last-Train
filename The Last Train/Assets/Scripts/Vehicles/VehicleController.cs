@@ -40,11 +40,13 @@ namespace TLT.Vehicles
 
     public Animator Animator { get; private set; }
 
-    public bool IsInCar { get; private set; }
+    public bool IsInCar { get; set; }
 
     //-----------------------------------
 
     public Character CurrentCharacter => _currentCharacter;
+
+    public GameObject ObjectBody => _objectBody;
 
     //===================================
 

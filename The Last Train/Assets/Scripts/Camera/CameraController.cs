@@ -13,7 +13,7 @@ namespace TLT.CameraManager
     //===================================
 
     private CinemachineCamera cinemachineCamera;
-    private CinemachineRecomposer recomposer;
+    //private CinemachineRecomposer recomposer;
 
     //===================================
 
@@ -27,7 +27,7 @@ namespace TLT.CameraManager
 
     private void Start()
     {
-      recomposer = cinemachineCamera.GetComponent<CinemachineRecomposer>();
+      //recomposer = cinemachineCamera.GetComponent<CinemachineRecomposer>();
     }
 
     //===================================
@@ -36,9 +36,7 @@ namespace TLT.CameraManager
     {
       float targetWidth = parValue ? _zoomInDistance : _zoomOutDistance;
 
-      recomposer.ZoomScale = Mathf.Lerp(recomposer.ZoomScale, targetWidth, Time.deltaTime * _zoomSpeed);
-
-      //cinemachineFollowZoom.Width = Mathf.Lerp(cinemachineFollowZoom.Width, targetWidth, Time.deltaTime * _zoomSpeed);
+      //recomposer.ZoomScale = Mathf.Lerp(recomposer.ZoomScale, targetWidth, Time.deltaTime * _zoomSpeed);
     }
 
     //===================================

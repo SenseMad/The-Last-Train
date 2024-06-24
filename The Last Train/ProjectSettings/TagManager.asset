@@ -16,8 +16,8 @@ TagManager:
   - Character
   - Enemy
   - Vehicle
-  - 
-  - 
+  - LevelBoundaries
+  - PushObstacle
   - 
   - 
   - 
