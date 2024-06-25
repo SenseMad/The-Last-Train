@@ -10212,6 +10212,7 @@ GameObject:
   - component: {fileID: 7231892803068471029}
   - component: {fileID: 7903215092585371416}
   - component: {fileID: 1282529144500071503}
+  - component: {fileID: 6611646457655737410}
   m_Layer: 8
   m_Name: Moto
   m_TagString: Untagged
@@ -10537,6 +10538,27 @@ MonoBehaviour:
   _bikeBody: {fileID: 8407466714455893449}
   _occurAfterVelocity: 1
   _dustFormationPeriod: 0.037
+--- !u!114 &6611646457655737410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5111083282211506798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 120544d52c35829468eacd1bea7d0184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bikeController: {fileID: 7453217839218102377}
+  _bikeManager: {fileID: 8415431086630912098}
+  _bikeBody: {fileID: 8407466714455893449}
+  _character: {fileID: 2242028362858400686}
+  _slowDownFactor: 0.5
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  _boxCollider2D: {fileID: 2555151766423592961}
 --- !u!1 &5380956233747225835
 GameObject:
   m_ObjectHideFlags: 0
@@ -10550,6 +10572,7 @@ GameObject:
   - component: {fileID: 2555151766423592961}
   - component: {fileID: 5228785821721856754}
   - component: {fileID: 7523400129533733482}
+  - component: {fileID: 3566587903212340362}
   m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
@@ -10698,6 +10721,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 5633387142193170664}
   _color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &3566587903212340362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380956233747225835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 120544d52c35829468eacd1bea7d0184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bikeController: {fileID: 7453217839218102377}
+  _bikeManager: {fileID: 8415431086630912098}
+  _bikeBody: {fileID: 8407466714455893449}
+  _character: {fileID: 2242028362858400686}
+  _slowDownFactor: 0.5
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  _boxCollider2D: {fileID: 0}
 --- !u!1 &8531075360199975685
 GameObject:
   m_ObjectHideFlags: 0

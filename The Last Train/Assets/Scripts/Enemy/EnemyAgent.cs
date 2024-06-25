@@ -105,6 +105,11 @@ namespace TLT.Enemy
 
       enemyAIState = EnemyAIState.Death;
       rigidbody2D.velocity = Vector2.zero;
+
+      rigidbody2D.gravityScale = 0;
+      rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+
+      bodyBoxCollider2D.enabled = false;
     }
 
     public void OnDeath()
@@ -135,6 +140,9 @@ namespace TLT.Enemy
 
     protected virtual void Attack()
     {
+      if (enemyAIState == EnemyAIState.Death)
+        return;
+
       if (!targetAttactRadius)
         return;
 
