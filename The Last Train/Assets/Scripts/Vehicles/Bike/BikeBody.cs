@@ -1,21 +1,43 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using Zenject;
+
+using TLT.CharacterManager;
+using TLT.Weapons;
 
 namespace TLT.Vehicles.Bike
 {
   public class BikeBody : MonoBehaviour
   {
-    [Header("Controllers")]
     [SerializeField] private BikeController _bikeController;
     [SerializeField] private BikeManager _bikeManager;
+    [SerializeField] private WeaponController _weaponController;
 
     [Space]
     [SerializeField] private BikeData _bikeData;
+
+    [Space]
+    [SerializeField] private ObjectInteraction _objectInteraction;
+
+    [Space]
+    [SerializeField] private GameObject _objectBody;
+    [SerializeField] private GameObject _objectCharacterBody;
+
+    [Space]
+    [SerializeField] private Animator _dustAnimator;
 
     //-----------------------------------
 
     private Rigidbody2D bodyRB;
 
     private float groundHandicap = 1f;
+
+    private Character character;
+
+    private LevelManager levelManager;
+
+    private Weapon oldCharacterWeapon;
 
     //===================================
 
@@ -38,13 +60,53 @@ namespace TLT.Vehicles.Bike
     public BikeController BikeController => _bikeController;
     public BikeManager BikeManager => _bikeManager;
 
+    public GameObject ObjectBody => _objectBody;
+
     public Rigidbody2D BodyRB { get => bodyRB; set => bodyRB = value; }
+
+    public WeaponController WeaponController { get => _weaponController; set => _weaponController = value; }
+
+    //===================================
+
+    public event Action OnGetInCar;
+    public event Action OnGetOutCar;
+
+    //===================================
+
+    [Inject]
+    private void Construct(Character parCharacter, LevelManager parLevelManager)
+    {
+      character = parCharacter;
+      levelManager = parLevelManager;
+    }
 
     //===================================
 
     private void Awake()
     {
       bodyRB = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnEnable()
+    {
+      _objectInteraction.OnInteract += GetInCar;
+
+      _bikeController.InputHandler.AI_Player.Vehicle.Throttle.performed += Throttle;
+
+      OnGetInCar += VehicleController_OnGetInCar;
+      OnGetOutCar += VehicleController_OnGetOutCar;
+    }
+
+    private void OnDisable()
+    {
+      _objectInteraction.OnInteract -= GetInCar;
+
+      _bikeController.InputHandler.AI_Player.Player.Select.performed -= Select_performed;
+
+      _bikeController.InputHandler.AI_Player.Vehicle.Throttle.performed -= Throttle;
+
+      OnGetInCar -= VehicleController_OnGetInCar;
+      OnGetOutCar -= VehicleController_OnGetOutCar;
     }
 
     private void FixedUpdate()
@@ -62,6 +124,32 @@ namespace TLT.Vehicles.Bike
 
     //===================================
 
+    public void GetInCar()
+    {
+      if (_bikeController.IsInCar)
+        return;
+
+      CallEventOnGetInCar();
+    }
+
+    public void GetOutCar()
+    {
+      if (!_bikeController.IsInCar)
+        return;
+
+      CallEventOnGetOutCar();
+    }
+
+    public void CallEventOnGetInCar()
+    {
+      OnGetInCar?.Invoke();
+    }
+
+    public void CallEventOnGetOutCar()
+    {
+      OnGetOutCar?.Invoke();
+    }
+
     public void ChangeDirection()
     {
       if (!_bikeController.IsInCar)
@@ -74,7 +162,7 @@ namespace TLT.Vehicles.Bike
 
       _bikeManager.Direction *= -1;
 
-      _bikeController.CurrentCharacter.Direction = _bikeManager.Direction;
+      _bikeController.Character.Direction = _bikeManager.Direction;
     }
 
     public void SetFrontWhelieCOM()
@@ -190,6 +278,64 @@ namespace TLT.Vehicles.Bike
 
       _bikeController.Animator.SetBool("IsMove", false);
       _bikeManager.CameraController.Zoom(true);
+    }
+
+    //===================================
+
+    private void VehicleController_OnGetInCar()
+    {
+      _bikeController.Character = character;
+      _bikeController.CinemachineCamera.Target.TrackingTarget = transform;
+
+      oldCharacterWeapon = _bikeController.Character.WeaponController.CurrentWeapon;
+      WeaponController.CurrentWeapon.GetWeaponData(oldCharacterWeapon.CurrentAmountAmmo, oldCharacterWeapon.CurrentAmountAmmoInMagazine);
+      _bikeController.Character.WeaponController.CurrentWeapon = WeaponController.CurrentWeapon;
+      levelManager.ChangeCharacter();
+
+      _bikeController.Character.gameObject.SetActive(false);
+
+      _bikeController.IsInCar = true;
+
+      _objectBody.SetActive(false);
+      _objectCharacterBody.SetActive(true);
+
+      _bikeController.InputHandler.AI_Player.Player.Select.performed += Select_performed;
+    }
+
+    private void VehicleController_OnGetOutCar()
+    {
+      _bikeController.CinemachineCamera.Target.TrackingTarget = character.transform;
+
+      _bikeController.Character.transform.position = transform.position;
+      _bikeController.Character.gameObject.SetActive(true);
+
+      Weapon currentWeapon = WeaponController.CurrentWeapon;
+      oldCharacterWeapon.GetWeaponData(currentWeapon.CurrentAmountAmmo, currentWeapon.CurrentAmountAmmoInMagazine);
+      _bikeController.Character.WeaponController.CurrentWeapon = oldCharacterWeapon;
+      levelManager.ChangeCharacter();
+
+      _bikeController.Character = null;
+
+      _bikeController.IsInCar = false;
+
+      _objectBody.SetActive(true);
+      _objectCharacterBody.SetActive(false);
+    }
+
+    private void Select_performed(InputAction.CallbackContext parContext)
+    {
+      GetOutCar();
+
+      _bikeController.InputHandler.AI_Player.Player.Select.performed -= Select_performed;
+    }
+
+    private void Throttle(InputAction.CallbackContext parContext)
+    {
+      if (!_bikeController.IsInCar || !_bikeManager.Grounded)
+        return;
+
+      if (_dustAnimator != null)
+        _dustAnimator.SetTrigger("IsMoveDust");
     }
 
     //===================================

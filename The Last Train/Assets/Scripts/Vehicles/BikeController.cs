@@ -1,9 +1,14 @@
 using UnityEngine;
+using Zenject;
 using UnityEngine.InputSystem;
+using Unity.Cinemachine;
+
+using TLT.CharacterManager;
+using TLT.Input;
 
 namespace TLT.Vehicles.Bike
 {
-  public sealed class BikeController : VehicleController
+  public sealed class BikeController : MonoBehaviour
   {
     [SerializeField] private BikeBody _bikeBody;
 
@@ -15,6 +20,17 @@ namespace TLT.Vehicles.Bike
 
     //===================================
 
+    public Character Character { get; set; }
+
+    public InputHandler InputHandler { get; private set; }
+
+    public Animator Animator { get; private set; }
+
+    public CinemachineCamera CinemachineCamera { get; set; }
+
+
+    public bool IsInCar { get; set; }
+
     public float Throttle { get; private set; }
 
     public bool ForceThrottle { get; private set; }
@@ -25,10 +41,22 @@ namespace TLT.Vehicles.Bike
 
     //===================================
 
-    protected override void OnEnable()
+    [Inject]
+    private void Construct(InputHandler parInputHandler, CinemachineCamera parCinemachineCamera)
     {
-      base.OnEnable();
+      InputHandler = parInputHandler;
+      CinemachineCamera = parCinemachineCamera;
+    }
 
+    //===================================
+
+    private void Awake()
+    {
+      Animator = GetComponent<Animator>();
+    }
+
+    private void OnEnable()
+    {
       InputHandler.AI_Player.Vehicle.Throttle.started += OnThrottle;
       InputHandler.AI_Player.Vehicle.Throttle.performed += OnThrottle;
       InputHandler.AI_Player.Vehicle.Throttle.canceled += OnThrottle;
@@ -44,10 +72,8 @@ namespace TLT.Vehicles.Bike
       InputHandler.AI_Player.Vehicle.Space.performed += OnChangeDirection;
     }
 
-    protected override void OnDisable()
+    private void OnDisable()
     {
-      base.OnDisable();
-
       InputHandler.AI_Player.Vehicle.Throttle.started -= OnThrottle;
       InputHandler.AI_Player.Vehicle.Throttle.performed -= OnThrottle;
       InputHandler.AI_Player.Vehicle.Throttle.canceled -= OnThrottle;

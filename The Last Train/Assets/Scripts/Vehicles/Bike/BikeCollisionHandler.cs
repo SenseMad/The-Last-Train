@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 using TLT.CharacterManager;
 using TLT.Enemy;
@@ -10,7 +11,6 @@ namespace TLT.Vehicles.Bike
     [SerializeField] private BikeController _bikeController;
     [SerializeField] private BikeManager _bikeManager;
     [SerializeField] private BikeBody _bikeBody;
-    [SerializeField] private Character _character;
 
     [Space]
     [SerializeField] private float _slowDownFactor = 0.5f;
@@ -19,6 +19,16 @@ namespace TLT.Vehicles.Bike
     //-----------------------------------
 
     public BoxCollider2D _boxCollider2D;
+
+    private Character character;
+
+    //===================================
+
+    [Inject]
+    private void Construct(Character parCharacter)
+    {
+      character = parCharacter;
+    }
 
     //===================================
 
@@ -84,18 +94,24 @@ namespace TLT.Vehicles.Bike
       if (!collision.collider.TryGetComponent(out EnemyAgent parEnemyAgent))
         return;
 
-      if (_bikeManager.Grounded || _bikeManager.OnlyFrontGrounded)
-      {
-        parEnemyAgent.Health.TakeHealth(1);
-        _character.Health.TakeHealth(1);
-        _bikeController.Animator.SetTrigger("IsHurt");
+      if (!_bikeController.IsInCar)
         return;
-      }
 
-      if (_bikeManager.OnlyBackGrounded)
+      if (_bikeBody.BodyRB.velocity.x > 0)
       {
-        parEnemyAgent.Health.TakeHealth(1);
-        return;
+        if (_bikeManager.Grounded || _bikeManager.OnlyFrontGrounded)
+        {
+          parEnemyAgent.ApplyDamage(1);
+          character.ApplyDamage(1);
+          _bikeController.Animator.SetTrigger("IsHurt");
+          return;
+        }
+
+        if (_bikeManager.OnlyBackGrounded)
+        {
+          parEnemyAgent.ApplyDamage(1);
+          return;
+        }
       }
 
       if (!_bikeManager.Grounded)

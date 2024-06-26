@@ -10371,10 +10371,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1bd88adf768c6b4ebd73c9c3efb2085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bikeManager: {fileID: 8415431086630912098}
-  _currentCharacter: {fileID: 2242028362858400686}
-  _objectBody: {fileID: 5380956233747225835}
-  _dustAnimator: {fileID: 5423747962714876331}
   _bikeBody: {fileID: 8407466714455893449}
 --- !u!114 &8407466714455893449
 MonoBehaviour:
@@ -10399,6 +10395,10 @@ MonoBehaviour:
     _balanceStrength: 1
     _maxAngularVelocity: 5
     _tempBalanceSignTime: 0.3
+  _objectInteraction: {fileID: 0}
+  _objectBody: {fileID: 0}
+  _objectCharacterBody: {fileID: 0}
+  _dustAnimator: {fileID: 0}
 --- !u!95 &4490117277994509860
 Animator:
   serializedVersion: 7
@@ -10537,7 +10537,7 @@ MonoBehaviour:
   _bikeManager: {fileID: 8415431086630912098}
   _bikeBody: {fileID: 8407466714455893449}
   _occurAfterVelocity: 1
-  _dustFormationPeriod: 0.037
+  _dustFormationPeriod: 0.03
 --- !u!114 &6611646457655737410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10545,7 +10545,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5111083282211506798}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 120544d52c35829468eacd1bea7d0184, type: 3}
   m_Name: 

@@ -6,6 +6,7 @@ using TLT.CharacterManager;
 using TLT.HealthManager;
 using TLT.Interfaces;
 using TLT.Vehicles;
+using TLT.Vehicles.Bike;
 
 namespace TLT.Enemy
 {
@@ -37,9 +38,14 @@ namespace TLT.Enemy
     private bool takeDamage = false;
     private float timeAfterTakingDamage = 0;
 
+    private int direction = 1;
+
     //===================================
 
-    public Character Target { get; private set; }
+    //public Character Target { get; private set; }
+    public BoxCollider2D BodyBoxCollider2D { get => bodyBoxCollider2D; set => bodyBoxCollider2D = value; }
+
+    public GameObject Targetable { get; private set; }
 
     public Health Health { get; private set; }
 
@@ -74,6 +80,8 @@ namespace TLT.Enemy
         return;
 
       targetAttactRadius = false;
+
+      IgnoreCollision();
 
       TargetSearch();
 
@@ -121,14 +129,14 @@ namespace TLT.Enemy
 
     protected virtual void FollowTarget()
     {
-      if (Target == null)
+      if (Targetable == null)
       {
         rigidbody2D.velocity = Vector2.zero;
         animator.SetBool("IsWalk", false);
         return;
       }
 
-      Vector2 direction = (Target.transform.position - transform.position).normalized;
+      Vector2 direction = (Targetable.transform.position - transform.position).normalized;
 
       Vector2 targetVelocity = new(direction.x * _speed, rigidbody2D.velocity.y);
 
@@ -146,12 +154,19 @@ namespace TLT.Enemy
       if (!targetAttactRadius)
         return;
 
-      if (Target == null)
+      if (Targetable == null)
         return;
 
-      Target.ApplyDamage(_enemyAttackData.Damage);
+      if (Targetable.TryGetComponent(out Character parCharacter))
+      {
+        if (Targetable.TryGetComponent(out BikeController parBikeController))
+        {
+          parBikeController.Character.ApplyDamage(_enemyAttackData.Damage);
+          return;
+        }
 
-      Debug.Log($"Урон нанесен");
+        parCharacter.ApplyDamage(_enemyAttackData.Damage);
+      }
     }
 
     //===================================
@@ -165,7 +180,7 @@ namespace TLT.Enemy
 
     private void ChangeAnimationState()
     {
-      if (!targetAttactRadius || Target == null)
+      if (!targetAttactRadius || Targetable == null)
       {
         animator.SetBool("IsAttack", false);
       }
@@ -192,7 +207,7 @@ namespace TLT.Enemy
         return false;
       }
 
-      if (Target == null)
+      if (Targetable == null)
       {
         lastAttackTime = 0;
         return false;
@@ -214,87 +229,131 @@ namespace TLT.Enemy
 
     //===================================
 
+    private void IgnoreCollision()
+    {
+      if (bodyBoxCollider2D == null)
+        return;
+
+      Collider2D[] colliders = Physics2D.OverlapBoxAll(bodyBoxCollider2D.bounds.center, new Vector2(_enemyAttackData.RangeVisibility.x, _enemyAttackData.RangeVisibility.y), 0, _targetLayerMask);
+
+      if (colliders.Length == 0 || colliders == null)
+        return;
+
+      foreach (var collider in colliders)
+      {
+        if (collider.TryGetComponent(out BikeBody parBikeBody))
+        {
+          if (parBikeBody.BodyRB.velocity.x > 0)
+            Physics2D.IgnoreLayerCollision(9, 10, false);
+          else
+            Physics2D.IgnoreLayerCollision(9, 10, true);
+        }
+      }
+    }
+
     private bool TargetSearch()
     {
       if (bodyBoxCollider2D == null)
         return false;
 
-      Collider2D collider2D = Physics2D.OverlapBox(bodyBoxCollider2D.bounds.center, new Vector2(_enemyAttackData.RangeVisibility.x, _enemyAttackData.RangeVisibility.y), 0, _targetLayerMask);
+      Collider2D[] colliders = Physics2D.OverlapBoxAll(bodyBoxCollider2D.bounds.center, new Vector2(_enemyAttackData.RangeVisibility.x, _enemyAttackData.RangeVisibility.y), 0, _targetLayerMask);
 
-      if (collider2D == null)
+      if (colliders.Length == 0 || colliders == null)
       {
-        Target = null;
+        Targetable = null;
         return false;
       }
 
-      if (!collider2D.TryGetComponent(out Character parCharacter))
+      foreach (var collider in colliders)
       {
-        if (!collider2D.TryGetComponent(out VehicleController parVehicleController))
-          return false;
+        if (collider.TryGetComponent(out Character parCharacter))
+        {
+          Targetable = parCharacter.gameObject;
 
-        if (parVehicleController.CurrentCharacter == null)
-          return false;
+          Flip();
 
-        Target = parVehicleController.CurrentCharacter;
+          TargetAttackRadius();
 
-        Flip();
-
-        TargetAttackRadius();
-
-        return true;
+          return true;
+        }
       }
 
-      Target = parCharacter;
+      foreach (var collider in colliders)
+      {
+        if (collider.TryGetComponent(out BikeController parBikeController))
+        {
+          if (parBikeController.Character != null)
+          {
+            Targetable = parBikeController.gameObject;
 
-      Flip();
+            Flip();
 
-      TargetAttackRadius();
+            TargetAttackRadius();
 
-      return true;
+            return true;
+          }
+        }
+      }
+
+      Targetable = null;
+      return false;
     }
 
     private bool TargetAttackRadius()
     {
-      if (Target == null)
+      if (Targetable == null)
         return false;
 
-      Collider2D targetAttackRadius = Physics2D.OverlapCircle(bodyBoxCollider2D.bounds.center, _enemyAttackData.AttackRadius, _targetLayerMask);
+      Collider2D[] colliders = Physics2D.OverlapCircleAll(bodyBoxCollider2D.bounds.center, _enemyAttackData.AttackRadius, _targetLayerMask);
 
-      if (targetAttackRadius == null)
+      if (colliders.Length == 0 || colliders == null)
         return false;
 
-      if (!targetAttackRadius.TryGetComponent(out Character parCharacter))
+      targetAttactRadius = false;
+
+      foreach (var collider in colliders)
       {
-        if (!targetAttackRadius.TryGetComponent(out VehicleController parVehicleController))
-          return false;
+        if (Targetable.TryGetComponent(out Character parCharacter))
+        {
+          if (parCharacter == collider.GetComponent<Character>())
+          {
+            targetAttactRadius = true;
+            return true;
+          }
+        }
 
-        if (parVehicleController.CurrentCharacter == null)
-          return false;
+        if (Targetable.TryGetComponent(out BikeController parBikeController))
+        {
+          if (parBikeController.Character == null)
+            return false;
 
-        targetAttactRadius = true;
-
-        return true;
+          if (parBikeController == collider.GetComponent<BikeController>())
+          {
+            targetAttactRadius = true;
+            return true;
+          }
+        }
       }
 
-      targetAttactRadius = true;
-
-      return true;
+      return false;
     }
 
     protected virtual void Flip()
     {
-      if (Target == null)
+      if (Targetable == null)
         return;
 
-      Vector3 directionToTarget = Target.transform.position - transform.position;
+      Vector3 directionToTarget = Targetable.transform.position - transform.position;
 
       if (directionToTarget.magnitude <= _minFlipDistance)
         return;
 
       if (directionToTarget.x > 0)
-        transform.rotation = Quaternion.Euler(0, 180, 0);
+        direction = -1;
       else
-        transform.rotation = Quaternion.Euler(0, 0, 0);
+        direction = 1;
+
+      transform.localScale = new Vector3(direction, transform.localScale.y, transform.localScale.z);
     }
 
     //===================================

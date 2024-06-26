@@ -12,10 +12,6 @@ namespace TLT.CharacterManager
 {
   public class Character : MonoBehaviour, IDamageable
   {
-    private static Character instance;
-
-    //===================================
-
     [SerializeField] private Health _health;
 
     [SerializeField] private WeaponController _weaponController;
@@ -28,13 +24,6 @@ namespace TLT.CharacterManager
 
     //===================================
 
-    public static Character Instance
-    {
-      get => instance;
-    }
-
-    //===================================
-
     public Camera MainCamera { get; set; }
 
     public InputHandler InputHandler { get; private set; }
@@ -44,7 +33,7 @@ namespace TLT.CharacterManager
     public CinemachineCamera CinemachineCamera { get; set; }
     public CinemachinePositionComposer CinemachinePositionComposer { get; set; }
 
-    public WeaponController WeaponController { get => _weaponController; private set => _weaponController = value; }
+    public WeaponController WeaponController { get => _weaponController; set => _weaponController = value; }
 
     public Health Health { get => _health; private set => _health = value; }
 
@@ -83,8 +72,6 @@ namespace TLT.CharacterManager
       Animator = GetComponent<Animator>();
 
       interaction = GetComponent<Interaction>();
-
-      instance = this;
     }
 
     private void Start()
@@ -107,7 +94,7 @@ namespace TLT.CharacterManager
       OnChangeDirection += ChangeDirection;
     }
 
-    private void ChangeDirection(int parDirection)
+    public void ChangeDirection(int parDirection)
     {
       CinemachinePositionComposer.Composition.ScreenPosition = new(-0.25f * parDirection, 0.2f);
     }

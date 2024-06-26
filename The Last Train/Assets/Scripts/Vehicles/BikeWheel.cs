@@ -5,11 +5,6 @@ namespace TLT.Vehicles.Bike
 {
   public class BikeWheel : MonoBehaviour
   {
-    /*[SerializeField] private LayerMask ignoreLayer;
-
-    [Space(10)]
-    [SerializeField, Min(0)] private float _checkRadius = 0.17f;*/
-
     [Header("Characteristic")]
     [SerializeField, Min(0)] private float power = 100f;
     [SerializeField, Min(0)] private float _brakePower = 1000f;
@@ -114,7 +109,6 @@ namespace TLT.Vehicles.Bike
 
       wasGrounded = grounded;
 
-      //groundHit = hit;
       grounded = raycastHit2D.collider || hit.collider;
 
       if (!wasGrounded && grounded)

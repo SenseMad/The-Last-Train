@@ -140,7 +140,7 @@ MonoBehaviour:
   _minFlipDistance: 0.2
   _targetLayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   bodyBoxCollider2D: {fileID: 6944881997759369647}
   _enemyAttackData:
     _damage: 2
@@ -264,7 +264,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 7

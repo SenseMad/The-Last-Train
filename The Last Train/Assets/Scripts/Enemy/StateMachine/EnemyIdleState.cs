@@ -10,7 +10,7 @@ namespace TLT.Enemy.StateMachine
 
     public override void EnterState(EnemyStateMachine parState)
     {
-      target = parState.Agent.Target;
+      //target = parState.Agent.Target;
     }
 
     public override void UpdateState(EnemyStateMachine parState)

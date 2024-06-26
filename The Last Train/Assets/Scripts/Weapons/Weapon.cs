@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 using TLT.Interfaces;
 using TLT.CharacterManager;
@@ -24,8 +25,6 @@ namespace TLT.Weapons
 
     [SerializeField] private LayerMask _layerMask;
 
-    [SerializeField] private Character _character;
-
     //-----------------------------------
 
     private int currentAmountAmmo;
@@ -37,6 +36,8 @@ namespace TLT.Weapons
     private float currentRechargeTime;
 
     private Animator animator;
+
+    private Character character;
 
     //===================================
 
@@ -78,12 +79,23 @@ namespace TLT.Weapons
 
     //===================================
 
+    [Inject]
+    private void Construct(Character parCharacter)
+    {
+      character = parCharacter;
+    }
+
+    //===================================
+
     private void Awake()
     {
       animator = GetComponent<Animator>();
 
-      CurrentAmountAmmo = _weaponData.MaxAmountAmmo;
-      CurrentAmountAmmoInMagazine = _weaponData.MaxAmountAmmoInMagazine;
+      if (CurrentAmountAmmo == 0)
+        CurrentAmountAmmo = _weaponData.MaxAmountAmmo;
+
+      if (CurrentAmountAmmoInMagazine == 0)
+        CurrentAmountAmmoInMagazine = _weaponData.MaxAmountAmmoInMagazine;
     }
 
     protected virtual void Start()
@@ -117,6 +129,26 @@ namespace TLT.Weapons
 
     //===================================
 
+    public void CallEventOnChangeAmmo()
+    {
+      OnChangeAmmo?.Invoke();
+    }
+    
+    public void CallEventOnShoot()
+    {
+      OnShoot?.Invoke();
+    }
+
+    public void CallEventOnAddAmmo()
+    {
+      OnAddAmmo?.Invoke();
+    }
+
+    public void CallEventOnRecharge()
+    {
+      OnRecharge?.Invoke();
+    }
+
     public void GetWeaponData(int parCurrentAmountAmmo, int parCurrentAmountAmmoInMagazine)
     {
       CurrentAmountAmmo = parCurrentAmountAmmo;
@@ -133,7 +165,7 @@ namespace TLT.Weapons
       OnShoot?.Invoke();
       animator.SetTrigger("IsShoot");
 
-      Ray ray = new(_pointShot.position, _pointShot.right * _character.Direction);
+      Ray ray = new(_pointShot.position, _pointShot.right * character.Direction);
 
       RaycastHit2D[] hits = Physics2D.RaycastAll(ray.origin, ray.direction, _weaponData.Distance, ~_layerMask);
 
@@ -175,7 +207,7 @@ namespace TLT.Weapons
 
         parIDamageable.ApplyDamage(damage);
 
-        Debug.Log($"{validHit.collider.name}: {damage}");
+        //Debug.Log($"{validHit.collider.name}: {damage}");
       }
 
       CreateLineRenderer(validHit.point);

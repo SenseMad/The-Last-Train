@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 using TLT.CharacterManager;
 
@@ -8,8 +9,6 @@ namespace TLT.Vehicles.Bike
 {
   public class DeathCharacterBikeCoup : MonoBehaviour
   {
-    [SerializeField] private Character _character;
-
     [SerializeField] private BikeBody _bikeBody;
 
     [SerializeField] private LayerMask _ignoreLayer;
@@ -18,6 +17,18 @@ namespace TLT.Vehicles.Bike
 
     [Space] 
     [SerializeField, Min(0)] private float _timeRestart = 1.0f;
+
+    //-----------------------------------
+
+    private Character character;
+
+    //===================================
+
+    [Inject]
+    private void Construct(Character parCharacter)
+    {
+      character = parCharacter;
+    }
 
     //===================================
 
@@ -44,10 +55,10 @@ namespace TLT.Vehicles.Bike
     {
       Scene currentScene = SceneManager.GetActiveScene();
 
-      _character.Health.InstantlyKill();
+      character.Health.InstantlyKill();
 
       _bikeBody.BikeController.IsInCar = false;
-      _bikeBody.BikeController.ObjectBody.SetActive(true);
+      _bikeBody.ObjectBody.SetActive(true);
 
       yield return new WaitForSeconds(_timeRestart);
 

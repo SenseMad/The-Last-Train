@@ -1,17 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
+using Zenject;
 
 using TLT.CharacterManager;
-using System;
 
 public class LevelManager : MonoBehaviour
 {
-  [SerializeField] private Character _character;
-
   //===================================
 
-  public Character Character => _character;
+  public Character Character { get; set; }
 
   //===================================
 
@@ -19,9 +16,17 @@ public class LevelManager : MonoBehaviour
 
   //===================================
 
-  public void ChangeCharacter(Character parNewCharacter)
+  [Inject]
+  private void Construct(Character parCharacter)
   {
-    _character = parNewCharacter;
+    Character = parCharacter;
+  }
+
+  //===================================
+
+  public void ChangeCharacter()
+  {
+    //_character = parNewCharacter;
 
     OnChangeCharacter?.Invoke();
   }

@@ -1,6 +1,8 @@
 using Unity.Cinemachine;
 using Zenject;
 
+using TLT.CharacterManager;
+
 namespace TLT.Installers
 {
   public class GameplaySceneInstaller : MonoInstaller
@@ -12,6 +14,8 @@ namespace TLT.Installers
       Container.Bind<CinemachineCamera>().FromComponentInHierarchy().AsSingle().NonLazy();
 
       Container.Bind<CinemachinePositionComposer>().FromComponentInHierarchy().AsSingle().NonLazy();
+
+      Container.Bind<Character>().FromComponentInHierarchy().AsSingle().NonLazy();
 
       /*Container.Bind<Waypoints>().FromComponentInHierarchy().AsSingle().NonLazy();
 

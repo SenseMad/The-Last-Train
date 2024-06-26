@@ -139,7 +139,7 @@ namespace TLT.Vehicles
 
       #endregion
 
-      levelManager.ChangeCharacter(_currentCharacter);
+      //levelManager.ChangeCharacter(_currentCharacter);
 
       OnGetInCar?.Invoke();
     }
@@ -184,7 +184,7 @@ namespace TLT.Vehicles
 
       #endregion
 
-      levelManager.ChangeCharacter(oldCharacter);
+      //levelManager.ChangeCharacter(oldCharacter);
 
       oldCharacter = null;
 

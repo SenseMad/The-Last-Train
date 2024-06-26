@@ -60,6 +60,8 @@ namespace TLT.UI
       levelManager.Character.Health.OnChangeHealth += UpdateTextHealth;
 
       levelManager.Character.WeaponController.CurrentWeapon.OnChangeAmmo += UpdateTextAmmo;
+
+      //levelManager.Character.WeaponController.CurrentWeapon.OnChangeAmmo -= UpdateTextAmmo;
     }
 
     //===================================
