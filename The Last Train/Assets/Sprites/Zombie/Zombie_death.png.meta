@@ -160,12 +160,12 @@ TextureImporter:
       name: Zombie_death_0
       rect:
         serializedVersion: 2
-        x: 35
-        y: 2
-        width: 20
-        height: 41
+        x: 0
+        y: 0
+        width: 89
+        height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -181,12 +181,12 @@ TextureImporter:
       name: Zombie_death_1
       rect:
         serializedVersion: 2
-        x: 120
-        y: 3
-        width: 35
-        height: 44
+        x: 89
+        y: 0
+        width: 89
+        height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -202,12 +202,12 @@ TextureImporter:
       name: Zombie_death_2
       rect:
         serializedVersion: 2
-        x: 210
-        y: 4
-        width: 43
-        height: 47
+        x: 178
+        y: 0
+        width: 89
+        height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -223,12 +223,12 @@ TextureImporter:
       name: Zombie_death_3
       rect:
         serializedVersion: 2
-        x: 308
-        y: 4
-        width: 37
-        height: 47
+        x: 267
+        y: 0
+        width: 89
+        height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -244,12 +244,12 @@ TextureImporter:
       name: Zombie_death_7
       rect:
         serializedVersion: 2
-        x: 399
-        y: 5
-        width: 45
-        height: 43
+        x: 623
+        y: 0
+        width: 89
+        height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -265,12 +265,12 @@ TextureImporter:
       name: Zombie_death_9
       rect:
         serializedVersion: 2
-        x: 486
-        y: 2
-        width: 46
-        height: 46
+        x: 801
+        y: 0
+        width: 89
+        height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -286,12 +286,12 @@ TextureImporter:
       name: Zombie_death_10
       rect:
         serializedVersion: 2
-        x: 581
-        y: 2
-        width: 41
-        height: 49
+        x: 890
+        y: 0
+        width: 89
+        height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -307,12 +307,12 @@ TextureImporter:
       name: Zombie_death_12
       rect:
         serializedVersion: 2
-        x: 670
-        y: 1
-        width: 42
-        height: 50
+        x: 1068
+        y: 0
+        width: 89
+        height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -325,127 +325,127 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zombie_death_14
+      name: Zombie_death_4
       rect:
         serializedVersion: 2
-        x: 759
+        x: 356
         y: 0
-        width: 42
+        width: 89
         height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7adbbd2feab067ac0800000000000000
-      internalID: -3857883184769548889
+      spriteID: bdd271edbc2d82b48885c7b053e48d02
+      internalID: -40760983803160077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zombie_death_15
+      name: Zombie_death_5
       rect:
         serializedVersion: 2
-        x: 848
+        x: 445
         y: 0
-        width: 42
+        width: 89
         height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 654e0f6e8877bd070800000000000000
-      internalID: 8132224982021366870
+      spriteID: 944737bd81eea7e41a271497c8f0283a
+      internalID: 9086563307334524236
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zombie_death_16
+      name: Zombie_death_6
       rect:
         serializedVersion: 2
-        x: 937
+        x: 534
         y: 0
-        width: 42
+        width: 89
         height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cead2330e476df880800000000000000
-      internalID: -8575584530684781844
+      spriteID: 9fed32bb212ae664e84eaa450025d09a
+      internalID: -6233858774101876439
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zombie_death_17
+      name: Zombie_death_8
       rect:
         serializedVersion: 2
-        x: 1026
+        x: 712
         y: 0
-        width: 42
+        width: 89
         height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: bcb4bcc71210421c0800000000000000
-      internalID: -4529494081888629813
+      spriteID: 241419846b5563f4bb8b6c7766ccc45d
+      internalID: -3304031728134702973
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zombie_death_18
+      name: Zombie_death_11
       rect:
         serializedVersion: 2
-        x: 1115
+        x: 979
         y: 0
-        width: 42
+        width: 89
         height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b81226d644deaa2b0800000000000000
-      internalID: -5572380710768860789
+      spriteID: 10d3098286ebdea469db28f897eda21b
+      internalID: 3350714503349517693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zombie_death_19
+      name: Zombie_death_13
       rect:
         serializedVersion: 2
-        x: 1204
+        x: 1157
         y: 0
-        width: 42
+        width: 89
         height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 836f116e87af94940800000000000000
-      internalID: 5281027435231573560
+      spriteID: dece7b8d5eee5644cbf1e490d299374b
+      internalID: 2580842049725970172
       vertices: []
       indices: 
       edges: []
@@ -467,12 +467,6 @@ TextureImporter:
       Zombie_death_11: 3350714503349517693
       Zombie_death_12: 8479798299087050714
       Zombie_death_13: 2580842049725970172
-      Zombie_death_14: -3857883184769548889
-      Zombie_death_15: 8132224982021366870
-      Zombie_death_16: -8575584530684781844
-      Zombie_death_17: -4529494081888629813
-      Zombie_death_18: -5572380710768860789
-      Zombie_death_19: 5281027435231573560
       Zombie_death_2: 7197153697879921943
       Zombie_death_3: 3098608584658919565
       Zombie_death_4: -40760983803160077

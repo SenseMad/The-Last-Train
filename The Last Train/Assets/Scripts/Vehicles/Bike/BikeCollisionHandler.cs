@@ -101,6 +101,7 @@ namespace TLT.Vehicles.Bike
       {
         if (_bikeManager.Grounded || _bikeManager.OnlyFrontGrounded)
         {
+          parEnemyAgent.TypeDeath("IsDeathSpeed");
           parEnemyAgent.ApplyDamage(1);
           character.ApplyDamage(1);
           _bikeController.Animator.SetTrigger("IsHurt");
@@ -109,6 +110,7 @@ namespace TLT.Vehicles.Bike
 
         if (_bikeManager.OnlyBackGrounded)
         {
+          parEnemyAgent.TypeDeath("IsDeath");
           parEnemyAgent.ApplyDamage(1);
           return;
         }
@@ -116,6 +118,7 @@ namespace TLT.Vehicles.Bike
 
       if (!_bikeManager.Grounded)
       {
+        parEnemyAgent.TypeDeath("IsDeathLanding");
         parEnemyAgent.Health.InstantlyKill();
         return;
       }

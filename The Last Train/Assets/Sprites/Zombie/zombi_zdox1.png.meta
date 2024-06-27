@@ -1,43 +1,70 @@
 fileFormatVersion: 2
-guid: b4cd397b50434494eab046f67a77203e
+guid: f768c67c61a712f49b552920166ea471
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4336811218574407549
-    second: Zombie_take_damage_0
+      213: 7776015893448404023
+    second: zombi_zdox1_0
   - first:
-      213: -8526122312271932623
-    second: Zombie_take_damage_1
+      213: -7926329944425086002
+    second: zombi_zdox1_1
   - first:
-      213: 4118025774810895810
-    second: Zombie_take_damage_2
+      213: -2915212808397973462
+    second: zombi_zdox1_2
   - first:
-      213: 8504101161753669687
-    second: Zombie_take_damage_3
+      213: -6218382814991834703
+    second: zombi_zdox1_3
   - first:
-      213: -4107579409738245122
-    second: Zombie_take_damage_4
+      213: -5751830007128542085
+    second: zombi_zdox1_4
   - first:
-      213: -4792766262968538227
-    second: Zombie_take_damage_5
+      213: -6164151323924960486
+    second: zombi_zdox1_5
   - first:
-      213: -6639256791724425674
-    second: Zombie_take_damage_6
+      213: 6239182658857561262
+    second: zombi_zdox1_6
   - first:
-      213: 2472155888058331073
-    second: Zombie_take_damage_7
+      213: 3393238986951605597
+    second: zombi_zdox1_7
   - first:
-      213: 2272672518679951321
-    second: Zombie_take_damage_8
+      213: 4728562028826132655
+    second: zombi_zdox1_8
   - first:
-      213: -455346544678339251
-    second: Zombie_take_damage_9
+      213: -2181133401651350670
+    second: zombi_zdox1_9
   - first:
-      213: -7181369489711132077
-    second: Zombie_take_damage_10
+      213: -1870683904051794095
+    second: zombi_zdox1_10
   - first:
-      213: 8541620461598363150
-    second: Zombie_take_damage_11
+      213: 8278846156257073346
+    second: zombi_zdox1_11
+  - first:
+      213: -5356962026298597970
+    second: zombi_zdox1_12
+  - first:
+      213: 5517816279252207028
+    second: zombi_zdox1_13
+  - first:
+      213: -4507623264440443896
+    second: zombi_zdox1_14
+  - first:
+      213: -6955750343063819110
+    second: zombi_zdox1_15
+  - first:
+      213: 1273329714592830658
+    second: zombi_zdox1_16
+  - first:
+      213: 5582254121186174007
+    second: zombi_zdox1_17
+  - first:
+      213: 5518924246956117725
+    second: zombi_zdox1_18
+  - first:
+      213: 1202373859840962524
+    second: zombi_zdox1_19
+  - first:
+      213: -4027759337396522904
+    second: zombi_zdox1_20
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -133,118 +160,202 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Zombie_take_damage_0
+      name: zombi_zdox1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 76
+        width: 133
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73ca8c88145f9eb60800000000000000
+      internalID: 7776015893448404023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombi_zdox1_1
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 76
+        width: 133
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec3400a39e4000290800000000000000
+      internalID: -7926329944425086002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombi_zdox1_2
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 76
+        width: 133
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2815ce65651b87d0800000000000000
+      internalID: -2915212808397973462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombi_zdox1_3
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 76
+        width: 133
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b1a403b6cdd3b9a0800000000000000
+      internalID: -6218382814991834703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombi_zdox1_5
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 76
+        width: 133
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1be2bba709847aa0800000000000000
+      internalID: -6164151323924960486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombi_zdox1_7
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 0
+        width: 133
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5db14761e4371f20800000000000000
+      internalID: 3393238986951605597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombi_zdox1_9
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 0
+        width: 133
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 273f4d23abe0bb1e0800000000000000
+      internalID: -2181133401651350670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombi_zdox1_10
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 0
+        width: 133
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15fa3fb86eef906e0800000000000000
+      internalID: -1870683904051794095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombi_zdox1_4
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 76
+        width: 133
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32d16b1998b61884da60e6d3bdde6ee1
+      internalID: -5751830007128542085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombi_zdox1_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 51
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d777e0d63d27f2c30800000000000000
-      internalID: 4336811218574407549
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zombie_take_damage_1
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 0
-        width: 51
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 133df792ee02da980800000000000000
-      internalID: -8526122312271932623
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zombie_take_damage_2
-      rect:
-        serializedVersion: 2
-        x: 102
-        y: 0
-        width: 51
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2c5918bbf9a262930800000000000000
-      internalID: 4118025774810895810
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zombie_take_damage_5
-      rect:
-        serializedVersion: 2
-        x: 255
-        y: 0
-        width: 51
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d8ba84c1a7cac7db0800000000000000
-      internalID: -4792766262968538227
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zombie_take_damage_6
-      rect:
-        serializedVersion: 2
-        x: 306
-        y: 0
-        width: 51
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 63e7aaccf1f9cd3a0800000000000000
-      internalID: -6639256791724425674
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zombie_take_damage_3
-      rect:
-        serializedVersion: 2
-        x: 153
-        y: 0
-        width: 51
-        height: 51
+        width: 133
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,20 +363,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 878dea26c6e8edc4c80558baad5bdfe0
-      internalID: 8504101161753669687
+      spriteID: 23035d02e7124c643851136eeeb39a4c
+      internalID: 6239182658857561262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zombie_take_damage_4
+      name: zombi_zdox1_8
       rect:
         serializedVersion: 2
-        x: 204
+        x: 266
         y: 0
-        width: 51
-        height: 51
+        width: 133
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -273,20 +384,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 647cddd5207952a4e885853b90d5dd97
-      internalID: -4107579409738245122
+      spriteID: ede04287ce954aa45834b6c25711c723
+      internalID: 4728562028826132655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zombie_take_damage_7
+      name: zombi_zdox1_11
       rect:
         serializedVersion: 2
-        x: 357
+        x: 665
         y: 0
-        width: 51
-        height: 51
+        width: 133
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -294,8 +405,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c5c46bf9f932a1429804f57da21bfa8
-      internalID: 2472155888058331073
+      spriteID: 70ff1c574ee958a47b00b5fb1301f413
+      internalID: 8278846156257073346
       vertices: []
       indices: 
       edges: []
@@ -303,7 +414,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0d3b623420de03743945dbd4492a92ac
+    spriteID: c893be072ae2786448967cafc1d336dc
     internalID: 0
     vertices: []
     indices: 
@@ -311,14 +422,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Zombie_take_damage_0: 4336811218574407549
-      Zombie_take_damage_1: -8526122312271932623
-      Zombie_take_damage_2: 4118025774810895810
-      Zombie_take_damage_3: 8504101161753669687
-      Zombie_take_damage_4: -4107579409738245122
-      Zombie_take_damage_5: -4792766262968538227
-      Zombie_take_damage_6: -6639256791724425674
-      Zombie_take_damage_7: 2472155888058331073
+      zombi_zdox1_0: 7776015893448404023
+      zombi_zdox1_1: -7926329944425086002
+      zombi_zdox1_10: -1870683904051794095
+      zombi_zdox1_11: 8278846156257073346
+      zombi_zdox1_2: -2915212808397973462
+      zombi_zdox1_3: -6218382814991834703
+      zombi_zdox1_4: -5751830007128542085
+      zombi_zdox1_5: -6164151323924960486
+      zombi_zdox1_6: 6239182658857561262
+      zombi_zdox1_7: 3393238986951605597
+      zombi_zdox1_8: 4728562028826132655
+      zombi_zdox1_9: -2181133401651350670
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

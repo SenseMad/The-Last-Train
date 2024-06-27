@@ -124,12 +124,12 @@ TextureImporter:
       name: Zombie_attack_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 2
-        width: 20
-        height: 41
+        x: 0
+        y: 0
+        width: 51
+        height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -145,12 +145,12 @@ TextureImporter:
       name: Zombie_attack_1
       rect:
         serializedVersion: 2
-        x: 66
-        y: 2
-        width: 22
-        height: 41
+        x: 51
+        y: 0
+        width: 51
+        height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -166,12 +166,12 @@ TextureImporter:
       name: Zombie_attack_2
       rect:
         serializedVersion: 2
-        x: 111
-        y: 2
-        width: 29
-        height: 41
+        x: 102
+        y: 0
+        width: 51
+        height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -187,12 +187,12 @@ TextureImporter:
       name: Zombie_attack_3
       rect:
         serializedVersion: 2
-        x: 170
-        y: 2
-        width: 22
-        height: 41
+        x: 153
+        y: 0
+        width: 51
+        height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -208,12 +208,12 @@ TextureImporter:
       name: Zombie_attack_4
       rect:
         serializedVersion: 2
-        x: 208
-        y: 2
-        width: 31
-        height: 39
+        x: 204
+        y: 0
+        width: 51
+        height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,12 +229,12 @@ TextureImporter:
       name: Zombie_attack_5
       rect:
         serializedVersion: 2
-        x: 263
-        y: 2
-        width: 27
-        height: 38
+        x: 255
+        y: 0
+        width: 51
+        height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -250,12 +250,12 @@ TextureImporter:
       name: Zombie_attack_6
       rect:
         serializedVersion: 2
-        x: 321
-        y: 2
-        width: 20
-        height: 39
+        x: 306
+        y: 0
+        width: 51
+        height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -271,12 +271,12 @@ TextureImporter:
       name: Zombie_attack_7
       rect:
         serializedVersion: 2
-        x: 372
-        y: 2
-        width: 20
-        height: 41
+        x: 357
+        y: 0
+        width: 51
+        height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

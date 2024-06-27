@@ -10,12 +10,7 @@ namespace TLT.Enemy
 
     //===================================
 
-    /*protected override void Update()
-    {
-      base.Update();
 
-      Attack();
-    }*/
 
     //===================================
 

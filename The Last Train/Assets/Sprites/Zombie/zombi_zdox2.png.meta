@@ -1,31 +1,43 @@
 fileFormatVersion: 2
-guid: 123e361a658b36743a4c2cbf1c650fd5
+guid: 48ce10e2a5e86874ea4b71fde5bc1d91
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5515823891820461719
-    second: Zombie_walk_0
+      213: 7021443067882901356
+    second: zombi_zdox2_0
   - first:
-      213: 8136120905992562545
-    second: Zombie_walk_1
+      213: -4594427710253387230
+    second: zombi_zdox2_1
   - first:
-      213: 5279756263999913704
-    second: Zombie_walk_2
+      213: -8897058502207363759
+    second: zombi_zdox2_2
   - first:
-      213: -9043847580254001688
-    second: Zombie_walk_3
+      213: 2112845413920498533
+    second: zombi_zdox2_3
   - first:
-      213: -8859935325920005720
-    second: Zombie_walk_4
+      213: -8312972454810436927
+    second: zombi_zdox2_4
   - first:
-      213: 867945468372999508
-    second: Zombie_walk_5
+      213: 7381425702641335479
+    second: zombi_zdox2_5
   - first:
-      213: 4311503190667205458
-    second: Zombie_walk_6
+      213: -5938470895883447405
+    second: zombi_zdox2_6
   - first:
-      213: 5515115882006618099
-    second: Zombie_walk_7
+      213: 3730708234603472907
+    second: zombi_zdox2_7
+  - first:
+      213: -4330741829441151390
+    second: zombi_zdox2_8
+  - first:
+      213: -5510569731458259034
+    second: zombi_zdox2_9
+  - first:
+      213: -4138347442433077417
+    second: zombi_zdox2_10
+  - first:
+      213: 5562116072849834320
+    second: zombi_zdox2_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -121,169 +133,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Zombie_walk_0
+      name: zombi_zdox2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 76
+        width: 133
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6f0acfd44d217160800000000000000
+      internalID: 7021443067882901356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombi_zdox2_1
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 76
+        width: 133
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 222b22007505d30c0800000000000000
+      internalID: -4594427710253387230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombi_zdox2_3
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 76
+        width: 133
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5636b0aa5b5525d10800000000000000
+      internalID: 2112845413920498533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombi_zdox2_6
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 0
+        width: 133
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3931fddfe20569da0800000000000000
+      internalID: -5938470895883447405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombi_zdox2_7
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 0
+        width: 133
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b082a2c8f5326c330800000000000000
+      internalID: 3730708234603472907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombi_zdox2_8
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 0
+        width: 133
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26e1c3a504d16e3c0800000000000000
+      internalID: -4330741829441151390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombi_zdox2_2
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 76
+        width: 133
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62a956aa975f10145976bc2072241690
+      internalID: -8897058502207363759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombi_zdox2_4
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 76
+        width: 133
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85bf0724443635a408a852438de48789
+      internalID: -8312972454810436927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombi_zdox2_5
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 51
-        height: 51
+        width: 133
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 961cd6cf46bd373b0800000000000000
-      internalID: -5515823891820461719
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zombie_walk_1
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 0
-        width: 51
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 177e0536bde49e070800000000000000
-      internalID: 8136120905992562545
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zombie_walk_2
-      rect:
-        serializedVersion: 2
-        x: 102
-        y: 0
-        width: 51
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8eebb584956754940800000000000000
-      internalID: 5279756263999913704
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zombie_walk_3
-      rect:
-        serializedVersion: 2
-        x: 153
-        y: 0
-        width: 51
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8e52f28ca8ccd7280800000000000000
-      internalID: -9043847580254001688
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zombie_walk_4
-      rect:
-        serializedVersion: 2
-        x: 204
-        y: 0
-        width: 51
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8a17a9553cf2b0580800000000000000
-      internalID: -8859935325920005720
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zombie_walk_5
-      rect:
-        serializedVersion: 2
-        x: 255
-        y: 0
-        width: 51
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 45d58ce0ecf8b0c00800000000000000
-      internalID: 867945468372999508
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zombie_walk_6
-      rect:
-        serializedVersion: 2
-        x: 306
-        y: 0
-        width: 51
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 25b9eaffe4985db30800000000000000
-      internalID: 4311503190667205458
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zombie_walk_7
-      rect:
-        serializedVersion: 2
-        x: 357
-        y: 0
-        width: 51
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3ff9e12aca0a98c40800000000000000
-      internalID: 5515115882006618099
+      spriteID: 6313973ea3f084b45b734681b5bed23c
+      internalID: 7381425702641335479
       vertices: []
       indices: 
       edges: []
@@ -291,7 +324,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: d438ecef28a99b34589814216f213c04
+    spriteID: 1436a66fc1cbbd546b2a6c09119961dd
     internalID: 0
     vertices: []
     indices: 
@@ -299,14 +332,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Zombie_walk_0: -5515823891820461719
-      Zombie_walk_1: 8136120905992562545
-      Zombie_walk_2: 5279756263999913704
-      Zombie_walk_3: -9043847580254001688
-      Zombie_walk_4: -8859935325920005720
-      Zombie_walk_5: 867945468372999508
-      Zombie_walk_6: 4311503190667205458
-      Zombie_walk_7: 5515115882006618099
+      zombi_zdox2_0: 7021443067882901356
+      zombi_zdox2_1: -4594427710253387230
+      zombi_zdox2_2: -8897058502207363759
+      zombi_zdox2_3: 2112845413920498533
+      zombi_zdox2_4: -8312972454810436927
+      zombi_zdox2_5: 7381425702641335479
+      zombi_zdox2_6: -5938470895883447405
+      zombi_zdox2_7: 3730708234603472907
+      zombi_zdox2_8: -4330741829441151390
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

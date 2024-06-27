@@ -40,6 +40,8 @@ namespace TLT.Enemy
 
     private int direction = 1;
 
+    private string typeDeath = "";
+
     //===================================
 
     //public Character Target { get; private set; }
@@ -109,7 +111,7 @@ namespace TLT.Enemy
 
     private void Health_OnInstantlyKill()
     {
-      animator.SetBool("IsDeath", true);
+      animator.SetBool(typeDeath, true);
 
       enemyAIState = EnemyAIState.Death;
       rigidbody2D.velocity = Vector2.zero;
@@ -118,11 +120,18 @@ namespace TLT.Enemy
       rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
 
       bodyBoxCollider2D.enabled = false;
+
+      Destroy(gameObject, 1.25f);
     }
 
     public void OnDeath()
     {
       Destroy(gameObject);
+    }
+
+    public void TypeDeath(string parValue)
+    {
+      typeDeath = parValue;
     }
 
     //===================================
