@@ -104,9 +104,9 @@ namespace TLT.Enemy
 
     private void Health_OnTakeHealth(int obj)
     {
-      takeDamage = true;
+      /*takeDamage = true;
 
-      animator.SetBool("IsTakeDamage", true);
+      animator.SetBool("IsTakeDamage", true);*/
     }
 
     private void Health_OnInstantlyKill()
@@ -183,6 +183,16 @@ namespace TLT.Enemy
     public void ApplyDamage(int parDamage)
     {
       Health.TakeHealth(parDamage);
+
+      if (typeDeath == "IsDeathLanding" || typeDeath == "IsDeathSpeed")
+        return;
+
+      takeDamage = true;
+
+      if (Health.CurrentHealth <= 0)
+        animator.SetBool("IsDeath", true);
+      else
+        animator.SetBool("IsTakeDamage", true);
     }
 
     //===================================
@@ -240,7 +250,7 @@ namespace TLT.Enemy
 
     private void IgnoreCollision()
     {
-      if (bodyBoxCollider2D == null)
+      /*if (bodyBoxCollider2D == null)
         return;
 
       Collider2D[] colliders = Physics2D.OverlapBoxAll(bodyBoxCollider2D.bounds.center, new Vector2(_enemyAttackData.RangeVisibility.x, _enemyAttackData.RangeVisibility.y), 0, _targetLayerMask);
@@ -257,7 +267,7 @@ namespace TLT.Enemy
           else
             Physics2D.IgnoreLayerCollision(9, 10, true);
         }
-      }
+      }*/
     }
 
     private bool TargetSearch()

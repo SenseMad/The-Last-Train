@@ -8449,6 +8449,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2652478977541722510, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
+      propertyPath: m_Size.x
+      value: 2.2173913
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652478977541722510, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
+      propertyPath: m_Size.y
+      value: 2.2173913
+      objectReference: {fileID: 0}
     - target: {fileID: 3533547827175020506, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -8467,6 +8475,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6944881997759369647, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867446915273472483, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
+      propertyPath: _maxHealth
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

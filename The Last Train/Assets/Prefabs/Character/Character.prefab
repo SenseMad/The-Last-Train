@@ -94,8 +94,7 @@ MonoBehaviour:
   _audioSource: {fileID: 417329950328710511, guid: 47f41a4fbb29939468c57cdeda33e2c6, type: 3}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 256
-  _character: {fileID: 2713130902716006760}
+    m_Bits: 1280
   _delayShoot: 0.4
 --- !u!95 &8383268765779806870
 Animator:
@@ -546,7 +545,6 @@ MonoBehaviour:
   _handPivot: {fileID: 9089733844012722257}
   _minAngle: -45
   _maxAngle: 45
-  _offset: {x: 0, y: -30}
 --- !u!114 &6357004960730266394
 MonoBehaviour:
   m_ObjectHideFlags: 0

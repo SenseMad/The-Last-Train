@@ -57,6 +57,8 @@ namespace TLT.Vehicles.Bike
       }
     }
 
+    public float WheelLiftAngle { get; private set; }
+
     public BikeController BikeController => _bikeController;
     public BikeManager BikeManager => _bikeManager;
 
@@ -65,6 +67,8 @@ namespace TLT.Vehicles.Bike
     public Rigidbody2D BodyRB { get => bodyRB; set => bodyRB = value; }
 
     public WeaponController WeaponController { get => _weaponController; set => _weaponController = value; }
+
+    public BikeData BikeData { get => _bikeData; private set => _bikeData = value; }
 
     //===================================
 
@@ -262,6 +266,8 @@ namespace TLT.Vehicles.Bike
       bodyRB.AddTorque(num, ForceMode2D.Force);
 
       bodyRB.angularVelocity = Mathf.Clamp(bodyRB.angularVelocity, -_bikeData.MaxAngularVelocity, _bikeData.MaxAngularVelocity);
+
+      WheelLiftAngle = num;
     }
 
     private void UpdateAnimation()
