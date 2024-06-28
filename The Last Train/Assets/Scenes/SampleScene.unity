@@ -189,9 +189,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1838856627}
     m_Modifications:
+    - target: {fileID: 806448496252535630, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
+      propertyPath: _enemyAttackData._rangeVisibility.x
+      value: 28.75
+      objectReference: {fileID: 0}
     - target: {fileID: 2312366322123500045, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 61
+      value: 71.65
       objectReference: {fileID: 0}
     - target: {fileID: 2312366322123500045, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
       propertyPath: m_LocalPosition.y
@@ -229,12 +233,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3533547827175020506, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300975457139126804, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806037200715524432, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6466821497900496853, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
       propertyPath: m_Name
       value: Enemy (2)
       objectReference: {fileID: 0}
     - target: {fileID: 6466821497900496853, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6944881997759369647, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3694,6 +3714,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1838856627}
     m_Modifications:
+    - target: {fileID: 806448496252535630, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
+      propertyPath: _enemyAttackData._rangeVisibility.x
+      value: 26.36
+      objectReference: {fileID: 0}
     - target: {fileID: 2312366322123500045, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
       propertyPath: m_LocalPosition.x
       value: 41
@@ -3741,6 +3765,14 @@ PrefabInstance:
     - target: {fileID: 6466821497900496853, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917013736034338682, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
+      propertyPath: m_Mass
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917013736034338682, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5848,7 +5880,7 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 1.5869446, y: -0.532177}
       - {x: 1.5828018, y: 0.43689203}
-      - {x: 0.75164413, y: 0.5177796}
+      - {x: 0.94714737, y: 0.598464}
       - {x: -1.670044, y: -0.5353515}
   m_UseDelaunayMesh: 0
 --- !u!212 &1398131394
@@ -5913,9 +5945,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1838856627}
     m_Modifications:
+    - target: {fileID: 806448496252535630, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
+      propertyPath: _enemyAttackData._rangeVisibility.x
+      value: 14.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 806448496252535630, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
+      propertyPath: _enemyAttackData._rangeVisibility.y
+      value: 7.57
+      objectReference: {fileID: 0}
     - target: {fileID: 2312366322123500045, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 76
+      value: 92.59
       objectReference: {fileID: 0}
     - target: {fileID: 2312366322123500045, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
       propertyPath: m_LocalPosition.y
