@@ -7,6 +7,7 @@ using TLT.Input;
 using TLT.HealthManager;
 using TLT.Interfaces;
 using TLT.Weapons;
+using UnityEngine.UIElements;
 
 namespace TLT.CharacterManager
 {
@@ -45,7 +46,7 @@ namespace TLT.CharacterManager
       set
       {
         direction = value;
-        OnChangeDirection?.Invoke(value);
+        CinemachinePositionComposer.Composition.ScreenPosition = new(-0.25f * value, 0.2f);
       }
     }
 
@@ -76,7 +77,7 @@ namespace TLT.CharacterManager
 
     private void Start()
     {
-      ChangeDirection(Direction);
+      Direction = 1;
     }
 
     private void OnEnable()
@@ -90,13 +91,6 @@ namespace TLT.CharacterManager
       Health.OnTakeHealth += Health_OnTakeHealth;
 
       Health.OnInstantlyKill += OnInstantlyKill;
-
-      OnChangeDirection += ChangeDirection;
-    }
-
-    public void ChangeDirection(int parDirection)
-    {
-      CinemachinePositionComposer.Composition.ScreenPosition = new(-0.25f * parDirection, 0.2f);
     }
 
     private void OnDisable()
@@ -110,8 +104,6 @@ namespace TLT.CharacterManager
       Health.OnTakeHealth -= Health_OnTakeHealth;
 
       Health.OnInstantlyKill -= OnInstantlyKill;
-
-      OnChangeDirection -= ChangeDirection;
     }
 
     private void Update()
@@ -132,7 +124,6 @@ namespace TLT.CharacterManager
     {
       gameObject.SetActive(false);
     }
-
 
     //===================================
 

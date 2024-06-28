@@ -152,17 +152,35 @@ namespace TLT.Vehicles.Bike
 
       Bounds bounds = _boxCollider2D.bounds;
 
-      Vector2[] rayOrigins = new Vector2[]
-      {
-        // Верхний центр
-        //new Vector2(bounds.max.x, bounds.max.y),
-        // Центр
-        new Vector2(bounds.max.x, bounds.center.y),
-        // Правый низ
-        //new Vector2(bounds.max.x, bounds.min.y),
-      };
+      Vector2 direction;
+      Vector2[] rayOrigins;
 
-      Vector2 direction = new(transform.right.x * _bikeManager.Direction, transform.right.y);
+      if (_bikeManager.Direction == 1)
+      {
+        direction = Vector2.right;
+        rayOrigins = new Vector2[]
+        {
+          // Верх правого края
+          //new Vector2(bounds.max.x, bounds.max.y),
+          // Центр правого края
+          new Vector2(bounds.max.x, bounds.center.y),
+          // Низ правого края
+          //new Vector2(bounds.max.x, bounds.min.y),
+        };
+      }
+      else
+      {
+        direction = Vector2.left;
+        rayOrigins = new Vector2[]
+        {
+          // Верх левого края
+          //new Vector2(bounds.min.x, bounds.max.y),
+          // Центр
+          new Vector2(bounds.min.x, bounds.center.y),
+          // Низ левого края
+          //new Vector2(bounds.min.x, bounds.min.y),
+        };
+      }
 
       for (int i = 0; i < rayOrigins.Length; i++)
       {

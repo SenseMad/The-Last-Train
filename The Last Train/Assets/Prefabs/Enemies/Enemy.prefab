@@ -142,7 +142,7 @@ MonoBehaviour:
   _targetLayerMask:
     serializedVersion: 2
     m_Bits: 1280
-  bodyBoxCollider2D: {fileID: 6944881997759369647}
+  _bodyBoxCollider2D: {fileID: 6944881997759369647}
   _enemyAttackData:
     _damage: 2
     _rangeVisibility: {x: 10, y: 0.5}

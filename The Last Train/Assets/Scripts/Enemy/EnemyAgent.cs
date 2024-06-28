@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 using TLT.CharacterManager;
 using TLT.HealthManager;
 using TLT.Interfaces;
-using TLT.Vehicles;
 using TLT.Vehicles.Bike;
 
 namespace TLT.Enemy
@@ -18,7 +15,7 @@ namespace TLT.Enemy
 
     [SerializeField] private LayerMask _targetLayerMask;
 
-    [SerializeField] private BoxCollider2D bodyBoxCollider2D;
+    [SerializeField] private BoxCollider2D _bodyBoxCollider2D;
 
     [Space(10)]
     [SerializeField] protected EnemyAttackData _enemyAttackData;
@@ -40,12 +37,13 @@ namespace TLT.Enemy
 
     private int direction = 1;
 
+    private bool canAttack;
+
     private string typeDeath = "";
 
     //===================================
 
-    //public Character Target { get; private set; }
-    public BoxCollider2D BodyBoxCollider2D { get => bodyBoxCollider2D; set => bodyBoxCollider2D = value; }
+    public BoxCollider2D BodyBoxCollider2D { get => _bodyBoxCollider2D; set => _bodyBoxCollider2D = value; }
 
     public GameObject Targetable { get; private set; }
 
@@ -119,7 +117,7 @@ namespace TLT.Enemy
       rigidbody2D.gravityScale = 0;
       rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
 
-      bodyBoxCollider2D.enabled = false;
+      _bodyBoxCollider2D.enabled = false;
 
       Destroy(gameObject, 1.25f);
     }
@@ -166,15 +164,18 @@ namespace TLT.Enemy
       if (Targetable == null)
         return;
 
+      canAttack = true;
+
       if (Targetable.TryGetComponent(out Character parCharacter))
       {
-        if (Targetable.TryGetComponent(out BikeController parBikeController))
-        {
-          parBikeController.Character.ApplyDamage(_enemyAttackData.Damage);
-          return;
-        }
-
         parCharacter.ApplyDamage(_enemyAttackData.Damage);
+        return;
+      }
+
+      if (Targetable.TryGetComponent(out BikeController parBikeController))
+      {
+        parBikeController.Character.ApplyDamage(_enemyAttackData.Damage);
+        return;
       }
     }
 
@@ -235,10 +236,11 @@ namespace TLT.Enemy
       animator.SetBool("IsAttack", true);
 
       lastAttackTime += Time.deltaTime;
-      if (lastAttackTime >= _enemyAttackData.AttackDelay)
+      if (lastAttackTime >= _enemyAttackData.AttackDelay && canAttack)
       {
         lastAttackTime = 0;
         animator.SetBool("IsAttack", false);
+        canAttack = false;
 
         return true;
       }
@@ -272,10 +274,10 @@ namespace TLT.Enemy
 
     private bool TargetSearch()
     {
-      if (bodyBoxCollider2D == null)
+      if (_bodyBoxCollider2D == null)
         return false;
 
-      Collider2D[] colliders = Physics2D.OverlapBoxAll(bodyBoxCollider2D.bounds.center, new Vector2(_enemyAttackData.RangeVisibility.x, _enemyAttackData.RangeVisibility.y), 0, _targetLayerMask);
+      Collider2D[] colliders = Physics2D.OverlapBoxAll(_bodyBoxCollider2D.bounds.center, new Vector2(_enemyAttackData.RangeVisibility.x, _enemyAttackData.RangeVisibility.y), 0, _targetLayerMask);
 
       if (colliders.Length == 0 || colliders == null)
       {
@@ -323,7 +325,7 @@ namespace TLT.Enemy
       if (Targetable == null)
         return false;
 
-      Collider2D[] colliders = Physics2D.OverlapCircleAll(bodyBoxCollider2D.bounds.center, _enemyAttackData.AttackRadius, _targetLayerMask);
+      Collider2D[] colliders = Physics2D.OverlapCircleAll(_bodyBoxCollider2D.bounds.center, _enemyAttackData.AttackRadius, _targetLayerMask);
 
       if (colliders.Length == 0 || colliders == null)
         return false;
@@ -332,24 +334,32 @@ namespace TLT.Enemy
 
       foreach (var collider in colliders)
       {
-        if (Targetable.TryGetComponent(out Character parCharacter))
+        if (collider.GetComponent<Character>())
         {
-          if (parCharacter == collider.GetComponent<Character>())
+          if (Targetable.TryGetComponent(out Character parCharacter))
           {
             targetAttactRadius = true;
             return true;
           }
         }
 
-        if (Targetable.TryGetComponent(out BikeController parBikeController))
+        if (collider.GetComponent<BikeController>())
         {
-          if (parBikeController.Character == null)
-            return false;
-
-          if (parBikeController == collider.GetComponent<BikeController>())
+          if (Targetable.TryGetComponent(out BikeController parBikeController))
           {
-            targetAttactRadius = true;
-            return true;
+            if (parBikeController.Character != null)
+            {
+              targetAttactRadius = true;
+              return true;
+            }
+            /*if (parBikeController.Character == null)
+              return false;
+
+            if (parBikeController == collider.GetComponent<BikeController>())
+            {
+              targetAttactRadius = true;
+              return true;
+            }*/
           }
         }
       }
@@ -379,14 +389,14 @@ namespace TLT.Enemy
 
     private void OnDrawGizmos()
     {
-      if (bodyBoxCollider2D == null)
+      if (_bodyBoxCollider2D == null)
         return;
 
       Gizmos.color = Color.yellow;
-      Gizmos.DrawWireCube(bodyBoxCollider2D.bounds.center, new Vector2(_enemyAttackData.RangeVisibility.x, _enemyAttackData.RangeVisibility.y));
+      Gizmos.DrawWireCube(_bodyBoxCollider2D.bounds.center, new Vector2(_enemyAttackData.RangeVisibility.x, _enemyAttackData.RangeVisibility.y));
 
       Gizmos.color = Color.blue;
-      Gizmos.DrawWireSphere(bodyBoxCollider2D.bounds.center, _enemyAttackData.AttackRadius);
+      Gizmos.DrawWireSphere(_bodyBoxCollider2D.bounds.center, _enemyAttackData.AttackRadius);
     }
 
     //===================================

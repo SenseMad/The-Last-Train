@@ -2438,25 +2438,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3533547827175020506, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3533547827175020506, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6466821497900496853, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
       propertyPath: m_Name
       value: Enemy (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6466821497900496853, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6944881997759369647, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8449,6 +8433,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1838856627}
     m_Modifications:
+    - target: {fileID: 806448496252535630, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
+      propertyPath: _enemyAttackData._attackDelay
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 2312366322123500045, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
