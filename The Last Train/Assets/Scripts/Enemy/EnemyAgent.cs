@@ -19,7 +19,12 @@ namespace TLT.Enemy
 
     [Space(10)]
     [SerializeField] protected EnemyAttackData _enemyAttackData;
-    
+
+    [Space]
+    [SerializeField] private Collider2D _deathCollider;
+    [SerializeField] private Collider2D _deathBikeSpeedCollider;
+    [SerializeField] private Collider2D _deathBikeLandingCollider;
+
     //-----------------------------------
 
     private new Rigidbody2D rigidbody2D;
@@ -119,12 +124,12 @@ namespace TLT.Enemy
 
       _bodyBoxCollider2D.enabled = false;
 
-      Destroy(gameObject, 1.25f);
+      Destroy(gameObject, 30f);
     }
 
     public void OnDeath()
     {
-      Destroy(gameObject);
+      Destroy(gameObject, 30f);
     }
 
     public void TypeDeath(string parValue)
@@ -185,13 +190,25 @@ namespace TLT.Enemy
     {
       Health.TakeHealth(parDamage);
 
-      if (typeDeath == "IsDeathLanding" || typeDeath == "IsDeathSpeed")
+      if (typeDeath == "IsDeathLanding")
+      {
+        _deathBikeLandingCollider.gameObject.SetActive(true);
         return;
+      }
+
+      if (typeDeath == "IsDeathSpeed")
+      {
+        _deathBikeSpeedCollider.gameObject.SetActive(true);
+        return;
+      }
 
       takeDamage = true;
 
       if (Health.CurrentHealth <= 0)
+      {
         animator.SetBool("IsDeath", true);
+        _deathCollider.gameObject.SetActive(true);
+      }
       else
         animator.SetBool("IsTakeDamage", true);
     }
