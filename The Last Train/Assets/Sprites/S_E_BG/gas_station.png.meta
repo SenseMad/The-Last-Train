@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 76858ad52bbdded4197d27fef60602af
+guid: 9f2a29afcc5a77c4182efd5c42c2249e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -841611088789638836
-    second: ground_6_0
+      213: -1404633057886866045
+    second: gas_station_0
+  - first:
+      213: 4919444261616279893
+    second: gas_station_1
+  - first:
+      213: -2282756271766407303
+    second: gas_station_2
+  - first:
+      213: -4875727247544995311
+    second: gas_station_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -77,7 +86,7 @@ TextureImporter:
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
-    crunchedCompression: 1
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -100,22 +109,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ground_6_0
+      name: gas_station_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 79
-        width: 640
-        height: 22
+        y: 5
+        width: 27
+        height: 38
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c41f9ad7c2ff154f0800000000000000
-      internalID: -841611088789638836
+      spriteID: 385f1e80dadb18ce0800000000000000
+      internalID: -1404633057886866045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gas_station_1
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 5
+        width: 44
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 551e8f9dd70654440800000000000000
+      internalID: 4919444261616279893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gas_station_2
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 5
+        width: 44
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9777190f3450250e0800000000000000
+      internalID: -2282756271766407303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gas_station_3
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 0
+        width: 262
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 112336ca6efe55cb0800000000000000
+      internalID: -4875727247544995311
       vertices: []
       indices: 
       edges: []
@@ -123,7 +195,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: fbff6ddea2308c947b9485cbcaf5fbf8
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -131,7 +203,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ground_6_0: -841611088789638836
+      gas_station_0: -1404633057886866045
+      gas_station_1: 4919444261616279893
+      gas_station_2: -2282756271766407303
+      gas_station_3: -4875727247544995311
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
