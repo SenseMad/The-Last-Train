@@ -7006,6 +7006,9 @@ GameObject:
   - component: {fileID: 1200657168}
   - component: {fileID: 1200657167}
   - component: {fileID: 1200657169}
+  - component: {fileID: 1200657172}
+  - component: {fileID: 1200657171}
+  - component: {fileID: 1200657170}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -7121,6 +7124,51 @@ MonoBehaviour:
     Enabled: 0
     MaxWindowSize: 0
   m_LegacyMaxWindowSize: -2
+--- !u!114 &1200657170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200657165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80bb2803f98d6e3459a7fb1988e2e132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1200657171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200657165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25afb657b37ab89419cfa4aa3ef4e62d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _zoomInDistance: 0.8
+  _zoomOutDistance: 1
+  _zoomSpeed: 2
+  _transitionSpeed: 2
+--- !u!114 &1200657172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200657165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  AmplitudeGain: 1
+  FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &1205369697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8888,6 +8936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7ac9e97ee6aed4d8e38a02009c694e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timeRestart: 1
 --- !u!1 &1659366413
 GameObject:
   m_ObjectHideFlags: 0
