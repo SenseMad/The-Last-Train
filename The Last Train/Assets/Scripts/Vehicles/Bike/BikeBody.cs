@@ -63,6 +63,8 @@ namespace TLT.Vehicles.Bike
     public BikeManager BikeManager => _bikeManager;
 
     public GameObject ObjectBody => _objectBody;
+    
+    public GameObject ObjectCharacterBody => _objectCharacterBody;
 
     public Rigidbody2D BodyRB { get => bodyRB; set => bodyRB = value; }
 
@@ -167,6 +169,11 @@ namespace TLT.Vehicles.Bike
       _bikeManager.Direction *= -1;
 
       _bikeController.Character.Direction = _bikeManager.Direction;
+    }
+
+    public int GetDirection()
+    {
+      return _bikeManager.Direction;
     }
 
     public void SetFrontWhelieCOM()
@@ -278,12 +285,12 @@ namespace TLT.Vehicles.Bike
           (_bikeManager.BackWheel.WheelRB.velocity.x > deviation || _bikeManager.BackWheel.WheelRB.velocity.x < -deviation))
       {
         _bikeController.Animator.SetBool("IsMove", true);
-        _bikeManager.CameraController.Zoom(false);
+        //_bikeManager.CameraController.Zoom(false);
         return;
       }
 
       _bikeController.Animator.SetBool("IsMove", false);
-      _bikeManager.CameraController.Zoom(true);
+      //_bikeManager.CameraController.Zoom(true);
     }
 
     //===================================
@@ -304,6 +311,8 @@ namespace TLT.Vehicles.Bike
 
       _objectBody.SetActive(false);
       _objectCharacterBody.SetActive(true);
+
+      _bikeController.Character.Direction = GetDirection();
 
       _bikeController.InputHandler.AI_Player.Player.Select.performed += Select_performed;
     }

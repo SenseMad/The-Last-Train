@@ -10,8 +10,8 @@ namespace TLT.Vehicles.Bike
 
     [SerializeField] private BikeWheel _backWheel;
 
-    [Space]
-    [SerializeField] private CameraController _cameraController;
+    /*[Space]
+    [SerializeField] private CameraController _cameraController;*/
 
     [SerializeField, Range(-1, 1)] private int _direction = 1;
 
@@ -21,7 +21,7 @@ namespace TLT.Vehicles.Bike
 
     public BikeWheel BackWheel => _backWheel;
 
-    public CameraController CameraController => _cameraController;
+    //public CameraController CameraController => _cameraController;
 
     //-----------------------------------
 

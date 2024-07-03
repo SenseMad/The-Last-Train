@@ -10,6 +10,10 @@ namespace TLT.Vehicles.Bike
 {
   public class BikeCharacter : MonoBehaviour
   {
+    [SerializeField] private BikeBody _bikeBody;
+    [SerializeField] private BikeController _bikeController;
+
+    [Space]
     [SerializeField] private WeaponController _weaponController;
 
     [SerializeField] private Animator _animatorShoot;
@@ -19,15 +23,21 @@ namespace TLT.Vehicles.Bike
     //-----------------------------------
 
     private InputHandler inputHandler;
-    private Character character;
+
+    private LevelManager levelManager;
+
+    //===================================
+
+    public Character Character { get; private set; }
 
     //===================================
 
     [Inject]
-    private void Construct(InputHandler parInputHandler, Character parCharacter)
+    private void Construct(InputHandler parInputHandler, Character parCharacter, LevelManager parLevelManager)
     {
       inputHandler = parInputHandler;
-      character = parCharacter;
+      Character = parCharacter;
+      levelManager = parLevelManager;
     }
 
     //===================================
@@ -37,6 +47,8 @@ namespace TLT.Vehicles.Bike
       inputHandler.AI_Player.Player.Shooting.performed += Shooting_performed;
 
       inputHandler.AI_Player.Player.Recharge.performed += Recharge_performed;
+
+      Character.Health.OnInstantlyKill += Health_OnInstantlyKill;
     }
 
     private void OnDisable()
@@ -44,9 +56,22 @@ namespace TLT.Vehicles.Bike
       inputHandler.AI_Player.Player.Shooting.performed -= Shooting_performed;
 
       inputHandler.AI_Player.Player.Recharge.performed -= Recharge_performed;
+
+      Character.Health.OnInstantlyKill -= Health_OnInstantlyKill;
     }
 
     //===================================
+
+    private void Health_OnInstantlyKill()
+    {
+      _bikeBody.BikeController.IsInCar = false;
+      _bikeBody.ObjectCharacterBody.SetActive(false);
+      _bikeController.Character = null;
+
+      _bikeBody.ObjectBody.SetActive(true);
+
+      levelManager.StartRestartScene();
+    }
 
     private void Shooting_performed(InputAction.CallbackContext context)
     {
@@ -55,13 +80,13 @@ namespace TLT.Vehicles.Bike
 
       //_animationShoot.Play();
 
-      character.WeaponController.CurrentWeapon.Shoot();
+      Character.WeaponController.CurrentWeapon.Shoot();
       //_weaponController.CurrentWeapon.Shoot();
     }
 
     private void Recharge_performed(InputAction.CallbackContext context)
     {
-      character.WeaponController.CurrentWeapon.PerformRecharge();
+      Character.WeaponController.CurrentWeapon.PerformRecharge();
       //_weaponController.CurrentWeapon.PerformRecharge();
     }
 

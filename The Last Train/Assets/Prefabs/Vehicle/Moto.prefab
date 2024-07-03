@@ -5572,6 +5572,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de51e413053e6d642a5b5c098c8bbbd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bikeBody: {fileID: 7132880636264782937}
+  _bikeController: {fileID: 2614396439637677190}
   _weaponController: {fileID: 3618918006485212050}
   _animatorShoot: {fileID: 0}
   _animationShoot: {fileID: 0}
@@ -11162,7 +11164,6 @@ GameObject:
   - component: {fileID: 3910064183379469805}
   - component: {fileID: 5890795618628647388}
   - component: {fileID: 2923761929204130249}
-  - component: {fileID: 967488979255650609}
   - component: {fileID: 8560565328725643382}
   - component: {fileID: 7173850988963149014}
   - component: {fileID: 2562509473541278957}
@@ -11312,7 +11313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _frontWheel: {fileID: 8350227237547349670}
   _backWheel: {fileID: 8056398815630092963}
-  _cameraController: {fileID: 967488979255650609}
+  _cameraController: {fileID: 0}
   _direction: 1
 --- !u!114 &2614396439637677190
 MonoBehaviour:
@@ -11441,21 +11442,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _strength: 0.3
   _transitionDuration: 0.5
---- !u!114 &967488979255650609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8810085334441422386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25afb657b37ab89419cfa4aa3ef4e62d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _zoomInDistance: 0.8
-  _zoomOutDistance: 1
-  _zoomSpeed: 2
 --- !u!114 &8560565328725643382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11469,11 +11455,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bikeBody: {fileID: 7132880636264782937}
+  _bikeCharacter: {fileID: 599107497303233215}
   _ignoreLayer:
     serializedVersion: 2
     m_Bits: 3968
   _collider2D: {fileID: 2895026074993618345}
-  _timeRestart: 1
 --- !u!114 &7173850988963149014
 MonoBehaviour:
   m_ObjectHideFlags: 0

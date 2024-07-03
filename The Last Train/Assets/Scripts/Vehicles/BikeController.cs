@@ -107,7 +107,10 @@ namespace TLT.Vehicles.Bike
     private void OnThrottle(InputAction.CallbackContext parContext)
     {
       if (!IsInCar)
+      {
+        Throttle = 0;
         return;
+      }
 
       Throttle = parContext.ReadValue<float>();
     }
@@ -115,7 +118,10 @@ namespace TLT.Vehicles.Bike
     private void OnBrake(InputAction.CallbackContext parContext)
     {
       if (!IsInCar)
+      {
+        Brake = 0;
         return;
+      }
 
       Brake = parContext.ReadValue<float>();
     }
@@ -123,7 +129,10 @@ namespace TLT.Vehicles.Bike
     private void OnBalance(InputAction.CallbackContext parContext)
     {
       if (!IsInCar)
+      {
+        balance = 0;
         return;
+      }
 
       balance = parContext.ReadValue<float>();
     }

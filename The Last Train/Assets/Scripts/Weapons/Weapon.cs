@@ -25,6 +25,11 @@ namespace TLT.Weapons
 
     [SerializeField] private LayerMask _layerMask;
 
+    [Space]
+    [Header("CAMERA SHAKE")]
+    [SerializeField] private float _duration = 0.3f;
+    [SerializeField] private float _power = 3;
+
     //-----------------------------------
 
     private int currentAmountAmmo;
@@ -36,6 +41,8 @@ namespace TLT.Weapons
     private float currentRechargeTime;
 
     private Animator animator;
+
+    private CameraShake cameraShake;
 
     private Character character;
 
@@ -80,9 +87,10 @@ namespace TLT.Weapons
     //===================================
 
     [Inject]
-    private void Construct(Character parCharacter)
+    private void Construct(Character parCharacter, CameraShake parCameraShake)
     {
       character = parCharacter;
+      cameraShake = parCameraShake;
     }
 
     //===================================
@@ -162,6 +170,9 @@ namespace TLT.Weapons
 
       CurrentAmountAmmoInMagazine--;
       PlaySound(_weaponData.SoundGunshot);
+
+      cameraShake.Shake(_duration, _power);
+
       OnShoot?.Invoke();
       animator.SetTrigger("IsShoot");
 

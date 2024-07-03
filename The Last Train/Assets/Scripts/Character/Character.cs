@@ -7,7 +7,7 @@ using TLT.Input;
 using TLT.HealthManager;
 using TLT.Interfaces;
 using TLT.Weapons;
-using UnityEngine.UIElements;
+using TLT.CameraManager;
 
 namespace TLT.CharacterManager
 {
@@ -21,7 +21,15 @@ namespace TLT.CharacterManager
 
     private Interaction interaction;
 
+    private CameraController cameraController;
+
+    private LevelManager levelManager;
+
     private int direction = 1;
+
+    /*public float transitionSpeed = 2.0f;
+    private Vector2 targetScreenPosition;
+    private Vector2 currentScreenPosition;*/
 
     //===================================
 
@@ -46,7 +54,9 @@ namespace TLT.CharacterManager
       set
       {
         direction = value;
-        CinemachinePositionComposer.Composition.ScreenPosition = new(-0.25f * value, 0.2f);
+        cameraController.ChangeDirection(value);
+        //targetScreenPosition = new(-0.25f * value, 0.2f);
+        //CinemachinePositionComposer.Composition.ScreenPosition = new(-0.25f * value, 0.2f);
       }
     }
 
@@ -57,11 +67,17 @@ namespace TLT.CharacterManager
     //===================================
 
     [Inject]
-    private void Construct(InputHandler parInputHandler, CinemachineCamera parCinemachineCamera, CinemachinePositionComposer parCinemachinePositionComposer)
+    private void Construct(InputHandler parInputHandler,
+      CameraController parCameraController,
+      CinemachineCamera parCinemachineCamera,
+      CinemachinePositionComposer parCinemachinePositionComposer,
+      LevelManager parLevelManager)
     {
       InputHandler = parInputHandler;
+      cameraController = parCameraController;
       CinemachineCamera = parCinemachineCamera;
       CinemachinePositionComposer = parCinemachinePositionComposer;
+      levelManager = parLevelManager;
     }
 
     //===================================
@@ -109,6 +125,9 @@ namespace TLT.CharacterManager
     private void Update()
     {
       IsTakeDamage = false;
+
+      /*currentScreenPosition = Vector2.Lerp(currentScreenPosition, targetScreenPosition, Time.deltaTime * transitionSpeed);
+      CinemachinePositionComposer.Composition.ScreenPosition = currentScreenPosition;*/
     }
 
     //===================================
@@ -122,6 +141,8 @@ namespace TLT.CharacterManager
 
     private void OnInstantlyKill()
     {
+      levelManager.StartRestartScene();
+
       gameObject.SetActive(false);
     }
 
