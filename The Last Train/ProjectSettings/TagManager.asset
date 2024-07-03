@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: out
+    uniqueID: 3745869071
+    locked: 0
+  - name: Lit Mask
+    uniqueID: 960795171
+    locked: 0
