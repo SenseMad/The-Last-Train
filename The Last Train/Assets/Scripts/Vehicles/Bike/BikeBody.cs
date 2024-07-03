@@ -204,7 +204,7 @@ namespace TLT.Vehicles.Bike
       }
     }
 
-    private void ForceBrake()
+    public void ForceBrake()
     {
       _bikeManager.FrontWheel.ForceBrake();
       _bikeManager.BackWheel.ForceBrake();

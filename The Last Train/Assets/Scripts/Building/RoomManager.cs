@@ -16,11 +16,25 @@ namespace TLT.Building
 
     [SerializeField] private List<GameObject> _spawnables = new();
 
+    [Space]
+    [SerializeField] private bool _isRoomOpenStart = false;
+
     //===================================
 
     public bool IsRoomOpen { get; private set; }
 
     //===================================
+
+    private void Start()
+    {
+      if (_isRoomOpenStart)
+      {
+        IsRoomOpen = true;
+
+        if (_closedRoom != null)
+          _closedRoom.gameObject.SetActive(false);
+      }
+    }
 
     private void OnEnable()
     {

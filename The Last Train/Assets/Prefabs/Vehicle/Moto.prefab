@@ -10679,6 +10679,8 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 1280
+  _duration: 0.3
+  _power: 3
   _delayShoot: 0.4
 --- !u!95 &692863461317118205
 Animator:
@@ -11313,7 +11315,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _frontWheel: {fileID: 8350227237547349670}
   _backWheel: {fileID: 8056398815630092963}
-  _cameraController: {fileID: 0}
   _direction: 1
 --- !u!114 &2614396439637677190
 MonoBehaviour:
@@ -11458,7 +11459,7 @@ MonoBehaviour:
   _bikeCharacter: {fileID: 599107497303233215}
   _ignoreLayer:
     serializedVersion: 2
-    m_Bits: 3968
+    m_Bits: 12160
   _collider2D: {fileID: 2895026074993618345}
 --- !u!114 &7173850988963149014
 MonoBehaviour:

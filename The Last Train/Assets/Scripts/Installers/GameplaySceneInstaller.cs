@@ -21,18 +21,6 @@ namespace TLT.Installers
       Container.Bind<CinemachinePositionComposer>().FromComponentInHierarchy().AsSingle().NonLazy();
 
       Container.Bind<Character>().FromComponentInHierarchy().AsSingle().NonLazy();
-
-
-
-      /*Container.Bind<Waypoints>().FromComponentInHierarchy().AsSingle().NonLazy();
-
-      Container.Bind<WaveManager>().FromComponentInHierarchy().AsSingle().NonLazy();
-
-      Container.Bind<PlayerHomeBase>().FromComponentInHierarchy().AsSingle().NonLazy();
-
-      Container.Bind<BuildInputManager>().FromComponentInHierarchy().AsSingle().NonLazy();
-
-      Container.Bind<PanelController>().FromComponentInHierarchy().AsSingle().NonLazy();*/
     }
   }
 }
