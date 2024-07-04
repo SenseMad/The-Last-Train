@@ -62,6 +62,15 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Lantern"",
+                    ""type"": ""Button"",
+                    ""id"": ""f8ccda02-5945-47bf-bca0-d06921849417"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -205,6 +214,17 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Recharge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e90d3a7d-70f3-4223-9aec-ac8786c5e74a"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Lantern"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -444,6 +464,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
         m_Player_Shooting = m_Player.FindAction("Shooting", throwIfNotFound: true);
         m_Player_Recharge = m_Player.FindAction("Recharge", throwIfNotFound: true);
         m_Player_Select = m_Player.FindAction("Select", throwIfNotFound: true);
+        m_Player_Lantern = m_Player.FindAction("Lantern", throwIfNotFound: true);
         // Vehicle
         m_Vehicle = asset.FindActionMap("Vehicle", throwIfNotFound: true);
         m_Vehicle_Move = m_Vehicle.FindAction("Move", throwIfNotFound: true);
@@ -519,6 +540,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Shooting;
     private readonly InputAction m_Player_Recharge;
     private readonly InputAction m_Player_Select;
+    private readonly InputAction m_Player_Lantern;
     public struct PlayerActions
     {
         private @AI_Player m_Wrapper;
@@ -527,6 +549,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
         public InputAction @Shooting => m_Wrapper.m_Player_Shooting;
         public InputAction @Recharge => m_Wrapper.m_Player_Recharge;
         public InputAction @Select => m_Wrapper.m_Player_Select;
+        public InputAction @Lantern => m_Wrapper.m_Player_Lantern;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -548,6 +571,9 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
             @Select.started += instance.OnSelect;
             @Select.performed += instance.OnSelect;
             @Select.canceled += instance.OnSelect;
+            @Lantern.started += instance.OnLantern;
+            @Lantern.performed += instance.OnLantern;
+            @Lantern.canceled += instance.OnLantern;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -564,6 +590,9 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
             @Select.started -= instance.OnSelect;
             @Select.performed -= instance.OnSelect;
             @Select.canceled -= instance.OnSelect;
+            @Lantern.started -= instance.OnLantern;
+            @Lantern.performed -= instance.OnLantern;
+            @Lantern.canceled -= instance.OnLantern;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -729,6 +758,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
         void OnShooting(InputAction.CallbackContext context);
         void OnRecharge(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
+        void OnLantern(InputAction.CallbackContext context);
     }
     public interface IVehicleActions
     {

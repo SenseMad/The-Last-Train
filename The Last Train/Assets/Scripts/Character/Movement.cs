@@ -51,12 +51,12 @@ namespace TLT.CharacterManager
       float moveVelocity = _speedWalking * character.InputHandler.GetInputHorizontal();
 
       // Проверяем направление взгляда персонажа
-      bool facingRight = transform.localRotation.eulerAngles.y == 0;
+      /*bool facingRight = transform.localRotation.eulerAngles.y == 0;
       //bool facingRight = ;
       // Определяем, движется ли персонаж задом
       bool isMovingBackward = (facingRight && moveVelocity < 0) || (!facingRight && moveVelocity > 0);
       if (isMovingBackward)
-        moveVelocity *= _walkingMultiplierBackwards;
+        moveVelocity *= _walkingMultiplierBackwards;*/
 
       Vector2 targetVelocity = new(moveVelocity, Rigidbody2D.velocity.y);
 

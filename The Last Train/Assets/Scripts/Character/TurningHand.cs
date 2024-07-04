@@ -18,6 +18,10 @@ namespace TLT.CharacterManager
 
     //===================================
 
+    public int Turn { get; private set; }
+
+    //===================================
+
     [Inject]
     private void Construct(Character parCharacter)
     {
@@ -62,7 +66,10 @@ namespace TLT.CharacterManager
       _handPivot.rotation = Quaternion.Slerp(_handPivot.rotation, targetRotation, Time.unscaledDeltaTime * 20f);
 
       Vector3 localScale = _handPivot.localScale;
-      localScale.y = isMouseOnRightSide ? 1 : -1;
+
+      Turn = isMouseOnRightSide ? 1 : -1;
+      localScale.y = Turn;
+
       _handPivot.localScale = localScale;
     }
 

@@ -17,6 +17,8 @@ namespace TLT.CharacterManager
 
     [SerializeField] private WeaponController _weaponController;
 
+    [SerializeField] private CharacterDialog _characterDialog;
+
     //-----------------------------------
 
     private Interaction interaction;
@@ -38,6 +40,8 @@ namespace TLT.CharacterManager
     public InputHandler InputHandler { get; private set; }
 
     public Animator Animator { get; private set; }
+
+    public CharacterDialog CharacterDialog { get => _characterDialog; private set => _characterDialog = value; }
 
     public CinemachineCamera CinemachineCamera { get; set; }
     public CinemachinePositionComposer CinemachinePositionComposer { get; set; }
@@ -87,6 +91,8 @@ namespace TLT.CharacterManager
       MainCamera = Camera.main;
 
       Animator = GetComponent<Animator>();
+
+      CharacterDialog = GetComponent<CharacterDialog>();
 
       interaction = GetComponent<Interaction>();
     }

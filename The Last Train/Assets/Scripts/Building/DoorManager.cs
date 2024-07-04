@@ -29,7 +29,9 @@ namespace TLT.InteractionObjects
     {
       OnDoorOpen?.Invoke();
 
-      _openDoor.SetActive(true);
+      if (_openDoor != null)
+        _openDoor.SetActive(true);
+
       gameObject.SetActive(false);
     }
 
