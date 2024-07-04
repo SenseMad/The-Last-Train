@@ -3966,6 +3966,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5383227496248160715, guid: da7d1f73347c8334f8f9b58b010fcf32, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383227496248160715, guid: da7d1f73347c8334f8f9b58b010fcf32, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383227496248160715, guid: da7d1f73347c8334f8f9b58b010fcf32, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6007332903318733458, guid: da7d1f73347c8334f8f9b58b010fcf32, type: 3}
       propertyPath: Target.TrackingTarget
       value: 
