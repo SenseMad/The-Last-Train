@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: e7adde394dacc0c4f9e497e8785bc446
+guid: c15bdeb615d469b4d84dddee280219d3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 838323768912226874
-    second: enter_point_0
-  - first:
-      213: -198673482939230488
-    second: enter_point_1
-  - first:
-      213: -4478929124569803982
-    second: enter_point_2
-  - first:
-      213: 3393658892608496589
-    second: enter_point_3
-  - first:
-      213: 2299819527755774234
-    second: enter_point_4
+      213: 5266067843512441219
+    second: ladder_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -89,7 +77,7 @@ TextureImporter:
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
-    crunchedCompression: 1
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -112,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: enter_point_0
+      name: ladder_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 8
-        height: 26
+        width: 32
+        height: 115
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,92 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a3aa7c4b60352ab00800000000000000
-      internalID: 838323768912226874
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: enter_point_1
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 0
-        width: 8
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f5b7b48025d37c845adfd6f47a91eea0
-      internalID: -198673482939230488
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: enter_point_2
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 8
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3b131365a53ab0540a9fbf7020f6f534
-      internalID: -4478929124569803982
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: enter_point_3
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 0
-        width: 8
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e7365401e3b4d4545a58c2ba830b14a6
-      internalID: 3393658892608496589
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: enter_point_4
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 8
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8420d4df2a1034b4e8f2062b740d40ea
-      internalID: 2299819527755774234
+      spriteID: 3899aa78dc4d41940800000000000000
+      internalID: 5266067843512441219
       vertices: []
       indices: 
       edges: []
@@ -219,7 +123,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 49f439d266bf87140bbf9b8f0ae82a64
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -227,11 +131,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      enter_point_0: 838323768912226874
-      enter_point_1: -198673482939230488
-      enter_point_2: -4478929124569803982
-      enter_point_3: 3393658892608496589
-      enter_point_4: 2299819527755774234
+      ladder_0: 5266067843512441219
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

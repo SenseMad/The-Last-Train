@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using TLT.InteractionObjects;
+using System;
 
 namespace TLT.Building
 {
@@ -22,6 +23,10 @@ namespace TLT.Building
     //===================================
 
     public bool IsRoomOpen { get; private set; }
+
+    //===================================
+
+    public event Action OnOpenRoom;
 
     //===================================
 
@@ -63,6 +68,13 @@ namespace TLT.Building
 
       StartCoroutine(FadeOut());
     }
+
+    public void ActionOnOpenRoom()
+    {
+      OnOpenRoom?.Invoke();
+    }
+
+    //===================================
 
     private void SpawnItems()
     {

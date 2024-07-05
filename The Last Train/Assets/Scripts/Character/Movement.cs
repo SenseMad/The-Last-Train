@@ -48,6 +48,9 @@ namespace TLT.CharacterManager
 
     private void Move()
     {
+      if (!character.InputHandler.IsInputHorizontal)
+        return;
+
       float moveVelocity = _speedWalking * character.InputHandler.GetInputHorizontal();
 
       // ѕровер€ем направление взгл€да персонажа

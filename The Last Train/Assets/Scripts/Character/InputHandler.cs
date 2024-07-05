@@ -7,6 +7,10 @@ namespace TLT.Input
   {
     public AI_Player AI_Player { get; private set; }
 
+    public bool IsInputHorizontal { get; set; } = true;
+
+    public bool IsInputVertical { get; set; } = true;
+
     //===================================
 
     private void Awake()
@@ -40,12 +44,12 @@ namespace TLT.Input
 
     public int GetInputVertical()
     {
-      return CanInput() ? Mathf.RoundToInt(AI_Player.Player.Move.ReadValue<Vector2>().y) : 0;
+      return CanInput() && IsInputVertical ? Mathf.RoundToInt(AI_Player.Player.Move.ReadValue<Vector2>().y) : 0;
     }
 
     public int GetInputHorizontal()
     {
-      return CanInput() ? Mathf.RoundToInt(AI_Player.Player.Move.ReadValue<Vector2>().x) : 0;
+      return CanInput() && IsInputHorizontal ? Mathf.RoundToInt(AI_Player.Player.Move.ReadValue<Vector2>().x) : 0;
     }
 
     public int GetInputVehicle()

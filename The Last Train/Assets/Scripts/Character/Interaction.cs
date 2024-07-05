@@ -14,6 +14,8 @@ namespace TLT.CharacterManager
 
     [SerializeField] private LayerMask _layerMask;
 
+    [SerializeField] private Character _character;
+
     //-----------------------------------
 
     /*private List<ObjectInteraction> objectInteractions = new();
@@ -58,14 +60,14 @@ namespace TLT.CharacterManager
       Vector3 topCenter = new(center.x, boxCollider2D.bounds.max.y);
       Vector3 bottomCenter = new(center.x, boxCollider2D.bounds.min.y);
 
-      /*Debug.DrawLine(center, center + transform.right * _maxDistance, Color.green);
-      Debug.DrawLine(topCenter, topCenter + transform.right * _maxDistance, Color.green);
-      Debug.DrawLine(bottomCenter, bottomCenter + transform.right * _maxDistance, Color.green);*/
+      Debug.DrawLine(center, center + transform.right * _character.Direction * _maxDistance, Color.green);
+      Debug.DrawLine(topCenter, topCenter + transform.right * _character.Direction * _maxDistance, Color.green);
+      Debug.DrawLine(bottomCenter, bottomCenter + transform.right * _character.Direction * _maxDistance, Color.green);
 
       Ray[] rays = new Ray[3];
-      rays[0] = new Ray(center, transform.right);
-      rays[1] = new Ray(topCenter, transform.right);
-      rays[2] = new Ray(bottomCenter, transform.right);
+      rays[0] = new Ray(center, transform.right * _character.Direction);
+      rays[1] = new Ray(topCenter, transform.right * _character.Direction);
+      rays[2] = new Ray(bottomCenter, transform.right * _character.Direction);
 
       RaycastHit2D[] hits = new RaycastHit2D[rays.Length];
       for (int i = 0; i < rays.Length; i++)
