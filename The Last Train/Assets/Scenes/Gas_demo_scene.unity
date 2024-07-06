@@ -2699,6 +2699,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: End_Room
       objectReference: {fileID: 0}
+    - target: {fileID: 5684236702180655053, guid: 297b408cd5597a9438ae3ffb2c511ba5, type: 3}
+      propertyPath: _nameScene
+      value: Street_demo_scene
+      objectReference: {fileID: 0}
     - target: {fileID: 8467042766867036575, guid: 297b408cd5597a9438ae3ffb2c511ba5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 42.075

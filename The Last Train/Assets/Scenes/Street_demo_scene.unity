@@ -9522,7 +9522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec8a4fb76ab11834c964a695d0aa7c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nameScene: Room_1
+  _nameScene: Gas_demo_scene
 --- !u!1001 &2078027969
 PrefabInstance:
   m_ObjectHideFlags: 0
