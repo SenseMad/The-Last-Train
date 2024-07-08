@@ -37,107 +37,11 @@ namespace TLT.Vehicles.Bike
 
     //===================================
 
-    private void Start()
-    {
-      //Vector2 boxCenter = _boxCollider2D.bounds.center;
-      //Vector2 boxExtents = _boxCollider2D.bounds.extents;
-    }
-
     private void Update()
     {
       RayForward();
 
       LowerCollider();
-      /*Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 1.2f, _enemyLayer);
-
-      foreach (var hitCollider in hitColliders)
-      {
-        if (hitCollider.TryGetComponent(out EnemyAgent parEnemyAgent))
-        {
-          if (_bikeManager.Grounded || _bikeManager.OnlyFrontGrounded)
-          {
-            parEnemyAgent.Health.TakeHealth(1);
-            _character.Health.TakeHealth(1);
-            _bikeController.Animator.SetTrigger("IsHurt");
-            return;
-          }
-
-          if (_bikeManager.OnlyBackGrounded)
-          {
-            parEnemyAgent.Health.TakeHealth(1);
-            return;
-          }
-
-          if (!_bikeManager.OnlyBackGrounded && !_bikeManager.OnlyFrontGrounded && !_bikeManager.Grounded)
-          {
-            parEnemyAgent.Health.InstantlyKill();
-            return;
-          }
-        }
-      }*/
-    }
-
-    /*private void OnTriggerEnter2D(Collider2D collision)
-    {
-      if (!collision.TryGetComponent(out EnemyAgent parEnemyAgent))
-        return;
-
-      if (_bikeManager.Grounded || _bikeManager.OnlyFrontGrounded)
-      {
-        parEnemyAgent.Health.TakeHealth(1);
-        _character.Health.TakeHealth(1);
-        _bikeController.Animator.SetTrigger("IsHurt");
-        return;
-      }
-
-      if (_bikeManager.OnlyBackGrounded)
-      {
-        parEnemyAgent.Health.TakeHealth(1);
-        return;
-      }
-
-      if (!_bikeManager.OnlyBackGrounded && !_bikeManager.OnlyFrontGrounded && !_bikeManager.Grounded)
-      {
-        parEnemyAgent.Health.InstantlyKill();
-        return;
-      }
-    }*/
-
-    //===================================
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-      /*if (!collision.collider.TryGetComponent(out EnemyAgent parEnemyAgent))
-        return;
-
-      if (!_bikeController.IsInCar)
-        return;
-
-      if (_bikeBody.BodyRB.velocity.x > 0)
-      {
-        if (_bikeManager.Grounded || _bikeManager.OnlyFrontGrounded)
-        {
-          parEnemyAgent.TypeDeath("IsDeathSpeed");
-          parEnemyAgent.ApplyDamage(1);
-          character.ApplyDamage(1);
-          _bikeController.Animator.SetTrigger("IsHurt");
-          return;
-        }
-
-        if (_bikeManager.OnlyBackGrounded)
-        {
-          parEnemyAgent.TypeDeath("IsDeath");
-          parEnemyAgent.ApplyDamage(1);
-          return;
-        }
-      }
-
-      if (!_bikeManager.Grounded)
-      {
-        parEnemyAgent.TypeDeath("IsDeathLanding");
-        parEnemyAgent.Health.InstantlyKill();
-        return;
-      }*/
     }
 
     //===================================
