@@ -11258,16 +11258,17 @@ GameObject:
   - component: {fileID: 8299138232894702852}
   - component: {fileID: 7928152939656815899}
   - component: {fileID: 9023050414026563405}
-  - component: {fileID: 4831781136932504671}
-  - component: {fileID: 2614396439637677190}
-  - component: {fileID: 7132880636264782937}
   - component: {fileID: 4675658687578974259}
   - component: {fileID: 3910064183379469805}
   - component: {fileID: 5890795618628647388}
+  - component: {fileID: 4831781136932504671}
+  - component: {fileID: 2614396439637677190}
+  - component: {fileID: 7132880636264782937}
   - component: {fileID: 2923761929204130249}
   - component: {fileID: 8560565328725643382}
   - component: {fileID: 7173850988963149014}
   - component: {fileID: 2562509473541278957}
+  - component: {fileID: 6050333319741187024}
   m_Layer: 10
   m_Name: Moto
   m_TagString: Untagged
@@ -11400,62 +11401,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &4831781136932504671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8810085334441422386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33d09c711f6f0a147bb6e1ff6db354f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _frontWheel: {fileID: 8350227237547349670}
-  _backWheel: {fileID: 8056398815630092963}
-  _direction: 1
---- !u!114 &2614396439637677190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8810085334441422386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1bd88adf768c6b4ebd73c9c3efb2085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bikeBody: {fileID: 7132880636264782937}
---- !u!114 &7132880636264782937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8810085334441422386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd878a9532e579642b6cbaab8c76b7d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bikeController: {fileID: 2614396439637677190}
-  _bikeManager: {fileID: 4831781136932504671}
-  _weaponController: {fileID: 3618918006485212050}
-  _bikeData:
-    _bodyForce: 200
-    _maxVelocity: 14
-    _defaultForceBrakeSpeed: 50
-    _wheelieTorque: 50
-    _spinTorque: 50
-    _balanceStrength: 1
-    _maxAngularVelocity: 5
-    _tempBalanceSignTime: 0.3
-  _objectInteraction: {fileID: 3191153645901092021}
-  _objectBody: {fileID: 1009863503135099283}
-  _objectCharacterBody: {fileID: 1962695269391544700}
-  _dustAnimator: {fileID: 41677016844447467}
 --- !u!95 &4675658687578974259
 Animator:
   serializedVersion: 7
@@ -11528,6 +11473,62 @@ WheelJoint2D:
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
+--- !u!114 &4831781136932504671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810085334441422386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d09c711f6f0a147bb6e1ff6db354f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frontWheel: {fileID: 8350227237547349670}
+  _backWheel: {fileID: 8056398815630092963}
+  _direction: 1
+--- !u!114 &2614396439637677190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810085334441422386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1bd88adf768c6b4ebd73c9c3efb2085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bikeBody: {fileID: 7132880636264782937}
+--- !u!114 &7132880636264782937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810085334441422386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd878a9532e579642b6cbaab8c76b7d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bikeController: {fileID: 2614396439637677190}
+  _bikeManager: {fileID: 4831781136932504671}
+  _weaponController: {fileID: 3618918006485212050}
+  _bikeData:
+    _bodyForce: 200
+    _maxVelocity: 14
+    _defaultForceBrakeSpeed: 50
+    _wheelieTorque: 50
+    _spinTorque: 50
+    _balanceStrength: 1
+    _maxAngularVelocity: 5
+    _tempBalanceSignTime: 0.3
+  _objectInteraction: {fileID: 3191153645901092021}
+  _objectBody: {fileID: 1009863503135099283}
+  _objectCharacterBody: {fileID: 1962695269391544700}
+  _dustAnimator: {fileID: 41677016844447467}
 --- !u!114 &2923761929204130249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11602,6 +11603,18 @@ MonoBehaviour:
   _boxCollider2D: {fileID: 4445895288986485156}
   _lowerBoxCollider: {fileID: 8035214214223488665}
   _rayDistanceForward: 0.25
+--- !u!114 &6050333319741187024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810085334441422386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10db009c17410d84ba16c01852eff3e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8842972170002813065
 GameObject:
   m_ObjectHideFlags: 0

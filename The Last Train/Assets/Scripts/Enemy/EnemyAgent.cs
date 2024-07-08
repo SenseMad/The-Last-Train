@@ -369,14 +369,6 @@ namespace TLT.Enemy
               targetAttactRadius = true;
               return true;
             }
-            /*if (parBikeController.Character == null)
-              return false;
-
-            if (parBikeController == collider.GetComponent<BikeController>())
-            {
-              targetAttactRadius = true;
-              return true;
-            }*/
           }
         }
       }

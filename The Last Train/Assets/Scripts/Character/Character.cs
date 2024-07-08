@@ -8,10 +8,13 @@ using TLT.HealthManager;
 using TLT.Interfaces;
 using TLT.Weapons;
 using TLT.CameraManager;
+using TLT.Save;
+using System.Collections.Generic;
+using TLT.Json;
 
 namespace TLT.CharacterManager
 {
-  public class Character : MonoBehaviour, IDamageable
+  public class Character : MonoBehaviour, IDamageable, ISaveLoad
   {
     [SerializeField] private Health _health;
 
@@ -28,10 +31,6 @@ namespace TLT.CharacterManager
     private LevelManager levelManager;
 
     private int direction = 1;
-
-    /*public float transitionSpeed = 2.0f;
-    private Vector2 targetScreenPosition;
-    private Vector2 currentScreenPosition;*/
 
     //===================================
 
@@ -59,8 +58,6 @@ namespace TLT.CharacterManager
       {
         direction = value;
         cameraController.ChangeDirection(value);
-        //targetScreenPosition = new(-0.25f * value, 0.2f);
-        //CinemachinePositionComposer.Composition.ScreenPosition = new(-0.25f * value, 0.2f);
       }
     }
 
@@ -131,9 +128,6 @@ namespace TLT.CharacterManager
     private void Update()
     {
       IsTakeDamage = false;
-
-      /*currentScreenPosition = Vector2.Lerp(currentScreenPosition, targetScreenPosition, Time.deltaTime * transitionSpeed);
-      CinemachinePositionComposer.Composition.ScreenPosition = currentScreenPosition;*/
     }
 
     //===================================
@@ -196,6 +190,57 @@ namespace TLT.CharacterManager
     {
       if (Animator != null)
         Animator.SetTrigger("IsTakeDamage");
+    }
+
+    //===================================
+
+    public void SaveData(Dictionary<string, Dictionary<string, object>> parData)
+    {
+      Vector3 position = transform.position;
+      Vector3 rotation = transform.rotation.eulerAngles;
+      Vector3 scale = transform.localScale;
+
+      if (!parData.ContainsKey("Character"))
+        parData.Add("Character", new Dictionary<string, object>());
+
+      parData["Character"][BikeKeySaveLoad.POSITION_KEY] = new float[] { position.x, position.y, position.z };
+      parData["Character"][BikeKeySaveLoad.ROTATION_KEY] = new float[] { rotation.x, rotation.y, rotation.z };
+      parData["Character"][BikeKeySaveLoad.SCALE_KEY] = new float[] { scale.x, scale.y, scale.z };
+      parData["Character"][BikeKeySaveLoad.DIRECTION_KEY] = Direction;
+    }
+
+    public void LoadData(Dictionary<string, Dictionary<string, object>> parData)
+    {
+      if (parData.TryGetValue("Character", out Dictionary<string, object> parObject))
+      {
+        if (parObject.TryGetValue(BikeKeySaveLoad.POSITION_KEY, out object parPosition))
+        {
+          Vector3 position = ConvertJson.ConvertFromJsonToVector3(parPosition);
+
+          transform.position = position;
+        }
+
+        if (parObject.TryGetValue(BikeKeySaveLoad.ROTATION_KEY, out object parRotation))
+        {
+          Vector3 rotation = ConvertJson.ConvertFromJsonToVector3(parRotation);
+
+          transform.rotation = Quaternion.Euler(rotation);
+        }
+
+        if (parObject.TryGetValue(BikeKeySaveLoad.SCALE_KEY, out object parScale))
+        {
+          Vector3 scale = ConvertJson.ConvertFromJsonToVector3(parScale);
+
+          transform.localScale = scale;
+        }
+
+        if (parObject.TryGetValue(BikeKeySaveLoad.DIRECTION_KEY, out object parDirection))
+        {
+          string number = $"{parDirection}";
+
+          Direction = int.Parse(number);
+        }
+      }
     }
 
     //===================================

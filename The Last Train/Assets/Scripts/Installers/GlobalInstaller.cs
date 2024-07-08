@@ -1,7 +1,7 @@
 using Zenject;
 
 using TLT.Input;
-using TLT.CharacterManager;
+using TLT.Save;
 
 namespace TLT.Installers
 {
