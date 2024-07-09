@@ -97,7 +97,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   _duration: 0.3
-  _power: 3
+  _power: 2
   _delayShoot: 0.4
 --- !u!95 &8383268765779806870
 Animator:
