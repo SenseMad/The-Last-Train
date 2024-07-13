@@ -1,0 +1,639 @@
+fileFormatVersion: 2
+guid: 5bf96fcef268fb242adccc67fd3057b3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1332607468302243278
+    second: up_road_2_down_fg_0
+  - first:
+      213: 5413867886216088447
+    second: up_road_2_down_fg_1
+  - first:
+      213: 7354928837988434340
+    second: up_road_2_down_fg_2
+  - first:
+      213: -5905258696709925934
+    second: up_road_2_down_fg_3
+  - first:
+      213: -1501044684262594026
+    second: up_road_2_down_fg_4
+  - first:
+      213: -7656496866229660386
+    second: up_road_2_down_fg_5
+  - first:
+      213: -4316576041968050127
+    second: up_road_2_down_fg_6
+  - first:
+      213: 8101976715406046765
+    second: up_road_2_down_fg_7
+  - first:
+      213: 6365395449012219662
+    second: up_road_2_down_fg_8
+  - first:
+      213: -1122511074221837091
+    second: up_road_2_down_fg_9
+  - first:
+      213: -3028246913204787936
+    second: up_road_2_down_fg_10
+  - first:
+      213: -5293857676921058518
+    second: up_road_2_down_fg_11
+  - first:
+      213: -4191396077601184
+    second: up_road_2_down_fg_12
+  - first:
+      213: -295003027259467932
+    second: up_road_2_down_fg_13
+  - first:
+      213: 4234243501151108063
+    second: up_road_2_down_fg_14
+  - first:
+      213: 7258617273775897806
+    second: up_road_2_down_fg_15
+  - first:
+      213: 8336502869764991036
+    second: up_road_2_down_fg_16
+  - first:
+      213: -7413672838194803685
+    second: up_road_2_down_fg_17
+  - first:
+      213: -8839361712928083728
+    second: up_road_2_down_fg_18
+  - first:
+      213: -8232630470635763461
+    second: up_road_2_down_fg_19
+  - first:
+      213: 1195911757625567652
+    second: up_road_2_down_fg_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 23
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: up_road_2_down_fg_0
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 0
+        width: 26
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23aefca6190a18de0800000000000000
+      internalID: -1332607468302243278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_1
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 0
+        width: 22
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7b0eca982ce12b40800000000000000
+      internalID: 5413867886216088447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_2
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 0
+        width: 22
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a1c3906fc4f11660800000000000000
+      internalID: 7354928837988434340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_3
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 0
+        width: 22
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d391d3b08e4c0ea0800000000000000
+      internalID: -5905258696709925934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_4
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 0
+        width: 22
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61a2a8200d73b2be0800000000000000
+      internalID: -1501044684262594026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_5
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 0
+        width: 22
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e155d708aa8aeb590800000000000000
+      internalID: -7656496866229660386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_6
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 0
+        width: 22
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1306884c5f07814c0800000000000000
+      internalID: -4316576041968050127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_7
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 0
+        width: 22
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d26734485e0007070800000000000000
+      internalID: 8101976715406046765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_8
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 0
+        width: 22
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0fe2418f6d665850800000000000000
+      internalID: 6365395449012219662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_9
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 0
+        width: 22
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd4b094102a0c60f0800000000000000
+      internalID: -1122511074221837091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_10
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 0
+        width: 32
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 025614e0a7189f5d0800000000000000
+      internalID: -3028246913204787936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_11
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 0
+        width: 22
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2b45abad707886b0800000000000000
+      internalID: -5293857676921058518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_12
+      rect:
+        serializedVersion: 2
+        x: 1069
+        y: 0
+        width: 22
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06e7ead82fb11fff0800000000000000
+      internalID: -4191396077601184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_13
+      rect:
+        serializedVersion: 2
+        x: 1149
+        y: 0
+        width: 22
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 467d8884f40f7ebf0800000000000000
+      internalID: -295003027259467932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_14
+      rect:
+        serializedVersion: 2
+        x: 1229
+        y: 0
+        width: 22
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdb3e92c70e03ca30800000000000000
+      internalID: 4234243501151108063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_15
+      rect:
+        serializedVersion: 2
+        x: 1309
+        y: 0
+        width: 22
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecc3de3e3f9cbb460800000000000000
+      internalID: 7258617273775897806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_16
+      rect:
+        serializedVersion: 2
+        x: 1389
+        y: 0
+        width: 22
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c38ed5df03531b370800000000000000
+      internalID: 8336502869764991036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_17
+      rect:
+        serializedVersion: 2
+        x: 1469
+        y: 0
+        width: 22
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1ccf6e35d75d1990800000000000000
+      internalID: -7413672838194803685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_18
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 0
+        width: 22
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f0bbb3ea57445580800000000000000
+      internalID: -8839361712928083728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_19
+      rect:
+        serializedVersion: 2
+        x: 1629
+        y: 0
+        width: 22
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf8c2be8432dfbd80800000000000000
+      internalID: -8232630470635763461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: up_road_2_down_fg_20
+      rect:
+        serializedVersion: 2
+        x: 1709
+        y: 0
+        width: 22
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a92cf7486bb89010800000000000000
+      internalID: 1195911757625567652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      up_road_2_down_fg_0: -1332607468302243278
+      up_road_2_down_fg_1: 5413867886216088447
+      up_road_2_down_fg_10: -3028246913204787936
+      up_road_2_down_fg_11: -5293857676921058518
+      up_road_2_down_fg_12: -4191396077601184
+      up_road_2_down_fg_13: -295003027259467932
+      up_road_2_down_fg_14: 4234243501151108063
+      up_road_2_down_fg_15: 7258617273775897806
+      up_road_2_down_fg_16: 8336502869764991036
+      up_road_2_down_fg_17: -7413672838194803685
+      up_road_2_down_fg_18: -8839361712928083728
+      up_road_2_down_fg_19: -8232630470635763461
+      up_road_2_down_fg_2: 7354928837988434340
+      up_road_2_down_fg_20: 1195911757625567652
+      up_road_2_down_fg_3: -5905258696709925934
+      up_road_2_down_fg_4: -1501044684262594026
+      up_road_2_down_fg_5: -7656496866229660386
+      up_road_2_down_fg_6: -4316576041968050127
+      up_road_2_down_fg_7: 8101976715406046765
+      up_road_2_down_fg_8: 6365395449012219662
+      up_road_2_down_fg_9: -1122511074221837091
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
