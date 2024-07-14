@@ -22,7 +22,7 @@ namespace TLT.CharacterManager
 
     private ObjectInteraction _currentObjectInteraction;*/
 
-    private BoxCollider2D boxCollider2D;
+    private Collider2D collider2D;
 
     //===================================
 
@@ -32,7 +32,7 @@ namespace TLT.CharacterManager
 
     private void Awake()
     {
-      boxCollider2D = GetComponent<BoxCollider2D>();
+      collider2D = GetComponent<Collider2D>();
     }
 
     private void OnEnable()
@@ -56,9 +56,9 @@ namespace TLT.CharacterManager
 
     private void CheckForObjectsInSight()
     {
-      Vector3 center = boxCollider2D.bounds.center;
-      Vector3 topCenter = new(center.x, boxCollider2D.bounds.max.y);
-      Vector3 bottomCenter = new(center.x, boxCollider2D.bounds.min.y);
+      Vector3 center = collider2D.bounds.center;
+      Vector3 topCenter = new(center.x, collider2D.bounds.max.y);
+      Vector3 bottomCenter = new(center.x, collider2D.bounds.min.y);
 
       Debug.DrawLine(center, center + transform.right * _character.Direction * _maxDistance, Color.green);
       Debug.DrawLine(topCenter, topCenter + transform.right * _character.Direction * _maxDistance, Color.green);

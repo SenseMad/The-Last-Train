@@ -9,8 +9,9 @@ using TLT.Interfaces;
 using TLT.Weapons;
 using TLT.CameraManager;
 using TLT.Save;
-using System.Collections.Generic;
-using TLT.Json;
+using TLT.Data;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace TLT.CharacterManager
 {
@@ -97,6 +98,8 @@ namespace TLT.CharacterManager
     private void Start()
     {
       Direction = 1;
+
+      Time.timeScale = 1;
     }
 
     private void OnEnable()
@@ -194,52 +197,48 @@ namespace TLT.CharacterManager
 
     //===================================
 
-    public void SaveData(Dictionary<string, Dictionary<string, object>> parData)
+    public ObjectData SaveData()
     {
-      Vector3 position = transform.position;
+      string objectName = transform.name;
       Vector3 rotation = transform.rotation.eulerAngles;
+      Vector3 position = transform.position;
       Vector3 scale = transform.localScale;
 
-      if (!parData.ContainsKey("Character"))
-        parData.Add("Character", new Dictionary<string, object>());
+      ObjectData data = new(objectName);
+      data.Parameters["Position"] = new float[] { position.x, position.y, position.z };
+      data.Parameters["Rotation"] = new float[] { rotation.x, rotation.y, rotation.z };
+      data.Parameters["Scale"] = new float[] { scale.x, scale.y, scale.z };
 
-      parData["Character"][BikeKeySaveLoad.POSITION_KEY] = new float[] { position.x, position.y, position.z };
-      parData["Character"][BikeKeySaveLoad.ROTATION_KEY] = new float[] { rotation.x, rotation.y, rotation.z };
-      parData["Character"][BikeKeySaveLoad.SCALE_KEY] = new float[] { scale.x, scale.y, scale.z };
-      parData["Character"][BikeKeySaveLoad.DIRECTION_KEY] = Direction;
+      return data;
     }
 
-    public void LoadData(Dictionary<string, Dictionary<string, object>> parData)
+    public void LoadData(ObjectData parObjectData)
     {
-      if (parData.TryGetValue("Character", out Dictionary<string, object> parObject))
+      if (parObjectData.ObjectName == gameObject.name)
       {
-        if (parObject.TryGetValue(BikeKeySaveLoad.POSITION_KEY, out object parPosition))
-        {
-          Vector3 position = ConvertJson.ConvertFromJsonToVector3(parPosition);
+        LoadTransform(parObjectData);
+      }
+    }
 
-          transform.position = position;
-        }
+    //===================================
 
-        if (parObject.TryGetValue(BikeKeySaveLoad.ROTATION_KEY, out object parRotation))
-        {
-          Vector3 rotation = ConvertJson.ConvertFromJsonToVector3(parRotation);
+    private void LoadTransform(ObjectData parData)
+    {
+      if (parData.Parameters.TryGetValue("Position", out var position) && position is JArray positionArray)
+      {
+        transform.position = new Vector3(positionArray[0].ToObject<float>(), positionArray[1].ToObject<float>(), positionArray[2].ToObject<float>());
+      }
 
-          transform.rotation = Quaternion.Euler(rotation);
-        }
+      if (parData.Parameters.TryGetValue("Rotation", out var rotation) && rotation is JArray rotationArray)
+      {
+        transform.rotation = Quaternion.Euler(rotationArray[0].ToObject<float>(), rotationArray[1].ToObject<float>(), rotationArray[2].ToObject<float>());
+      }
 
-        if (parObject.TryGetValue(BikeKeySaveLoad.SCALE_KEY, out object parScale))
-        {
-          Vector3 scale = ConvertJson.ConvertFromJsonToVector3(parScale);
+      if (parData.Parameters.TryGetValue("Scale", out var scale) && scale is JArray scaleArray)
+      {
+        transform.localScale = new Vector3(scaleArray[0].ToObject<float>(), scaleArray[1].ToObject<float>(), scaleArray[2].ToObject<float>());
 
-          transform.localScale = scale;
-        }
-
-        if (parObject.TryGetValue(BikeKeySaveLoad.DIRECTION_KEY, out object parDirection))
-        {
-          string number = $"{parDirection}";
-
-          Direction = int.Parse(number);
-        }
+        Direction = scaleArray[0].ToObject<int>();
       }
     }
 

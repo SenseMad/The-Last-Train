@@ -10,12 +10,9 @@ namespace TLT.CharacterManager
   {
     [SerializeField, Min(0)] private float _climbSpeed;
 
-    [Space]
-    [SerializeField] private BoxCollider2D _boxCollider2D;
-
     //===================================
 
-    public BoxCollider2D BoxCollider2D { get => _boxCollider2D; set => _boxCollider2D = value; }
+    public Collider2D Collider2D { get; set; }
 
     //-----------------------------------
 
@@ -34,6 +31,8 @@ namespace TLT.CharacterManager
     private void Awake()
     {
       Character = GetComponent<Character>();
+
+      Collider2D = GetComponent<Collider2D>();
 
       Rigidbody2D = GetComponent<Rigidbody2D>();
     }
@@ -55,10 +54,10 @@ namespace TLT.CharacterManager
       if (Ladder == null)
         return;
 
-      if ((_boxCollider2D.bounds.min.y - 0.1f <= Ladder.BoxCollider.bounds.min.y || _boxCollider2D.bounds.min.y - 0.1f >= Ladder.BoxCollider.bounds.max.y) && IsLadder)
+      if ((Collider2D.bounds.min.y - 0.1f <= Ladder.BoxCollider.bounds.min.y || Collider2D.bounds.min.y - 0.1f >= Ladder.BoxCollider.bounds.max.y) && IsLadder)
       {
         Rigidbody2D.gravityScale = Gravity;
-        _boxCollider2D.isTrigger = false;
+        Collider2D.isTrigger = false;
         IsLadder = false;
         Character.InputHandler.IsInputHorizontal = true;
         return;
@@ -87,7 +86,7 @@ namespace TLT.CharacterManager
 
         Rigidbody2D.gravityScale = 0;
 
-        _boxCollider2D.isTrigger = true;
+        Collider2D.isTrigger = true;
       }
     }
 

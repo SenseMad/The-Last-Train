@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using TLT.Data;
 using UnityEngine;
 
 namespace TLT.Save
@@ -11,24 +11,32 @@ namespace TLT.Save
 
     private void Awake()
     {
-      saveLoadComponents = GetComponentsInChildren<ISaveLoad>();
+      saveLoadComponents = GetComponentsInChildren<ISaveLoad>(true);
     }
 
     //===================================
 
-    public void Save(Dictionary<string, Dictionary<string, object>> parData)
+    public ObjectData Save()
     {
+      if (saveLoadComponents == null)
+      {
+        Debug.Log($"{gameObject.name}");
+        return null;
+      }
+
       foreach (var component in saveLoadComponents)
       {
-        component.SaveData(parData);
+        return component.SaveData();
       }
+
+      return null;
     }
 
-    public void Load(Dictionary<string, Dictionary<string, object>> parData)
+    public void Load(ObjectData parObjectData)
     {
       foreach (var component in saveLoadComponents)
       {
-        component.LoadData(parData);
+        component.LoadData(parObjectData);
       }
     }
 

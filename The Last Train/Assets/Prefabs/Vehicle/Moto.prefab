@@ -5606,6 +5606,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentWeapon: {fileID: 484484301208353501}
+  _listWeapons:
+  - {fileID: 484484301208353501}
 --- !u!114 &8791571866450551739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10677,6 +10679,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae88c552c03df0d4fbc005a031fe6d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _index: 0
+  _name: 
   _weaponData:
     _damage: 1
     _distance: 25
@@ -11487,6 +11491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _frontWheel: {fileID: 8350227237547349670}
   _backWheel: {fileID: 8056398815630092963}
+  _bikeController: {fileID: 0}
   _direction: 1
 --- !u!114 &2614396439637677190
 MonoBehaviour:

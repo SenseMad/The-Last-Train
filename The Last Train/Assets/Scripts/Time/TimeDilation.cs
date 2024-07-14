@@ -26,6 +26,11 @@ namespace TLT.TimeDilation
 
     //===================================
 
+    private void Start()
+    {
+      Time.timeScale = 1;
+    }
+
     private void OnEnable()
     {
       inputHandler.AI_Player.Time.TimeDilation.performed += OnTimeDilation;

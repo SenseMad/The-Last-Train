@@ -51,7 +51,7 @@ namespace TLT.Vehicles.Bike
       if (!_bikeController.IsInCar)
         return;
 
-      if (_bikeBody.BodyRB.velocity.x < _bikeBody.BikeData.MaxVelocity / 3)
+      if (_bikeBody.BodyRB.velocity.x * _bikeManager.Direction < _bikeBody.BikeData.MaxVelocity / 3)
         return;
 
       Bounds bounds = _boxCollider2D.bounds;
@@ -115,7 +115,7 @@ namespace TLT.Vehicles.Bike
       if (!_bikeController.IsInCar)
         return;
 
-      if (_bikeBody.BodyRB.velocity.x < _bikeBody.BikeData.MaxVelocity / _bikeBody.BikeData.MaxVelocity)
+      if (_bikeBody.BodyRB.velocity.x * _bikeManager.Direction < _bikeBody.BikeData.MaxVelocity / _bikeBody.BikeData.MaxVelocity)
         return;
 
       Collider2D[] colliders = Physics2D.OverlapBoxAll(_lowerBoxCollider.bounds.center, _lowerBoxCollider.bounds.size, 0, _enemyLayer);

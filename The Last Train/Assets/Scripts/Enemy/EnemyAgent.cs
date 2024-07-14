@@ -1,13 +1,17 @@
 using UnityEngine;
+using Newtonsoft.Json.Linq;
+using System;
 
 using TLT.CharacterManager;
 using TLT.HealthManager;
 using TLT.Interfaces;
 using TLT.Vehicles.Bike;
+using TLT.Save;
+using TLT.Data;
 
 namespace TLT.Enemy
 {
-  public abstract class EnemyAgent : MonoBehaviour, IDamageable
+  public abstract class EnemyAgent : MonoBehaviour, IDamageable, ISaveLoad
   {
     [SerializeField] private float _speed = 5.0f;
 
@@ -15,7 +19,7 @@ namespace TLT.Enemy
 
     [SerializeField] private LayerMask _targetLayerMask;
 
-    [SerializeField] private BoxCollider2D _bodyBoxCollider2D;
+    [SerializeField] private Collider2D _collider2D;
 
     [Space(10)]
     [SerializeField] protected EnemyAttackData _enemyAttackData;
@@ -47,8 +51,6 @@ namespace TLT.Enemy
     private string typeDeath = "";
 
     //===================================
-
-    public BoxCollider2D BodyBoxCollider2D { get => _bodyBoxCollider2D; set => _bodyBoxCollider2D = value; }
 
     public GameObject Targetable { get; private set; }
 
@@ -122,14 +124,14 @@ namespace TLT.Enemy
       rigidbody2D.gravityScale = 0;
       rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
 
-      _bodyBoxCollider2D.enabled = false;
+      _collider2D.enabled = false;
 
-      Destroy(gameObject, 30f);
+      //Destroy(gameObject, 30f);
     }
 
     public void OnDeath()
     {
-      Destroy(gameObject, 30f);
+      //Destroy(gameObject, 30f);
     }
 
     public void TypeDeath(string parValue)
@@ -291,10 +293,10 @@ namespace TLT.Enemy
 
     private bool TargetSearch()
     {
-      if (_bodyBoxCollider2D == null)
+      if (_collider2D == null)
         return false;
 
-      Collider2D[] colliders = Physics2D.OverlapBoxAll(_bodyBoxCollider2D.bounds.center, new Vector2(_enemyAttackData.RangeVisibility.x, _enemyAttackData.RangeVisibility.y), 0, _targetLayerMask);
+      Collider2D[] colliders = Physics2D.OverlapBoxAll(_collider2D.bounds.center, new Vector2(_enemyAttackData.RangeVisibility.x, _enemyAttackData.RangeVisibility.y), 0, _targetLayerMask);
 
       if (colliders.Length == 0 || colliders == null)
       {
@@ -342,7 +344,7 @@ namespace TLT.Enemy
       if (Targetable == null)
         return false;
 
-      Collider2D[] colliders = Physics2D.OverlapCircleAll(_bodyBoxCollider2D.bounds.center, _enemyAttackData.AttackRadius, _targetLayerMask);
+      Collider2D[] colliders = Physics2D.OverlapCircleAll(_collider2D.bounds.center, _enemyAttackData.AttackRadius, _targetLayerMask);
 
       if (colliders.Length == 0 || colliders == null)
         return false;
@@ -398,14 +400,69 @@ namespace TLT.Enemy
 
     private void OnDrawGizmos()
     {
-      if (_bodyBoxCollider2D == null)
+      if (_collider2D == null)
         return;
 
       Gizmos.color = Color.yellow;
-      Gizmos.DrawWireCube(_bodyBoxCollider2D.bounds.center, new Vector2(_enemyAttackData.RangeVisibility.x, _enemyAttackData.RangeVisibility.y));
+      Gizmos.DrawWireCube(_collider2D.bounds.center, new Vector2(_enemyAttackData.RangeVisibility.x, _enemyAttackData.RangeVisibility.y));
 
       Gizmos.color = Color.blue;
-      Gizmos.DrawWireSphere(_bodyBoxCollider2D.bounds.center, _enemyAttackData.AttackRadius);
+      Gizmos.DrawWireSphere(_collider2D.bounds.center, _enemyAttackData.AttackRadius);
+    }
+
+    //===================================
+
+    public ObjectData SaveData()
+    {
+      string objectName = transform.name;
+      Vector3 rotation = transform.rotation.eulerAngles;
+      Vector3 position = transform.position;
+      Vector3 scale = transform.localScale;
+
+      ObjectData data = new(objectName);
+      data.Parameters["Position"] = new float[] { position.x, position.y, position.z };
+      data.Parameters["Rotation"] = new float[] { rotation.x, rotation.y, rotation.z };
+      data.Parameters["Scale"] = new float[] { scale.x, scale.y, scale.z };
+
+      data.Parameters["EnemyAIState"] = enemyAIState;
+
+      return data;
+    }
+
+    public void LoadData(ObjectData parObjectData)
+    {
+      if (parObjectData.ObjectName == transform.name)
+      {
+        LoadTransform(parObjectData);
+
+        if (parObjectData.Parameters.TryGetValue("EnemyAIState", out var parEnemyAIState) && parEnemyAIState is long || parEnemyAIState is int)
+        {
+          enemyAIState = (EnemyAIState)Convert.ToInt32(parEnemyAIState);
+
+          if (enemyAIState == EnemyAIState.Death)
+            gameObject.SetActive(false);
+        }
+      }
+    }
+
+    //===================================
+
+    private void LoadTransform(ObjectData parObjectData)
+    {
+      if (parObjectData.Parameters.TryGetValue("Position", out var position) && position is JArray positionArray)
+      {
+        transform.position = new Vector3(positionArray[0].ToObject<float>(), positionArray[1].ToObject<float>(), positionArray[2].ToObject<float>());
+      }
+
+      if (parObjectData.Parameters.TryGetValue("Rotation", out var rotation) && rotation is JArray rotationArray)
+      {
+        transform.rotation = Quaternion.Euler(rotationArray[0].ToObject<float>(), rotationArray[1].ToObject<float>(), rotationArray[2].ToObject<float>());
+      }
+
+      if (parObjectData.Parameters.TryGetValue("Scale", out var scale) && scale is JArray scaleArray)
+      {
+        transform.localScale = new Vector3(scaleArray[0].ToObject<float>(), scaleArray[1].ToObject<float>(), scaleArray[2].ToObject<float>());
+      }
     }
 
     //===================================

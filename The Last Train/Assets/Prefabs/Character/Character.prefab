@@ -79,6 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae88c552c03df0d4fbc005a031fe6d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _index: 0
+  _name: Pistol
   _weaponData:
     _damage: 1
     _distance: 25
@@ -257,6 +259,63 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &3395082806848826213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4941404039683413935}
+  - component: {fileID: 8758941099432502395}
+  - component: {fileID: 7854703059880787049}
+  m_Layer: 8
+  m_Name: PlayerSaveLoad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4941404039683413935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3395082806848826213}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1432199966041064503}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8758941099432502395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3395082806848826213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 812a2356cf0314d43912f9c48eb2dba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7854703059880787049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3395082806848826213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10db009c17410d84ba16c01852eff3e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3541788181460492696
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +822,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1432199966041064503}
-  - component: {fileID: 8045825796029430846}
+  - component: {fileID: 2365850447411917758}
   - component: {fileID: 4891575856100196324}
   - component: {fileID: 2713130902716006760}
   - component: {fileID: 3802194006949676974}
@@ -771,12 +830,12 @@ GameObject:
   - component: {fileID: 2481567293028341785}
   - component: {fileID: 2245665305328795447}
   - component: {fileID: 6357004960730266394}
-  - component: {fileID: 113803943148348202}
   - component: {fileID: 6858763270070747302}
   - component: {fileID: 2449498135343669186}
   - component: {fileID: 4328513508082929387}
   - component: {fileID: 3520460257126812804}
-  - component: {fileID: 7298538781621908635}
+  - component: {fileID: 3485383225463915408}
+  - component: {fileID: 113803943148348202}
   m_Layer: 8
   m_Name: Character
   m_TagString: Untagged
@@ -797,14 +856,15 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4941404039683413935}
   - {fileID: 5219816048008560885}
   - {fileID: 9089733844012722257}
   - {fileID: 7362652741443289984}
   - {fileID: 7863142234921232038}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &8045825796029430846
-BoxCollider2D:
+--- !u!70 &2365850447411917758
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -838,17 +898,8 @@ BoxCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.054}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 1}
-    newSize: {x: 0.5, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   m_Size: {x: 0.65, y: 1.5}
-  m_EdgeRadius: 0
+  m_Direction: 0
 --- !u!50 &4891575856100196324
 Rigidbody2D:
   serializedVersion: 4
@@ -967,28 +1018,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentWeapon: {fileID: 5333810414521029573}
---- !u!95 &113803943148348202
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9002570830947069459}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8b13a06e6b2d27a4cbf58a9518098ce3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  _listWeapons:
+  - {fileID: 5333810414521029573}
 --- !u!114 &6858763270070747302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1042,8 +1073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _climbSpeed: 5
-  _boxCollider2D: {fileID: 8045825796029430846}
---- !u!114 &7298538781621908635
+--- !u!114 &3485383225463915408
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1055,3 +1085,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10db009c17410d84ba16c01852eff3e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &113803943148348202
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9002570830947069459}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8b13a06e6b2d27a4cbf58a9518098ce3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

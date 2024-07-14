@@ -13,7 +13,7 @@ public class ObjectInteraction : MonoBehaviour
 
   //===================================
 
-  private void Awake()
+  protected virtual void Awake()
   {
     spriteOutline = GetComponent<SpriteOutline>();
   }

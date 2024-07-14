@@ -372,11 +372,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2312366322123500045}
   - component: {fileID: 3533547827175020506}
-  - component: {fileID: 6944881997759369647}
+  - component: {fileID: 1763965412789474669}
   - component: {fileID: 6917013736034338682}
-  - component: {fileID: 4300975457139126804}
   - component: {fileID: 806448496252535630}
   - component: {fileID: 7867446915273472483}
+  - component: {fileID: 4300975457139126804}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -449,8 +449,8 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.37, y: 0.42}
   m_EdgeRadius: 0
---- !u!61 &6944881997759369647
-BoxCollider2D:
+--- !u!70 &1763965412789474669
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -484,17 +484,8 @@ BoxCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.28}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.95652175, y: 1.8695652}
-    newSize: {x: 0.95652175, y: 1.8695652}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   m_Size: {x: 0.5, y: 1.47}
-  m_EdgeRadius: 0
+  m_Direction: 0
 --- !u!50 &6917013736034338682
 Rigidbody2D:
   serializedVersion: 4
@@ -522,6 +513,45 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &806448496252535630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6466821497900496853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70602cc3c27fa24f8aa82ed36e52df7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 2
+  _minFlipDistance: 0.2
+  _targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 1280
+  _collider2D: {fileID: 1763965412789474669}
+  _enemyAttackData:
+    _damage: 2
+    _rangeVisibility: {x: 10, y: 0.5}
+    _attackRadius: 0.35
+    _attackDelay: 0.4
+  _deathCollider: {fileID: 6049651350451201731}
+  _deathBikeSpeedCollider: {fileID: 5434506360012011406}
+  _deathBikeLandingCollider: {fileID: 7029588697770394290}
+--- !u!114 &7867446915273472483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6466821497900496853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d250d9a5a5535940acb8020ccc4f1e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 1
 --- !u!95 &4300975457139126804
 Animator:
   serializedVersion: 7
@@ -544,42 +574,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &806448496252535630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6466821497900496853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c70602cc3c27fa24f8aa82ed36e52df7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 2
-  _minFlipDistance: 0.2
-  _targetLayerMask:
-    serializedVersion: 2
-    m_Bits: 1280
-  _bodyBoxCollider2D: {fileID: 6944881997759369647}
-  _enemyAttackData:
-    _damage: 2
-    _rangeVisibility: {x: 10, y: 0.5}
-    _attackRadius: 0.35
-    _attackDelay: 0.4
-  _deathCollider: {fileID: 6049651350451201731}
-  _deathBikeSpeedCollider: {fileID: 5434506360012011406}
-  _deathBikeLandingCollider: {fileID: 7029588697770394290}
---- !u!114 &7867446915273472483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6466821497900496853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d250d9a5a5535940acb8020ccc4f1e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 1

@@ -1,6 +1,8 @@
 using System.Collections;
+using TLT.Save;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace TLT.InteractionObjects
 {
@@ -8,7 +10,24 @@ namespace TLT.InteractionObjects
   {
     [SerializeField] private string _nameScene;
 
+    //-----------------------------------
+
+    private GameManager gameManager;
+
     //===================================
+
+    [Inject]
+    private void Construct(GameManager parGameManager)
+    {
+      gameManager = parGameManager;
+    }
+
+    //===================================
+
+    protected override void Awake()
+    {
+      base.Awake();
+    }
 
     private void OnEnable()
     {
@@ -24,6 +43,8 @@ namespace TLT.InteractionObjects
 
     private void SceneInteractionManager_OnInteract()
     {
+      gameManager.SaveManager.SaveGame();
+
       StartCoroutine(StartScene());
     }
 

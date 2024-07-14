@@ -1,87 +1,154 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using System.IO;
 using Newtonsoft.Json;
+using UnityEngine.SceneManagement;
+using System.Linq;
+
+using TLT.Data;
 
 namespace TLT.Save
 {
-  public class SaveManager : MonoBehaviour
+  public sealed class SaveManager
   {
-    private static SaveManager instance;
+    private GameData gameData;
 
-    private Dictionary<string, Dictionary<string, object>> saveData = new();
+    private SaveLoads saveLoads;
 
-    //===================================
-
-    public static SaveManager Instance
-    {
-      get
-      {
-        if (instance == null)
-        {
-          instance = FindAnyObjectByType<SaveManager>();
-          if (instance == null)
-          {
-            GameObject obj = new("SaveManager");
-            instance = obj.AddComponent<SaveManager>();
-          }
-        }
-        return instance;
-      }
-    }
+    private PlayerSaveLoad playerSaveLoad;
 
     //===================================
 
-    private void Start()
-    {
-      //LoadGame();
-    }
-
-    /*private void OnDisable()
-    {
-      SaveGame();
-    }*/
-
-    private void OnApplicationQuit()
-    {
-      //SaveGame();
-    }
+    public event Action OnSaveGame;
 
     //===================================
+
+    public void Init()
+    {
+      gameData = new();
+
+      saveLoads = SaveLoads.Instance;
+
+      playerSaveLoad = PlayerSaveLoad.Instance;
+    }
 
     public void SaveGame()
     {
-      saveData.Clear();
+      string currentLevelName = SceneManager.GetActiveScene().name;
 
-      SaveLoad[] saveLoadObjects = FindObjectsByType<SaveLoad>(FindObjectsSortMode.None);
-
-      foreach (SaveLoad saveLoad in saveLoadObjects)
+      if (!gameData.Levels.ContainsKey(currentLevelName))
       {
-        saveLoad.Save(saveData);
+        gameData.Levels[currentLevelName] = new LevelData(currentLevelName);
       }
 
-      string json = JsonConvert.SerializeObject(saveData);
-      File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
+      LevelData levelData = gameData.Levels[currentLevelName];
+      levelData.Objects.Clear();
 
-      Debug.Log("Game Saved");
+      foreach (var saveLoad in saveLoads.SaveLoadObjects)
+      {
+        ObjectData objectData = saveLoad.SaveData();
+        if (objectData == null)
+          continue;
+
+        if (objectData.ObjectName == "PlayerData")
+        {
+          gameData.PlayerData = objectData;
+        }
+        else
+        {
+          levelData.Objects.Add(objectData);
+        }
+      }
+
+      string jsonData = JsonConvert.SerializeObject(gameData, Formatting.Indented);
+      File.WriteAllText(Application.persistentDataPath + "/gameData.json", jsonData);
     }
 
     public void LoadGame()
     {
-      if (File.Exists(Application.persistentDataPath + "/savefile.json"))
+      if (File.Exists(Application.persistentDataPath + "/gameData.json"))
       {
-        string json = File.ReadAllText(Application.persistentDataPath + "/savefile.json");
-        saveData = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, object>>>(json);
+        string jsonData = File.ReadAllText(Application.persistentDataPath + "/gameData.json");
+        gameData = JsonConvert.DeserializeObject<GameData>(jsonData);
 
-        SaveLoad[] saveLoadObjects = FindObjectsByType<SaveLoad>(FindObjectsSortMode.None);
-        foreach (SaveLoad saveLoad in saveLoadObjects)
-        {
-          saveLoad.Load(saveData);
-        }
-
-        Debug.Log("Game Loaded");
+        LoadCurrentLevelData();
+        LoadPlayerData();
+      }
+      else
+      {
+        gameData = new();
       }
     }
+
+    public void DeleteSaveGame()
+    {
+      if (File.Exists(Application.persistentDataPath + "/gameData.json"))
+      {
+        gameData = new();
+
+        string jsonData = JsonConvert.SerializeObject(gameData, Formatting.Indented);
+        File.WriteAllText(Application.persistentDataPath + "/gameData.json", jsonData);
+      }
+    }
+
+    private void LoadCurrentLevelData()
+    {
+      string currentLevelName = SceneManager.GetActiveScene().name;
+
+      if (!gameData.Levels.ContainsKey(currentLevelName))
+        return;
+
+      LevelData levelData = gameData.Levels[currentLevelName];
+
+      foreach (var saveLoad in saveLoads.SaveLoadObjects)
+      {
+        ObjectData data = levelData.Objects.Find(obj => obj.ObjectName == saveLoad.SaveData().ObjectName);
+        if (data == null)
+          continue;
+
+        saveLoad.LoadData(data);
+      }
+    }
+
+    #region PlayerData
+
+    public void SavePlayerData()
+    {
+      string currentLevelName = SceneManager.GetActiveScene().name;
+
+      if (!gameData.Levels.ContainsKey(currentLevelName))
+      {
+        gameData.Levels[currentLevelName] = new LevelData(currentLevelName);
+      }
+
+      LevelData levelData = gameData.Levels[currentLevelName];
+      levelData.Objects.Clear();
+
+      foreach (var saveLoad in saveLoads.SaveLoadObjects)
+      {
+        ObjectData objectData = saveLoad.SaveData();
+        if (objectData == null)
+          continue;
+
+        if (objectData.ObjectName != "PlayerData")
+          continue;
+
+        gameData.PlayerData = objectData;
+      }
+
+      string jsonData = JsonConvert.SerializeObject(gameData, Formatting.Indented);
+      File.WriteAllText(Application.persistentDataPath + "/gameData.json", jsonData);
+    }
+
+    private void LoadPlayerData()
+    {
+      if (playerSaveLoad != null)
+      {
+        playerSaveLoad.LoadData(gameData.PlayerData);
+      }
+    }
+
+    #endregion
 
     //===================================
   }

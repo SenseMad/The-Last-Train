@@ -5,11 +5,17 @@ using Zenject;
 using TLT.Interfaces;
 using TLT.CharacterManager;
 using TLT.Enemy;
+using TLT.Save;
+using TLT.Data;
+using System.Collections.Generic;
 
 namespace TLT.Weapons
 {
   public abstract class Weapon : MonoBehaviour
   {
+    [SerializeField, Min(0)] private int _index;
+    [SerializeField] private string _name;
+
     [Space]
     [SerializeField] private WeaponData _weaponData;
 
@@ -47,6 +53,9 @@ namespace TLT.Weapons
     private Character character;
 
     //===================================
+
+    public int Index => _index;
+    public string Name => _name;
 
     public WeaponData WeaponData => _weaponData;
 
