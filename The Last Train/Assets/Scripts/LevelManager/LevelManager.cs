@@ -5,10 +5,15 @@ using System;
 using Zenject;
 
 using TLT.CharacterManager;
+using TLT.Save;
 
 public class LevelManager : MonoBehaviour
 {
   [SerializeField, Min(0)] private float _timeRestart = 1.0f;
+
+  //-----------------------------------
+
+  private GameManager gameManager;
 
   //===================================
 
@@ -21,9 +26,19 @@ public class LevelManager : MonoBehaviour
   //===================================
 
   [Inject]
-  private void Construct(Character parCharacter)
+  private void Construct(Character parCharacter, GameManager parGameManager)
   {
     Character = parCharacter;
+
+    gameManager = parGameManager;
+  }
+
+  //===================================
+
+  private void Start()
+  {
+    gameManager.Init();
+    gameManager.SaveManager.LoadGame();
   }
 
   //===================================

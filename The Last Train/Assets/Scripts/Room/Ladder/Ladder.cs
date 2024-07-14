@@ -59,7 +59,7 @@ namespace TLT.Building
       if (collider.TryGetComponent(out CharacterLadder parCharacterLadder))
       {
         parCharacterLadder.Rigidbody2D.gravityScale = parCharacterLadder.Gravity;
-        parCharacterLadder.BoxCollider2D.isTrigger = false;
+        parCharacterLadder.Collider2D.isTrigger = false;
         parCharacterLadder.IsLadder = false;
         parCharacterLadder.Character.InputHandler.IsInputHorizontal = true;
         parCharacterLadder.Ladder = null;

@@ -4,10 +4,13 @@ using UnityEngine;
 
 using TLT.InteractionObjects;
 using System;
+using TLT.Save;
+using TLT.Data;
+using Newtonsoft.Json.Linq;
 
 namespace TLT.Building
 {
-  public sealed class RoomManager : MonoBehaviour
+  public sealed class RoomManager : MonoBehaviour, ISaveLoad
   {
     [SerializeField] private SpriteRenderer _closedRoom;
 
@@ -44,9 +47,9 @@ namespace TLT.Building
     private void OnEnable()
     {
       foreach (var door in _listDoors)
-        {
-          door.OnDoorOpen += OpenRoom;
-        }
+      {
+        door.OnDoorOpen += OpenRoom;
+      }
     }
 
     private void OnDisable()
@@ -131,6 +134,40 @@ namespace TLT.Building
       color.a = 0;
       _closedRoom.color = color;
       _closedRoom.gameObject.SetActive(false);
+    }
+
+    //===================================
+
+    public ObjectData SaveData()
+    {
+      string objectName = gameObject.name;
+
+      ObjectData data = new(objectName);
+      data.Parameters["IsRoomOpen"] = IsRoomOpen;
+
+      return data;
+    }
+
+    public void LoadData(ObjectData parObjectData)
+    {
+      if (parObjectData.Parameters.TryGetValue("IsRoomOpen", out var roomOpen) && roomOpen is bool)
+      {
+        IsRoomOpen = (bool)roomOpen;
+
+        if (IsRoomOpen)
+        {
+          if (_closedRoom != null)
+            _closedRoom.gameObject.SetActive(false);
+
+          if (_listDoors != null)
+          {
+            foreach (var door in _listDoors)
+            {
+              door.gameObject.SetActive(false);
+            }
+          }
+        }
+      }
     }
 
     //===================================

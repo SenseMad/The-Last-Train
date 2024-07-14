@@ -16,7 +16,7 @@ namespace TLT.CharacterManager
 
     private Character character;
 
-    private BoxCollider2D boxCollider2D;
+    private Collider2D collider2D;
 
     //===================================
 
@@ -28,7 +28,7 @@ namespace TLT.CharacterManager
     {
       character = GetComponent<Character>();
 
-      boxCollider2D = GetComponent<BoxCollider2D>();
+      collider2D = GetComponent<Collider2D>();
 
       Rigidbody2D = GetComponent<Rigidbody2D>();
     }
@@ -116,13 +116,13 @@ namespace TLT.CharacterManager
 
     private void OnDrawGizmos()
     {
-      if (boxCollider2D != null)
+      if (collider2D != null)
       {
-        Vector2 position = (Vector2)transform.position + boxCollider2D.offset;
-        Vector2 bottomCenter = new(position.x, position.y - boxCollider2D.bounds.extents.y / 1.7f);
+        Vector2 position = (Vector2)transform.position + collider2D.offset;
+        Vector2 bottomCenter = new(position.x, position.y - collider2D.bounds.extents.y / 1.7f);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(bottomCenter, boxCollider2D.size.x / 2f);
+        Gizmos.DrawWireSphere(bottomCenter, collider2D.bounds.size.x / 2f);
       }
     }
 

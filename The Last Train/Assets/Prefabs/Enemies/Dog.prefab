@@ -20,6 +20,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1763965412789474669, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
+      propertyPath: m_Size.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763965412789474669, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
+      propertyPath: m_Size.y
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763965412789474669, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763965412789474669, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2140334123245230613, guid: d5ec7b9dc88530641ad86f2981649a26, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.16

@@ -35,10 +35,10 @@ namespace TLT.CameraManager
 
     //===================================
 
-    private void Start()
+    /*private void Start()
     {
       //recomposer = cinemachineCamera.GetComponent<CinemachineRecomposer>();
-    }
+    }*/
 
     private void Update()
     {

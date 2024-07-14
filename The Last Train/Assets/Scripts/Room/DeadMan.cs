@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using Zenject;
 
 using TLT.CharacterManager;
+using TLT.Save;
 
 public class DeadMan : ObjectInteraction
 {
@@ -13,13 +14,15 @@ public class DeadMan : ObjectInteraction
   //-----------------------------------
 
   private Character character;
+  private GameManager gameManager;
 
   //===================================
 
   [Inject]
-  private void Construct(Character parCharacter)
+  private void Construct(Character parCharacter, GameManager parGameManager)
   {
     character = parCharacter;
+    gameManager = parGameManager;
   }
 
   //===================================
@@ -54,6 +57,9 @@ public class DeadMan : ObjectInteraction
 
   private IEnumerator StartScene()
   {
+    //SaveManager.Instance.DeleteSaveGame();
+    gameManager.SaveManager.DeleteSaveGame();
+
     AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_nameScene);
 
     while (!asyncLoad.isDone)
