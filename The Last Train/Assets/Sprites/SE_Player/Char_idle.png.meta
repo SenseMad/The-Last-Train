@@ -297,7 +297,9 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: 58d83c0eb51275c43bcd401e39dd5ede, type: 3}
+      name: _MaskTex
     nameFileIdTable:
       Char_idle_0: -8699244288224338811
       Char_idle_1: -1521510545595618253
