@@ -9,5 +9,16 @@ namespace TLT.Data
     public int Health { get; set; }
 
     public List<WeaponSaveData> WeaponSaveDatas { get; set; }
+
+    //===================================
+
+    public PlayerData()
+    {
+      Health = 0;
+
+      WeaponSaveDatas = new();
+    }
+
+    //===================================
   }
 }

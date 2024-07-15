@@ -13,7 +13,7 @@ namespace TLT.Save
     {
       get
       {
-        return instance ?? FindAnyObjectByType<SaveLoads>();
+        return instance != null ? instance : FindAnyObjectByType<SaveLoads>();
       }
     }
 
