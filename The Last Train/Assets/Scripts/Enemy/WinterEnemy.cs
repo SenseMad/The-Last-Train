@@ -6,7 +6,7 @@ namespace TLT.Enemy
 {
   public class WinterEnemy : EnemyAgent
   {
-
+    
 
     //===================================
 

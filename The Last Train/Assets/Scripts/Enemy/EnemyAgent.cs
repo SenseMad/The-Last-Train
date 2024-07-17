@@ -31,9 +31,9 @@ namespace TLT.Enemy
 
     //-----------------------------------
 
-    private new Rigidbody2D rigidbody2D;
-
     private Animator animator;
+
+    private EnemyPatrol enemyPatrol;
 
     private EnemyAIState enemyAIState;
 
@@ -44,23 +44,29 @@ namespace TLT.Enemy
     private bool takeDamage = false;
     private float timeAfterTakingDamage = 0;
 
-    private int direction = 1;
-
     private bool canAttack;
 
     private string typeDeath = "";
 
     //===================================
 
+    public Rigidbody2D Rigidbody2D { get; set; }
+
     public GameObject Targetable { get; private set; }
 
     public Health Health { get; private set; }
+
+    public int Direction { get; set; } = 1;
+
+    public float Speed => _speed;
 
     //===================================
 
     private void Awake()
     {
-      rigidbody2D = GetComponent<Rigidbody2D>();
+      Rigidbody2D = GetComponent<Rigidbody2D>();
+
+      enemyPatrol = GetComponent<EnemyPatrol>();
 
       animator = GetComponent<Animator>();
 
@@ -119,10 +125,10 @@ namespace TLT.Enemy
       animator.SetBool(typeDeath, true);
 
       enemyAIState = EnemyAIState.Death;
-      rigidbody2D.velocity = Vector2.zero;
+      Rigidbody2D.velocity = Vector2.zero;
 
-      rigidbody2D.gravityScale = 0;
-      rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+      Rigidbody2D.gravityScale = 0;
+      Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
 
       _collider2D.enabled = false;
 
@@ -145,16 +151,25 @@ namespace TLT.Enemy
     {
       if (Targetable == null)
       {
-        rigidbody2D.velocity = Vector2.zero;
-        animator.SetBool("IsWalk", false);
+        Rigidbody2D.velocity = Vector2.zero;
+
+        if (enemyPatrol != null && enemyPatrol.Patrol())
+        {
+          animator.SetBool("IsWalk", true);
+        }
+        else
+        {
+          animator.SetBool("IsWalk", false);
+        }
+
         return;
       }
 
       Vector2 direction = (Targetable.transform.position - transform.position).normalized;
 
-      Vector2 targetVelocity = new(direction.x * _speed, rigidbody2D.velocity.y);
+      Vector2 targetVelocity = new(direction.x * _speed, Rigidbody2D.velocity.y);
 
-      rigidbody2D.velocity = targetVelocity;
+      Rigidbody2D.velocity = targetVelocity;
 
       if (!targetAttactRadius)
         animator.SetBool("IsWalk", true);
@@ -389,11 +404,11 @@ namespace TLT.Enemy
         return;
 
       if (directionToTarget.x > 0)
-        direction = -1;
+        Direction = -1;
       else
-        direction = 1;
+        Direction = 1;
 
-      transform.localScale = new Vector3(direction, transform.localScale.y, transform.localScale.z);
+      transform.localScale = new Vector3(Direction, transform.localScale.y, transform.localScale.z);
     }
 
     //===================================

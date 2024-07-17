@@ -2,40 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
+namespace TLT.Sound
 {
-
-
-  //===================================
-
-
-
-  //===================================
-
-
-
-  //===================================
-
-  public AudioSource PlaySound(AudioClip parSFX, Vector3 parLocation, float parVolume)
+  public class SoundManager : MonoBehaviour
   {
-    GameObject tempAudio = new("SoundEffects");
-    tempAudio.transform.position = parLocation;
+    public AudioSource PlaySound(AudioClip parClip, Vector3 parLocation, float parVolume)
+    {
+      GameObject tempAudio = new("SoundEffects");
+      tempAudio.transform.position = parLocation;
 
-    AudioSource audioSource = tempAudio.AddComponent<AudioSource>();
+      AudioSource audioSource = tempAudio.AddComponent<AudioSource>();
 
-    audioSource.clip = parSFX;
-    audioSource.volume = parVolume;
-    audioSource.Play();
+      audioSource.clip = parClip;
+      audioSource.volume = parVolume;
+      audioSource.Play();
 
-    Destroy(tempAudio, parSFX.length);
+      Destroy(tempAudio, parClip.length);
 
-    return audioSource;
+      return audioSource;
+    }
+
+    //===================================
   }
-
-  public void CreateSound()
-  {
-    
-  }
-
-  //===================================
 }

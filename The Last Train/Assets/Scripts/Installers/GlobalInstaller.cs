@@ -1,7 +1,7 @@
 using Zenject;
 
 using TLT.Input;
-using TLT.Save;
+using TLT.Sound;
 
 namespace TLT.Installers
 {
@@ -14,6 +14,8 @@ namespace TLT.Installers
       Container.Bind<GameManager>().FromNewComponentOnNewGameObject().AsSingle();
 
       Container.Bind<LoadingScene>().FromNewComponentOnNewGameObject().AsSingle();
+
+      Container.Bind<SoundManager>().FromNewComponentOnNewGameObject().AsSingle();
     }
   }
 }

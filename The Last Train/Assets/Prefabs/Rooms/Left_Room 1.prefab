@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _openDoor: {fileID: 0}
+  _soundOpenDoor: {fileID: 0}
 --- !u!114 &6699803054258961534
 MonoBehaviour:
   m_ObjectHideFlags: 0

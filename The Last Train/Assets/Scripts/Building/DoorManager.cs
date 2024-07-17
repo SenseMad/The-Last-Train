@@ -1,5 +1,8 @@
 using System;
 using UnityEngine;
+using Zenject;
+
+using TLT.Sound;
 
 namespace TLT.InteractionObjects
 {
@@ -7,9 +10,25 @@ namespace TLT.InteractionObjects
   {
     [SerializeField] private GameObject _openDoor;
 
+    [Space]
+    [SerializeField] private AudioClip _soundOpenDoor;
+    [SerializeField, Range(0, 1)] private float _soundVolume = 0.5f;
+
+    //-----------------------------------
+
+    private SoundManager soundManager;
+
     //===================================
 
     public event Action OnDoorOpen;
+
+    //===================================
+
+    [Inject]
+    private void Construct(SoundManager parSoundManager)
+    {
+      soundManager = parSoundManager;
+    }
 
     //===================================
 
@@ -31,6 +50,8 @@ namespace TLT.InteractionObjects
 
       if (_openDoor != null)
         _openDoor.SetActive(true);
+
+      soundManager.PlaySound(_soundOpenDoor, transform.position, _soundVolume);
 
       gameObject.SetActive(false);
     }
