@@ -16,7 +16,7 @@ public abstract class SingletonInSceneNoInstance<T> : MonoBehaviour where T : Mo
 
   //===================================
 
-  protected void Awake()
+  protected virtual void Awake()
   {
     if (_instance != null && _instance != this)
     {

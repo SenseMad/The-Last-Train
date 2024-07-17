@@ -14,7 +14,8 @@ namespace TLT.Vehicles.Bike
 
     [Space]
     [SerializeField] private BikeController _bikeController;
-    
+    [SerializeField] private BikeBody _bikeBody;
+
     [Space]
     [SerializeField, Range(-1, 1)] private int _direction = 1;
 
@@ -61,6 +62,7 @@ namespace TLT.Vehicles.Bike
       data.Parameters["Position"] = new float[] { position.x, position.y, position.z };
       data.Parameters["Rotation"] = new float[] { rotation.x, rotation.y, rotation.z };
       data.Parameters["Scale"] = new float[] { scale.x, scale.y, scale.z };
+      data.Parameters["IsInCar"] = _bikeController.IsInCar;
 
       return data;
     }
@@ -92,6 +94,16 @@ namespace TLT.Vehicles.Bike
         transform.localScale = new Vector3(scaleArray[0].ToObject<float>(), scaleArray[1].ToObject<float>(), scaleArray[2].ToObject<float>());
 
         Direction = scaleArray[0].ToObject<int>();
+      }
+
+      if (parObjectData.Parameters.TryGetValue("IsInCar", out var isInCar) && isInCar is bool)
+      {
+        _bikeController.IsInCar = (bool)isInCar;
+
+        if (_bikeController.IsInCar)
+          _bikeBody.CallEventOnGetInCar();
+        else
+          _bikeBody.CallEventOnGetOutCar();
       }
     }
 

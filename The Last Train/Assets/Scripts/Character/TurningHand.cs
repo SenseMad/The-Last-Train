@@ -30,6 +30,14 @@ namespace TLT.CharacterManager
 
     //===================================
 
+    private void Start()
+    {
+      if (character.MainCamera == null)
+      {
+        character.MainCamera = Camera.main;
+      }
+    }
+
     private void Update()
     {
       Vector3 mousePosition = character.InputHandler.GetMousePosition();

@@ -1,5 +1,6 @@
 using TLT.Vehicles.Bike;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace TLT.CharacterManager
 {
@@ -12,11 +13,18 @@ namespace TLT.CharacterManager
 
     [SerializeField] private LayerMask _groundLayer;
 
+    [Space]
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _soundMove;
+
     //-----------------------------------
 
     private Character character;
 
     private Collider2D collider2D;
+
+    private float stepInterval = 0.5f;
+    private float stepTimer;
 
     //===================================
 
@@ -46,6 +54,16 @@ namespace TLT.CharacterManager
 
     //===================================
 
+    private void SoundSFX(AudioClip audioClip, bool parLoop)
+    {
+      if (_audioSource.isPlaying)
+        return;
+
+      _audioSource.clip = audioClip;
+      _audioSource.loop = parLoop;
+      _audioSource.Play();
+    }
+
     private void Move()
     {
       if (!character.InputHandler.IsInputHorizontal)
@@ -73,6 +91,20 @@ namespace TLT.CharacterManager
       else
       {
         character.Animator.SetBool("IsWalk", true);
+
+        if (Mathf.Abs(character.InputHandler.GetInputHorizontal()) > 0.1f)
+        {
+          stepTimer -= Time.deltaTime;
+          if (stepTimer <= 0)
+          {
+            SoundSFX(_soundMove, false);
+            stepTimer = stepInterval;
+          }
+        }
+        else
+        {
+          stepTimer = 0;
+        }
       }
     }
 
@@ -81,18 +113,12 @@ namespace TLT.CharacterManager
       Vector3 cameraPosition = character.MainCamera.WorldToScreenPoint(transform.position);
       Vector2 mousePosition = character.InputHandler.GetMousePosition();
 
-      /*transform.localScale = new Vector3(transform.localScale.x * -1f, transform.localScale.y, transform.localScale.z);
-
-      _bikeManager.Direction *= -1;*/
-
       if (mousePosition.x < cameraPosition.x)
         character.Direction = -1;
-      //transform.localRotation = Quaternion.Euler(0, 180, 0);
       else if (mousePosition.x > cameraPosition.x)
         character.Direction = 1;
 
       transform.localScale = new Vector3(character.Direction, transform.localScale.y, transform.localScale.z);
-      //transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
     private void LimitRateFall()

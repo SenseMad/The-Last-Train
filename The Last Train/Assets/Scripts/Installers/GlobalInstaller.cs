@@ -10,7 +10,10 @@ namespace TLT.Installers
     public override void InstallBindings()
     {
       Container.Bind<InputHandler>().FromNewComponentOnNewGameObject().AsSingle();
+
       Container.Bind<GameManager>().FromNewComponentOnNewGameObject().AsSingle();
+
+      Container.Bind<LoadingScene>().FromNewComponentOnNewGameObject().AsSingle();
     }
   }
 }

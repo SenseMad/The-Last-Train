@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Hub_scene.unity
     guid: af33fa0a504a1df40af22716c3e9905d
   - enabled: 1
@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Metro_demo_scene.unity
     guid: 5765b568f54946d4a8e6e3faf2727ed1
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: 8235495240d889f4980dbadaf1968c7b
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

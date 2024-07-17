@@ -1,6 +1,4 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 using TLT.Save;
@@ -8,18 +6,20 @@ using TLT.Vehicles.Bike;
 
 public class ChangeLevelTrigger : MonoBehaviour
 {
-  [SerializeField] private string _nameScene;
+  [SerializeField] private NamesScenes _namesScenes;
 
   //-----------------------------------
 
   private GameManager gameManager;
+  private LoadingScene loadingScene;
 
   //===================================
 
   [Inject]
-  private void Construct(GameManager parGameManager)
+  private void Construct(GameManager parGameManager, LoadingScene parLoadingScene)
   {
     gameManager = parGameManager;
+    loadingScene = parLoadingScene;
   }
 
   //===================================
@@ -33,17 +33,8 @@ public class ChangeLevelTrigger : MonoBehaviour
       return;
 
     gameManager.SaveManager.SavePlayerData();
-    StartCoroutine(StartScene());
-  }
 
-  //===================================
-
-  private IEnumerator StartScene()
-  {
-    AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_nameScene);
-
-    while (!asyncLoad.isDone)
-      yield return null;
+    loadingScene.LoadScene($"{_namesScenes}");
   }
 
   //===================================

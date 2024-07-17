@@ -5,6 +5,7 @@ using Zenject;
 
 using TLT.CharacterManager;
 using TLT.Weapons;
+using UnityEngine.Audio;
 
 namespace TLT.Vehicles.Bike
 {
@@ -26,6 +27,10 @@ namespace TLT.Vehicles.Bike
 
     [Space]
     [SerializeField] private Animator _dustAnimator;
+
+    [Space]
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _soundStartingUp;
 
     //-----------------------------------
 
@@ -91,6 +96,8 @@ namespace TLT.Vehicles.Bike
     private void Awake()
     {
       bodyRB = GetComponent<Rigidbody2D>();
+
+      VehicleController_OnGetInCar();
     }
 
     private void OnEnable()
@@ -183,6 +190,19 @@ namespace TLT.Vehicles.Bike
 
     //===================================
 
+    private void SoundSFX(AudioClip audioClip, bool parLoop)
+    {
+      _audioSource.clip = audioClip;
+      _audioSource.loop = parLoop;
+      _audioSource.Play();
+    }
+
+    private void StopSoundSFX()
+    {
+      _audioSource.Stop();
+      _audioSource.clip = null;
+    }
+
     private void UpdateVelocity()
     {
       ImpulseBody();
@@ -200,7 +220,8 @@ namespace TLT.Vehicles.Bike
 
       if (_bikeController.Throttle == 0 && _bikeManager.Grounded && _bikeController.Brake != 0)
       {
-        //ForceBrake();
+        // ForceBrake();
+        bodyRB.velocity = Vector2.Lerp(bodyRB.velocity, new Vector2(0, bodyRB.velocity.y), Time.deltaTime * _bikeData.DefaultForceBrakeSpeed);
       }
     }
 
@@ -297,6 +318,8 @@ namespace TLT.Vehicles.Bike
 
     private void VehicleController_OnGetInCar()
     {
+      SoundSFX(_soundStartingUp, true);
+
       _bikeController.Character = character;
       _bikeController.CinemachineCamera.Target.TrackingTarget = transform;
 
@@ -319,6 +342,8 @@ namespace TLT.Vehicles.Bike
 
     private void VehicleController_OnGetOutCar()
     {
+      StopSoundSFX();
+
       _bikeController.CinemachineCamera.Target.TrackingTarget = character.transform;
 
       _bikeController.Character.transform.position = transform.position;

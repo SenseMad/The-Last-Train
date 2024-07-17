@@ -1,25 +1,25 @@
-using System.Collections;
 using TLT.Save;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace TLT.InteractionObjects
 {
   public class SceneInteractionManager : ObjectInteraction
   {
-    [SerializeField] private string _nameScene;
+    [SerializeField] private NamesScenes _namesScenes;
 
     //-----------------------------------
 
     private GameManager gameManager;
+    private LoadingScene loadingScene;
 
     //===================================
 
     [Inject]
-    private void Construct(GameManager parGameManager)
+    private void Construct(GameManager parGameManager, LoadingScene parLoadingScene)
     {
       gameManager = parGameManager;
+      loadingScene = parLoadingScene;
     }
 
     //===================================
@@ -45,15 +45,7 @@ namespace TLT.InteractionObjects
     {
       gameManager.SaveManager.SaveGame();
 
-      StartCoroutine(StartScene());
-    }
-
-    private IEnumerator StartScene()
-    {
-      AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_nameScene);
-
-      while (!asyncLoad.isDone)
-        yield return null;
+      loadingScene.LoadScene($"{_namesScenes}");
     }
 
     //===================================

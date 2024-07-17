@@ -10,7 +10,7 @@ using TLT.Save;
 public class LevelManager : MonoBehaviour
 {
   [SerializeField, Min(0)] private float _timeRestart = 1.0f;
-
+  
   //-----------------------------------
 
   private GameManager gameManager;

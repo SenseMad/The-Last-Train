@@ -1,6 +1,4 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 using TLT.CharacterManager;
@@ -9,20 +7,24 @@ using TLT.Save;
 public class DeadMan : ObjectInteraction
 {
   [SerializeField] private string _textMessage;
-  [SerializeField] private string _nameScene;
+
+  [Space]
+  [SerializeField] private NamesScenes _namesScenes;
 
   //-----------------------------------
 
   private Character character;
   private GameManager gameManager;
+  private LoadingScene loadingScene;
 
   //===================================
 
   [Inject]
-  private void Construct(Character parCharacter, GameManager parGameManager)
+  private void Construct(Character parCharacter, GameManager parGameManager, LoadingScene parLoadingScene)
   {
     character = parCharacter;
     gameManager = parGameManager;
+    loadingScene = parLoadingScene;
   }
 
   //===================================
@@ -50,20 +52,9 @@ public class DeadMan : ObjectInteraction
 
   private void CharacterDialog_OnDialogueOver()
   {
-    StartCoroutine(StartScene());
-  }
-
-  //===================================
-
-  private IEnumerator StartScene()
-  {
-    //SaveManager.Instance.DeleteSaveGame();
     gameManager.SaveManager.DeleteSaveGame();
 
-    AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_nameScene);
-
-    while (!asyncLoad.isDone)
-      yield return null;
+    loadingScene.LoadScene($"{_namesScenes}");
   }
 
   //===================================

@@ -87,10 +87,7 @@ namespace TLT.Vehicles.Bike
       wheelRB.AddTorque(torque);
 
       if (torque == 0 && _bikeController.Brake == 0)
-      {
         wheelRB.angularVelocity = Mathf.Lerp(wheelRB.angularVelocity, 0f, Time.deltaTime * _brakePower);
-        Debug.Log("!");
-      }
 
       if (_bikeController.Brake != 0)
       {
