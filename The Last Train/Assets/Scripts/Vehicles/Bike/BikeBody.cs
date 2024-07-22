@@ -6,6 +6,7 @@ using Zenject;
 using TLT.CharacterManager;
 using TLT.Weapons;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 namespace TLT.Vehicles.Bike
 {
@@ -97,7 +98,8 @@ namespace TLT.Vehicles.Bike
     {
       bodyRB = GetComponent<Rigidbody2D>();
 
-      VehicleController_OnGetInCar();
+      if (SceneManager.GetActiveScene().name != $"{NamesScenes.Hub_scene}")
+        VehicleController_OnGetInCar();
     }
 
     private void OnEnable()

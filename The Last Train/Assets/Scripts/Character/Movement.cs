@@ -66,8 +66,11 @@ namespace TLT.CharacterManager
 
     private void Move()
     {
-      if (!character.InputHandler.IsInputHorizontal)
+      /*if (!character.InputHandler.IsInputHorizontal)
+      {
+        character.Animator.SetBool("IsWalk", false);
         return;
+      }*/
 
       float moveVelocity = _speedWalking * character.InputHandler.GetInputHorizontal();
 

@@ -375,9 +375,10 @@ GameObject:
   - component: {fileID: 1763965412789474669}
   - component: {fileID: 6917013736034338682}
   - component: {fileID: 806448496252535630}
+  - component: {fileID: 6646632544795355433}
+  - component: {fileID: 1937708454192015813}
   - component: {fileID: 7867446915273472483}
   - component: {fileID: 4300975457139126804}
-  - component: {fileID: 6646632544795355433}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -540,6 +541,35 @@ MonoBehaviour:
   _deathCollider: {fileID: 6049651350451201731}
   _deathBikeSpeedCollider: {fileID: 5434506360012011406}
   _deathBikeLandingCollider: {fileID: 7029588697770394290}
+--- !u!114 &6646632544795355433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6466821497900496853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca44bc21cf7b5e7409fac72e5b2aecf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _patrolPoints: []
+--- !u!114 &1937708454192015813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6466821497900496853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0641034314a79d747aefa2aafcda1d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectPrefab: {fileID: 0}
+  _particleAmount: 15
+  _minXY: {x: 0, y: 0}
+  _maxXY: {x: 0, y: 0}
 --- !u!114 &7867446915273472483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,16 +605,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6646632544795355433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6466821497900496853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca44bc21cf7b5e7409fac72e5b2aecf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _patrolPoints: []

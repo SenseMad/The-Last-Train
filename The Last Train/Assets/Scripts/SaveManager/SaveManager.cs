@@ -3,7 +3,6 @@ using UnityEngine;
 using System.IO;
 using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
-using System.Linq;
 
 using TLT.Data;
 
@@ -17,6 +16,10 @@ namespace TLT.Save
 
     private PlayerSaveLoad playerSaveLoad;
 
+    //-----------------------------------
+
+    private bool isSavesEnabled = false;
+
     //===================================
 
     public event Action OnSaveGame;
@@ -25,6 +28,9 @@ namespace TLT.Save
 
     public void Init()
     {
+      if (!isSavesEnabled)
+        return;
+
       gameData = new();
 
       saveLoads = SaveLoads.Instance;
@@ -32,8 +38,13 @@ namespace TLT.Save
       playerSaveLoad = PlayerSaveLoad.Instance;
     }
 
+    #region SaveGame
+
     public void SaveGame()
     {
+      if (!isSavesEnabled)
+        return;
+
       string currentLevelName = SceneManager.GetActiveScene().name;
 
       if (!gameData.Levels.ContainsKey(currentLevelName))
@@ -64,8 +75,15 @@ namespace TLT.Save
       File.WriteAllText(Application.persistentDataPath + "/gameData.json", jsonData);
     }
 
+    #endregion
+
+    #region LoadGame
+
     public void LoadGame()
     {
+      if (!isSavesEnabled)
+        return;
+
       if (File.Exists(Application.persistentDataPath + "/gameData.json"))
       {
         string jsonData = File.ReadAllText(Application.persistentDataPath + "/gameData.json");
@@ -80,19 +98,11 @@ namespace TLT.Save
       }
     }
 
-    public void DeleteSaveGame()
-    {
-      if (File.Exists(Application.persistentDataPath + "/gameData.json"))
-      {
-        gameData = new();
-
-        string jsonData = JsonConvert.SerializeObject(gameData, Formatting.Indented);
-        File.WriteAllText(Application.persistentDataPath + "/gameData.json", jsonData);
-      }
-    }
-
     private void LoadCurrentLevelData()
     {
+      if (!isSavesEnabled)
+        return;
+
       string currentLevelName = SceneManager.GetActiveScene().name;
 
       if (!gameData.Levels.ContainsKey(currentLevelName))
@@ -110,10 +120,70 @@ namespace TLT.Save
       }
     }
 
+    #endregion
+
+    #region DeleteSaveGame
+
+    public void DeleteSaveGameLevels()
+    {
+      if (!isSavesEnabled)
+        return;
+
+      if (File.Exists(Application.persistentDataPath + "/gameData.json"))
+      {
+        string jsonData = File.ReadAllText(Application.persistentDataPath + "/gameData.json");
+        gameData = JsonConvert.DeserializeObject<GameData>(jsonData);
+
+        gameData.Levels.Clear();
+
+        jsonData = JsonConvert.SerializeObject(gameData, Formatting.Indented);
+        File.WriteAllText(Application.persistentDataPath + "/gameData.json", jsonData);
+      }
+    }
+
+    public void DeleteSaveGame(string parLevelName)
+    {
+      if (!isSavesEnabled)
+        return;
+
+      if (File.Exists(Application.persistentDataPath + "/gameData.json"))
+      {
+        string jsonData = File.ReadAllText(Application.persistentDataPath + "/gameData.json");
+        gameData = JsonConvert.DeserializeObject<GameData>(jsonData);
+
+        if (!gameData.Levels.ContainsKey(parLevelName))
+          return;
+
+        gameData.Levels.Remove(parLevelName);
+
+        jsonData = JsonConvert.SerializeObject(gameData, Formatting.Indented);
+        File.WriteAllText(Application.persistentDataPath + "/gameData.json", jsonData);
+      }
+    }
+
+    public void DeleteAllSaveGame()
+    {
+      if (!isSavesEnabled)
+        return;
+
+      if (File.Exists(Application.persistentDataPath + "/gameData.json"))
+      {
+        gameData = new();
+
+        string jsonData = JsonConvert.SerializeObject(gameData, Formatting.Indented);
+        File.WriteAllText(Application.persistentDataPath + "/gameData.json", jsonData);
+      }
+    }
+
+    #endregion
+
     #region PlayerData
 
     public void SavePlayerData()
     {
+      if (!isSavesEnabled)
+        return;
+
       string currentLevelName = SceneManager.GetActiveScene().name;
 
       if (!gameData.Levels.ContainsKey(currentLevelName))
@@ -142,6 +212,9 @@ namespace TLT.Save
 
     private void LoadPlayerData()
     {
+      if (!isSavesEnabled)
+        return;
+
       if (playerSaveLoad != null)
       {
         playerSaveLoad.LoadData(gameData.PlayerData);

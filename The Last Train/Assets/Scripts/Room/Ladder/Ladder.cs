@@ -10,61 +10,68 @@ namespace TLT.Building
   {
     [SerializeField] private RoomManager _roomNeedOpened;
 
-    [SerializeField] private BoxCollider2D _boxCollider;
+    [Space]
+    [SerializeField] private Collider2D _colliderLadder;
+    [SerializeField] private Collider2D _colliderRoomOpening;
+    [SerializeField] private Collider2D _colliderUpperLimit;
+    [SerializeField] private Collider2D _colliderLowerLimit;
 
-    [SerializeField] private BoxCollider2D _colliderRoomOpening;
+    //-----------------------------------
 
-    [SerializeField] private LayerMask _characterMask;
+    /*private CharacterLadder characterLadder;
+
+    private bool isCharacterLadder = false;*/
 
     //===================================
 
-    public BoxCollider2D BoxCollider => _boxCollider;
+    public Collider2D ColliderLadder => _colliderLadder;
+
+    public Collider2D ColliderUpperLimit => _colliderUpperLimit;
+
+    public Collider2D ColliderLowerLimit => _colliderLowerLimit;
 
     public RoomManager RoomNeedOpened => _roomNeedOpened;
+    
+    /*public bool IsTopLadder { get; set; }
+    public bool IsBottomLadder { get; set; }*/
 
     //===================================
 
-    /*private void Update()
+    /*private void TriggerEnter2D()
     {
-      if (_roomNeedOpened.IsRoomOpen)
-        return;
+      Collider2D collider = Physics2D.OverlapBox(_colliderLadder.bounds.center, _colliderLadder.bounds.size, 0, _characterMask);
 
-      Collider2D[] colliders = Physics2D.OverlapBoxAll(_colliderRoomOpening.bounds.center, _colliderRoomOpening.bounds.size, 0, _characterMask);
-
-      if (colliders.Length == 0 || colliders == null)
-        return;
-
-      foreach (var collider in colliders)
+      if (collider == null)
       {
-        if (collider.TryGetComponent(out Character parCharacter))
-        {
-          _roomNeedOpened.OpenRoom();
-          return;
-        }
+        isCharacterLadder = false;
+        return;
       }
-    }*/
 
-    //===================================
-
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
       if (collider.TryGetComponent(out CharacterLadder parCharacterLadder))
       {
+        characterLadder = parCharacterLadder;
         parCharacterLadder.Ladder = this;
+
+        isCharacterLadder = true;
       }
     }
 
-    private void OnTriggerExit2D(Collider2D collider)
+    private void TriggerExit2D()
     {
-      if (collider.TryGetComponent(out CharacterLadder parCharacterLadder))
-      {
-        parCharacterLadder.Rigidbody2D.gravityScale = parCharacterLadder.Gravity;
-        parCharacterLadder.Collider2D.isTrigger = false;
-        parCharacterLadder.IsLadder = false;
-        parCharacterLadder.Character.InputHandler.IsInputHorizontal = true;
-        parCharacterLadder.Ladder = null;
-      }
-    }
+      if (characterLadder == null)
+        return;
+
+      if (isCharacterLadder)
+        return;
+
+      characterLadder.Rigidbody2D.gravityScale = characterLadder.Gravity;
+      characterLadder.Collider2D.isTrigger = false;
+      //characterLadder.IsLadder = false;
+      characterLadder.Character.InputHandler.IsInputHorizontal = true;
+      characterLadder.Ladder = null;
+
+      characterLadder = null;
+    }*/
 
     //===================================
   }

@@ -1205,6 +1205,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _climbSpeed: 5
+  _rayDistance: 0.02
+  _ladderMask:
+    serializedVersion: 2
+    m_Bits: 16384
 --- !u!114 &3485383225463915408
 MonoBehaviour:
   m_ObjectHideFlags: 0

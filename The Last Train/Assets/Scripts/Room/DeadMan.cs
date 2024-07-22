@@ -52,7 +52,7 @@ public class DeadMan : ObjectInteraction
 
   private void CharacterDialog_OnDialogueOver()
   {
-    gameManager.SaveManager.DeleteSaveGame();
+    gameManager.SaveManager.SaveGame();
 
     loadingScene.LoadScene($"{_namesScenes}");
   }

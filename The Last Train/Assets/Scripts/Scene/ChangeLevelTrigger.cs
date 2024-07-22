@@ -32,6 +32,8 @@ public class ChangeLevelTrigger : MonoBehaviour
     if (!parBikeController.IsInCar)
       return;
 
+    gameManager.SaveManager.DeleteSaveGameLevels();
+
     gameManager.SaveManager.SavePlayerData();
 
     loadingScene.LoadScene($"{_namesScenes}");
