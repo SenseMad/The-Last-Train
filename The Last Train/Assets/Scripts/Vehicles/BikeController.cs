@@ -31,6 +31,8 @@ namespace TLT.Vehicles.Bike
 
     public bool IsInCar { get; set; }
 
+    public bool IsFlip { get; set; }
+
     public float Throttle { get; private set; }
 
     public bool ForceThrottle { get; private set; }
@@ -112,6 +114,12 @@ namespace TLT.Vehicles.Bike
         return;
       }
 
+      if (IsFlip)
+      {
+        Throttle = 0;
+        return;
+      }
+
       Throttle = parContext.ReadValue<float>();
     }
 
@@ -134,12 +142,21 @@ namespace TLT.Vehicles.Bike
         return;
       }
 
+      if (IsFlip)
+      {
+        balance = 0;
+        return;
+      }
+
       balance = parContext.ReadValue<float>();
     }
 
     private void OnChangeDirection(InputAction.CallbackContext context)
     {
       if (!IsInCar)
+        return;
+
+      if (IsFlip)
         return;
 
       _bikeBody.ChangeDirection();

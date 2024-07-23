@@ -7,6 +7,7 @@ using TLT.CharacterManager;
 using TLT.Weapons;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 namespace TLT.Vehicles.Bike
 {
@@ -173,11 +174,22 @@ namespace TLT.Vehicles.Bike
       if (!_bikeManager.Grounded)
         return;
 
+      _bikeController.Animator.SetTrigger("IsFlip");
+
+      _bikeController.IsFlip = true;
+    }
+    
+    private void FlipAnimation()
+    {
+      _bikeController.IsFlip = false;
+
       transform.localScale = new Vector3(transform.localScale.x * -1f, transform.localScale.y, transform.localScale.z);
 
       _bikeManager.Direction *= -1;
 
       _bikeController.Character.Direction = _bikeManager.Direction;
+
+      //Debug.Log($"{_bikeController.IsInCar}");
     }
 
     public int GetDirection()
@@ -366,6 +378,9 @@ namespace TLT.Vehicles.Bike
 
     private void Select_performed(InputAction.CallbackContext parContext)
     {
+      if (_bikeController.IsFlip)
+        return;
+
       GetOutCar();
 
       _bikeController.InputHandler.AI_Player.Player.Select.performed -= Select_performed;

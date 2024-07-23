@@ -11401,7 +11401,6 @@ GameObject:
   - component: {fileID: 8560565328725643382}
   - component: {fileID: 7173850988963149014}
   - component: {fileID: 2562509473541278957}
-  - component: {fileID: 6050333319741187024}
   m_Layer: 10
   m_Name: Moto
   m_TagString: Untagged
@@ -11422,9 +11421,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3660055587124044986}
   - {fileID: 3927781909159465039}
   - {fileID: 7859413733742678475}
-  - {fileID: 3660055587124044986}
   - {fileID: 5801299426307150856}
   - {fileID: 4085993379888252067}
   - {fileID: 2907069492095498075}
@@ -11471,10 +11470,10 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.869565, y: 2.7826087}
+    newSize: {x: 4.869565, y: 2.7826087}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -11667,7 +11666,6 @@ MonoBehaviour:
   _dustAnimator: {fileID: 41677016844447467}
   _audioSource: {fileID: 769149098234536159}
   _soundStartingUp: {fileID: 8300000, guid: 28f3efd2624e1ac449bfe7f982251263, type: 3}
-  _soundLeaving: {fileID: 8300000, guid: 7e354f1f5aaa83f43bd6882f16d2f66b, type: 3}
 --- !u!114 &2923761929204130249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11742,18 +11740,6 @@ MonoBehaviour:
   _boxCollider2D: {fileID: 4445895288986485156}
   _lowerBoxCollider: {fileID: 8035214214223488665}
   _rayDistanceForward: 0.25
---- !u!114 &6050333319741187024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8810085334441422386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10db009c17410d84ba16c01852eff3e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8842972170002813065
 GameObject:
   m_ObjectHideFlags: 0
