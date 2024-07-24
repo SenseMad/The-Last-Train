@@ -4,43 +4,25 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-  private CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin;
+  private CinemachineImpulseSource cinemachineImpulseSource;
 
-  private Coroutine coroutine;
+  private CinemachineImpulseDefinition cinemachineImpulseDefinition;
 
   //===================================
 
   private void Awake()
   {
-    cinemachineBasicMultiChannelPerlin = GetComponent<CinemachineBasicMultiChannelPerlin>();
-  }
+    cinemachineImpulseSource = GetComponent<CinemachineImpulseSource>();
 
-  private void Start()
-  {
-    cinemachineBasicMultiChannelPerlin.AmplitudeGain = 0;
-    cinemachineBasicMultiChannelPerlin.FrequencyGain = 0;
+    cinemachineImpulseDefinition = cinemachineImpulseSource.ImpulseDefinition;
   }
 
   //===================================
 
   public void Shake(float duration, float power)
   {
-    if (coroutine != null)
-      StopCoroutine(coroutine);
-
-    coroutine = StartCoroutine(StartShake(duration, power));
-  }
-
-  private IEnumerator StartShake(float duration, float power)
-  {
-    cinemachineBasicMultiChannelPerlin.AmplitudeGain = power;
-    cinemachineBasicMultiChannelPerlin.FrequencyGain = power;
-
-    yield return new WaitForSeconds(duration);
-
-    cinemachineBasicMultiChannelPerlin.AmplitudeGain = 0;
-    cinemachineBasicMultiChannelPerlin.FrequencyGain = 0;
-    coroutine = null;
+    cinemachineImpulseDefinition.ImpulseDuration = duration;
+    cinemachineImpulseSource.GenerateImpulseWithForce(power);
   }
 
   //===================================
