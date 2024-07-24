@@ -5,9 +5,7 @@ using Zenject;
 
 using TLT.CharacterManager;
 using TLT.Weapons;
-using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 namespace TLT.Vehicles.Bike
 {
@@ -99,8 +97,8 @@ namespace TLT.Vehicles.Bike
     {
       bodyRB = GetComponent<Rigidbody2D>();
 
-      if (SceneManager.GetActiveScene().name != $"{NamesScenes.Hub_scene}")
-        VehicleController_OnGetInCar();
+      /*if (SceneManager.GetActiveScene().name != $"{NamesScenes.Hub_scene}")
+        VehicleController_OnGetInCar();*/
     }
 
     private void OnEnable()
@@ -129,6 +127,9 @@ namespace TLT.Vehicles.Bike
     {
       if (!_bikeController.IsInCar)
         return;
+
+      if (_bikeController.Character != null)
+        _bikeController.Character.transform.position = transform.position;
 
       UpdateBalance();
       UpdateVelocity();
@@ -336,6 +337,8 @@ namespace TLT.Vehicles.Bike
 
       _bikeController.Character = character;
       _bikeController.CinemachineCamera.Target.TrackingTarget = transform;
+
+      _bikeController.Character.transform.position = transform.position;
 
       oldCharacterWeapon = _bikeController.Character.WeaponController.CurrentWeapon;
       WeaponController.CurrentWeapon.GetWeaponData(oldCharacterWeapon.CurrentAmountAmmo, oldCharacterWeapon.CurrentAmountAmmoInMagazine);

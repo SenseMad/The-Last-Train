@@ -1,7 +1,11 @@
+using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using System;
 using UnityEngine;
 using Unity.Cinemachine;
 using Zenject;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 
 using TLT.Input;
 using TLT.HealthManager;
@@ -10,8 +14,6 @@ using TLT.Weapons;
 using TLT.CameraManager;
 using TLT.Save;
 using TLT.Data;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 
 namespace TLT.CharacterManager
 {
@@ -61,6 +63,8 @@ namespace TLT.CharacterManager
         cameraController.ChangeDirection(value);
       }
     }
+
+    public List<GameObject> CollectingBalls { get; set; } = new();
 
     //===================================
 
@@ -193,7 +197,7 @@ namespace TLT.CharacterManager
     {
       if (Animator != null)
         Animator.SetTrigger("IsTakeDamage");
-    }
+    }    
 
     //===================================
 

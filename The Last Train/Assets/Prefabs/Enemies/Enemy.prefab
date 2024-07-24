@@ -566,10 +566,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0641034314a79d747aefa2aafcda1d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectPrefab: {fileID: 0}
-  _particleAmount: 15
-  _minXY: {x: 0, y: 0}
-  _maxXY: {x: 0, y: 0}
+  _energyDataPrefab: {fileID: 3087488572364882682, guid: f299b711fe3ccbe4996d23be837338aa, type: 3}
+  _duration: 1
+  _energyAmount: 8
+  _minXY: {x: 0.1, y: 2.5}
+  _maxXY: {x: 1, y: 2}
 --- !u!114 &7867446915273472483
 MonoBehaviour:
   m_ObjectHideFlags: 0

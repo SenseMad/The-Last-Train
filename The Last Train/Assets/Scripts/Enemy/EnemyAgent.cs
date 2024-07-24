@@ -48,13 +48,15 @@ namespace TLT.Enemy
 
     private string typeDeath = "";
 
+    private EnemyParticleDeath enemyParticleDeath;
+
     //===================================
 
     public Rigidbody2D Rigidbody2D { get; set; }
 
     public GameObject Targetable { get; private set; }
 
-    public Health Health { get; private set; }
+    public Health Health { get; set; }
 
     public int Direction { get; set; } = 1;
 
@@ -71,6 +73,8 @@ namespace TLT.Enemy
       animator = GetComponent<Animator>();
 
       Health = GetComponent<Health>();
+
+      enemyParticleDeath = GetComponent<EnemyParticleDeath>();
     }
 
     private void OnEnable()

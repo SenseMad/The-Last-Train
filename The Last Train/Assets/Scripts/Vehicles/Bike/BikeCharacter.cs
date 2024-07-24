@@ -42,6 +42,16 @@ namespace TLT.Vehicles.Bike
 
     //===================================
 
+    private void Update()
+    {
+      if (!_bikeController.IsInCar)
+        return;
+
+      //Character.MovingParticles();
+    }
+
+    //===================================
+
     private void OnEnable()
     {
       inputHandler.AI_Player.Player.Shooting.performed += Shooting_performed;

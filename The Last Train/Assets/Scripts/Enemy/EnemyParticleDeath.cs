@@ -1,39 +1,71 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
+
+using TLT.CharacterManager;
+using TLT.HealthManager;
 
 namespace TLT.Enemy
 {
   public class EnemyParticleDeath : MonoBehaviour
   {
-    [SerializeField] private GameObject _objectPrefab;
+    [SerializeField] private EnergyData _energyDataPrefab;
 
-    [SerializeField, Min(0)] private int _particleAmount;
+    [SerializeField, Min(0)] private float _duration;
+    [SerializeField, Min(0)] private int _energyAmount;
 
-    [SerializeField, Min(0)] private Vector2 _minXY;
+    [SerializeField] private Vector2 _minXY;
     
-    [SerializeField, Min(0)] private Vector2 _maxXY;
+    [SerializeField] private Vector2 _maxXY;
+
+    //-----------------------------------
+
+    private Character character;
+
+    private EnemyAgent _agent;
 
     //===================================
 
-
-
-    //===================================
-
-
-
-    //===================================
-
-    private void CreateObject()
+    [Inject]
+    private void Construct(Character parCharacter)
     {
-      for (int i = 0; i < _particleAmount; i++)
+      character = parCharacter;
+    }
+
+    //===================================
+
+    private void Awake()
+    {
+      _agent = GetComponent<EnemyAgent>();
+
+      if (_agent.Health == null)
+        _agent.Health = GetComponent<Health>();
+    }
+
+    private void OnEnable()
+    {
+      _agent.Health.OnInstantlyKill += CreateObjectsEnergy;
+    }
+
+    private void OnDisable()
+    {
+      _agent.Health.OnInstantlyKill -= CreateObjectsEnergy;
+    }
+
+    //===================================
+
+    private void CreateObjectsEnergy()
+    {
+      for (int i = 0; i < _energyAmount; i++)
       {
-        GameObject objectInstance = Instantiate(_objectPrefab, transform);
+        EnergyData energyDataObject = Instantiate(_energyDataPrefab, transform);
+        energyDataObject.transform.SetParent(null);
+        energyDataObject.transform.position = transform.position;
 
-        float xPosition = transform.position.x + Random.Range(_minXY.x, _maxXY.x);
-        float yPosition = transform.position.y + Random.Range(_minXY.y, _maxXY.y);
+        Vector2 randomDirection = Random.insideUnitCircle.normalized;
+        float randomDistance = Random.Range(_minXY.x, _minXY.y);
+        Vector2 randomPosition = (Vector2)transform.position + randomDirection * randomDistance;
 
-        objectInstance.transform.position = new Vector3(xPosition, yPosition);
+        energyDataObject.Initialize(character, _duration, randomPosition);
       }
     }
 
