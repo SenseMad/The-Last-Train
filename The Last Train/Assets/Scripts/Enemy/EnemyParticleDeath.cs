@@ -13,9 +13,7 @@ namespace TLT.Enemy
     [SerializeField, Min(0)] private float _duration;
     [SerializeField, Min(0)] private int _energyAmount;
 
-    [SerializeField] private Vector2 _minXY;
-    
-    [SerializeField] private Vector2 _maxXY;
+    [SerializeField] private Vector2 _minMaxRadiusCenter = new(0.1f, 2.5f);
 
     //-----------------------------------
 
@@ -62,7 +60,7 @@ namespace TLT.Enemy
         energyDataObject.transform.position = transform.position;
 
         Vector2 randomDirection = Random.insideUnitCircle.normalized;
-        float randomDistance = Random.Range(_minXY.x, _minXY.y);
+        float randomDistance = Random.Range(_minMaxRadiusCenter.x, _minMaxRadiusCenter.y);
         Vector2 randomPosition = (Vector2)transform.position + randomDirection * randomDistance;
 
         energyDataObject.Initialize(character, _duration, randomPosition);
