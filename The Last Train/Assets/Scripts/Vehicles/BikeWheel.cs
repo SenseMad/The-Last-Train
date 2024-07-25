@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-namespace TLT.Vehicles.Bike
+namespace TLT.Bike.Bike
 {
-  public class BikeWheel : MonoBehaviour
+  public class BikeWheel : MonoBehaviour, IBikeBootstrap
   {
     [Header("Characteristic")]
     [SerializeField, Min(0)] private float power = 100f;
@@ -14,11 +14,14 @@ namespace TLT.Vehicles.Bike
     [SerializeField] private LayerMask _groundLayerMask;
     [SerializeField] private Transform _groundDetector;
 
-    [Header("Controller")]
+    /*[Header("Controller")]
     [SerializeField] private BikeController _bikeController;
-    [SerializeField] private BikeManager _bikeManager;
+    [SerializeField] private BikeManager _bikeManager;*/
 
     //-----------------------------------
+
+    private BikeController bikeController;
+    private BikeManager bikeManager;
 
     private Rigidbody2D wheelRB;
 
@@ -45,7 +48,22 @@ namespace TLT.Vehicles.Bike
 
     //===================================
 
-    private void Awake()
+    public void CustomAwake()
+    {
+      bikeController = GetComponentInParent<BikeController>();
+      bikeManager = GetComponentInParent<BikeManager>();
+
+      wheelRB = GetComponent<Rigidbody2D>();
+
+      Collider2D = GetComponent<CircleCollider2D>();
+    }
+
+    public void CustomStart()
+    {
+      _groundDetectionDistance *= Collider2D.radius;
+    }
+
+    /*private void Awake()
     {
       wheelRB = GetComponent<Rigidbody2D>();
 
@@ -55,7 +73,7 @@ namespace TLT.Vehicles.Bike
     private void Start()
     {
       _groundDetectionDistance *= Collider2D.radius;
-    }
+    }*/
 
     private void Update()
     {
@@ -79,17 +97,17 @@ namespace TLT.Vehicles.Bike
 
     private void UpdateMotorSpeed()
     {
-      float torque = _bikeController.Throttle * power * (float)(-(float)_bikeManager.Direction) * Time.deltaTime;
+      float torque = bikeController.Throttle * power * (float)(-(float)bikeManager.Direction) * Time.deltaTime;
 
-      if (!_bikeController.IsInCar)
+      if (!bikeController.IsInCar)
         torque = 0;
 
       wheelRB.AddTorque(torque);
 
-      if (torque == 0 && _bikeController.Brake == 0)
+      if (torque == 0 && bikeController.Brake == 0)
         wheelRB.angularVelocity = Mathf.Lerp(wheelRB.angularVelocity, 0f, Time.deltaTime * _brakePower);
 
-      if (_bikeController.Brake != 0)
+      if (bikeController.Brake != 0)
       {
         wheelRB.angularVelocity = Mathf.Lerp(wheelRB.angularVelocity, 0f, Time.deltaTime * _brakePower);
         wheelRB.freezeRotation = Mathf.Abs(wheelRB.angularVelocity) < 80f;

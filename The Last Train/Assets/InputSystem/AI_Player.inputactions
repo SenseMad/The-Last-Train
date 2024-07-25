@@ -256,6 +256,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Engine",
+                    "type": "Button",
+                    "id": "92919e00-4842-4036-9b4a-875c40ed6146",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -379,6 +388,17 @@
                     "action": "Balance",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "e751ad59-b3d6-4204-8f13-7ac45d8031f5",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Engine",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

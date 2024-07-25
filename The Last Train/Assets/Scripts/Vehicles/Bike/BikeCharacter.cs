@@ -6,7 +6,7 @@ using TLT.Weapons;
 using TLT.Input;
 using TLT.CharacterManager;
 
-namespace TLT.Vehicles.Bike
+namespace TLT.Bike.Bike
 {
   public class BikeCharacter : MonoBehaviour
   {

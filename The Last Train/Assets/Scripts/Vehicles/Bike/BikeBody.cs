@@ -7,12 +7,12 @@ using TLT.CharacterManager;
 using TLT.Weapons;
 using UnityEngine.SceneManagement;
 
-namespace TLT.Vehicles.Bike
+namespace TLT.Bike.Bike
 {
-  public class BikeBody : MonoBehaviour
+  public class BikeBody : MonoBehaviour, IBikeBootstrap
   {
-    [SerializeField] private BikeController _bikeController;
-    [SerializeField] private BikeManager _bikeManager;
+    /*[SerializeField] private BikeController _bikeController;
+    [SerializeField] private BikeManager _bikeManager;*/
     [SerializeField] private WeaponController _weaponController;
 
     [Space]
@@ -33,6 +33,9 @@ namespace TLT.Vehicles.Bike
     [SerializeField] private AudioClip _soundStartingUp;
 
     //-----------------------------------
+
+    private BikeController bikeController;
+    private BikeManager bikeManager;
 
     private Rigidbody2D bodyRB;
 
@@ -64,8 +67,8 @@ namespace TLT.Vehicles.Bike
 
     public float WheelLiftAngle { get; private set; }
 
-    public BikeController BikeController => _bikeController;
-    public BikeManager BikeManager => _bikeManager;
+    public BikeController BikeController => bikeController;
+    public BikeManager BikeManager => bikeManager;
 
     public GameObject ObjectBody => _objectBody;
     
@@ -93,9 +96,19 @@ namespace TLT.Vehicles.Bike
 
     //===================================
 
+    public void CustomAwake()
+    {
+      bikeController = GetComponent<BikeController>();
+      bikeManager = GetComponent<BikeManager>();
+
+      bodyRB = GetComponent<Rigidbody2D>();
+    }
+
+    public void CustomStart() { }
+
     private void Awake()
     {
-      bodyRB = GetComponent<Rigidbody2D>();
+      //bodyRB = GetComponent<Rigidbody2D>();
 
       /*if (SceneManager.GetActiveScene().name != $"{NamesScenes.Hub_scene}")
         VehicleController_OnGetInCar();*/
@@ -105,31 +118,37 @@ namespace TLT.Vehicles.Bike
     {
       _objectInteraction.OnInteract += GetInCar;
 
-      _bikeController.InputHandler.AI_Player.Vehicle.Throttle.performed += Throttle;
+      bikeController.InputHandler.AI_Player.Vehicle.Throttle.performed += Throttle;
 
       OnGetInCar += VehicleController_OnGetInCar;
       OnGetOutCar += VehicleController_OnGetOutCar;
+
+      bikeController.BikeEngine.OnStartEngine += BikeEngine_OnStartEngine;
+      bikeController.BikeEngine.OnStopEngine += BikeEngine_OnStopEngine;
     }
 
     private void OnDisable()
     {
       _objectInteraction.OnInteract -= GetInCar;
 
-      _bikeController.InputHandler.AI_Player.Player.Select.performed -= Select_performed;
+      bikeController.InputHandler.AI_Player.Player.Select.performed -= Select_performed;
 
-      _bikeController.InputHandler.AI_Player.Vehicle.Throttle.performed -= Throttle;
+      bikeController.InputHandler.AI_Player.Vehicle.Throttle.performed -= Throttle;
 
       OnGetInCar -= VehicleController_OnGetInCar;
       OnGetOutCar -= VehicleController_OnGetOutCar;
+
+      bikeController.BikeEngine.OnStartEngine -= BikeEngine_OnStartEngine;
+      bikeController.BikeEngine.OnStopEngine -= BikeEngine_OnStopEngine;
     }
 
     private void FixedUpdate()
     {
-      if (!_bikeController.IsInCar)
+      if (!bikeController.IsInCar)
         return;
 
-      if (_bikeController.Character != null)
-        _bikeController.Character.transform.position = transform.position;
+      if (bikeController.Character != null)
+        bikeController.Character.transform.position = transform.position;
 
       UpdateBalance();
       UpdateVelocity();
@@ -143,7 +162,7 @@ namespace TLT.Vehicles.Bike
 
     public void GetInCar()
     {
-      if (_bikeController.IsInCar)
+      if (bikeController.IsInCar)
         return;
 
       CallEventOnGetInCar();
@@ -151,7 +170,7 @@ namespace TLT.Vehicles.Bike
 
     public void GetOutCar()
     {
-      if (!_bikeController.IsInCar)
+      if (!bikeController.IsInCar)
         return;
 
       CallEventOnGetOutCar();
@@ -169,38 +188,38 @@ namespace TLT.Vehicles.Bike
 
     public void ChangeDirection()
     {
-      if (!_bikeController.IsInCar)
+      if (!bikeController.IsInCar)
         return;
 
-      if (!_bikeManager.Grounded)
+      if (!bikeManager.Grounded)
         return;
 
-      _bikeController.Animator.SetTrigger("IsFlip");
+      bikeController.Animator.SetTrigger("IsFlip");
 
-      _bikeController.IsFlip = true;
+      bikeController.IsFlip = true;
     }
     
     private void FlipAnimation()
     {
-      _bikeController.IsFlip = false;
+      bikeController.IsFlip = false;
 
       transform.localScale = new Vector3(transform.localScale.x * -1f, transform.localScale.y, transform.localScale.z);
 
-      _bikeManager.Direction *= -1;
+      bikeManager.Direction *= -1;
 
-      _bikeController.Character.Direction = _bikeManager.Direction;
+      bikeController.Character.Direction = bikeManager.Direction;
 
       //Debug.Log($"{_bikeController.IsInCar}");
     }
 
     public int GetDirection()
     {
-      return _bikeManager.Direction;
+      return bikeManager.Direction;
     }
 
     public void SetFrontWhelieCOM()
     {
-      bodyRB.centerOfMass = _bikeManager.FrontWheel.transform.localPosition;
+      bodyRB.centerOfMass = bikeManager.FrontWheel.transform.localPosition;
     }
 
     //===================================
@@ -221,7 +240,7 @@ namespace TLT.Vehicles.Bike
     private void UpdateVelocity()
     {
       ImpulseBody();
-      if (_bikeManager.AnyWheelGrounded)
+      if (bikeManager.AnyWheelGrounded)
       {
         if (bodyRB.velocity.magnitude > _bikeData.MaxVelocity)
         {
@@ -233,7 +252,7 @@ namespace TLT.Vehicles.Bike
         bodyRB.velocity = bodyRB.velocity.normalized * _bikeData.MaxVelocity * 1.5f;
       }
 
-      if (_bikeController.Throttle == 0 && _bikeManager.Grounded && _bikeController.Brake != 0)
+      if (bikeController.Throttle == 0 && bikeManager.Grounded && bikeController.Brake != 0)
       {
         // ForceBrake();
         bodyRB.velocity = Vector2.Lerp(bodyRB.velocity, new Vector2(0, bodyRB.velocity.y), Time.deltaTime * _bikeData.DefaultForceBrakeSpeed);
@@ -242,17 +261,17 @@ namespace TLT.Vehicles.Bike
 
     public void ForceBrake()
     {
-      _bikeManager.FrontWheel.ForceBrake();
-      _bikeManager.BackWheel.ForceBrake();
+      bikeManager.FrontWheel.ForceBrake();
+      bikeManager.BackWheel.ForceBrake();
 
-      if (((_bikeManager.OnlyFrontGrounded || _bikeManager.Grounded) && FloorAngle < 45f) || _bikeManager.OnlyBackGrounded)
+      if (((bikeManager.OnlyFrontGrounded || bikeManager.Grounded) && FloorAngle < 45f) || bikeManager.OnlyBackGrounded)
       {
         SetFrontWhelieCOM();
-        bodyRB.AddTorque(-bodyRB.velocity.magnitude * 250f * (float)_bikeManager.Direction * bodyRB.mass * Time.deltaTime, ForceMode2D.Force);
+        bodyRB.AddTorque(-bodyRB.velocity.magnitude * 250f * (float)bikeManager.Direction * bodyRB.mass * Time.deltaTime, ForceMode2D.Force);
       }
-      else if (!_bikeManager.Grounded && FloorAngle > 45f)
+      else if (!bikeManager.Grounded && FloorAngle > 45f)
       {
-        bodyRB.AddTorque(FloorAngle * 100f * (float)_bikeManager.Direction * bodyRB.mass * Time.deltaTime, ForceMode2D.Force);
+        bodyRB.AddTorque(FloorAngle * 100f * (float)bikeManager.Direction * bodyRB.mass * Time.deltaTime, ForceMode2D.Force);
       }
 
       bodyRB.velocity = Vector2.Lerp(bodyRB.velocity, new Vector2(0, bodyRB.velocity.y), Time.deltaTime * _bikeData.DefaultForceBrakeSpeed);
@@ -260,27 +279,27 @@ namespace TLT.Vehicles.Bike
 
     private void ImpulseBody()
     {
-      float d = _bikeController.ForceThrottle ? 1f : _bikeController.Throttle;
-      Vector3 v = transform.right * _bikeManager.Direction * d * _bikeData.BodyForce * Time.deltaTime;
+      float d = bikeController.ForceThrottle ? 1f : bikeController.Throttle;
+      Vector3 v = transform.right * bikeManager.Direction * d * _bikeData.BodyForce * Time.deltaTime;
 
-      if (_bikeManager.Grounded)
+      if (bikeManager.Grounded)
         bodyRB.AddForce(v, ForceMode2D.Force);
     }
 
     private void Balance()
     {
-      if (_bikeController.Balance == 0)
+      if (bikeController.Balance == 0)
         return;
 
-      if (!_bikeManager.Grounded)
+      if (!bikeManager.Grounded)
       {
-        bodyRB.AddTorque(-_bikeController.Balance * _bikeData.SpinTorque);
+        bodyRB.AddTorque(-bikeController.Balance * _bikeData.SpinTorque);
         return;
       }
 
-      if (_bikeController.Balance == -1)
+      if (bikeController.Balance == -1)
         bodyRB.AddTorque(_bikeData.WheelieTorque);
-      else if (_bikeController.Balance == 1)
+      else if (bikeController.Balance == 1)
         bodyRB.AddTorque(-_bikeData.WheelieTorque);
     }
 
@@ -291,10 +310,10 @@ namespace TLT.Vehicles.Bike
 
     private void UpdateTorque()
     {
-      float num = _bikeController.Balance * _bikeData.BalanceStrength * bodyRB.mass * Time.deltaTime;
-      if (_bikeController.Balance == 0)
+      float num = bikeController.Balance * _bikeData.BalanceStrength * bodyRB.mass * Time.deltaTime;
+      if (bikeController.Balance == 0)
       {
-        if (_bikeManager.Grounded)
+        if (bikeManager.Grounded)
           groundHandicap = 0.25f;
         else
           groundHandicap = 0.6f;
@@ -317,15 +336,15 @@ namespace TLT.Vehicles.Bike
     {
       float deviation = 0.2f;
 
-      if ((_bikeManager.FrontWheel.WheelRB.velocity.x > deviation || _bikeManager.FrontWheel.WheelRB.velocity.x < -deviation) && 
-          (_bikeManager.BackWheel.WheelRB.velocity.x > deviation || _bikeManager.BackWheel.WheelRB.velocity.x < -deviation))
+      if ((bikeManager.FrontWheel.WheelRB.velocity.x > deviation || bikeManager.FrontWheel.WheelRB.velocity.x < -deviation) && 
+          (bikeManager.BackWheel.WheelRB.velocity.x > deviation || bikeManager.BackWheel.WheelRB.velocity.x < -deviation))
       {
-        _bikeController.Animator.SetBool("IsMove", true);
+        bikeController.Animator.SetBool("IsMove", true);
         //_bikeManager.CameraController.Zoom(false);
         return;
       }
 
-      _bikeController.Animator.SetBool("IsMove", false);
+      bikeController.Animator.SetBool("IsMove", false);
       //_bikeManager.CameraController.Zoom(true);
     }
 
@@ -333,47 +352,47 @@ namespace TLT.Vehicles.Bike
 
     private void VehicleController_OnGetInCar()
     {
-      SoundSFX(_soundStartingUp, true);
+      //SoundSFX(_soundStartingUp, true); // Надо при запуске двигателя
 
-      _bikeController.Character = character;
-      _bikeController.CinemachineCamera.Target.TrackingTarget = transform;
+      bikeController.Character = character;
+      bikeController.CinemachineCamera.Target.TrackingTarget = transform;
 
-      _bikeController.Character.transform.position = transform.position;
+      bikeController.Character.transform.position = transform.position;
 
-      oldCharacterWeapon = _bikeController.Character.WeaponController.CurrentWeapon;
+      oldCharacterWeapon = bikeController.Character.WeaponController.CurrentWeapon;
       WeaponController.CurrentWeapon.GetWeaponData(oldCharacterWeapon.CurrentAmountAmmo, oldCharacterWeapon.CurrentAmountAmmoInMagazine);
-      _bikeController.Character.WeaponController.CurrentWeapon = WeaponController.CurrentWeapon;
+      bikeController.Character.WeaponController.CurrentWeapon = WeaponController.CurrentWeapon;
       levelManager.ChangeCharacter();
 
-      _bikeController.Character.gameObject.SetActive(false);
+      bikeController.Character.gameObject.SetActive(false);
 
-      _bikeController.IsInCar = true;
+      bikeController.IsInCar = true;
 
       _objectBody.SetActive(false);
       _objectCharacterBody.SetActive(true);
 
-      _bikeController.Character.Direction = GetDirection();
+      bikeController.Character.Direction = GetDirection();
 
-      _bikeController.InputHandler.AI_Player.Player.Select.performed += Select_performed;
+      bikeController.InputHandler.AI_Player.Player.Select.performed += Select_performed;
     }
 
     private void VehicleController_OnGetOutCar()
     {
       StopSoundSFX();
 
-      _bikeController.CinemachineCamera.Target.TrackingTarget = character.transform;
+      bikeController.CinemachineCamera.Target.TrackingTarget = character.transform;
 
-      _bikeController.Character.transform.position = transform.position;
-      _bikeController.Character.gameObject.SetActive(true);
+      bikeController.Character.transform.position = transform.position;
+      bikeController.Character.gameObject.SetActive(true);
 
       Weapon currentWeapon = WeaponController.CurrentWeapon;
       oldCharacterWeapon.GetWeaponData(currentWeapon.CurrentAmountAmmo, currentWeapon.CurrentAmountAmmoInMagazine);
-      _bikeController.Character.WeaponController.CurrentWeapon = oldCharacterWeapon;
+      bikeController.Character.WeaponController.CurrentWeapon = oldCharacterWeapon;
       levelManager.ChangeCharacter();
 
-      _bikeController.Character = null;
+      bikeController.Character = null;
 
-      _bikeController.IsInCar = false;
+      bikeController.IsInCar = false;
 
       _objectBody.SetActive(true);
       _objectCharacterBody.SetActive(false);
@@ -381,21 +400,31 @@ namespace TLT.Vehicles.Bike
 
     private void Select_performed(InputAction.CallbackContext parContext)
     {
-      if (_bikeController.IsFlip)
+      if (bikeController.IsFlip)
         return;
 
       GetOutCar();
 
-      _bikeController.InputHandler.AI_Player.Player.Select.performed -= Select_performed;
+      bikeController.InputHandler.AI_Player.Player.Select.performed -= Select_performed;
     }
 
     private void Throttle(InputAction.CallbackContext parContext)
     {
-      if (!_bikeController.IsInCar || !_bikeManager.Grounded)
+      if (!bikeController.IsInCar || !bikeManager.Grounded)
         return;
 
       if (_dustAnimator != null)
         _dustAnimator.SetTrigger("IsMoveDust");
+    }
+
+    private void BikeEngine_OnStartEngine()
+    {
+      SoundSFX(_soundStartingUp, true);
+    }
+
+    private void BikeEngine_OnStopEngine()
+    {
+      StopSoundSFX();
     }
 
     //===================================

@@ -278,6 +278,15 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Engine"",
+                    ""type"": ""Button"",
+                    ""id"": ""92919e00-4842-4036-9b4a-875c40ed6146"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -401,6 +410,17 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
                     ""action"": ""Balance"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e751ad59-b3d6-4204-8f13-7ac45d8031f5"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Engine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -472,6 +492,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
         m_Vehicle_Throttle = m_Vehicle.FindAction("Throttle", throwIfNotFound: true);
         m_Vehicle_Brake = m_Vehicle.FindAction("Brake", throwIfNotFound: true);
         m_Vehicle_Balance = m_Vehicle.FindAction("Balance", throwIfNotFound: true);
+        m_Vehicle_Engine = m_Vehicle.FindAction("Engine", throwIfNotFound: true);
         // Time
         m_Time = asset.FindActionMap("Time", throwIfNotFound: true);
         m_Time_TimeDilation = m_Time.FindAction("TimeDilation", throwIfNotFound: true);
@@ -619,6 +640,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
     private readonly InputAction m_Vehicle_Throttle;
     private readonly InputAction m_Vehicle_Brake;
     private readonly InputAction m_Vehicle_Balance;
+    private readonly InputAction m_Vehicle_Engine;
     public struct VehicleActions
     {
         private @AI_Player m_Wrapper;
@@ -628,6 +650,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
         public InputAction @Throttle => m_Wrapper.m_Vehicle_Throttle;
         public InputAction @Brake => m_Wrapper.m_Vehicle_Brake;
         public InputAction @Balance => m_Wrapper.m_Vehicle_Balance;
+        public InputAction @Engine => m_Wrapper.m_Vehicle_Engine;
         public InputActionMap Get() { return m_Wrapper.m_Vehicle; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -652,6 +675,9 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
             @Balance.started += instance.OnBalance;
             @Balance.performed += instance.OnBalance;
             @Balance.canceled += instance.OnBalance;
+            @Engine.started += instance.OnEngine;
+            @Engine.performed += instance.OnEngine;
+            @Engine.canceled += instance.OnEngine;
         }
 
         private void UnregisterCallbacks(IVehicleActions instance)
@@ -671,6 +697,9 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
             @Balance.started -= instance.OnBalance;
             @Balance.performed -= instance.OnBalance;
             @Balance.canceled -= instance.OnBalance;
+            @Engine.started -= instance.OnEngine;
+            @Engine.performed -= instance.OnEngine;
+            @Engine.canceled -= instance.OnEngine;
         }
 
         public void RemoveCallbacks(IVehicleActions instance)
@@ -767,6 +796,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
         void OnThrottle(InputAction.CallbackContext context);
         void OnBrake(InputAction.CallbackContext context);
         void OnBalance(InputAction.CallbackContext context);
+        void OnEngine(InputAction.CallbackContext context);
     }
     public interface ITimeActions
     {

@@ -5,19 +5,24 @@ using Newtonsoft.Json.Linq;
 using TLT.Save;
 using TLT.Data;
 
-namespace TLT.Vehicles.Bike
+namespace TLT.Bike.Bike
 {
-  public class BikeManager : MonoBehaviour, ISaveLoad
+  public class BikeManager : MonoBehaviour, ISaveLoad, IBikeBootstrap
   {
     [SerializeField] private BikeWheel _frontWheel;
     [SerializeField] private BikeWheel _backWheel;
 
-    [Space]
+    /*[Space]
     [SerializeField] private BikeController _bikeController;
-    [SerializeField] private BikeBody _bikeBody;
+    [SerializeField] private BikeBody _bikeBody;*/
 
     [Space]
     [SerializeField, Range(-1, 1)] private int _direction = 1;
+
+    //-----------------------------------
+
+    private BikeController bikeController;
+    private BikeBody bikeBody;
 
     //===================================
 
@@ -51,6 +56,16 @@ namespace TLT.Vehicles.Bike
 
     //===================================
 
+    public void CustomAwake()
+    {
+      bikeController = GetComponent<BikeController>();
+      bikeBody = GetComponent<BikeBody>();
+    }
+
+    public void CustomStart() { }
+
+    //===================================
+
     public ObjectData SaveData()
     {
       string objectName = transform.name;
@@ -62,7 +77,7 @@ namespace TLT.Vehicles.Bike
       data.Parameters["Position"] = new float[] { position.x, position.y, position.z };
       data.Parameters["Rotation"] = new float[] { rotation.x, rotation.y, rotation.z };
       data.Parameters["Scale"] = new float[] { scale.x, scale.y, scale.z };
-      data.Parameters["IsInCar"] = _bikeController.IsInCar;
+      data.Parameters["IsInCar"] = bikeController.IsInCar;
 
       return data;
     }
@@ -98,12 +113,12 @@ namespace TLT.Vehicles.Bike
 
       if (parObjectData.Parameters.TryGetValue("IsInCar", out var isInCar) && isInCar is bool)
       {
-        _bikeController.IsInCar = (bool)isInCar;
+        bikeController.IsInCar = (bool)isInCar;
 
-        if (_bikeController.IsInCar)
-          _bikeBody.CallEventOnGetInCar();
+        if (bikeController.IsInCar)
+          bikeBody.CallEventOnGetInCar();
         else
-          _bikeBody.CallEventOnGetOutCar();
+          bikeBody.CallEventOnGetOutCar();
       }
     }
 

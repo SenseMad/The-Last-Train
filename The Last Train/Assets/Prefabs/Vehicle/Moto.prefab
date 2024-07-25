@@ -5314,9 +5314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 120544d52c35829468eacd1bea7d0184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bikeController: {fileID: 2614396439637677190}
-  _bikeManager: {fileID: 4831781136932504671}
-  _bikeBody: {fileID: 7132880636264782937}
   _slowDownFactorSpeed: 0.5
   _slowDownLanding: 0.5
   _enemyLayer:
@@ -5416,8 +5413,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _groundDetector: {fileID: 1649531131331085177}
-  _bikeController: {fileID: 2614396439637677190}
-  _bikeManager: {fileID: 4831781136932504671}
 --- !u!50 &508822666680439729
 Rigidbody2D:
   serializedVersion: 4
@@ -5712,8 +5707,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _groundDetector: {fileID: 278745124009136503}
-  _bikeController: {fileID: 2614396439637677190}
-  _bikeManager: {fileID: 4831781136932504671}
 --- !u!50 &6761260358872471055
 Rigidbody2D:
   serializedVersion: 4
@@ -11401,6 +11394,8 @@ GameObject:
   - component: {fileID: 8560565328725643382}
   - component: {fileID: 7173850988963149014}
   - component: {fileID: 2562509473541278957}
+  - component: {fileID: 2618161051220104822}
+  - component: {fileID: 7908932968044686612}
   m_Layer: 10
   m_Name: Moto
   m_TagString: Untagged
@@ -11620,8 +11615,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _frontWheel: {fileID: 8350227237547349670}
   _backWheel: {fileID: 8056398815630092963}
-  _bikeController: {fileID: 2614396439637677190}
-  _bikeBody: {fileID: 7132880636264782937}
   _direction: 1
 --- !u!114 &2614396439637677190
 MonoBehaviour:
@@ -11635,7 +11628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1bd88adf768c6b4ebd73c9c3efb2085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bikeBody: {fileID: 7132880636264782937}
 --- !u!114 &7132880636264782937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11648,8 +11640,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd878a9532e579642b6cbaab8c76b7d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bikeController: {fileID: 2614396439637677190}
-  _bikeManager: {fileID: 4831781136932504671}
   _weaponController: {fileID: 3618918006485212050}
   _bikeData:
     _bodyForce: 200
@@ -11692,7 +11682,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 345766a70e854054abae2ada3d435e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bikeBody: {fileID: 7132880636264782937}
   _bikeCharacter: {fileID: 599107497303233215}
   _ignoreLayer:
     serializedVersion: 2
@@ -11712,9 +11701,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveParticle: {fileID: 2655844976930690214}
   _fallParticle: {fileID: 7193882440401731343}
-  _bikeController: {fileID: 2614396439637677190}
-  _bikeManager: {fileID: 4831781136932504671}
-  _bikeBody: {fileID: 7132880636264782937}
   _occurAfterVelocity: 1
   _dustFormationPeriod: 0.03
 --- !u!114 &2562509473541278957
@@ -11729,9 +11715,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 120544d52c35829468eacd1bea7d0184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bikeController: {fileID: 2614396439637677190}
-  _bikeManager: {fileID: 4831781136932504671}
-  _bikeBody: {fileID: 7132880636264782937}
   _slowDownFactorSpeed: 0
   _slowDownLanding: 0
   _enemyLayer:
@@ -11740,6 +11723,43 @@ MonoBehaviour:
   _boxCollider2D: {fileID: 4445895288986485156}
   _lowerBoxCollider: {fileID: 8035214214223488665}
   _rayDistanceForward: 0.25
+--- !u!114 &2618161051220104822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810085334441422386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a17aed52dadf0947936bfc51207757b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _numberClicksLaunch: 3
+  _engineStartTime: 5
+  _engineShutdownTime: 0
+--- !u!114 &7908932968044686612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810085334441422386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2cdf7904a73ba142b97dcbfa1091c69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptsToExecute:
+  - {fileID: 4831781136932504671}
+  - {fileID: 2614396439637677190}
+  - {fileID: 7132880636264782937}
+  - {fileID: 2618161051220104822}
+  - {fileID: 8560565328725643382}
+  - {fileID: 7173850988963149014}
+  - {fileID: 2562509473541278957}
+  - {fileID: 8350227237547349670}
+  - {fileID: 8056398815630092963}
 --- !u!1 &8842972170002813065
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TLT.Vehicles
+namespace TLT.Bike
 {
   [System.Serializable]
   public sealed class BikeData

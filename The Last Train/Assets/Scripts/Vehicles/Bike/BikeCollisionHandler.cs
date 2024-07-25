@@ -4,14 +4,10 @@ using Zenject;
 using TLT.CharacterManager;
 using TLT.Enemy;
 
-namespace TLT.Vehicles.Bike
+namespace TLT.Bike.Bike
 {
-  public class BikeCollisionHandler : MonoBehaviour
+  public class BikeCollisionHandler : MonoBehaviour, IBikeBootstrap
   {
-    [SerializeField] private BikeController _bikeController;
-    [SerializeField] private BikeManager _bikeManager;
-    [SerializeField] private BikeBody _bikeBody;
-
     [Space]
     [SerializeField] private float _slowDownFactorSpeed = 0.5f;
     [SerializeField] private float _slowDownLanding = 0.5f;
@@ -25,6 +21,10 @@ namespace TLT.Vehicles.Bike
 
     //-----------------------------------
 
+    private BikeController bikeController;
+    private BikeManager bikeManager;
+    private BikeBody bikeBody;
+
     private Character character;
 
     //===================================
@@ -37,6 +37,15 @@ namespace TLT.Vehicles.Bike
 
     //===================================
 
+    public void CustomAwake()
+    {
+      bikeController = GetComponent<BikeController>();
+      bikeManager = GetComponent<BikeManager>();
+      bikeBody = GetComponent<BikeBody>();
+    }
+
+    public void CustomStart() { }
+
     private void Update()
     {
       RayForward();
@@ -48,10 +57,10 @@ namespace TLT.Vehicles.Bike
 
     private void RayForward()
     {
-      if (!_bikeController.IsInCar)
+      if (!bikeController.IsInCar)
         return;
 
-      if (_bikeBody.BodyRB.velocity.x * _bikeManager.Direction < _bikeBody.BikeData.MaxVelocity / 3)
+      if (bikeBody.BodyRB.velocity.x * bikeManager.Direction < bikeBody.BikeData.MaxVelocity / 3)
         return;
 
       Bounds bounds = _boxCollider2D.bounds;
@@ -59,7 +68,7 @@ namespace TLT.Vehicles.Bike
       Vector2 direction;
       Vector2[] rayOrigins;
 
-      if (_bikeManager.Direction == 1)
+      if (bikeManager.Direction == 1)
       {
         direction = Vector2.right;
         rayOrigins = new Vector2[]
@@ -98,13 +107,13 @@ namespace TLT.Vehicles.Bike
         if (!hit.collider.TryGetComponent(out EnemyAgent parEnemyAgent))
           continue;
 
-        if (_bikeManager.Grounded || _bikeManager.OnlyFrontGrounded)
+        if (bikeManager.Grounded || bikeManager.OnlyFrontGrounded)
         {
-          _bikeBody.BodyRB.velocity = new Vector2(_bikeBody.BodyRB.velocity.x * _slowDownFactorSpeed, _bikeBody.BodyRB.velocity.y);
+          bikeBody.BodyRB.velocity = new Vector2(bikeBody.BodyRB.velocity.x * _slowDownFactorSpeed, bikeBody.BodyRB.velocity.y);
           parEnemyAgent.TypeDeath("IsDeathSpeed");
           parEnemyAgent.ApplyDamage(1);
           character.ApplyDamage(1);
-          _bikeController.Animator.SetTrigger("IsHurt");
+          bikeController.Animator.SetTrigger("IsHurt");
           return;
         }
       }
@@ -112,10 +121,10 @@ namespace TLT.Vehicles.Bike
 
     private void LowerCollider()
     {
-      if (!_bikeController.IsInCar)
+      if (!bikeController.IsInCar)
         return;
 
-      if (_bikeBody.BodyRB.velocity.x * _bikeManager.Direction < _bikeBody.BikeData.MaxVelocity / _bikeBody.BikeData.MaxVelocity)
+      if (bikeBody.BodyRB.velocity.x * bikeManager.Direction < bikeBody.BikeData.MaxVelocity / bikeBody.BikeData.MaxVelocity)
         return;
 
       Collider2D[] colliders = Physics2D.OverlapBoxAll(_lowerBoxCollider.bounds.center, _lowerBoxCollider.bounds.size, 0, _enemyLayer);
@@ -127,7 +136,7 @@ namespace TLT.Vehicles.Bike
       {
         if (collider.TryGetComponent(out EnemyAgent parEnemyAgent))
         {
-          if (_bikeManager.OnlyBackGrounded)
+          if (bikeManager.OnlyBackGrounded)
           {
             /*if (_bikeBody.WheelLiftAngle < -0.011f)
             {
@@ -139,15 +148,15 @@ namespace TLT.Vehicles.Bike
               return;
             }*/
 
-            _bikeBody.BodyRB.velocity = new Vector2(_bikeBody.BodyRB.velocity.x * _slowDownLanding, _bikeBody.BodyRB.velocity.y);
+            bikeBody.BodyRB.velocity = new Vector2(bikeBody.BodyRB.velocity.x * _slowDownLanding, bikeBody.BodyRB.velocity.y);
             parEnemyAgent.TypeDeath("IsDeathSpeed");
             parEnemyAgent.ApplyDamage(1);
             return;
           }
 
-          if (!_bikeManager.Grounded)
+          if (!bikeManager.Grounded)
           {
-            _bikeBody.BodyRB.velocity = new Vector2(_bikeBody.BodyRB.velocity.x * _slowDownLanding, _bikeBody.BodyRB.velocity.y);
+            bikeBody.BodyRB.velocity = new Vector2(bikeBody.BodyRB.velocity.x * _slowDownLanding, bikeBody.BodyRB.velocity.y);
             parEnemyAgent.TypeDeath("IsDeathLanding");
             parEnemyAgent.ApplyDamage(1);
             return;

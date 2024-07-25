@@ -6,14 +6,10 @@ using Unity.Cinemachine;
 using TLT.CharacterManager;
 using TLT.Input;
 
-namespace TLT.Vehicles.Bike
+namespace TLT.Bike.Bike
 {
-  public sealed class BikeController : MonoBehaviour
+  public sealed class BikeController : MonoBehaviour, IBikeBootstrap
   {
-    [SerializeField] private BikeBody _bikeBody;
-
-    //-----------------------------------
-
     private float balance;
     private float balanceDeadzoneMin = 0.35f;
     private float balanceDeadzoneMax = 0.925f;
@@ -27,6 +23,9 @@ namespace TLT.Vehicles.Bike
     public Animator Animator { get; private set; }
 
     public CinemachineCamera CinemachineCamera { get; set; }
+
+    public BikeBody BikeBody { get; private set; }
+    public BikeEngine BikeEngine { get; private set; }
 
 
     public bool IsInCar { get; set; }
@@ -52,10 +51,20 @@ namespace TLT.Vehicles.Bike
 
     //===================================
 
-    private void Awake()
+    public void CustomAwake()
     {
+      BikeBody = GetComponent<BikeBody>();
+      BikeEngine = GetComponent<BikeEngine>();
+
       Animator = GetComponent<Animator>();
     }
+
+    public void CustomStart() { }
+
+    /*private void Awake()
+    {
+      Animator = GetComponent<Animator>();
+    }*/
 
     private void OnEnable()
     {
@@ -70,6 +79,8 @@ namespace TLT.Vehicles.Bike
       InputHandler.AI_Player.Vehicle.Balance.started += OnBalance;
       InputHandler.AI_Player.Vehicle.Balance.performed += OnBalance;
       InputHandler.AI_Player.Vehicle.Balance.canceled += OnBalance;
+
+      InputHandler.AI_Player.Vehicle.Engine.performed += OnEngineRunning;
 
       InputHandler.AI_Player.Vehicle.Space.performed += OnChangeDirection;
     }
@@ -87,6 +98,8 @@ namespace TLT.Vehicles.Bike
       InputHandler.AI_Player.Vehicle.Balance.started -= OnBalance;
       InputHandler.AI_Player.Vehicle.Balance.performed -= OnBalance;
       InputHandler.AI_Player.Vehicle.Balance.canceled -= OnBalance;
+
+      InputHandler.AI_Player.Vehicle.Engine.performed -= OnEngineRunning;
 
       InputHandler.AI_Player.Vehicle.Space.performed -= OnChangeDirection;
     }
@@ -109,6 +122,12 @@ namespace TLT.Vehicles.Bike
     private void OnThrottle(InputAction.CallbackContext parContext)
     {
       if (!IsInCar)
+      {
+        Throttle = 0;
+        return;
+      }
+
+      if (!BikeEngine.IsEngineRunning)
       {
         Throttle = 0;
         return;
@@ -151,6 +170,20 @@ namespace TLT.Vehicles.Bike
       balance = parContext.ReadValue<float>();
     }
 
+    private void OnEngineRunning(InputAction.CallbackContext parContext)
+    {
+      if (!IsInCar)
+        return;
+
+      if (IsFlip)
+        return;
+
+      if (!BikeEngine.IsEngineRunning)
+        BikeEngine.StartEngine();
+      else
+        BikeEngine.StopEngine();
+    }
+
     private void OnChangeDirection(InputAction.CallbackContext context)
     {
       if (!IsInCar)
@@ -159,7 +192,7 @@ namespace TLT.Vehicles.Bike
       if (IsFlip)
         return;
 
-      _bikeBody.ChangeDirection();
+      BikeBody.ChangeDirection();
     }
 
     //===================================

@@ -7,9 +7,9 @@ using TLT.Interfaces;
 using TLT.CharacterManager;
 using TLT.Input;
 using TLT.Weapons;
-using TLT.Vehicles.Bike;
+using TLT.Bike.Bike;
 
-namespace TLT.Vehicles
+namespace TLT.Bike
 {
   public abstract class VehicleController : MonoBehaviour
   {

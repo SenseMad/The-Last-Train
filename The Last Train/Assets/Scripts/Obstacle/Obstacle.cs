@@ -1,6 +1,6 @@
 using UnityEngine;
 
-using TLT.Vehicles.Bike;
+using TLT.Bike.Bike;
 
 public class Obstacle : MonoBehaviour
 {

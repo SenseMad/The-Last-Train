@@ -5,7 +5,7 @@ using System;
 using TLT.CharacterManager;
 using TLT.HealthManager;
 using TLT.Interfaces;
-using TLT.Vehicles.Bike;
+using TLT.Bike.Bike;
 using TLT.Save;
 using TLT.Data;
 

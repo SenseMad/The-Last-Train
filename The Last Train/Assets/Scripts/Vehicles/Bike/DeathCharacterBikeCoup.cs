@@ -1,10 +1,9 @@
 using UnityEngine;
 
-namespace TLT.Vehicles.Bike
+namespace TLT.Bike.Bike
 {
-  public class DeathCharacterBikeCoup : MonoBehaviour
+  public class DeathCharacterBikeCoup : MonoBehaviour, IBikeBootstrap
   {
-    [SerializeField] private BikeBody _bikeBody;
     [SerializeField] private BikeCharacter _bikeCharacter;
 
     [Space]
@@ -12,11 +11,22 @@ namespace TLT.Vehicles.Bike
 
     [SerializeField] private CapsuleCollider2D _collider2D;
 
+    //-----------------------------------
+
+    private BikeBody bikeBody;
+
     //===================================
+
+    public void CustomAwake()
+    {
+      bikeBody = GetComponent<BikeBody>();
+    }
+
+    public void CustomStart() { }
 
     private void Update()
     {
-      if (!_bikeBody.BikeController.IsInCar)
+      if (!bikeBody.BikeController.IsInCar)
         return;
 
       if (_collider2D == null)

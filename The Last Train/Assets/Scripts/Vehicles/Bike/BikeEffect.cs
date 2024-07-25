@@ -1,16 +1,11 @@
 using UnityEngine;
 
-namespace TLT.Vehicles.Bike
+namespace TLT.Bike.Bike
 {
-  public class BikeEffect : MonoBehaviour
+  public class BikeEffect : MonoBehaviour, IBikeBootstrap
   {
     [SerializeField] private ParticleSystem _moveParticle;
     [SerializeField] private ParticleSystem _fallParticle;
-
-    [Space]
-    [SerializeField] private BikeController _bikeController;
-    [SerializeField] private BikeManager _bikeManager;
-    [SerializeField] private BikeBody _bikeBody;
 
     [Space]
     [SerializeField, Range(0, 10)] private float _occurAfterVelocity;
@@ -18,28 +13,41 @@ namespace TLT.Vehicles.Bike
 
     //-----------------------------------
 
+    private BikeController bikeController;
+    private BikeManager bikeManager;
+    private BikeBody bikeBody;
+
     private float counter;
 
     //===================================
 
+    public void CustomAwake()
+    {
+      bikeController = GetComponent<BikeController>();
+      bikeManager = GetComponent<BikeManager>();
+      bikeBody = GetComponent<BikeBody>();
+    }
+
+    public void CustomStart() { }
+
     private void OnEnable()
     {
-      _bikeManager.BackWheel.OnLanded += BackWheel_OnLanded;
+      bikeManager.BackWheel.OnLanded += BackWheel_OnLanded;
     }
 
     private void OnDisable()
     {
-      _bikeManager.BackWheel.OnLanded -= BackWheel_OnLanded;
+      bikeManager.BackWheel.OnLanded -= BackWheel_OnLanded;
     }
 
     private void Update()
     {
-      if (!_bikeController.IsInCar)
+      if (!bikeController.IsInCar)
         return;
 
       counter += Time.deltaTime;
 
-      if ((_bikeManager.Grounded || _bikeManager.OnlyBackGrounded) && Mathf.Abs(_bikeBody.BodyRB.velocity.x) > _occurAfterVelocity)
+      if ((bikeManager.Grounded || bikeManager.OnlyBackGrounded) && Mathf.Abs(bikeBody.BodyRB.velocity.x) > _occurAfterVelocity)
       {
         if (counter > _dustFormationPeriod)
         {

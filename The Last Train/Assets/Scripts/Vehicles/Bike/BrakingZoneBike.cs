@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TLT.Vehicles.Bike
+namespace TLT.Bike.Bike
 {
   public class BrakingZoneBike : MonoBehaviour
   {
