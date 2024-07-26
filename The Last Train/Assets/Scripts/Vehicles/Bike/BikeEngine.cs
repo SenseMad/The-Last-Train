@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 using TLT.Bike.Bike;
@@ -17,7 +15,7 @@ namespace TLT.Bike
 
     [Space]
     [SerializeField] private Animator _animatorQButton;
-    //[SerializeField, Min(1)] private float _engineRunningTimeWithoutMovement;
+    [SerializeField] private Animator _animatorSuccess;
 
     //-----------------------------------
 
@@ -28,6 +26,8 @@ namespace TLT.Bike
     private float tempEngineStartTime = 0;
 
     private float tempEngineShutdownTime = 0;
+
+    private bool isEngineTryingStart = false;
 
     //===================================
 
@@ -107,17 +107,14 @@ namespace TLT.Bike
 
     public void StartEngine()
     {
-      tempNumberClicksLaunch++;
-      _animatorQButton.SetTrigger("IsClick");
-
-      if (tempNumberClicksLaunch < _numberClicksLaunch)
+      if (isEngineTryingStart)
         return;
 
-      IsEngineRunning = true;
+      bikeController.Animator.SetTrigger("IsStart");
 
-      _animatorQButton.gameObject.SetActive(false);
+      _animatorQButton.SetTrigger("IsClick");
 
-      OnStartEngine?.Invoke();
+      isEngineTryingStart = true;
     }
 
     public void StopEngine()
@@ -132,17 +129,39 @@ namespace TLT.Bike
 
     //===================================
 
+    private void IncreaseClick()
+    {
+      tempNumberClicksLaunch++;
+
+      isEngineTryingStart = false;
+
+      if (tempNumberClicksLaunch < _numberClicksLaunch)
+        return;
+
+      IsEngineRunning = true;
+
+      _animatorQButton.gameObject.SetActive(false);
+
+      _animatorSuccess.gameObject.SetActive(true);
+
+      OnStartEngine?.Invoke();
+    }
+
     private void BikeBody_OnGetInCar()
     {
       if (IsEngineRunning)
         return;
 
       _animatorQButton.gameObject.SetActive(true);
+
+      _animatorSuccess.gameObject.SetActive(false);
     }
 
     private void BikeBody_OnGetOutCar()
     {
       _animatorQButton.gameObject.SetActive(false);
+
+      _animatorSuccess.gameObject.SetActive(false);
     }
 
     private void BikeEngine_OnStartEngine()

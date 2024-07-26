@@ -1,0 +1,391 @@
+fileFormatVersion: 2
+guid: b93fe54836ee0d94491f8674990391dc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 250417035851097929
+    second: moto_start_0
+  - first:
+      213: -1228469321787537049
+    second: moto_start_1
+  - first:
+      213: -447546472575216159
+    second: moto_start_2
+  - first:
+      213: -6925275708430233450
+    second: moto_start_3
+  - first:
+      213: -3132788467250633197
+    second: moto_start_4
+  - first:
+      213: -5720463160412342396
+    second: moto_start_5
+  - first:
+      213: -47764152856359171
+    second: moto_start_6
+  - first:
+      213: 4841211968816279224
+    second: moto_start_7
+  - first:
+      213: 2588728570542831401
+    second: moto_start_8
+  - first:
+      213: 402666806873538038
+    second: moto_start_9
+  - first:
+      213: 262340498705741155
+    second: moto_start_10
+  - first:
+      213: -2103915865731332851
+    second: moto_start_11
+  - first:
+      213: 6095593414882072324
+    second: moto_start_12
+  - first:
+      213: 274077628904632368
+    second: moto_start_13
+  - first:
+      213: -22930182795150517
+    second: moto_start_14
+  - first:
+      213: -5632408618137528725
+    second: moto_start_15
+  - first:
+      213: -3277891222231341840
+    second: moto_start_16
+  - first:
+      213: -1031071310548333634
+    second: moto_start_17
+  - first:
+      213: -3294441711632618371
+    second: moto_start_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 23
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: moto_start_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 72
+        height: 37
+      alignment: 9
+      pivot: {x: 0.667, y: 0.435}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9476c93a7f8a97300800000000000000
+      internalID: 250417035851097929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_start_1
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 72
+        height: 37
+      alignment: 9
+      pivot: {x: 0.667, y: 0.435}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 769836919a993fee0800000000000000
+      internalID: -1228469321787537049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_start_2
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 72
+        height: 37
+      alignment: 9
+      pivot: {x: 0.667, y: 0.435}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e5dca9badef9c9f0800000000000000
+      internalID: -447546472575216159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_start_3
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 0
+        width: 72
+        height: 37
+      alignment: 9
+      pivot: {x: 0.667, y: 0.435}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 690df535f6a74ef90800000000000000
+      internalID: -6925275708430233450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_start_4
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 72
+        height: 37
+      alignment: 9
+      pivot: {x: 0.667, y: 0.435}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 316e51dbc791684d0800000000000000
+      internalID: -3132788467250633197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_start_5
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 0
+        width: 72
+        height: 37
+      alignment: 9
+      pivot: {x: 0.667, y: 0.435}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 487f9ec5015dc90b0800000000000000
+      internalID: -5720463160412342396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_start_6
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 72
+        height: 37
+      alignment: 9
+      pivot: {x: 0.667, y: 0.435}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfecffb81ce465ff0800000000000000
+      internalID: -47764152856359171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_start_7
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 0
+        width: 72
+        height: 37
+      alignment: 9
+      pivot: {x: 0.667, y: 0.435}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bee9a3c2a07f2340800000000000000
+      internalID: 4841211968816279224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_start_8
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 72
+        height: 37
+      alignment: 9
+      pivot: {x: 0.667, y: 0.435}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9273c135be20de320800000000000000
+      internalID: 2588728570542831401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_start_9
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 0
+        width: 72
+        height: 37
+      alignment: 9
+      pivot: {x: 0.667, y: 0.435}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fdb982d35f869500800000000000000
+      internalID: 402666806873538038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: ca76cf7987ab22b45928ac4265cb4a50
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      moto_start_0: 250417035851097929
+      moto_start_1: -1228469321787537049
+      moto_start_2: -447546472575216159
+      moto_start_3: -6925275708430233450
+      moto_start_4: -3132788467250633197
+      moto_start_5: -5720463160412342396
+      moto_start_6: -47764152856359171
+      moto_start_7: 4841211968816279224
+      moto_start_8: 2588728570542831401
+      moto_start_9: 402666806873538038
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
