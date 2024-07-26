@@ -11955,6 +11955,7 @@ MonoBehaviour:
   _numberClicksLaunch: 3
   _engineStartTime: 10
   _engineShutdownTime: 60
+  _audioStartBike: {fileID: 8300000, guid: da55db9fbe52ee441a9c7de00d7a3f41, type: 3}
   _animatorQButton: {fileID: 7431614105160772273}
   _animatorSuccess: {fileID: 1544573626961545530}
 --- !u!114 &7908932968044686612

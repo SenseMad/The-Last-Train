@@ -1,7 +1,9 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 using TLT.Bike.Bike;
+using TLT.Sound;
 
 namespace TLT.Bike
 {
@@ -14,6 +16,9 @@ namespace TLT.Bike
     [SerializeField, Min(0)] private float _engineShutdownTime;
 
     [Space]
+    [SerializeField] private AudioClip _audioStartBike;
+
+    [Space]
     [SerializeField] private Animator _animatorQButton;
     [SerializeField] private Animator _animatorSuccess;
 
@@ -21,6 +26,8 @@ namespace TLT.Bike
 
     private BikeBody bikeBody;
     private BikeController bikeController;
+
+    private SoundManager soundManager;
 
     private int tempNumberClicksLaunch = 0;
     private float tempEngineStartTime = 0;
@@ -32,6 +39,14 @@ namespace TLT.Bike
     //===================================
 
     public bool IsEngineRunning {  get; private set; }
+
+    //===================================
+
+    [Inject]
+    private void Construct(SoundManager parSoundManager)
+    {
+      soundManager = parSoundManager;
+    }
 
     //===================================
 
@@ -128,6 +143,11 @@ namespace TLT.Bike
     }
 
     //===================================
+
+    private void SoundStartBike()
+    {
+      soundManager.PlaySound(_audioStartBike, transform.position, 0.5f);
+    }
 
     private void IncreaseClick()
     {
