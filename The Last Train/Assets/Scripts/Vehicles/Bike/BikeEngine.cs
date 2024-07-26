@@ -47,7 +47,11 @@ namespace TLT.Bike
       bikeController = GetComponent<BikeController>();
     }
 
-    public void CustomStart() { }
+    public void CustomStart()
+    {
+      if (!bikeController.IsInCar)
+        _animatorQButton.gameObject.SetActive(false);
+    }
 
     private void Update()
     {
