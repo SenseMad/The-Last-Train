@@ -2,11 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
-using TLT.Input;
 using TLT.Bike.Bike;
-using Unity.VisualScripting;
 
 namespace TLT.Bike
 {
@@ -17,17 +14,20 @@ namespace TLT.Bike
 
     [Space]
     [SerializeField, Min(0)] private float _engineShutdownTime;
+
+    [Space]
+    [SerializeField] private Animator _animatorQButton;
     //[SerializeField, Min(1)] private float _engineRunningTimeWithoutMovement;
 
     //-----------------------------------
 
-    private InputHandler inputHandler;
-
-    private BikeManager bikeManager;
+    private BikeBody bikeBody;
     private BikeController bikeController;
 
     private int tempNumberClicksLaunch = 0;
     private float tempEngineStartTime = 0;
+
+    private float tempEngineShutdownTime = 0;
 
     //===================================
 
@@ -41,50 +41,60 @@ namespace TLT.Bike
 
     //===================================
 
-    [Inject]
-    private void Construct(InputHandler parInputHandler)
-    {
-      inputHandler = parInputHandler;
-    }
-
-    //===================================
-
     public void CustomAwake()
     {
-      bikeManager = GetComponent<BikeManager>();
+      bikeBody = GetComponent<BikeBody>();
       bikeController = GetComponent<BikeController>();
     }
 
     public void CustomStart() { }
 
-    /*private void Awake()
-    {
-      bikeManager = GetComponent<BikeManager>();
-      bikeController = GetComponent<BikeController>();
-    }*/
-
     private void Update()
     {
-      if (!IsEngineRunning && tempNumberClicksLaunch > 0)
+      if (bikeController.IsInCar)
       {
-        tempEngineStartTime += Time.deltaTime;
-
-        if (tempEngineStartTime >= _engineStartTime)
+        // Завести двигатель
+        if (!IsEngineRunning && tempNumberClicksLaunch > 0)
         {
-          tempNumberClicksLaunch = 0;
-          tempEngineStartTime = 0;
+          tempEngineStartTime += Time.deltaTime;
+
+          if (tempEngineStartTime >= _engineStartTime)
+          {
+            BikeEngine_OnStartEngine();
+          }
         }
+      }
+
+      // Остановить двигатель
+      if (IsEngineRunning && bikeController.Throttle == 0 && !bikeController.IsMoving)
+      {
+        tempEngineShutdownTime += Time.deltaTime;
+        Debug.Log($"Мотоцикл заглохнет через: {_engineShutdownTime - tempEngineShutdownTime} сек.");
+        if (tempEngineShutdownTime >= _engineShutdownTime)
+        {
+          StopEngine();
+        }
+      }
+      else
+      {
+        BikeEngine_OnStopEngine();
       }
     }
 
     private void OnEnable()
     {
+      bikeBody.OnGetInCar += BikeBody_OnGetInCar;
+      bikeBody.OnGetOutCar += BikeBody_OnGetOutCar;
+
       OnStartEngine += BikeEngine_OnStartEngine;
       OnStopEngine += BikeEngine_OnStopEngine;
     }
 
     private void OnDisable()
     {
+      bikeBody.OnGetInCar -= BikeBody_OnGetInCar;
+      bikeBody.OnGetOutCar -= BikeBody_OnGetOutCar;
+
       OnStartEngine -= BikeEngine_OnStartEngine;
       OnStopEngine -= BikeEngine_OnStopEngine;
     }
@@ -94,11 +104,14 @@ namespace TLT.Bike
     public void StartEngine()
     {
       tempNumberClicksLaunch++;
+      _animatorQButton.SetTrigger("IsClick");
 
       if (tempNumberClicksLaunch < _numberClicksLaunch)
         return;
 
       IsEngineRunning = true;
+
+      _animatorQButton.gameObject.SetActive(false);
 
       OnStartEngine?.Invoke();
     }
@@ -107,10 +120,26 @@ namespace TLT.Bike
     {
       IsEngineRunning = false;
 
+      if (bikeController.IsInCar)
+        _animatorQButton.gameObject.SetActive(true);
+
       OnStopEngine?.Invoke();
     }
 
     //===================================
+
+    private void BikeBody_OnGetInCar()
+    {
+      if (IsEngineRunning)
+        return;
+
+      _animatorQButton.gameObject.SetActive(true);
+    }
+
+    private void BikeBody_OnGetOutCar()
+    {
+      _animatorQButton.gameObject.SetActive(false);
+    }
 
     private void BikeEngine_OnStartEngine()
     {
@@ -120,8 +149,7 @@ namespace TLT.Bike
 
     private void BikeEngine_OnStopEngine()
     {
-      tempNumberClicksLaunch = 0;
-      tempEngineStartTime = 0;
+      tempEngineShutdownTime = 0;
     }
 
     //===================================

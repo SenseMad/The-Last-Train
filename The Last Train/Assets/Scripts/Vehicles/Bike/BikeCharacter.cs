@@ -8,19 +8,17 @@ using TLT.CharacterManager;
 
 namespace TLT.Bike.Bike
 {
-  public class BikeCharacter : MonoBehaviour
+  public class BikeCharacter : MonoBehaviour, IBikeBootstrap
   {
-    [SerializeField] private BikeBody _bikeBody;
-    [SerializeField] private BikeController _bikeController;
-
     [Space]
     [SerializeField] private WeaponController _weaponController;
 
     [SerializeField] private Animator _animatorShoot;
 
-    [SerializeField] private Animation _animationShoot;
-
     //-----------------------------------
+
+    private BikeBody bikeBody;
+    private BikeController bikeController;
 
     private InputHandler inputHandler;
 
@@ -42,15 +40,21 @@ namespace TLT.Bike.Bike
 
     //===================================
 
-    private void Update()
+    public void CustomAwake()
     {
-      if (!_bikeController.IsInCar)
+      bikeBody = GetComponentInParent<BikeBody>();
+      bikeController = GetComponentInParent<BikeController>();
+    }
+
+    public void CustomStart() { }
+
+    /*private void Update()
+    {
+      if (!bikeController.IsInCar)
         return;
 
       //Character.MovingParticles();
-    }
-
-    //===================================
+    }*/
 
     private void OnEnable()
     {
@@ -74,11 +78,11 @@ namespace TLT.Bike.Bike
 
     private void Health_OnInstantlyKill()
     {
-      _bikeBody.BikeController.IsInCar = false;
-      _bikeBody.ObjectCharacterBody.SetActive(false);
-      _bikeController.Character = null;
+      bikeBody.BikeController.IsInCar = false;
+      bikeBody.ObjectCharacterBody.SetActive(false);
+      bikeController.Character = null;
 
-      _bikeBody.ObjectBody.SetActive(true);
+      bikeBody.ObjectBody.SetActive(true);
 
       levelManager.StartRestartScene();
     }
@@ -88,16 +92,12 @@ namespace TLT.Bike.Bike
       if (_animatorShoot != null)
         _animatorShoot.SetTrigger("IsShoot");
 
-      //_animationShoot.Play();
-
       Character.WeaponController.CurrentWeapon.Shoot();
-      //_weaponController.CurrentWeapon.Shoot();
     }
 
     private void Recharge_performed(InputAction.CallbackContext context)
     {
       Character.WeaponController.CurrentWeapon.PerformRecharge();
-      //_weaponController.CurrentWeapon.PerformRecharge();
     }
 
     //===================================

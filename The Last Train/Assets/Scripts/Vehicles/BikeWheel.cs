@@ -77,6 +77,9 @@ namespace TLT.Bike.Bike
 
     private void Update()
     {
+      if (bikeController.IsFlip)
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+
       UpdateDetectorPosition();
       CheckGround();
     }

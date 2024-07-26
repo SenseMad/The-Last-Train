@@ -5,14 +5,11 @@ using Zenject;
 
 using TLT.CharacterManager;
 using TLT.Weapons;
-using UnityEngine.SceneManagement;
 
 namespace TLT.Bike.Bike
 {
   public class BikeBody : MonoBehaviour, IBikeBootstrap
   {
-    /*[SerializeField] private BikeController _bikeController;
-    [SerializeField] private BikeManager _bikeManager;*/
     [SerializeField] private WeaponController _weaponController;
 
     [Space]
@@ -193,6 +190,9 @@ namespace TLT.Bike.Bike
 
       if (!bikeManager.Grounded)
         return;
+
+      bikeManager.FrontWheel.transform.rotation = Quaternion.Euler(0, 0, 0);
+      bikeManager.BackWheel.transform.rotation = Quaternion.Euler(0, 0, 0);
 
       bikeController.Animator.SetTrigger("IsFlip");
 
@@ -378,8 +378,6 @@ namespace TLT.Bike.Bike
 
     private void VehicleController_OnGetOutCar()
     {
-      StopSoundSFX();
-
       bikeController.CinemachineCamera.Target.TrackingTarget = character.transform;
 
       bikeController.Character.transform.position = transform.position;

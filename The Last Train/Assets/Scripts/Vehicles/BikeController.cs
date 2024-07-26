@@ -29,8 +29,8 @@ namespace TLT.Bike.Bike
 
 
     public bool IsInCar { get; set; }
-
     public bool IsFlip { get; set; }
+    public bool IsMoving { get; private set; }
 
     public float Throttle { get; private set; }
 
@@ -60,11 +60,6 @@ namespace TLT.Bike.Bike
     }
 
     public void CustomStart() { }
-
-    /*private void Awake()
-    {
-      Animator = GetComponent<Animator>();
-    }*/
 
     private void OnEnable()
     {
@@ -102,6 +97,22 @@ namespace TLT.Bike.Bike
       InputHandler.AI_Player.Vehicle.Engine.performed -= OnEngineRunning;
 
       InputHandler.AI_Player.Vehicle.Space.performed -= OnChangeDirection;
+    }
+
+    private void FixedUpdate()
+    {
+      if (BikeBody.BodyRB.velocity.magnitude < 0.01f)
+      {
+        BikeBody.BodyRB.velocity = Vector2.zero;
+      }
+
+      if (BikeBody.BodyRB.velocity.x == 0)
+      {
+        IsMoving = false;
+        return;
+      }
+
+      IsMoving = true;
     }
 
     //===================================
@@ -161,6 +172,12 @@ namespace TLT.Bike.Bike
         return;
       }
 
+      if (!BikeEngine.IsEngineRunning)
+      {
+        balance = 0;
+        return;
+      }
+
       if (IsFlip)
       {
         balance = 0;
@@ -180,13 +197,14 @@ namespace TLT.Bike.Bike
 
       if (!BikeEngine.IsEngineRunning)
         BikeEngine.StartEngine();
-      else
-        BikeEngine.StopEngine();
     }
 
     private void OnChangeDirection(InputAction.CallbackContext context)
     {
       if (!IsInCar)
+        return;
+
+      if (!BikeEngine.IsEngineRunning)
         return;
 
       if (IsFlip)
