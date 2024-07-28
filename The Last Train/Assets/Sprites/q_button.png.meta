@@ -111,13 +111,13 @@ TextureImporter:
         width: 34
         height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ad815b9fc88209b00800000000000000
+      spriteID: e9762a801a86d334594c912a3c6ea0c8
       internalID: 833210517013469402
       vertices: []
       indices: 
@@ -132,14 +132,56 @@ TextureImporter:
         width: 34
         height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 979b9fea40d33b8e0800000000000000
+      spriteID: 54402c2ed4673a84ea28004bdfa900b6
       internalID: -1678931145754297991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: q_button_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 0
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33f6b9df7e54d1249930baba8e118268
+      internalID: 31425533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: q_button_3
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 0
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 563c3d29403d96b4f94eefe588b7135f
+      internalID: -1265645074
       vertices: []
       indices: 
       edges: []
@@ -157,6 +199,8 @@ TextureImporter:
     nameFileIdTable:
       q_button_0: 833210517013469402
       q_button_1: -1678931145754297991
+      q_button_2: 31425533
+      q_button_3: -1265645074
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
