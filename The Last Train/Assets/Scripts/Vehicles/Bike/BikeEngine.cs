@@ -136,6 +136,9 @@ namespace TLT.Bike
     {
       IsEngineRunning = false;
 
+      if (bikeController.BalanceMiniGameManager.IsGameRunning)
+        bikeController.BalanceMiniGameManager.EndGame();
+
       if (bikeController.IsInCar)
         _animatorQButton.gameObject.SetActive(true);
 

@@ -5786,6 +5786,10 @@ MonoBehaviour:
   _miniGame: {fileID: 4590896680309675409}
   _scrollbarArrow: {fileID: 908205881466323196}
   _scrollbarSlider: {fileID: 2194043847138793370}
+  _colliderDetection: {fileID: 4445895288986485156}
+  _mask:
+    serializedVersion: 2
+    m_Bits: 32768
 --- !u!1 &2099817710792394102
 GameObject:
   m_ObjectHideFlags: 0

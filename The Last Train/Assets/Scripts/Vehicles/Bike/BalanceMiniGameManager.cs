@@ -29,6 +29,10 @@ namespace TLT.Bike.Bike
     [SerializeField] private Scrollbar _scrollbarArrow;
     [SerializeField] private Scrollbar _scrollbarSlider;
 
+    [Space]
+    [SerializeField] private Collider2D _colliderDetection;
+    [SerializeField] private LayerMask _mask;
+
     //-----------------------------------
 
     private float currentSpeedTriangle;
@@ -87,6 +91,8 @@ namespace TLT.Bike.Bike
 
     private void Update()
     {
+      FindMinigameObject();
+
       if (!IsGameRunning)
         return;
 
@@ -128,6 +134,25 @@ namespace TLT.Bike.Bike
 
     //===================================
 
+    private void FindMinigameObject()
+    {
+      if (IsGameRunning)
+        return;
+
+      Collider2D[] colliders = Physics2D.OverlapBoxAll(_colliderDetection.bounds.center, _colliderDetection.bounds.size, 0, _mask);
+
+      if (colliders.Length == 0 || colliders == null)
+        return;
+
+      foreach (var collider in colliders)
+      {
+        if (collider.TryGetComponent(out BalanceMiniGame parBalanceMiniGame))
+        {
+          Initialize(parBalanceMiniGame.PowerSkidding);
+        }
+      }
+    }
+
     private void StartGame()
     {
       if (IsGameRunning)
@@ -155,7 +180,7 @@ namespace TLT.Bike.Bike
       OnWinGame?.Invoke();
     }
 
-    private void EndGame()
+    public void EndGame()
     {
       IsGameRunning = false;
 
