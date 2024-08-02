@@ -14,10 +14,6 @@ namespace TLT.Bike.Bike
     [SerializeField] private LayerMask _groundLayerMask;
     [SerializeField] private Transform _groundDetector;
 
-    /*[Header("Controller")]
-    [SerializeField] private BikeController _bikeController;
-    [SerializeField] private BikeManager _bikeManager;*/
-
     //-----------------------------------
 
     private BikeController bikeController;
@@ -62,18 +58,6 @@ namespace TLT.Bike.Bike
     {
       _groundDetectionDistance *= Collider2D.radius;
     }
-
-    /*private void Awake()
-    {
-      wheelRB = GetComponent<Rigidbody2D>();
-
-      Collider2D = GetComponent<CircleCollider2D>();
-    }
-
-    private void Start()
-    {
-      _groundDetectionDistance *= Collider2D.radius;
-    }*/
 
     private void Update()
     {

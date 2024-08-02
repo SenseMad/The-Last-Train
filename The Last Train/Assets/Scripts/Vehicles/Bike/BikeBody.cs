@@ -99,17 +99,12 @@ namespace TLT.Bike.Bike
       bikeManager = GetComponent<BikeManager>();
 
       bodyRB = GetComponent<Rigidbody2D>();
-    }
-
-    public void CustomStart() { }
-
-    private void Awake()
-    {
-      //bodyRB = GetComponent<Rigidbody2D>();
 
       /*if (SceneManager.GetActiveScene().name != $"{NamesScenes.Hub_scene}")
         VehicleController_OnGetInCar();*/
     }
+
+    public void CustomStart() { }
 
     private void OnEnable()
     {
@@ -122,6 +117,8 @@ namespace TLT.Bike.Bike
 
       bikeController.BikeEngine.OnStartEngine += BikeEngine_OnStartEngine;
       bikeController.BikeEngine.OnStopEngine += BikeEngine_OnStopEngine;
+
+      bikeController.BalanceMiniGameManager.OnEndGame += VehicleController_OnGetOutCar;
     }
 
     private void OnDisable()
@@ -137,6 +134,8 @@ namespace TLT.Bike.Bike
 
       bikeController.BikeEngine.OnStartEngine -= BikeEngine_OnStartEngine;
       bikeController.BikeEngine.OnStopEngine -= BikeEngine_OnStopEngine;
+
+      bikeController.BalanceMiniGameManager.OnEndGame -= VehicleController_OnGetOutCar;
     }
 
     private void FixedUpdate()
@@ -168,6 +167,9 @@ namespace TLT.Bike.Bike
     public void GetOutCar()
     {
       if (!bikeController.IsInCar)
+        return;
+
+      if (bikeController.BalanceMiniGameManager.IsGameRunning)
         return;
 
       CallEventOnGetOutCar();
@@ -259,7 +261,7 @@ namespace TLT.Bike.Bike
       }
     }
 
-    public void ForceBrake()
+    /*public void ForceBrake()
     {
       bikeManager.FrontWheel.ForceBrake();
       bikeManager.BackWheel.ForceBrake();
@@ -275,7 +277,7 @@ namespace TLT.Bike.Bike
       }
 
       bodyRB.velocity = Vector2.Lerp(bodyRB.velocity, new Vector2(0, bodyRB.velocity.y), Time.deltaTime * _bikeData.DefaultForceBrakeSpeed);
-    }
+    }*/
 
     private void ImpulseBody()
     {
@@ -352,8 +354,6 @@ namespace TLT.Bike.Bike
 
     private void VehicleController_OnGetInCar()
     {
-      //SoundSFX(_soundStartingUp, true); // Надо при запуске двигателя
-
       bikeController.Character = character;
       bikeController.CinemachineCamera.Target.TrackingTarget = transform;
 

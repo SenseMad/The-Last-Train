@@ -26,6 +26,7 @@ namespace TLT.Bike.Bike
 
     public BikeBody BikeBody { get; private set; }
     public BikeEngine BikeEngine { get; private set; }
+    public BalanceMiniGameManager BalanceMiniGameManager { get; private set; }
 
 
     public bool IsInCar { get; set; }
@@ -55,6 +56,7 @@ namespace TLT.Bike.Bike
     {
       BikeBody = GetComponent<BikeBody>();
       BikeEngine = GetComponent<BikeEngine>();
+      BalanceMiniGameManager = GetComponentInChildren<BalanceMiniGameManager>(true);
 
       Animator = GetComponent<Animator>();
     }
@@ -150,12 +152,24 @@ namespace TLT.Bike.Bike
         return;
       }
 
+      if (BalanceMiniGameManager.IsGameRunning)
+      {
+        Throttle = 0;
+        return;
+      }
+
       Throttle = parContext.ReadValue<float>();
     }
 
     private void OnBrake(InputAction.CallbackContext parContext)
     {
       if (!IsInCar)
+      {
+        Brake = 0;
+        return;
+      }
+
+      if (BalanceMiniGameManager.IsGameRunning)
       {
         Brake = 0;
         return;
@@ -184,6 +198,12 @@ namespace TLT.Bike.Bike
         return;
       }
 
+      if (BalanceMiniGameManager.IsGameRunning)
+      {
+        balance = 0;
+        return;
+      }
+
       balance = parContext.ReadValue<float>();
     }
 
@@ -193,6 +213,9 @@ namespace TLT.Bike.Bike
         return;
 
       if (IsFlip)
+        return;
+
+      if (BalanceMiniGameManager.IsGameRunning)
         return;
 
       if (!BikeEngine.IsEngineRunning)
@@ -208,6 +231,9 @@ namespace TLT.Bike.Bike
         return;
 
       if (IsFlip)
+        return;
+
+      if (BalanceMiniGameManager.IsGameRunning)
         return;
 
       BikeBody.ChangeDirection();

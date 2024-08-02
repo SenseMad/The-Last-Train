@@ -15,21 +15,6 @@ public class SpriteOutline : MonoBehaviour
       spriteRenderer = GetComponent<SpriteRenderer>();
   }
 
-  private void OnEnable()
-  {
-    //UpdateOutline(true);
-  }
-
-  private void OnDisable()
-  {
-    //UpdateOutline(false);
-  }
-
-  private void Update()
-  {
-    //UpdateOutline(true);
-  }
-
   //===================================
 
   public void UpdateOutline(bool outline)

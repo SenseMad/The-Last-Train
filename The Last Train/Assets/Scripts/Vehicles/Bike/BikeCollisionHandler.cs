@@ -114,6 +114,10 @@ namespace TLT.Bike.Bike
           parEnemyAgent.ApplyDamage(1);
           character.ApplyDamage(1);
           bikeController.Animator.SetTrigger("IsHurt");
+
+          BalanceMiniGame balanceMiniGame = parEnemyAgent.GetComponent<BalanceMiniGame>();
+          bikeController.BalanceMiniGameManager.Initialize(balanceMiniGame.PowerSkidding);
+
           return;
         }
       }

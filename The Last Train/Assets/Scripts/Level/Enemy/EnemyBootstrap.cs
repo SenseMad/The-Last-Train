@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TLT.Spawn
+namespace TLT.Enemy
 {
-  public class SpawnManager : MonoBehaviour
+  public class EnemyBootstrap : MonoBehaviour
   {
+    [SerializeField] private MonoBehaviour[] _scriptsToExecute;
+
+    //===================================
+
 
 
     //===================================
