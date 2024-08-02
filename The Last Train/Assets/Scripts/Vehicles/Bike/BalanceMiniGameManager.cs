@@ -137,6 +137,8 @@ namespace TLT.Bike.Bike
 
       RandomCoefficients();
 
+      bikeController.Animator.SetBool("IsMotoBalance", true);
+
       _miniGame.SetActive(true);
 
       IsGameRunning = true;
@@ -146,6 +148,8 @@ namespace TLT.Bike.Bike
     {
       IsGameRunning = false;
 
+      bikeController.Animator.SetBool("IsMotoBalance", false);
+
       _miniGame.SetActive(false);
 
       OnWinGame?.Invoke();
@@ -154,6 +158,8 @@ namespace TLT.Bike.Bike
     private void EndGame()
     {
       IsGameRunning = false;
+
+      bikeController.Animator.SetBool("IsMotoBalance", false);
 
       _miniGame.SetActive(false);
 
