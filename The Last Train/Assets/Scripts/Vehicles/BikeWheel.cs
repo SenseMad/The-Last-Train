@@ -84,7 +84,7 @@ namespace TLT.Bike.Bike
 
     private void UpdateMotorSpeed()
     {
-      float torque = bikeController.Throttle * power * (float)(-(float)bikeManager.Direction) * Time.deltaTime;
+      float torque = bikeController.Throttle * power * Time.deltaTime;
 
       if (!bikeController.IsInCar)
         torque = 0;

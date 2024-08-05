@@ -245,12 +245,12 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Space"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""fff2dd59-7941-448c-91b9-d28d0157a453"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Double"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Throttle"",
@@ -283,6 +283,15 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
                     ""name"": ""Engine"",
                     ""type"": ""Button"",
                     ""id"": ""92919e00-4842-4036-9b4a-875c40ed6146"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shift"",
+                    ""type"": ""Button"",
+                    ""id"": ""87266e87-99ab-4651-8ecd-0f679b59474f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -351,7 +360,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""Space"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -419,6 +428,17 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Engine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""53d24e93-903f-484b-b42c-3cd56b4b8c65"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shift"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -493,6 +513,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
         m_Vehicle_Brake = m_Vehicle.FindAction("Brake", throwIfNotFound: true);
         m_Vehicle_Balance = m_Vehicle.FindAction("Balance", throwIfNotFound: true);
         m_Vehicle_Engine = m_Vehicle.FindAction("Engine", throwIfNotFound: true);
+        m_Vehicle_Shift = m_Vehicle.FindAction("Shift", throwIfNotFound: true);
         // Time
         m_Time = asset.FindActionMap("Time", throwIfNotFound: true);
         m_Time_TimeDilation = m_Time.FindAction("TimeDilation", throwIfNotFound: true);
@@ -641,6 +662,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
     private readonly InputAction m_Vehicle_Brake;
     private readonly InputAction m_Vehicle_Balance;
     private readonly InputAction m_Vehicle_Engine;
+    private readonly InputAction m_Vehicle_Shift;
     public struct VehicleActions
     {
         private @AI_Player m_Wrapper;
@@ -651,6 +673,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
         public InputAction @Brake => m_Wrapper.m_Vehicle_Brake;
         public InputAction @Balance => m_Wrapper.m_Vehicle_Balance;
         public InputAction @Engine => m_Wrapper.m_Vehicle_Engine;
+        public InputAction @Shift => m_Wrapper.m_Vehicle_Shift;
         public InputActionMap Get() { return m_Wrapper.m_Vehicle; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -678,6 +701,9 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
             @Engine.started += instance.OnEngine;
             @Engine.performed += instance.OnEngine;
             @Engine.canceled += instance.OnEngine;
+            @Shift.started += instance.OnShift;
+            @Shift.performed += instance.OnShift;
+            @Shift.canceled += instance.OnShift;
         }
 
         private void UnregisterCallbacks(IVehicleActions instance)
@@ -700,6 +726,9 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
             @Engine.started -= instance.OnEngine;
             @Engine.performed -= instance.OnEngine;
             @Engine.canceled -= instance.OnEngine;
+            @Shift.started -= instance.OnShift;
+            @Shift.performed -= instance.OnShift;
+            @Shift.canceled -= instance.OnShift;
         }
 
         public void RemoveCallbacks(IVehicleActions instance)
@@ -797,6 +826,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
         void OnBrake(InputAction.CallbackContext context);
         void OnBalance(InputAction.CallbackContext context);
         void OnEngine(InputAction.CallbackContext context);
+        void OnShift(InputAction.CallbackContext context);
     }
     public interface ITimeActions
     {

@@ -200,7 +200,7 @@ namespace TLT.Bike.Bike
 
       bikeController.IsFlip = true;
     }
-    
+
     private void FlipAnimation()
     {
       bikeController.IsFlip = false;

@@ -12465,7 +12465,7 @@ MonoBehaviour:
   _bikeData:
     _bodyForce: 200
     _maxVelocity: 14
-    _defaultForceBrakeSpeed: 3
+    _defaultForceBrakeSpeed: 15
     _wheelieTorque: 50
     _spinTorque: 80
     _balanceStrength: 1

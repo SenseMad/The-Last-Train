@@ -223,12 +223,12 @@
                 },
                 {
                     "name": "Space",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "fff2dd59-7941-448c-91b9-d28d0157a453",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Double",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Throttle",
@@ -261,6 +261,15 @@
                     "name": "Engine",
                     "type": "Button",
                     "id": "92919e00-4842-4036-9b4a-875c40ed6146",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Shift",
+                    "type": "Button",
+                    "id": "87266e87-99ab-4651-8ecd-0f679b59474f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -329,7 +338,7 @@
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Space",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -397,6 +406,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Engine",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "53d24e93-903f-484b-b42c-3cd56b4b8c65",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shift",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

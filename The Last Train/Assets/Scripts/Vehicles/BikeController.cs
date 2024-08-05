@@ -25,6 +25,7 @@ namespace TLT.Bike.Bike
     public CinemachineCamera CinemachineCamera { get; set; }
 
     public BikeBody BikeBody { get; private set; }
+    public BikeManager BikeManager { get; private set; }
     public BikeEngine BikeEngine { get; private set; }
     public BalanceMiniGameManager BalanceMiniGameManager { get; private set; }
 
@@ -38,6 +39,8 @@ namespace TLT.Bike.Bike
     public bool ForceThrottle { get; private set; }
 
     public float Brake { get; private set; }
+
+    public float Space { get; private set; }
 
     public float Balance => GetBalance();
 
@@ -55,6 +58,7 @@ namespace TLT.Bike.Bike
     public void CustomAwake()
     {
       BikeBody = GetComponent<BikeBody>();
+      BikeManager = GetComponent<BikeManager>();
       BikeEngine = GetComponent<BikeEngine>();
       BalanceMiniGameManager = GetComponentInChildren<BalanceMiniGameManager>(true);
 
@@ -65,13 +69,13 @@ namespace TLT.Bike.Bike
 
     private void OnEnable()
     {
-      InputHandler.AI_Player.Vehicle.Throttle.started += OnThrottle;
-      InputHandler.AI_Player.Vehicle.Throttle.performed += OnThrottle;
-      InputHandler.AI_Player.Vehicle.Throttle.canceled += OnThrottle;
+      InputHandler.AI_Player.Vehicle.Move.started += Move_started;
+      InputHandler.AI_Player.Vehicle.Move.performed += Move_started;
+      InputHandler.AI_Player.Vehicle.Move.canceled += Move_started;
 
-      InputHandler.AI_Player.Vehicle.Brake.started += OnBrake;
-      InputHandler.AI_Player.Vehicle.Brake.performed += OnBrake;
-      InputHandler.AI_Player.Vehicle.Brake.canceled += OnBrake;
+      InputHandler.AI_Player.Vehicle.Space.started += Space_performed;
+      InputHandler.AI_Player.Vehicle.Space.performed += Space_performed;
+      InputHandler.AI_Player.Vehicle.Space.canceled += Space_performed;
 
       InputHandler.AI_Player.Vehicle.Balance.started += OnBalance;
       InputHandler.AI_Player.Vehicle.Balance.performed += OnBalance;
@@ -79,18 +83,26 @@ namespace TLT.Bike.Bike
 
       InputHandler.AI_Player.Vehicle.Engine.performed += OnEngineRunning;
 
-      InputHandler.AI_Player.Vehicle.Space.performed += OnChangeDirection;
+      /*InputHandler.AI_Player.Vehicle.Throttle.started += OnThrottle;
+      InputHandler.AI_Player.Vehicle.Throttle.performed += OnThrottle;
+      InputHandler.AI_Player.Vehicle.Throttle.canceled += OnThrottle;*/
+
+      /*InputHandler.AI_Player.Vehicle.Brake.started += OnBrake;
+      InputHandler.AI_Player.Vehicle.Brake.performed += OnBrake;
+      InputHandler.AI_Player.Vehicle.Brake.canceled += OnBrake;*/
+
+      //InputHandler.AI_Player.Vehicle.Space.performed += OnChangeDirection;
     }
 
     private void OnDisable()
     {
-      InputHandler.AI_Player.Vehicle.Throttle.started -= OnThrottle;
-      InputHandler.AI_Player.Vehicle.Throttle.performed -= OnThrottle;
-      InputHandler.AI_Player.Vehicle.Throttle.canceled -= OnThrottle;
+      InputHandler.AI_Player.Vehicle.Move.started -= Move_started;
+      InputHandler.AI_Player.Vehicle.Move.performed -= Move_started;
+      InputHandler.AI_Player.Vehicle.Move.canceled -= Move_started;
 
-      InputHandler.AI_Player.Vehicle.Brake.started -= OnBrake;
-      InputHandler.AI_Player.Vehicle.Brake.performed -= OnBrake;
-      InputHandler.AI_Player.Vehicle.Brake.canceled -= OnBrake;
+      InputHandler.AI_Player.Vehicle.Space.started -= Space_performed;
+      InputHandler.AI_Player.Vehicle.Space.performed -= Space_performed;
+      InputHandler.AI_Player.Vehicle.Space.canceled -= Space_performed;
 
       InputHandler.AI_Player.Vehicle.Balance.started -= OnBalance;
       InputHandler.AI_Player.Vehicle.Balance.performed -= OnBalance;
@@ -98,11 +110,31 @@ namespace TLT.Bike.Bike
 
       InputHandler.AI_Player.Vehicle.Engine.performed -= OnEngineRunning;
 
-      InputHandler.AI_Player.Vehicle.Space.performed -= OnChangeDirection;
+      /*InputHandler.AI_Player.Vehicle.Throttle.started -= OnThrottle;
+      InputHandler.AI_Player.Vehicle.Throttle.performed -= OnThrottle;
+      InputHandler.AI_Player.Vehicle.Throttle.canceled -= OnThrottle;*/
+
+      /*InputHandler.AI_Player.Vehicle.Brake.started -= OnBrake;
+      InputHandler.AI_Player.Vehicle.Brake.performed -= OnBrake;
+      InputHandler.AI_Player.Vehicle.Brake.canceled -= OnBrake;*/
+
+      //InputHandler.AI_Player.Vehicle.Space.performed -= OnChangeDirection;
     }
 
     private void FixedUpdate()
     {
+      if (!IsFlip)
+      {
+        if (Throttle > 0 && BikeManager.Direction == 1)
+        {
+          BikeBody.ChangeDirection();
+        }
+        else if (Throttle < 0 && BikeManager.Direction == -1)
+        {
+          BikeBody.ChangeDirection();
+        }
+      }
+
       if (BikeBody.BodyRB.velocity.magnitude < 0.01f)
       {
         BikeBody.BodyRB.velocity = Vector2.zero;
@@ -132,7 +164,25 @@ namespace TLT.Bike.Bike
 
     //===================================
 
-    private void OnThrottle(InputAction.CallbackContext parContext)
+    private void Space_performed(InputAction.CallbackContext parContext)
+    {
+      if (!IsInCar)
+      {
+        Space = 0;
+        return;
+      }
+
+      if (BalanceMiniGameManager.IsGameRunning)
+      {
+        Space = 0;
+        return;
+      }
+
+      Space = parContext.ReadValue<float>();
+      Brake = parContext.ReadValue<float>();
+    }
+
+    private void Move_started(InputAction.CallbackContext parContext)
     {
       if (!IsInCar)
       {
@@ -155,6 +205,41 @@ namespace TLT.Bike.Bike
       if (BalanceMiniGameManager.IsGameRunning)
       {
         Throttle = 0;
+        return;
+      }
+
+      Throttle = -parContext.ReadValue<Vector2>().x;
+
+      if (Space > 0)
+      {
+        Throttle = 0;
+        return;
+      }
+    }
+
+    private void OnThrottle(InputAction.CallbackContext parContext)
+    {
+      if (!IsInCar)
+      {
+        //Throttle = 0;
+        return;
+      }
+
+      if (!BikeEngine.IsEngineRunning)
+      {
+        //Throttle = 0;
+        return;
+      }
+
+      if (IsFlip)
+      {
+        //Throttle = 0;
+        return;
+      }
+
+      if (BalanceMiniGameManager.IsGameRunning)
+      {
+        //Throttle = 0;
         return;
       }
 
@@ -199,6 +284,12 @@ namespace TLT.Bike.Bike
       }
 
       if (BalanceMiniGameManager.IsGameRunning)
+      {
+        balance = 0;
+        return;
+      }
+
+      if (Space <= 0)
       {
         balance = 0;
         return;

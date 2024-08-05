@@ -88,7 +88,7 @@ namespace TLT.Bike
       if (IsEngineRunning && bikeController.Throttle == 0 && !bikeController.IsMoving)
       {
         tempEngineShutdownTime += Time.deltaTime;
-        Debug.Log($"Мотоцикл заглохнет через: {_engineShutdownTime - tempEngineShutdownTime} сек.");
+        //Debug.Log($"Мотоцикл заглохнет через: {_engineShutdownTime - tempEngineShutdownTime} сек.");
         if (tempEngineShutdownTime >= _engineShutdownTime)
         {
           StopEngine();
