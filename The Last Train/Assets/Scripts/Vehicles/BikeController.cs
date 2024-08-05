@@ -123,7 +123,7 @@ namespace TLT.Bike.Bike
 
     private void FixedUpdate()
     {
-      if (!IsFlip)
+      if (!IsFlip && BikeManager.Grounded)
       {
         if (Throttle > 0 && BikeManager.Direction == 1)
         {
@@ -289,13 +289,19 @@ namespace TLT.Bike.Bike
         return;
       }
 
+      if (!BikeManager.Grounded && !BikeManager.OnlyBackGrounded && !BikeManager.OnlyFrontGrounded)
+      {
+        balance = parContext.ReadValue<Vector2>().y;
+        return;
+      }
+
       if (Space <= 0)
       {
         balance = 0;
         return;
       }
 
-      balance = parContext.ReadValue<float>();
+      balance = parContext.ReadValue<Vector2>().x;
     }
 
     private void OnEngineRunning(InputAction.CallbackContext parContext)

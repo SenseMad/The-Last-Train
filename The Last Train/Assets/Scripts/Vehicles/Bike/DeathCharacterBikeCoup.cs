@@ -36,6 +36,9 @@ namespace TLT.Bike.Bike
 
       foreach (var hit in hits)
       {
+        if (Physics2D.GetIgnoreCollision(hit, _collider2D))
+          return;
+
         if (hit != _collider2D)
         {
           _bikeCharacter.Character.Health.InstantlyKill();

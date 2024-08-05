@@ -159,11 +159,11 @@ namespace TLT.Enemy
 
         if (enemyPatrol != null && enemyPatrol.Patrol())
         {
-          animator.SetBool("IsWalk", true);
+          animator.SetBool(EnemyAnimations.IS_WALK, true);
         }
         else
         {
-          animator.SetBool("IsWalk", false);
+          animator.SetBool(EnemyAnimations.IS_WALK, false);
         }
 
         return;
@@ -176,7 +176,7 @@ namespace TLT.Enemy
       Rigidbody2D.velocity = targetVelocity;
 
       if (!targetAttactRadius)
-        animator.SetBool("IsWalk", true);
+        animator.SetBool(EnemyAnimations.IS_WALK, true);
     }
 
     protected virtual void Attack()
@@ -211,13 +211,13 @@ namespace TLT.Enemy
     {
       Health.TakeHealth(parDamage);
 
-      if (typeDeath == "IsDeathLanding")
+      if (typeDeath == EnemyAnimations.IS_DEATH_LANDING)
       {
         _deathBikeLandingCollider.gameObject.SetActive(true);
         return;
       }
 
-      if (typeDeath == "IsDeathSpeed")
+      if (typeDeath == EnemyAnimations.IS_DEATH_SPEED)
       {
         _deathBikeSpeedCollider.gameObject.SetActive(true);
         return;
@@ -227,11 +227,11 @@ namespace TLT.Enemy
 
       if (Health.CurrentHealth <= 0)
       {
-        animator.SetBool("IsDeath", true);
+        animator.SetBool(EnemyAnimations.IS_DEATH, true);
         _deathCollider.gameObject.SetActive(true);
       }
       else
-        animator.SetBool("IsTakeDamage", true);
+        animator.SetBool(EnemyAnimations.IS_TAKE_DAMAGE, true);
     }
 
     //===================================
@@ -240,7 +240,7 @@ namespace TLT.Enemy
     {
       if (!targetAttactRadius || Targetable == null)
       {
-        animator.SetBool("IsAttack", false);
+        animator.SetBool(EnemyAnimations.IS_ATTACK, false);
       }
 
       if (takeDamage)
@@ -249,7 +249,7 @@ namespace TLT.Enemy
         if (timeAfterTakingDamage >= 0.2f)
         {
           takeDamage = false;
-          animator.SetBool("IsTakeDamage", false);
+          animator.SetBool(EnemyAnimations.IS_TAKE_DAMAGE, false);
           timeAfterTakingDamage = 0;
         }
 
@@ -271,13 +271,13 @@ namespace TLT.Enemy
         return false;
       }
 
-      animator.SetBool("IsAttack", true);
+      animator.SetBool(EnemyAnimations.IS_ATTACK, true);
 
       lastAttackTime += Time.deltaTime;
       if (lastAttackTime >= _enemyAttackData.AttackDelay && canAttack)
       {
         lastAttackTime = 0;
-        animator.SetBool("IsAttack", false);
+        animator.SetBool(EnemyAnimations.IS_ATTACK, false);
         canAttack = false;
 
         return true;

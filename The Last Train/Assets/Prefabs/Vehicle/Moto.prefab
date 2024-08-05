@@ -12214,6 +12214,7 @@ GameObject:
   - component: {fileID: 7173850988963149014}
   - component: {fileID: 2562509473541278957}
   - component: {fileID: 2618161051220104822}
+  - component: {fileID: 1846050013077409207}
   - component: {fileID: 7908932968044686612}
   m_Layer: 10
   m_Name: Moto
@@ -12506,7 +12507,7 @@ MonoBehaviour:
   _bikeCharacter: {fileID: 599107497303233215}
   _ignoreLayer:
     serializedVersion: 2
-    m_Bits: 16272
+    m_Bits: 81808
   _collider2D: {fileID: 2895026074993618345}
 --- !u!114 &7173850988963149014
 MonoBehaviour:
@@ -12562,6 +12563,27 @@ MonoBehaviour:
   _audioStartBike: {fileID: 8300000, guid: da55db9fbe52ee441a9c7de00d7a3f41, type: 3}
   _animatorQButton: {fileID: 7431614105160772273}
   _animatorSuccess: {fileID: 1544573626961545530}
+--- !u!114 &1846050013077409207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810085334441422386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 859c693cad50339409e1cc6d8dbe3556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliders:
+  - {fileID: 7928152939656815899}
+  - {fileID: 3674177464223121958}
+  - {fileID: 2983165705516074056}
+  - {fileID: 2895026074993618345}
+  - {fileID: 4445895288986485156}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 65536
 --- !u!114 &7908932968044686612
 MonoBehaviour:
   m_ObjectHideFlags: 0
