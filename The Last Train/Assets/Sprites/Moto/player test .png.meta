@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 5dfc0acb2c8478d478f323c05915a931
+guid: 081eece5b8260c34899d47e9d4b4466c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3154098806597025344
-    second: up_road_2_0
+      213: -2579427605423119670
+    second: player test _0
   - first:
-      213: 6224969756574285618
-    second: up_road_2_1
+      213: -2297081194697200487
+    second: player test _1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -103,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: up_road_2_0
+      name: player test _0
       rect:
         serializedVersion: 2
-        x: 70
-        y: 0
-        width: 780
-        height: 129
+        x: 3
+        y: 3
+        width: 52
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,20 +117,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 04ef2b9472c95cb20800000000000000
-      internalID: 3154098806597025344
+      spriteID: ac22bee5248043cd0800000000000000
+      internalID: -2579427605423119670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: up_road_2_1
+      name: player test _1
       rect:
         serializedVersion: 2
-        x: 905
-        y: 0
-        width: 866
-        height: 129
+        x: 69
+        y: 3
+        width: 33
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,8 +138,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 23ff8262309836650800000000000000
-      internalID: 6224969756574285618
+      spriteID: 99ce7d9e2d02f10e0800000000000000
+      internalID: -2297081194697200487
       vertices: []
       indices: 
       edges: []
@@ -155,8 +155,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      up_road_2_0: 3154098806597025344
-      up_road_2_1: 6224969756574285618
+      player test _0: -2579427605423119670
+      player test _1: -2297081194697200487
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
