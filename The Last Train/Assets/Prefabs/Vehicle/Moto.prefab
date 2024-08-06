@@ -12584,6 +12584,8 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 65536
+  _frontWheelCollider: {fileID: 3674177464223121958}
+  _wheel2: {fileID: 0}
 --- !u!114 &7908932968044686612
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,10 +2,9 @@ using System;
 using UnityEngine;
 using Zenject;
 
-using TLT.Bike.Bike;
 using TLT.Sound;
 
-namespace TLT.Bike
+namespace TLT.Bike.Bike
 {
   public class BikeEngine : MonoBehaviour, IBikeBootstrap
   {
