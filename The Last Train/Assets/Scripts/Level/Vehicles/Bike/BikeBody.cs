@@ -196,7 +196,7 @@ namespace TLT.Bike.Bike
       bikeManager.FrontWheel.transform.rotation = Quaternion.Euler(0, 0, 0);
       bikeManager.BackWheel.transform.rotation = Quaternion.Euler(0, 0, 0);
 
-      bikeController.Animator.SetTrigger("IsFlip");
+      bikeController.Animator.SetTrigger(BikeAnimations.IS_FLIP);
 
       bikeController.IsFlip = true;
     }
@@ -341,12 +341,12 @@ namespace TLT.Bike.Bike
       if ((bikeManager.FrontWheel.WheelRB.velocity.x > deviation || bikeManager.FrontWheel.WheelRB.velocity.x < -deviation) && 
           (bikeManager.BackWheel.WheelRB.velocity.x > deviation || bikeManager.BackWheel.WheelRB.velocity.x < -deviation))
       {
-        bikeController.Animator.SetBool("IsMove", true);
+        bikeController.Animator.SetBool(BikeAnimations.IS_MOVE, true);
         //_bikeManager.CameraController.Zoom(false);
         return;
       }
 
-      bikeController.Animator.SetBool("IsMove", false);
+      bikeController.Animator.SetBool(BikeAnimations.IS_MOVE, false);
       //_bikeManager.CameraController.Zoom(true);
     }
 

@@ -12581,11 +12581,10 @@ MonoBehaviour:
   - {fileID: 2983165705516074056}
   - {fileID: 2895026074993618345}
   - {fileID: 4445895288986485156}
+  _frontWheelCollider: {fileID: 3674177464223121958}
   _layerMask:
     serializedVersion: 2
     m_Bits: 65536
-  _frontWheelCollider: {fileID: 3674177464223121958}
-  _wheel2: {fileID: 0}
 --- !u!114 &7908932968044686612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12609,6 +12608,7 @@ MonoBehaviour:
   - {fileID: 8350227237547349670}
   - {fileID: 8056398815630092963}
   - {fileID: 599107497303233215}
+  - {fileID: 1846050013077409207}
 --- !u!1 &8842972170002813065
 GameObject:
   m_ObjectHideFlags: 0

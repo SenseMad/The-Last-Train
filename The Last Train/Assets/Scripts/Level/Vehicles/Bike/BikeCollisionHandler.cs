@@ -113,7 +113,7 @@ namespace TLT.Bike.Bike
           parEnemyAgent.TypeDeath("IsDeathSpeed");
           parEnemyAgent.ApplyDamage(1);
           character.ApplyDamage(1);
-          bikeController.Animator.SetTrigger("IsHurt");
+          bikeController.Animator.SetTrigger(BikeAnimations.IS_HURT);
 
           BalanceMiniGame balanceMiniGame = parEnemyAgent.GetComponent<BalanceMiniGame>();
           bikeController.BalanceMiniGameManager.Initialize(balanceMiniGame.PowerSkidding);

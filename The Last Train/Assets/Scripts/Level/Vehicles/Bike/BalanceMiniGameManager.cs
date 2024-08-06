@@ -162,7 +162,7 @@ namespace TLT.Bike.Bike
 
       RandomCoefficients();
 
-      bikeController.Animator.SetBool("IsMotoBalance", true);
+      bikeController.Animator.SetBool(BikeAnimations.IS_MOTO_BALANCE, true);
 
       _miniGame.SetActive(true);
 
@@ -173,7 +173,7 @@ namespace TLT.Bike.Bike
     {
       IsGameRunning = false;
 
-      bikeController.Animator.SetBool("IsMotoBalance", false);
+      bikeController.Animator.SetBool(BikeAnimations.IS_MOTO_BALANCE, false);
 
       _miniGame.SetActive(false);
 
@@ -184,7 +184,7 @@ namespace TLT.Bike.Bike
     {
       IsGameRunning = false;
 
-      bikeController.Animator.SetBool("IsMotoBalance", false);
+      bikeController.Animator.SetBool(BikeAnimations.IS_MOTO_BALANCE, false);
 
       _miniGame.SetActive(false);
 

@@ -124,7 +124,7 @@ namespace TLT.Bike.Bike
       if (isEngineTryingStart)
         return;
 
-      bikeController.Animator.SetTrigger("IsStart");
+      bikeController.Animator.SetTrigger(BikeAnimations.IS_START);
 
       _animatorQButton.SetTrigger("IsClick");
 

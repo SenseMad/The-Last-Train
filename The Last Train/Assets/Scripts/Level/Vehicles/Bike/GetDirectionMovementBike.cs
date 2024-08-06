@@ -5,7 +5,7 @@ using TLT.Input;
 
 namespace TLT.Bike.Bike
 {
-  public class GetDirectionMovementBike : MonoBehaviour
+  public class GetDirectionMovementBike : MonoBehaviour, IBikeBootstrap
   {
     [SerializeField] private Collider2D[] _colliders;
 
@@ -19,6 +19,10 @@ namespace TLT.Bike.Bike
 
     private InputHandler inputHandler;
 
+    private BikeController bikeController;
+
+    private bool isAnimationTurnUp;
+
     //===================================
 
     [Inject]
@@ -28,6 +32,13 @@ namespace TLT.Bike.Bike
     }
 
     //===================================
+
+    public void CustomAwake()
+    {
+      bikeController = GetComponent<BikeController>();
+    }
+
+    public void CustomStart() { }
 
     private void Update()
     {
@@ -64,10 +75,17 @@ namespace TLT.Bike.Bike
           if (shouldEnableCollision)
           {
             Physics2D.IgnoreCollision(collider, parDirectionMovement.ObjectCollider2D, !isFrontWheelInsideAny);
+
+            if (isFrontWheelInsideAny && !isAnimationTurnUp)
+            {
+              bikeController.Animator.SetTrigger(BikeAnimations.IS_TURN_UP);
+              isAnimationTurnUp = true;
+            }
             continue;
           }
 
           Physics2D.IgnoreCollision(collider, parDirectionMovement.ObjectCollider2D, true);
+          isAnimationTurnUp = false;
         }
       }
     }
