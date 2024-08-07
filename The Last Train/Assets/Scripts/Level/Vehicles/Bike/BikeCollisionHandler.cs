@@ -110,7 +110,7 @@ namespace TLT.Bike.Bike
         if (bikeManager.Grounded || bikeManager.OnlyFrontGrounded)
         {
           bikeBody.BodyRB.velocity = new Vector2(bikeBody.BodyRB.velocity.x * _slowDownFactorSpeed, bikeBody.BodyRB.velocity.y);
-          parEnemyAgent.TypeDeath("IsDeathSpeed");
+          parEnemyAgent.TypeDeath(EnemyAnimations.IS_DEATH_SPEED);
           parEnemyAgent.ApplyDamage(1);
           character.ApplyDamage(1);
           bikeController.Animator.SetTrigger(BikeAnimations.IS_HURT);
@@ -153,7 +153,7 @@ namespace TLT.Bike.Bike
             }*/
 
             bikeBody.BodyRB.velocity = new Vector2(bikeBody.BodyRB.velocity.x * _slowDownLanding, bikeBody.BodyRB.velocity.y);
-            parEnemyAgent.TypeDeath("IsDeathSpeed");
+            parEnemyAgent.TypeDeath(EnemyAnimations.IS_DEATH_SPEED);
             parEnemyAgent.ApplyDamage(1);
             return;
           }
@@ -161,7 +161,7 @@ namespace TLT.Bike.Bike
           if (!bikeManager.Grounded)
           {
             bikeBody.BodyRB.velocity = new Vector2(bikeBody.BodyRB.velocity.x * _slowDownLanding, bikeBody.BodyRB.velocity.y);
-            parEnemyAgent.TypeDeath("IsDeathLanding");
+            parEnemyAgent.TypeDeath(EnemyAnimations.IS_DEATH_LANDING);
             parEnemyAgent.ApplyDamage(1);
             return;
           }

@@ -13,5 +13,7 @@ namespace TLT.Bike.Bike
     public const string IS_MOTO_BALANCE = "IsMotoBalance";
 
     public const string IS_TURN_UP = "IsTurnUp";
+
+    public const string IS_TURN_DOWN = "IsTurnDown";
   }
 }

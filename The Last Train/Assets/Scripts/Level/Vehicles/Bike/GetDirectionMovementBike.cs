@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -7,7 +8,8 @@ namespace TLT.Bike.Bike
 {
   public class GetDirectionMovementBike : MonoBehaviour, IBikeBootstrap
   {
-    [SerializeField] private Collider2D[] _colliders;
+    [SerializeField] private Collider2D[] _detectionColliders;
+    [SerializeField] private Collider2D[] _ignoreColliders;
 
     [Space]
     [SerializeField] private Collider2D _frontWheelCollider;
@@ -22,6 +24,9 @@ namespace TLT.Bike.Bike
     private BikeController bikeController;
 
     private bool isAnimationTurnUp;
+    private bool isAnimationTurnDown;
+
+    private List<Collider2D> ignoreCollidersList = new();
 
     //===================================
 
@@ -42,12 +47,30 @@ namespace TLT.Bike.Bike
 
     private void Update()
     {
-      foreach (var collider in _colliders)
+      foreach (var collider in _detectionColliders)
       {
         Collider2D[] colliders2D = Physics2D.OverlapBoxAll(collider.bounds.center, collider.bounds.size, 0, _layerMask);
 
         if (colliders2D.Length == 0 || colliders2D == null)
+        {
+          if (ignoreCollidersList.Count == 0)
+            return;
+
+          foreach (var ignoreCollider in _ignoreColliders)
+          {
+            for (int i = 0; i < ignoreCollidersList.Count; i++)
+            {
+              if (!Physics2D.GetIgnoreCollision(ignoreCollider, ignoreCollidersList[i]))
+                continue;
+
+              Physics2D.IgnoreCollision(ignoreCollider, ignoreCollidersList[i], false);
+            }
+          }
+
+          ignoreCollidersList.Clear();
+
           return;
+        }
 
         foreach (var collider2D in colliders2D)
         {
@@ -55,37 +78,64 @@ namespace TLT.Bike.Bike
             continue;
 
           bool isFrontWheelInsideAny = false;
-          foreach (var checkCollider in _colliders)
+          foreach (var ignoreCollider in _ignoreColliders)
           {
-            if (checkCollider != _frontWheelCollider)
+            if (ignoreCollider != _frontWheelCollider)
               continue;
 
-            Collider2D[] checkColliders = Physics2D.OverlapBoxAll(checkCollider.bounds.center, checkCollider.bounds.size, 0, _layerMask);
+            Collider2D[] checkColliders = Physics2D.OverlapBoxAll(ignoreCollider.bounds.center, ignoreCollider.bounds.size, 0, _layerMask);
             if (checkColliders.Length == 0 || checkColliders == null)
               break;
 
-            foreach (var collider1 in checkColliders)
-            {
-              isFrontWheelInsideAny = true;
-              break;
-            }
+            isFrontWheelInsideAny = true;
           }
 
           bool shouldEnableCollision = (parDirectionMovement.IsUp && inputHandler.GetInputVertical() > 0) || (!parDirectionMovement.IsUp && inputHandler.GetInputVertical() < 0);
-          if (shouldEnableCollision)
+
+          foreach (var ignoreCollider in _ignoreColliders)
           {
-            Physics2D.IgnoreCollision(collider, parDirectionMovement.ObjectCollider2D, !isFrontWheelInsideAny);
-
-            if (isFrontWheelInsideAny && !isAnimationTurnUp)
+            if (shouldEnableCollision)
             {
-              bikeController.Animator.SetTrigger(BikeAnimations.IS_TURN_UP);
-              isAnimationTurnUp = true;
-            }
-            continue;
-          }
+              if (!parDirectionMovement.IsUp)
+              {
+                if (!parDirectionMovement.IsActiveDefault)
+                {
+                  if (!ignoreCollidersList.Contains(parDirectionMovement.ObjectCollider2D))
+                    ignoreCollidersList.Add(parDirectionMovement.ObjectCollider2D);
+                }
+                else
+                {
+                  if (ignoreCollidersList.Contains(parDirectionMovement.ObjectCollider2D))
+                    ignoreCollidersList.Remove(parDirectionMovement.ObjectCollider2D);
+                }
 
-          Physics2D.IgnoreCollision(collider, parDirectionMovement.ObjectCollider2D, true);
-          isAnimationTurnUp = false;
+                Physics2D.IgnoreCollision(ignoreCollider, parDirectionMovement.ObjectCollider2D, !parDirectionMovement.IsUp);
+
+                if (isFrontWheelInsideAny && !isAnimationTurnDown)
+                {
+                  bikeController.Animator.SetTrigger(BikeAnimations.IS_TURN_DOWN);
+                  isAnimationTurnDown = true;
+                }
+              }
+              else
+              {
+                Physics2D.IgnoreCollision(ignoreCollider, parDirectionMovement.ObjectCollider2D, isFrontWheelInsideAny && !parDirectionMovement.IsUp);
+
+                if (isFrontWheelInsideAny && !isAnimationTurnUp)
+                {
+                  bikeController.Animator.SetTrigger(BikeAnimations.IS_TURN_UP);
+                  isAnimationTurnUp = true;
+                }
+              }
+
+              continue;
+            }
+
+            Physics2D.IgnoreCollision(ignoreCollider, parDirectionMovement.ObjectCollider2D, parDirectionMovement.IsActiveDefault);
+
+            isAnimationTurnUp = false;
+            isAnimationTurnDown = false;
+          }
         }
       }
     }
