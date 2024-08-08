@@ -98,7 +98,7 @@ namespace TLT.Enemy
 
       targetAttactRadius = false;
 
-      IgnoreCollision();
+      //IgnoreCollision();
 
       TargetSearch();
 

@@ -138,7 +138,7 @@ namespace TLT.Bike.Bike
       {
         if ((_ignoreLayer.value & (1 << i)) != 0)
         {
-          Physics2D.IgnoreLayerCollision(gameObject.layer, i, true);
+          Physics2D.IgnoreLayerCollision(gameObject.layer, i, true);          
         }
       }
 

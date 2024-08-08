@@ -25,6 +25,8 @@ namespace TLT.Bike.Bike
     private BikeManager bikeManager;
     private BikeBody bikeBody;
 
+    private BikeDash bikeDash;
+
     private Character character;
 
     //===================================
@@ -42,12 +44,17 @@ namespace TLT.Bike.Bike
       bikeController = GetComponent<BikeController>();
       bikeManager = GetComponent<BikeManager>();
       bikeBody = GetComponent<BikeBody>();
+
+      bikeDash = GetComponent<BikeDash>();
     }
 
     public void CustomStart() { }
 
     private void Update()
     {
+      if (bikeDash.IsDashing)
+        return;
+
       RayForward();
 
       LowerCollider();
