@@ -3,7 +3,7 @@ using Zenject;
 
 using TLT.CharacterManager;
 using TLT.CameraManager;
-using TLT.Save;
+using TLT.UI;
 
 namespace TLT.Installers
 {
@@ -22,6 +22,8 @@ namespace TLT.Installers
       Container.Bind<CinemachinePositionComposer>().FromComponentInHierarchy().AsSingle().NonLazy();
 
       Container.Bind<Character>().FromComponentInHierarchy().AsSingle().NonLazy();
+
+      Container.Bind<UIGame>().FromComponentInHierarchy().AsSingle().NonLazy();
     }
   }
 }

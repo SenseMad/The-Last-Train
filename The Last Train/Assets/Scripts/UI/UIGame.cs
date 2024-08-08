@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using Zenject;
+using UnityEngine.UI;
 
 namespace TLT.UI
 {
@@ -9,6 +10,9 @@ namespace TLT.UI
     [SerializeField] private TextMeshProUGUI _textHealth;
 
     [SerializeField] private TextMeshProUGUI _textAmmo;
+
+    [Space]
+    [SerializeField] private Image _dashImage;
 
     //-----------------------------------
 
@@ -47,6 +51,27 @@ namespace TLT.UI
       levelManager.Character.WeaponController.CurrentWeapon.OnChangeAmmo -= UpdateTextAmmo;
 
       levelManager.OnChangeCharacter -= LevelManager_OnChangeCharacter;
+    }
+
+    //===================================
+
+    public void UpdateDashImage(bool parValue)
+    {
+      _dashImage.gameObject.SetActive(parValue);
+    }
+
+    public void UpdateDashImage(Sprite parSpriteDash)
+    {
+      if (_dashImage.gameObject.activeSelf)
+        _dashImage.sprite = parSpriteDash;
+    }
+
+    public void UpdateDashImage(bool parValue, Sprite parSpriteDash)
+    {
+      _dashImage.gameObject.SetActive(parValue);
+
+      if (_dashImage.gameObject.activeSelf)
+        _dashImage.sprite = parSpriteDash;
     }
 
     //===================================

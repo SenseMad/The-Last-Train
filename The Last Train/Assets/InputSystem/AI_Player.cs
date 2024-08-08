@@ -296,6 +296,15 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""5eef98d9-36ca-4db8-99b5-7a907c2aac55"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -463,6 +472,17 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
                     ""action"": ""Balance"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""598e2c93-bcfa-4ce3-b852-77571dd5d98c"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -536,6 +556,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
         m_Vehicle_Balance = m_Vehicle.FindAction("Balance", throwIfNotFound: true);
         m_Vehicle_Engine = m_Vehicle.FindAction("Engine", throwIfNotFound: true);
         m_Vehicle_Shift = m_Vehicle.FindAction("Shift", throwIfNotFound: true);
+        m_Vehicle_Dash = m_Vehicle.FindAction("Dash", throwIfNotFound: true);
         // Time
         m_Time = asset.FindActionMap("Time", throwIfNotFound: true);
         m_Time_TimeDilation = m_Time.FindAction("TimeDilation", throwIfNotFound: true);
@@ -685,6 +706,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
     private readonly InputAction m_Vehicle_Balance;
     private readonly InputAction m_Vehicle_Engine;
     private readonly InputAction m_Vehicle_Shift;
+    private readonly InputAction m_Vehicle_Dash;
     public struct VehicleActions
     {
         private @AI_Player m_Wrapper;
@@ -696,6 +718,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
         public InputAction @Balance => m_Wrapper.m_Vehicle_Balance;
         public InputAction @Engine => m_Wrapper.m_Vehicle_Engine;
         public InputAction @Shift => m_Wrapper.m_Vehicle_Shift;
+        public InputAction @Dash => m_Wrapper.m_Vehicle_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Vehicle; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -726,6 +749,9 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
             @Shift.started += instance.OnShift;
             @Shift.performed += instance.OnShift;
             @Shift.canceled += instance.OnShift;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
         }
 
         private void UnregisterCallbacks(IVehicleActions instance)
@@ -751,6 +777,9 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
             @Shift.started -= instance.OnShift;
             @Shift.performed -= instance.OnShift;
             @Shift.canceled -= instance.OnShift;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
         }
 
         public void RemoveCallbacks(IVehicleActions instance)
@@ -849,6 +878,7 @@ public partial class @AI_Player: IInputActionCollection2, IDisposable
         void OnBalance(InputAction.CallbackContext context);
         void OnEngine(InputAction.CallbackContext context);
         void OnShift(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
     public interface ITimeActions
     {

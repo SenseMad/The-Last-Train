@@ -33,6 +33,7 @@ namespace TLT.Bike.Bike
 
     private BikeController bikeController;
     private BikeManager bikeManager;
+    private BikeDash bikeDash;
 
     private Rigidbody2D bodyRB;
 
@@ -97,6 +98,7 @@ namespace TLT.Bike.Bike
     {
       bikeController = GetComponent<BikeController>();
       bikeManager = GetComponent<BikeManager>();
+      bikeDash = GetComponent<BikeDash>();
 
       bodyRB = GetComponent<Rigidbody2D>();
 
@@ -210,8 +212,6 @@ namespace TLT.Bike.Bike
       bikeManager.Direction *= -1;
 
       bikeController.Character.Direction = bikeManager.Direction;
-
-      //Debug.Log($"{_bikeController.IsInCar}");
     }
 
     public int GetDirection()
@@ -241,6 +241,12 @@ namespace TLT.Bike.Bike
 
     private void UpdateVelocity()
     {
+      if (bikeDash.IsDashing)
+      {
+        bodyRB.velocity = new Vector2(bikeDash.SpeedDash * bikeManager.Direction, bodyRB.velocity.y);
+        return;
+      }
+
       ImpulseBody();
       if (bikeManager.AnyWheelGrounded)
       {

@@ -12215,6 +12215,7 @@ GameObject:
   - component: {fileID: 2562509473541278957}
   - component: {fileID: 2618161051220104822}
   - component: {fileID: 1846050013077409207}
+  - component: {fileID: 3119105449107337129}
   - component: {fileID: 7908932968044686612}
   m_Layer: 10
   m_Name: Moto
@@ -12289,8 +12290,8 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.869565, y: 2.7826087}
-    newSize: {x: 4.869565, y: 2.7826087}
+    oldSize: {x: 2.8695652, y: 1.826087}
+    newSize: {x: 2.8695652, y: 1.826087}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -12588,6 +12589,26 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 65536
+--- !u!114 &3119105449107337129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810085334441422386}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 405dc0b7cd3fbd14295e762c642e7102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speedDash: 21
+  _minSpeedDash: 10
+  _timeDash: 0.7
+  _ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _dashSpriteGreen: {fileID: 7098758130526662957, guid: 2346350f428baaf4a925d18d9a097bca, type: 3}
+  _dashSpriteRed: {fileID: -1145956413607657779, guid: 3e40f9624d46734489b3bfc63597c33e, type: 3}
 --- !u!114 &7908932968044686612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12612,6 +12633,7 @@ MonoBehaviour:
   - {fileID: 8056398815630092963}
   - {fileID: 599107497303233215}
   - {fileID: 1846050013077409207}
+  - {fileID: 3119105449107337129}
 --- !u!1 &8842972170002813065
 GameObject:
   m_ObjectHideFlags: 0

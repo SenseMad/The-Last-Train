@@ -18,6 +18,7 @@ namespace TLT.Bike.Bike
 
     private BikeController bikeController;
     private BikeManager bikeManager;
+    private BikeDash bikeDash;
 
     private Rigidbody2D wheelRB;
 
@@ -48,6 +49,7 @@ namespace TLT.Bike.Bike
     {
       bikeController = GetComponentInParent<BikeController>();
       bikeManager = GetComponentInParent<BikeManager>();
+      bikeDash = GetComponentInParent<BikeDash>();
 
       wheelRB = GetComponent<Rigidbody2D>();
 
@@ -62,6 +64,9 @@ namespace TLT.Bike.Bike
     private void Update()
     {
       if (bikeController.IsFlip)
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+
+      if (bikeDash.IsDashingAnimator)
         transform.rotation = Quaternion.Euler(0, 0, 0);
 
       UpdateDetectorPosition();

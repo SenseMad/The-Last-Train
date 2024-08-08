@@ -1,0 +1,623 @@
+fileFormatVersion: 2
+guid: 634207e162fceac4d966dd3f2b2b2c3f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3142179263663640750
+    second: moto_dash_0
+  - first:
+      213: -736610021862140129
+    second: moto_dash_1
+  - first:
+      213: 6956173049917508217
+    second: moto_dash_2
+  - first:
+      213: -586550926196843834
+    second: moto_dash_3
+  - first:
+      213: -1770715642763331938
+    second: moto_dash_4
+  - first:
+      213: 2541343521094338633
+    second: moto_dash_5
+  - first:
+      213: -7144944822551032844
+    second: moto_dash_6
+  - first:
+      213: 175505745156190443
+    second: moto_dash_7
+  - first:
+      213: -49091020459126902
+    second: moto_dash_8
+  - first:
+      213: 5373430220084993035
+    second: moto_dash_9
+  - first:
+      213: 1670813027745806111
+    second: moto_dash_10
+  - first:
+      213: -228922904498540498
+    second: moto_dash_11
+  - first:
+      213: -5572123768983053094
+    second: moto_dash_12
+  - first:
+      213: 2454563407291467918
+    second: moto_dash_13
+  - first:
+      213: -8626896141661970145
+    second: moto_dash_14
+  - first:
+      213: -396302018684566558
+    second: moto_dash_15
+  - first:
+      213: -5209708267650562773
+    second: moto_dash_16
+  - first:
+      213: 3979243327173934891
+    second: moto_dash_17
+  - first:
+      213: 6363313330408249148
+    second: moto_dash_18
+  - first:
+      213: 517169058174535344
+    second: moto_dash_19
+  - first:
+      213: -4104137890140989492
+    second: moto_dash_20
+  - first:
+      213: 279642590797331251
+    second: moto_dash_21
+  - first:
+      213: -5895758796405608432
+    second: moto_dash_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 23
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: moto_dash_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea0154f64634b9b20800000000000000
+      internalID: 3142179263663640750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_1
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f171aec761907c5f0800000000000000
+      internalID: -736610021862140129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_2
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97a8a74988a498060800000000000000
+      internalID: 6956173049917508217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_3
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ca5c515a072cd7f0800000000000000
+      internalID: -586550926196843834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_4
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e963dda21872d67e0800000000000000
+      internalID: -1770715642763331938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_5
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9488113c77aa44320800000000000000
+      internalID: 2541343521094338633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_6
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fb44181a8e08dc90800000000000000
+      internalID: -7144944822551032844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_7
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be0331c9b858f6200800000000000000
+      internalID: 175505745156190443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_8
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8f4fdb1af7915ff0800000000000000
+      internalID: -49091020459126902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_9
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0cd385c052429a40800000000000000
+      internalID: 5373430220084993035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_10
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1732eca89bef2710800000000000000
+      internalID: 1670813027745806111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_11
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e20f96cc4d3b2dcf0800000000000000
+      internalID: -228922904498540498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_12
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adc114954f6dba2b0800000000000000
+      internalID: -5572123768983053094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_13
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e88c7420a6c501220800000000000000
+      internalID: 2454563407291467918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_14
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f11ec0a9aab174880800000000000000
+      internalID: -8626896141661970145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_15
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e34988e96d008af0800000000000000
+      internalID: -396302018684566558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_16
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b25c54bcee563b7b0800000000000000
+      internalID: -5209708267650562773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_17
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2fbb0f19bc193730800000000000000
+      internalID: 3979243327173934891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_18
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c37dd7d72c70f4850800000000000000
+      internalID: 6363313330408249148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: moto_dash_19
+      rect:
+        serializedVersion: 2
+        x: 1254
+        y: 0
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.591, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b60151b48a5d2700800000000000000
+      internalID: 517169058174535344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 010cdd09de6995b439c7080257e897d8
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      moto_dash_0: 3142179263663640750
+      moto_dash_1: -736610021862140129
+      moto_dash_10: 1670813027745806111
+      moto_dash_11: -228922904498540498
+      moto_dash_12: -5572123768983053094
+      moto_dash_13: 2454563407291467918
+      moto_dash_14: -8626896141661970145
+      moto_dash_15: -396302018684566558
+      moto_dash_16: -5209708267650562773
+      moto_dash_17: 3979243327173934891
+      moto_dash_18: 6363313330408249148
+      moto_dash_19: 517169058174535344
+      moto_dash_2: 6956173049917508217
+      moto_dash_3: -586550926196843834
+      moto_dash_4: -1770715642763331938
+      moto_dash_5: 2541343521094338633
+      moto_dash_6: -7144944822551032844
+      moto_dash_7: 175505745156190443
+      moto_dash_8: -49091020459126902
+      moto_dash_9: 5373430220084993035
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

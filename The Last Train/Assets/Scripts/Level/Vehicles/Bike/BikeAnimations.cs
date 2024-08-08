@@ -15,5 +15,7 @@ namespace TLT.Bike.Bike
     public const string IS_TURN_UP = "IsTurnUp";
 
     public const string IS_TURN_DOWN = "IsTurnDown";
+
+    public const string IS_DASH = "IsDash";
   }
 }

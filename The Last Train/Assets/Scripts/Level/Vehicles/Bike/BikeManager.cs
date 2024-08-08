@@ -12,10 +12,6 @@ namespace TLT.Bike.Bike
     [SerializeField] private BikeWheel _frontWheel;
     [SerializeField] private BikeWheel _backWheel;
 
-    /*[Space]
-    [SerializeField] private BikeController _bikeController;
-    [SerializeField] private BikeBody _bikeBody;*/
-
     [Space]
     [SerializeField, Range(-1, 1)] private int _direction = 1;
 
