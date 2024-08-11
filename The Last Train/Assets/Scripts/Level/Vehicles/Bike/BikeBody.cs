@@ -187,16 +187,13 @@ namespace TLT.Bike.Bike
       OnGetOutCar?.Invoke();
     }
 
-    public void ChangeDirection()
+    /*public void ChangeDirection()
     {
       if (!bikeController.IsInCar)
         return;
 
       if (!bikeManager.Grounded)
         return;
-
-      bikeManager.FrontWheel.transform.rotation = Quaternion.Euler(0, 0, 0);
-      bikeManager.BackWheel.transform.rotation = Quaternion.Euler(0, 0, 0);
 
       bikeController.Animator.SetTrigger(BikeAnimations.IS_FLIP);
 
@@ -212,7 +209,7 @@ namespace TLT.Bike.Bike
       bikeManager.Direction *= -1;
 
       bikeController.Character.Direction = bikeManager.Direction;
-    }
+    }*/
 
     public int GetDirection()
     {
@@ -260,10 +257,17 @@ namespace TLT.Bike.Bike
         bodyRB.velocity = bodyRB.velocity.normalized * _bikeData.MaxVelocity * 1.5f;
       }
 
-      if (bikeController.Throttle == 0 && bikeManager.Grounded && bikeController.Brake != 0)
+      if (bikeManager.Grounded)
       {
-        // ForceBrake();
-        bodyRB.velocity = Vector2.Lerp(bodyRB.velocity, new Vector2(0, bodyRB.velocity.y), Time.deltaTime * _bikeData.DefaultForceBrakeSpeed);
+        if (bikeController.Throttle == 0 && bikeController.Brake != 0)
+        {
+          // ForceBrake();
+          bodyRB.velocity = Vector2.Lerp(bodyRB.velocity, new Vector2(0, bodyRB.velocity.y), Time.deltaTime * _bikeData.DefaultForceBrakeSpeed);
+        }
+        else if (bikeController.BikeFlip.IsFlip)
+        {
+          bodyRB.velocity = Vector2.Lerp(bodyRB.velocity, new Vector2(0, bodyRB.velocity.y), Time.deltaTime / bikeController.BikeFlip.BrakingCoefficient);
+        }
       }
     }
 
@@ -404,7 +408,7 @@ namespace TLT.Bike.Bike
 
     private void Select_performed(InputAction.CallbackContext parContext)
     {
-      if (bikeController.IsFlip)
+      if (bikeController.BikeFlip.IsFlip)
         return;
 
       GetOutCar();

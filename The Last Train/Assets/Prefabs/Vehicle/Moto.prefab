@@ -12216,6 +12216,7 @@ GameObject:
   - component: {fileID: 2618161051220104822}
   - component: {fileID: 1846050013077409207}
   - component: {fileID: 3119105449107337129}
+  - component: {fileID: 3633208594744693864}
   - component: {fileID: 7908932968044686612}
   m_Layer: 10
   m_Name: Moto
@@ -12609,6 +12610,22 @@ MonoBehaviour:
     m_Bits: 0
   _dashSpriteGreen: {fileID: 7098758130526662957, guid: 2346350f428baaf4a925d18d9a097bca, type: 3}
   _dashSpriteRed: {fileID: -1145956413607657779, guid: 3e40f9624d46734489b3bfc63597c33e, type: 3}
+--- !u!114 &3633208594744693864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810085334441422386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 694ce250ae3373d4085b9db3961fd833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minSpeed: 1
+  _percentStallMinSpeed: 80
+  _percentStallMaxSpeed: 10
+  _brakingCoefficient: 1.1
 --- !u!114 &7908932968044686612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12634,6 +12651,7 @@ MonoBehaviour:
   - {fileID: 599107497303233215}
   - {fileID: 1846050013077409207}
   - {fileID: 3119105449107337129}
+  - {fileID: 3633208594744693864}
 --- !u!1 &8842972170002813065
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,10 @@ namespace TLT.Bike.Bike
 
     public const string IS_FLIP = "IsFlip";
 
+    public const string IS_FLIP_1 = "IsFlip1";
+
+    public const string IS_FLIP_2 = "IsFlip2";
+
     public const string IS_START = "IsStart";
 
     public const string IS_MOTO_BALANCE = "IsMotoBalance";
