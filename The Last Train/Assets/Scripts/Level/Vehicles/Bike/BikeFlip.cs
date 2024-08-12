@@ -71,7 +71,9 @@ namespace TLT.Bike.Bike
         return;
 
       if (bikeBody.VelocityMagnitude >= _minSpeed)
+      {
         bikeController.Animator.SetTrigger(BikeAnimations.IS_FLIP_1);
+      }
       else
       {
         bikeController.Animator.SetTrigger(BikeAnimations.IS_FLIP);
@@ -83,6 +85,11 @@ namespace TLT.Bike.Bike
       BrakingCoefficient = GetBrakingCoefficient();
 
       chanceStall = CalculatePercentage();
+    }
+
+    private void End_Flip_1_Animation()
+    {
+      bikeController.Animator.SetTrigger(BikeAnimations.IS_FLIP_3);
     }
 
     private void FlipAnimation()

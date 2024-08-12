@@ -264,9 +264,10 @@ namespace TLT.Bike.Bike
           // ForceBrake();
           bodyRB.velocity = Vector2.Lerp(bodyRB.velocity, new Vector2(0, bodyRB.velocity.y), Time.deltaTime * _bikeData.DefaultForceBrakeSpeed);
         }
-        else if (bikeController.BikeFlip.IsFlip)
+        else if (bikeController.BikeFlip.IsFlip) 
         {
-          bodyRB.velocity = Vector2.Lerp(bodyRB.velocity, new Vector2(0, bodyRB.velocity.y), Time.deltaTime / bikeController.BikeFlip.BrakingCoefficient);
+          bodyRB.velocity = Vector2.Lerp(bodyRB.velocity, new Vector2(0, bodyRB.velocity.y), Time.deltaTime * _bikeData.DefaultForceBrakeSpeed);
+          //bodyRB.velocity = Vector2.Lerp(bodyRB.velocity, new Vector2(0, bodyRB.velocity.y), Time.deltaTime / bikeController.BikeFlip.BrakingCoefficient);
         }
       }
     }

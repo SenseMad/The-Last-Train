@@ -24,6 +24,7 @@ namespace TLT.Bike.Bike
     private BikeController bikeController;
     private BikeManager bikeManager;
     private BikeBody bikeBody;
+    private BikeFlip bikeFlip;
 
     private BikeDash bikeDash;
 
@@ -44,7 +45,7 @@ namespace TLT.Bike.Bike
       bikeController = GetComponent<BikeController>();
       bikeManager = GetComponent<BikeManager>();
       bikeBody = GetComponent<BikeBody>();
-
+      bikeFlip = GetComponent<BikeFlip>();
       bikeDash = GetComponent<BikeDash>();
     }
 
@@ -122,6 +123,12 @@ namespace TLT.Bike.Bike
           character.ApplyDamage(1);
           bikeController.Animator.SetTrigger(BikeAnimations.IS_HURT);
 
+          if (bikeFlip.IsFlip)
+            bikeBody.CallEventOnGetInCar();
+
+          if (!bikeController.IsInCar)
+            return;
+
           BalanceMiniGame balanceMiniGame = parEnemyAgent.GetComponent<BalanceMiniGame>();
           bikeController.BalanceMiniGameManager.Initialize(balanceMiniGame.PowerSkidding);
 
@@ -172,6 +179,12 @@ namespace TLT.Bike.Bike
             parEnemyAgent.ApplyDamage(1);
             return;
           }
+
+          if (bikeFlip.IsFlip)
+            bikeBody.CallEventOnGetInCar();
+
+          if (!bikeController.IsInCar)
+            return;
         }
       }
     }

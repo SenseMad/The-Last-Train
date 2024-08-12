@@ -22,6 +22,8 @@ namespace TLT.Bike.Bike
     private InputHandler inputHandler;
 
     private BikeController bikeController;
+    private BikeBody bikeBody;
+    private BikeFlip bikeFlip;
 
     private bool isAnimationTurnUp;
     private bool isAnimationTurnDown;
@@ -41,6 +43,8 @@ namespace TLT.Bike.Bike
     public void CustomAwake()
     {
       bikeController = GetComponent<BikeController>();
+      bikeBody = GetComponent<BikeBody>();
+      bikeFlip = GetComponent<BikeFlip>();
     }
 
     public void CustomStart() { }
@@ -121,7 +125,10 @@ namespace TLT.Bike.Bike
               {
                 Physics2D.IgnoreCollision(ignoreCollider, parDirectionMovement.ObjectCollider2D, isFrontWheelInsideAny && !parDirectionMovement.IsUp);
 
-                if (isFrontWheelInsideAny && !isAnimationTurnUp)
+                /*if (bikeFlip.IsFlip)
+                  bikeBody.CallEventOnGetInCar();*/
+
+                if (isFrontWheelInsideAny && !isAnimationTurnUp && bikeController.IsInCar)
                 {
                   bikeController.Animator.SetTrigger(BikeAnimations.IS_TURN_UP);
                   isAnimationTurnUp = true;
